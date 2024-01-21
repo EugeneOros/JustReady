@@ -1,16 +1,24 @@
-# just_ready
+# Just Ready
 
-A new Flutter project.
+A new project for orders managment and displaying orders status dashnbord made with Flutter.
 
-## Getting Started
+## Generating files
 
-This project is a starting point for a Flutter application.
+Some packages used in the project require the developer to generate files. To do that, run this
+command in the project workspace:
 
-A few resources to get you started if this is your first Flutter project:
+```sh
+flutter pub run build_runner build --delete-conflicting-outputs
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+To generate l10n files, run:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```sh
+flutter pub global run intl_utils:generate
+```
+
+To generate assets and fonts files, run:
+
+```sh
+fluttergen -c pubspec.yaml
+```
