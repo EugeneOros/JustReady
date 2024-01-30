@@ -69,6 +69,126 @@ class Strings {
       args: [],
     );
   }
+
+  /// `Meals`
+  String get meals {
+    return Intl.message(
+      'Meals',
+      name: 'meals',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dashboard`
+  String get dashboard {
+    return Intl.message(
+      'Dashboard',
+      name: 'dashboard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notes`
+  String get notes {
+    return Intl.message(
+      'Notes',
+      name: 'notes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add order`
+  String get addOrderPageAddOrder {
+    return Intl.message(
+      'Add order',
+      name: 'addOrderPageAddOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get save {
+    return Intl.message(
+      'Save',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Meal number`
+  String get mealNumber {
+    return Intl.message(
+      'Meal number',
+      name: 'mealNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter meal name`
+  String get enterMealName {
+    return Intl.message(
+      'Enter meal name',
+      name: 'enterMealName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price`
+  String get price {
+    return Intl.message(
+      'Price',
+      name: 'price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter meal price`
+  String get enterPriceName {
+    return Intl.message(
+      'Enter meal price',
+      name: 'enterPriceName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New meal`
+  String get newMeal {
+    return Intl.message(
+      'New meal',
+      name: 'newMeal',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Strings> {
@@ -77,6 +197,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<Strings> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'pl'),
     ];
   }
 

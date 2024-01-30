@@ -9,7 +9,7 @@ enum ThemeType {
 }
 
 class ThemeModel with ChangeNotifier {
-  ThemeType _currentTheme = ThemeType.light;
+  ThemeType _currentTheme = ThemeType.dark;
 
   ThemeType get currentTheme => _currentTheme;
 

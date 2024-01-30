@@ -1,0 +1,19 @@
+{
+  "@@locale": "pl",
+  "orders": "Zamówienia",
+  "addOrders": "Zamów",
+  "meals": "Dania",
+  "dashboard": "Panel",
+  "notes": "Uwagi",
+  "addOrderPageAddOrder": "Dodaj zamówienie",
+
+  "save": "Zapisz",
+  "cancel": "Anuluj",
+
+  "mealNumber": "Numer dania",
+  "name": "Nazwa",
+  "enterMealName": "Wprowadź nazwe dania",
+  "price": "Cena",
+  "enterPriceName": "Wprowadź cene dania",
+  "newMeal": "Nowe danie"
+}

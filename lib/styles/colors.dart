@@ -2,38 +2,50 @@ import 'package:flutter/material.dart';
 
 @immutable
 class CustomColors extends ThemeExtension<CustomColors> {
-  final Color? dark;
-  final Color? darkLight;
-  final Color? main;
-  final Color? bright;
-  final Color? background;
-  final Color? error;
+  final Color dark;
+  final Color darkLight;
+  final Color primary;
+  final Color secondary;
+  final Color bright;
+  final Color background;
+  final Color error;
+  final Color disabled;
+  final Color transparent;
 
   const CustomColors({
-    this.dark,
-    this.darkLight,
-    this.main,
-    this.bright,
-    this.background,
-    this.error,
+    required this.dark,
+    required this.darkLight,
+    required this.primary,
+    required this.secondary,
+    required this.bright,
+    required this.background,
+    required this.error,
+    required this.disabled,
+    required this.transparent,
   });
 
   @override
   ThemeExtension<CustomColors> copyWith({
     Color? dark,
     Color? darkLight,
-    Color? main,
+    Color? primary,
+    Color? secondary,
     Color? bright,
     Color? background,
     Color? error,
+    Color? disabled,
+    Color? transparent,
   }) =>
       CustomColors(
         dark: dark ?? this.dark,
         darkLight: darkLight ?? this.darkLight,
-        main: main ?? this.main,
+        primary: primary ?? this.primary,
+        secondary: secondary ?? this.secondary,
         bright: bright ?? this.bright,
         background: background ?? this.background,
         error: error ?? this.error,
+        disabled: disabled ?? this.disabled,
+        transparent: transparent ?? this.transparent,
       );
 
   @override
@@ -45,30 +57,41 @@ class CustomColors extends ThemeExtension<CustomColors> {
       return this;
     }
     return CustomColors(
-      dark: Color.lerp(dark, other.dark, t),
-      darkLight: Color.lerp(darkLight, other.darkLight, t),
-      main: Color.lerp(main, other.main, t),
-      bright: Color.lerp(bright, other.bright, t),
-      background: Color.lerp(background, other.background, t),
-      error: Color.lerp(error, other.error, t),
+      dark: _getColorLerp(dark, other.dark, t),
+      darkLight: _getColorLerp(darkLight, other.darkLight, t),
+      primary: _getColorLerp(primary, other.primary, t),
+      secondary: _getColorLerp(secondary, other.secondary, t),
+      bright: _getColorLerp(bright, other.bright, t),
+      background: _getColorLerp(background, other.background, t),
+      error: _getColorLerp(error, other.error, t),
+      disabled: _getColorLerp(disabled, other.disabled, t),
+      transparent: _getColorLerp(transparent, other.transparent, t),
     );
   }
 
+  Color _getColorLerp(Color actual, Color other, double t) => Color.lerp(actual, other, t) ?? other;
+
   static const lightTheme = CustomColors(
-    dark: Color(0xff202124),
+    dark: Color(0xff000000),
     darkLight: Color(0xff555555),
-    main: Color(0xff9747ff),
-    bright: Color(0xffe6e6e6),
+    primary: Color(0xffbfe34b),
+    secondary: Color(0xff4392AE),
+    bright: Color(0xffffffff),
     background: Color(0xffffffff),
-    error: Color(0xffAB2E27),
+    error: Color(0xffee6c4d),
+    disabled: Color(0xffd7dadd),
+    transparent: Color(0x00000000),
   );
 
   static const darkTheme = CustomColors(
     dark: Color(0xff98C1D9),
     darkLight: Color(0xff3D5A80),
-    main: Color(0xffe0fbfc),
-    bright: Color(0xffee6c4d),
-    background: Color(0xff293241),
+    primary: Color(0xffbfe34b),
+    secondary: Color(0xff4392AE),
+    bright: Color(0xffffffff),
+    background: Color(0xff000000),
     error: Color(0xffee6c4d),
+    disabled: Color(0xffd7dadd),
+    transparent: Color(0x00000000),
   );
 }

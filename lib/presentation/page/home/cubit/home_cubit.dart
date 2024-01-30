@@ -6,6 +6,8 @@ import 'package:just_ready/presentation/router/route_name.dart';
 enum NavTabs {
   addOrders,
   orders,
+  meals,
+  dashboard,
 }
 
 @injectable
@@ -16,7 +18,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> init() async {
     emit(HomeState.selectedPage(
-      index: 0,
+      index: _selectedIndex,
       path: _getCurrentLocation(_selectedIndex),
     ));
   }
@@ -35,9 +37,13 @@ class HomeCubit extends Cubit<HomeState> {
   String _getCurrentLocation(int index) {
     switch (index) {
       case 0:
-        return JustReadyRoute.orders.path;
-      case 1:
         return JustReadyRoute.addOrders.path;
+      case 1:
+        return JustReadyRoute.orders.path;
+      case 2:
+        return JustReadyRoute.meals.path;
+      case 3:
+        return JustReadyRoute.orders.path;
       default:
         return JustReadyRoute.orders.path;
     }

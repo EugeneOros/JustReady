@@ -29,11 +29,13 @@ class Dimens {
 
   static const xxc = 72.0;
 
-  static const xxxc = 80.0;
+  static const xxxc = 104.0;
 
   static const xxxxc = 128.0;
 
   static const xxsButtonWidth = 116.0;
+
+  static const noteTextFieldHeight = 45.0;
 
   static const xsButtonWidth = 136.0;
 
@@ -46,6 +48,12 @@ class Dimens {
   static const standardSubpageWidth = 688.0;
 
   static const sideMenuWidth = 285.0;
+
+  static const maxCardButtonWidth = 600.0;
+
+  static const defaultMealCardWidth = 100.0;
+
+  static const expandedMealCardWidth = 370.0;
 
   Dimens._();
 }

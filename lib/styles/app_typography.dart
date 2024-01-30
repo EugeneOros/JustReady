@@ -1,81 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:just_ready/gen/fonts.gen.dart';
 
-const _fontFamily = 'Roboto';
-
 class AppTypography {
-  static const fontFamily = FontFamily.inter;
+  static const fontFamily = FontFamily.alata;
 
   /// Header
   static const header1 = TextStyle(
-    fontSize: 23,
-    fontWeight: FontWeight.w500,
-    height: 28.0 / 18.0,
-    leadingDistribution: TextLeadingDistribution.even,
+    fontSize: 27,
+    height: 1.3,
+    fontWeight: FontWeight.w600,
   );
   static const header2 = TextStyle(
     fontSize: 23,
-    fontWeight: FontWeight.w700,
-    height: 24.0 / 16.0,
-    leadingDistribution: TextLeadingDistribution.even,
+    fontWeight: FontWeight.w600,
+    height: 1.3,
   );
   static const header3 = TextStyle(
-    fontSize: 17,
-    fontWeight: FontWeight.w700,
-    height: 18.0 / 14.0,
-    leadingDistribution: TextLeadingDistribution.even,
+    fontSize: 18,
+    height: 1.3,
   );
 
   /// Body
   static const body1 = TextStyle(
     fontSize: 16,
-    fontWeight: FontWeight.w400,
-    height: 18.0 / 14.0,
-    leadingDistribution: TextLeadingDistribution.even,
+    height: 1,
   );
   static const body2 = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.w500,
-    height: 18.0 / 14.0,
-    leadingDistribution: TextLeadingDistribution.even,
+    fontSize: 14,
+    height: 1,
   );
   static const body3 = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.w700,
-    height: 18.0 / 14.0,
-    leadingDistribution: TextLeadingDistribution.even,
+    fontSize: 12,
+    height: 1,
   );
 
   /// Subtitle
   static const subtitle1 = TextStyle(
-    fontSize: 16,
+    fontSize: 10,
     fontWeight: FontWeight.w600,
-    height: 1,
-    letterSpacing: 0.4,
-    leadingDistribution: TextLeadingDistribution.even,
+    height: 0.8,
   );
   static const subtitle2 = TextStyle(
-    fontSize: 14,
-    fontWeight: FontWeight.w500,
-    height: 1.14,
-    letterSpacing: 0.4,
-    leadingDistribution: TextLeadingDistribution.even,
+    fontSize: 10,
+    height: 0.8,
   );
 
   /// Button
   static const button = TextStyle(
-    fontSize: 15,
-    fontWeight: FontWeight.w700,
-    height: 18.0 / 14.0,
-    leadingDistribution: TextLeadingDistribution.even,
+    fontSize: 16,
+    // fontWeight: FontWeight.w600,
   );
 
   /// Input
   static const input = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.w400,
-    height: 18.0 / 14.0,
-    leadingDistribution: TextLeadingDistribution.even,
+    fontSize: 14,
+    // fontWeight: FontWeight.w400,
+    // height: 18.0 / 14.0,
+    // leadingDistribution: TextLeadingDistribution.even,
   );
 }
 
@@ -135,15 +116,15 @@ class CustomTypography extends ThemeExtension<CustomTypography> {
   ThemeExtension<CustomTypography> lerp(ThemeExtension<CustomTypography>? other, double t) => this;
 
   static final standard = CustomTypography(
-    header1: AppTypography.header1.copyWith(fontFamily: _fontFamily),
-    header2: AppTypography.header2.copyWith(fontFamily: _fontFamily),
-    header3: AppTypography.header3.copyWith(fontFamily: _fontFamily),
-    body1: AppTypography.body1.copyWith(fontFamily: _fontFamily),
-    body2: AppTypography.body2.copyWith(fontFamily: _fontFamily),
-    body3: AppTypography.body3.copyWith(fontFamily: _fontFamily),
-    subtitle1: AppTypography.subtitle1.copyWith(fontFamily: _fontFamily),
-    subtitle2: AppTypography.subtitle2.copyWith(fontFamily: _fontFamily),
-    button: AppTypography.button.copyWith(fontFamily: _fontFamily),
-    input: AppTypography.input.copyWith(fontFamily: _fontFamily),
+    header1: AppTypography.header1.copyWith(fontFamily: AppTypography.fontFamily),
+    header2: AppTypography.header2.copyWith(fontFamily: AppTypography.fontFamily),
+    header3: AppTypography.header3.copyWith(fontFamily: AppTypography.fontFamily),
+    body1: AppTypography.body1.copyWith(fontFamily: AppTypography.fontFamily),
+    body2: AppTypography.body2.copyWith(fontFamily: AppTypography.fontFamily),
+    body3: AppTypography.body3.copyWith(fontFamily: AppTypography.fontFamily),
+    subtitle1: AppTypography.subtitle1.copyWith(fontFamily: AppTypography.fontFamily),
+    subtitle2: AppTypography.subtitle2.copyWith(fontFamily: AppTypography.fontFamily),
+    button: AppTypography.button.copyWith(fontFamily: AppTypography.fontFamily),
+    input: AppTypography.input.copyWith(fontFamily: AppTypography.fontFamily),
   );
 }

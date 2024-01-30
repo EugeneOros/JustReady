@@ -1,7 +1,19 @@
 {
   "@@locale": "en",
   "orders": "Orders",
-  "@orders": {},
   "addOrders": "Add Orders",
-  "@addOrders": {}
+  "meals": "Meals",
+  "dashboard": "Dashboard",
+  "notes": "Notes",
+  "addOrderPageAddOrder": "Add order",
+
+  "save": "Save",
+  "cancel": "Cancel",
+
+  "mealNumber": "Meal number",
+  "name": "Name",
+  "enterMealName": "Enter meal name",
+  "price": "Price",
+  "enterPriceName": "Enter meal price",
+  "newMeal": "New meal"
 }

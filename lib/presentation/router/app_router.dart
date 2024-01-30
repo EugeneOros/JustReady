@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
 import 'package:just_ready/presentation/page/add_orders/add_orders_page.dart';
 import 'package:just_ready/presentation/page/home/home_page.dart';
+import 'package:just_ready/presentation/page/meals/meals_page.dart';
 import 'package:just_ready/presentation/page/orders/orders_page.dart';
 import 'package:just_ready/presentation/router/route_name.dart';
 
@@ -14,7 +15,7 @@ class AppRouter {
   static final GoRouter _appRouter = GoRouter(
     debugLogDiagnostics: true,
     navigatorKey: _rootNavigatorKey,
-    initialLocation: JustReadyRoute.orders.path,
+    initialLocation: JustReadyRoute.meals.path,
     errorPageBuilder: (context, state) => _pageBuilder(
       state,
       child: Container(),
@@ -40,6 +41,11 @@ class AppRouter {
             path: JustReadyRoute.addOrders.path,
             name: JustReadyRoute.addOrders.name,
             builder: (context, state) => const AddOrdersPage(),
+          ),
+          GoRoute(
+            path: JustReadyRoute.meals.path,
+            name: JustReadyRoute.meals.name,
+            builder: (context, state) => const MealsPage(),
           ),
           GoRoute(
             path: JustReadyRoute.orders.path,

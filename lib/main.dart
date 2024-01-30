@@ -3,11 +3,12 @@ import 'dart:async';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
+import 'package:just_ready/config/firebase_options.dart';
 import 'package:just_ready/injectable/injectable.dart';
 import 'package:just_ready/just_ready_app.dart';
+import 'package:just_ready/utils/logger.dart';
 
 const String _environmentDefineKey = 'ENVIRONMENT';
 const String _prodEnvironmentFullName = 'production';
@@ -23,7 +24,7 @@ Future<void>? runMobileApp(final String environment) => runZonedGuarded<Future<v
       () async {
         WidgetsFlutterBinding.ensureInitialized();
         // Bloc.observer = CustomBlocObserver();
-        // await Firebase.initializeApp(options: DefaultFirebaseOptions.web);
+        await Firebase.initializeApp(options: DefaultFirebaseOptions.web);
         if (!_supportedEnvironments.contains(environment)) {
           throw ArgumentError('Environment $environment is not supported');
         }
@@ -40,7 +41,9 @@ Future<void>? runMobileApp(final String environment) => runZonedGuarded<Future<v
           ),
         );
       },
-      (err, st) {},
+      (err, st) {
+        logger.e(err);
+      },
     );
 
 String _getEnvironment() {

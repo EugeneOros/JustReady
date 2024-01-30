@@ -1,0 +1,65 @@
+import 'package:injectable/injectable.dart';
+import 'package:just_ready/data/meals/data_source/meal_data_source.dart';
+import 'package:just_ready/data/meals/mapper/meal_dto_to_meal_mapper.dart';
+import 'package:just_ready/data/meals/mapper/meal_to_meal_dto_mapper.dart';
+import 'package:just_ready/data/meals/models/meal_dto.dart';
+import 'package:just_ready/domain/meals/meals_repository.dart';
+import 'package:just_ready/domain/meals/models/meal.dart';
+
+@LazySingleton(as: MealsRepository)
+class MealsRepositoryImpl implements MealsRepository {
+  final MealsDataSource _mealsDataSource;
+  final MealToMealDtoMapper _mealToMealDtoMapper;
+  final MealDtoToMealMapper _mealDtoToMealMapper;
+
+  MealsRepositoryImpl(
+    this._mealsDataSource,
+    this._mealToMealDtoMapper,
+    this._mealDtoToMealMapper,
+  );
+
+  @override
+  Future<void> addMeal(Meal meal) async {
+    final dto = _mealToMealDtoMapper(meal);
+
+    await _mealsDataSource.addMeal(dto);
+    // _mainStreamService.notifyRefreshStream(const ReorderEvent.updatedReorderProductsList());
+  }
+
+  @override
+  Future<void> editMeal(Meal meal) async {
+    final dto = _mealToMealDtoMapper(meal);
+
+    await _mealsDataSource.editMeal(dto);
+  }
+
+  @override
+  Future<void> deleteMeal(String mealId) async {
+    await _mealsDataSource.deleteMeal(mealId);
+  }
+
+  @override
+  Future<List<Meal>> meals() async {
+    List<MealDto> dtos = await _mealsDataSource.getMeals();
+    dtos.sort((a, b) => a.mealNumber.compareTo(b.mealNumber));
+    return dtos.map((dto) => _mealDtoToMealMapper(dto)).toList(growable: false);
+  }
+
+  // @override
+  // Stream<List<Order>> orders() {
+  //   final Stream<List<EventEntityDto>> eventDtoListStream = _ordersDataSource.events(status);
+  //   return eventDtoListStream.asyncMap(
+  //     (eventDtoList) async {
+  //       final eventList = eventDtoList
+  //           .map(
+  //             (eventDto) async => _eventDtoToEventMapper(
+  //               eventDto,
+  //               advertisement: await _getAdvertisement(eventDto.mainSponsor, eventDto.id),
+  //             ),
+  //           )
+  //           .toList(growable: false);
+  //       return await Future.wait(eventList);
+  //     },
+  //   );
+  // }
+}
