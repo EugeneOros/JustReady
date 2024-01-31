@@ -31,6 +31,7 @@ class JrTextField extends HookWidget {
   final bool autofocus;
   final bool autocorrect;
   final bool showClearFiledButton;
+  final bool selectAllOnTap;
   final Function(String?)? setErrorText;
 
   const JrTextField({
@@ -57,11 +58,13 @@ class JrTextField extends HookWidget {
     this.autocorrect = true,
     this.showClearFiledButton = false,
     this.setErrorText,
+    this.selectAllOnTap = false,
   }) : assert((showClearFiledButton && form != null) || !showClearFiledButton);
 
   @override
   Widget build(BuildContext context) {
     final focusNode = this.focusNode ?? useFocusNode();
+    final textController = controller ?? useTextEditingController();
 
     final isShowingObscureText = useState(true);
     final isShowingClearButton = useState(false);
@@ -99,7 +102,7 @@ class JrTextField extends HookWidget {
         maxLines: maxLines,
         minLines: minLines,
         textAlign: textAlign,
-        controller: controller,
+        controller: textController,
         autocorrect: autocorrect,
         decoration: InputDecoration(
           isDense: true,
@@ -133,6 +136,7 @@ class JrTextField extends HookWidget {
         ),
         onTap: (formControl) {
           errorText.value = getErrorMessage(formControl);
+          if (selectAllOnTap) textController.selectAll();
           onTap?.call(formControl);
         },
         onChanged: (formControl) {

@@ -49,11 +49,19 @@ class Dimens {
 
   static const sideMenuWidth = 285.0;
 
-  static const maxCardButtonWidth = 600.0;
+  static const lMaxCardButtonWidth = 600.0;
+  static const mMaxCardButtonWidth = 400.0;
+  static const sMaxCardButtonWidth = 200.0;
 
   static const defaultMealCardWidth = 100.0;
 
   static const expandedMealCardWidth = 370.0;
+
+  static const selectedMealCardHeight = 160.0;
+
+  static const navBarHeight = 80.0;
+
+  static const bannerHeight = 150.0;
 
   Dimens._();
 }

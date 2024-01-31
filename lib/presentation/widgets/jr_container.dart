@@ -13,6 +13,8 @@ class JrContainer extends StatelessWidget {
   final Color borderColor;
   final double borderRadius;
   final bool isAnimated;
+  final Color? backgroundColor;
+  final bool showShadow;
   const JrContainer({
     super.key,
     required this.child,
@@ -25,48 +27,58 @@ class JrContainer extends StatelessWidget {
     this.borderColor = Colors.black,
     this.borderRadius = Dimens.m,
     this.isAnimated = false,
+    this.backgroundColor,
+    this.showShadow = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return getContainer(
-      child: IntrinsicHeight(
-        child: Stack(
-          children: [
-            Positioned(
-              left: borderOffset,
-              right: 0,
-              top: borderOffset,
-              bottom: 0,
-              child: Container(
-                margin: margin,
-                padding: padding,
-                decoration: BoxDecoration(
-                  border: Border.all(color: context.colors.dark, width: borderWidth),
-                  borderRadius: BorderRadius.circular(borderRadius),
-                  color: borderColor,
-                ),
-                child: child,
+      child: Stack(
+        children: [
+          Positioned(
+            left: borderOffset,
+            right: 0,
+            top: borderOffset,
+            bottom: 0,
+            child: Container(
+              margin: margin,
+              padding: padding,
+              decoration: BoxDecoration(
+                border: Border.all(color: context.colors.dark, width: borderWidth),
+                borderRadius: BorderRadius.circular(borderRadius),
+                color: borderColor,
+                boxShadow: showShadow
+                    ? [
+                        BoxShadow(
+                          color: context.colors.darkLight.withOpacity(0.5),
+                          spreadRadius: Dimens.s,
+                          blurRadius: Dimens.m,
+                          offset: const Offset(Dimens.xxs, Dimens.xxs),
+                        ),
+                      ]
+                    : null,
               ),
+              child: child,
             ),
-            Positioned(
-              left: 0,
-              right: borderOffset,
-              top: 0,
-              bottom: borderOffset,
-              child: Container(
-                margin: margin,
-                padding: padding,
-                decoration: BoxDecoration(
-                  border: Border.all(color: context.colors.dark, width: borderWidth),
-                  borderRadius: BorderRadius.circular(borderRadius),
-                  color: context.colors.background,
-                ),
-                child: child,
+          ),
+          Positioned(
+            left: 0,
+            right: borderOffset,
+            top: 0,
+            bottom: borderOffset,
+            child: Container(
+              margin: margin,
+              padding: padding,
+              decoration: BoxDecoration(
+                border: Border.all(color: context.colors.dark, width: borderWidth),
+                borderRadius: BorderRadius.circular(borderRadius),
+                color: backgroundColor ?? context.colors.background,
               ),
+              child: child,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

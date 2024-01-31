@@ -27,6 +27,7 @@ class JrText extends StatelessWidget {
           decorationColor: decorationColor,
         ),
         
+        maxLines: 3,
         textAlign: textAlign,
         overflow: overflow,
       );

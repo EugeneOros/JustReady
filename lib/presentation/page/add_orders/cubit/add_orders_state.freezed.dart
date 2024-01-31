@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AddOrdersState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loaded,
+    required TResult Function(List<Meal> meals) loaded,
     required TResult Function() loading,
     required TResult Function(Object error) error,
     required TResult Function() initial,
@@ -26,7 +26,7 @@ mixin _$AddOrdersState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loaded,
+    TResult? Function(List<Meal> meals)? loaded,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
     TResult? Function()? initial,
@@ -34,7 +34,7 @@ mixin _$AddOrdersState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loaded,
+    TResult Function(List<Meal> meals)? loaded,
     TResult Function()? loading,
     TResult Function(Object error)? error,
     TResult Function()? initial,
@@ -91,6 +91,8 @@ abstract class _$$AddOrdersStateLoadedImplCopyWith<$Res> {
   factory _$$AddOrdersStateLoadedImplCopyWith(_$AddOrdersStateLoadedImpl value,
           $Res Function(_$AddOrdersStateLoadedImpl) then) =
       __$$AddOrdersStateLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Meal> meals});
 }
 
 /// @nodoc
@@ -100,61 +102,92 @@ class __$$AddOrdersStateLoadedImplCopyWithImpl<$Res>
   __$$AddOrdersStateLoadedImplCopyWithImpl(_$AddOrdersStateLoadedImpl _value,
       $Res Function(_$AddOrdersStateLoadedImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? meals = null,
+  }) {
+    return _then(_$AddOrdersStateLoadedImpl(
+      null == meals
+          ? _value._meals
+          : meals // ignore: cast_nullable_to_non_nullable
+              as List<Meal>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$AddOrdersStateLoadedImpl implements AddOrdersStateLoaded {
-  const _$AddOrdersStateLoadedImpl();
+  const _$AddOrdersStateLoadedImpl(final List<Meal> meals) : _meals = meals;
+
+  final List<Meal> _meals;
+  @override
+  List<Meal> get meals {
+    if (_meals is EqualUnmodifiableListView) return _meals;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_meals);
+  }
 
   @override
   String toString() {
-    return 'AddOrdersState.loaded()';
+    return 'AddOrdersState.loaded(meals: $meals)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddOrdersStateLoadedImpl);
+            other is _$AddOrdersStateLoadedImpl &&
+            const DeepCollectionEquality().equals(other._meals, _meals));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_meals));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddOrdersStateLoadedImplCopyWith<_$AddOrdersStateLoadedImpl>
+      get copyWith =>
+          __$$AddOrdersStateLoadedImplCopyWithImpl<_$AddOrdersStateLoadedImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loaded,
+    required TResult Function(List<Meal> meals) loaded,
     required TResult Function() loading,
     required TResult Function(Object error) error,
     required TResult Function() initial,
   }) {
-    return loaded();
+    return loaded(meals);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loaded,
+    TResult? Function(List<Meal> meals)? loaded,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
     TResult? Function()? initial,
   }) {
-    return loaded?.call();
+    return loaded?.call(meals);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loaded,
+    TResult Function(List<Meal> meals)? loaded,
     TResult Function()? loading,
     TResult Function(Object error)? error,
     TResult Function()? initial,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded();
+      return loaded(meals);
     }
     return orElse();
   }
@@ -198,7 +231,13 @@ class _$AddOrdersStateLoadedImpl implements AddOrdersStateLoaded {
 }
 
 abstract class AddOrdersStateLoaded implements AddOrdersState {
-  const factory AddOrdersStateLoaded() = _$AddOrdersStateLoadedImpl;
+  const factory AddOrdersStateLoaded(final List<Meal> meals) =
+      _$AddOrdersStateLoadedImpl;
+
+  List<Meal> get meals;
+  @JsonKey(ignore: true)
+  _$$AddOrdersStateLoadedImplCopyWith<_$AddOrdersStateLoadedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -241,7 +280,7 @@ class _$AddOrdersStateLoadingImpl implements AddOrdersStateLoading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loaded,
+    required TResult Function(List<Meal> meals) loaded,
     required TResult Function() loading,
     required TResult Function(Object error) error,
     required TResult Function() initial,
@@ -252,7 +291,7 @@ class _$AddOrdersStateLoadingImpl implements AddOrdersStateLoading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loaded,
+    TResult? Function(List<Meal> meals)? loaded,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
     TResult? Function()? initial,
@@ -263,7 +302,7 @@ class _$AddOrdersStateLoadingImpl implements AddOrdersStateLoading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loaded,
+    TResult Function(List<Meal> meals)? loaded,
     TResult Function()? loading,
     TResult Function(Object error)? error,
     TResult Function()? initial,
@@ -380,7 +419,7 @@ class _$AddOrdersStateErrorImpl implements AddOrdersStateError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loaded,
+    required TResult Function(List<Meal> meals) loaded,
     required TResult Function() loading,
     required TResult Function(Object error) error,
     required TResult Function() initial,
@@ -391,7 +430,7 @@ class _$AddOrdersStateErrorImpl implements AddOrdersStateError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loaded,
+    TResult? Function(List<Meal> meals)? loaded,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
     TResult? Function()? initial,
@@ -402,7 +441,7 @@ class _$AddOrdersStateErrorImpl implements AddOrdersStateError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loaded,
+    TResult Function(List<Meal> meals)? loaded,
     TResult Function()? loading,
     TResult Function(Object error)? error,
     TResult Function()? initial,
@@ -502,7 +541,7 @@ class _$AddOrdersStateInitialImpl implements AddOrdersStateInitial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loaded,
+    required TResult Function(List<Meal> meals) loaded,
     required TResult Function() loading,
     required TResult Function(Object error) error,
     required TResult Function() initial,
@@ -513,7 +552,7 @@ class _$AddOrdersStateInitialImpl implements AddOrdersStateInitial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loaded,
+    TResult? Function(List<Meal> meals)? loaded,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
     TResult? Function()? initial,
@@ -524,7 +563,7 @@ class _$AddOrdersStateInitialImpl implements AddOrdersStateInitial {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loaded,
+    TResult Function(List<Meal> meals)? loaded,
     TResult Function()? loading,
     TResult Function(Object error)? error,
     TResult Function()? initial,

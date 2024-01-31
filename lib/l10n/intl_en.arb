@@ -15,5 +15,13 @@
   "enterMealName": "Enter meal name",
   "price": "Price",
   "enterPriceName": "Enter meal price",
-  "newMeal": "New meal"
+  "newMeal": "New meal",
+
+  "orderDetails": "Order details",
+  "addToOrder": "Add to order",
+  "showOrderDetails": "Show order details",
+  "scelectedMeal": "Scelected - {mealName}"
+  
+
+  
 }

@@ -1,29 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:just_ready/extensions/extension_mixin.dart';
-import 'package:just_ready/presentation/page/meals/widgets/meal_card/utils/meal_form_control_names.dart';
 import 'package:just_ready/presentation/widgets/buttons/jr_icon_button.dart';
 import 'package:just_ready/presentation/widgets/text_fields/jr_number_text_field.dart';
 import 'package:just_ready/styles/dimens.dart';
 import 'package:just_ready/styles/images.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-class NumberEditField extends HookWidget {
+class JrNumberEditField extends HookWidget {
   final FormGroup form;
+  final String formControlName;
 
   final int initialValue;
 
-  const NumberEditField({
+  const JrNumberEditField({
     super.key,
     required this.form,
+    required this.formControlName,
     this.initialValue = 1,
   });
 
   @override
   Widget build(BuildContext context) {
     const min = 1;
-    final number = useState(initialValue);
-    final controller = useTextEditingController(text: initialValue.toString());
+    final number = useState(form.control(formControlName).value as int);
+    final controller = useTextEditingController(text: form.control(formControlName).value.toString());
 
     return Row(
       mainAxisSize: MainAxisSize.min,
@@ -36,7 +37,7 @@ class NumberEditField extends HookWidget {
           onPressed: () {
             if (number.value > min) {
               number.value--;
-              form.control(MealFormControlesName.number).value = number.value;
+              form.control(formControlName).value = number.value;
               controller.text = number.value.toString();
               controller.moveCursorToEnd();
             }
@@ -47,7 +48,7 @@ class NumberEditField extends HookWidget {
           width: Dimens.c,
           height: Dimens.xxl,
           child: JrNumberTextField(
-            formControlName: MealFormControlesName.number,
+            formControlName: formControlName,
             form: form,
             onTap: (_) => controller.selectAll(),
             controller: controller,
@@ -65,7 +66,7 @@ class NumberEditField extends HookWidget {
           icon: IconsSvg.plus24,
           onPressed: () {
             number.value++;
-            form.control(MealFormControlesName.number).value = number.value;
+            form.control(formControlName).value = number.value;
             controller.text = number.value.toString();
             controller.moveCursorToEnd();
           },

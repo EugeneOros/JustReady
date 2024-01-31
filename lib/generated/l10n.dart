@@ -189,6 +189,46 @@ class Strings {
       args: [],
     );
   }
+
+  /// `Order details`
+  String get orderDetails {
+    return Intl.message(
+      'Order details',
+      name: 'orderDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add to order`
+  String get addToOrder {
+    return Intl.message(
+      'Add to order',
+      name: 'addToOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Show order details`
+  String get showOrderDetails {
+    return Intl.message(
+      'Show order details',
+      name: 'showOrderDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scelected - {mealName}`
+  String scelectedMeal(Object mealName) {
+    return Intl.message(
+      'Scelected - $mealName',
+      name: 'scelectedMeal',
+      desc: '',
+      args: [mealName],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Strings> {

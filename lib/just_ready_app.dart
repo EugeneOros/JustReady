@@ -36,6 +36,7 @@ class JustReadyApp extends StatelessWidget implements ExtensionMixin {
             theme: ThemeData(
               textSelectionTheme: TextSelectionThemeData(
                 cursorColor: context.colors.primary,
+                selectionColor: context.colors.primary,
               ),
               colorScheme: ColorScheme.fromSeed(seedColor: context.colors.primary),
               useMaterial3: true,

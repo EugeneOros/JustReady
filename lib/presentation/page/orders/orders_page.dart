@@ -4,7 +4,6 @@ import 'package:just_ready/extensions/extension_mixin.dart';
 import 'package:just_ready/styles/dimens.dart';
 // import 'package:hooked_bloc/hooked_bloc.dart';
 // import 'package:just_ready/presentation/page/orders/cubit/orders_cubit.dart';
-import 'package:just_ready/utils/logger.dart';
 
 class OrdersPage extends HookWidget {
   const OrdersPage({super.key});
@@ -22,16 +21,16 @@ class OrdersPage extends HookWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                          padding: const EdgeInsets.all(Dimens.s),
-                          alignment: Alignment.center,
-                          color: context.colors.primary,
-                          child: Text(
-                            'title',
-                            style: context.typography.body1.copyWith(
-                              color: context.colors.background,
-                            ),
-                          ),
-                        ),
+                  padding: const EdgeInsets.all(Dimens.s),
+                  alignment: Alignment.center,
+                  color: context.colors.primary,
+                  child: Text(
+                    'title',
+                    style: context.typography.body1.copyWith(
+                      color: context.colors.background,
+                    ),
+                  ),
+                ),
               ],
             ),
           ],

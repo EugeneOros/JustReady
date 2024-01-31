@@ -52,14 +52,13 @@ class HomeNavBar extends HookWidget {
     ];
 
     return Container(
-      height: 80,
+      height: Dimens.navBarHeight,
       color: context.colors.dark.withOpacity(0.7),
       child: ClipRRect(
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaY: 8, sigmaX: 8),
           child: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            // showSelectedLabels: false,
             showUnselectedLabels: false,
             selectedLabelStyle: context.typography.body2,
             unselectedLabelStyle: context.typography.body3,

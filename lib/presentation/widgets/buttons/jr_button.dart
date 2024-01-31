@@ -9,13 +9,13 @@ enum ButtonType {
 }
 
 class JrButton extends HookWidget {
-  final VoidCallback onPressed;
+  final VoidCallback onTap;
   final String title;
   final ButtonType type;
 
   const JrButton({
     super.key,
-    required this.onPressed,
+    required this.onTap,
     required this.title,
     this.type = ButtonType.primary,
   });
@@ -30,7 +30,7 @@ class JrButton extends HookWidget {
         color: type == ButtonType.primary ? context.colors.dark : context.colors.background,
         borderRadius: bordrRadius,
         child: InkWell(
-          onTap: onPressed,
+          onTap: onTap,
           highlightColor: context.colors.transparent,
           splashColor: type == ButtonType.primary ? context.colors.primary : context.colors.dark,
           hoverColor: context.colors.darkLight,
@@ -46,12 +46,15 @@ class JrButton extends HookWidget {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: Dimens.xs, horizontal: Dimens.xm),
-                  child: Text(
-                    title,
-                    style: context.typography.button.copyWith(
-                      color: type == ButtonType.primary ? context.colors.background : context.colors.primary,
+                Flexible(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: Dimens.xs, horizontal: Dimens.xm),
+                    child: Text(
+                      title,
+                      overflow: TextOverflow.ellipsis,
+                      style: context.typography.button.copyWith(
+                        color: type == ButtonType.primary ? context.colors.background : context.colors.primary,
+                      ),
                     ),
                   ),
                 ),
@@ -62,22 +65,6 @@ class JrButton extends HookWidget {
       ),
     );
   }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   final isHover = useState(false);
-
-  //   return ElevatedButton(
-  //     style: ElevatedButton.styleFrom(
-  //       elevation: 20,
-  //       foregroundColor: context.colors.primary,
-  //       backgroundColor: getBackgroundColor(context, isHover.value),
-  //       textStyle: context.typography.body1.copyWith(color: context.colors.background),
-  //     ),
-  //     onPressed: onPressed,
-  //     onHover: (value) => isHover.value = value,
-  //   );
-  // }
 
   Color getBackgroundColor(BuildContext context, bool isHover) {
     if (isHover) return type == ButtonType.primary ? context.colors.primary : context.colors.dark;

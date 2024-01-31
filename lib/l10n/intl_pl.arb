@@ -15,5 +15,11 @@
   "enterMealName": "Wprowadź nazwe dania",
   "price": "Cena",
   "enterPriceName": "Wprowadź cene dania",
-  "newMeal": "Nowe danie"
+  "newMeal": "Nowe danie",
+
+
+  "orderDetails": "Szczegóły zamówienia",
+  "addToOrder": "Dodaj do zamówienia",
+  "showOrderDetails": "Pokaż szczegóły zamówienia",
+  "scelectedMeal": "Wybrano - {mealName}"
 }

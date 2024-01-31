@@ -41,19 +41,19 @@ class MealCard extends HookWidget {
     // final isEditing = useState<bool>(onDelete != null ? false : true);
 
     FormGroup form = FormGroup({
-      MealFormControlesName.name: FormControl<String>(
+      MealFormControlName.name: FormControl<String>(
         value: meal.name,
         validators: [
           Validators.required,
         ],
       ),
-      MealFormControlesName.price: FormControl<double>(
+      MealFormControlName.price: FormControl<double>(
         value: meal.price,
         validators: [
           Validators.required,
         ],
       ),
-      MealFormControlesName.number: FormControl<int>(
+      MealFormControlName.number: FormControl<int>(
         value: meal.mealNumber,
         validators: [
           Validators.number,
@@ -70,11 +70,12 @@ class MealCard extends HookWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: Dimens.ms),
           constraints: const BoxConstraints(
-            maxWidth: Dimens.maxCardButtonWidth,
+            maxWidth: Dimens.lMaxCardButtonWidth,
           ),
           child: Stack(
             children: [
               JrContainer(
+                showShadow: isEditing && onDelete != null,
                 isAnimated: true,
                 borderRadius: Dimens.ms,
                 height: isEditing ? Dimens.expandedMealCardWidth : Dimens.defaultMealCardWidth,
@@ -121,7 +122,7 @@ class MealCard extends HookWidget {
                         child: JrButton(
                           title: Strings.of(context).cancel,
                           type: ButtonType.secondary,
-                          onPressed: () async {
+                          onTap: () async {
                             if (onCancel != null) onCancel!();
                             setIsEditing(false);
                             // isEditing.value = !isEditing.value;
@@ -133,13 +134,13 @@ class MealCard extends HookWidget {
                       Expanded(
                         child: JrButton(
                           title: Strings.of(context).save,
-                          onPressed: () async {
+                          onTap: () async {
                             if (form.valid) {
                               await onEdit(Meal(
                                 id: meal.id,
-                                name: form.controls[MealFormControlesName.name]!.value.toString(),
-                                mealNumber: form.controls[MealFormControlesName.number]!.value as int,
-                                price: form.controls[MealFormControlesName.price]!.value as double,
+                                name: form.controls[MealFormControlName.name]!.value.toString(),
+                                mealNumber: form.controls[MealFormControlName.number]!.value as int,
+                                price: form.controls[MealFormControlName.price]!.value as double,
                               ));
                               // updateForm(form);
                               setIsEditing(false);

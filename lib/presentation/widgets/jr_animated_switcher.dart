@@ -12,6 +12,9 @@ class JrAnimatedSeitcher extends StatelessWidget {
     return Align(
       alignment: Alignment.topCenter,
       child: AnimatedSwitcher(
+        
+        // switchInCurve: Curves.fastEaseInToSlowEaseOut,
+        // switchOutCurve: Curves.fastEaseInToSlowEaseOut,
         transitionBuilder: (child, animation) => ScaleTransition(
           scale: animation,
           child: ClipRect(

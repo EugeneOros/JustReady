@@ -58,6 +58,15 @@ class AppTypography {
     // height: 18.0 / 14.0,
     // leadingDistribution: TextLeadingDistribution.even,
   );
+
+  static const bodySemiBoldUnderline = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    height: 1.5,
+    leadingDistribution: TextLeadingDistribution.even,
+    decoration: TextDecoration.underline,
+    // letterSpacing: -0.41,
+  );
 }
 
 class CustomTypography extends ThemeExtension<CustomTypography> {
@@ -71,6 +80,7 @@ class CustomTypography extends ThemeExtension<CustomTypography> {
   final TextStyle subtitle2;
   final TextStyle button;
   final TextStyle input;
+  final TextStyle bodySemiBoldUnderline;
 
   const CustomTypography({
     required this.header1,
@@ -83,6 +93,7 @@ class CustomTypography extends ThemeExtension<CustomTypography> {
     required this.body3,
     required this.button,
     required this.input,
+    required this.bodySemiBoldUnderline,
   });
 
   @override
@@ -98,6 +109,7 @@ class CustomTypography extends ThemeExtension<CustomTypography> {
     TextStyle? subtitle2,
     TextStyle? button,
     TextStyle? input,
+    TextStyle? bodySemiBoldUnderline,
   }) =>
       CustomTypography(
         header1: header1 ?? this.header1,
@@ -110,6 +122,7 @@ class CustomTypography extends ThemeExtension<CustomTypography> {
         subtitle2: subtitle2 ?? this.subtitle2,
         button: button ?? this.button,
         input: input ?? this.input,
+        bodySemiBoldUnderline: bodySemiBoldUnderline ?? this.bodySemiBoldUnderline,
       );
 
   @override
@@ -126,5 +139,6 @@ class CustomTypography extends ThemeExtension<CustomTypography> {
     subtitle2: AppTypography.subtitle2.copyWith(fontFamily: AppTypography.fontFamily),
     button: AppTypography.button.copyWith(fontFamily: AppTypography.fontFamily),
     input: AppTypography.input.copyWith(fontFamily: AppTypography.fontFamily),
+    bodySemiBoldUnderline: AppTypography.bodySemiBoldUnderline.copyWith(fontFamily: AppTypography.fontFamily),
   );
 }

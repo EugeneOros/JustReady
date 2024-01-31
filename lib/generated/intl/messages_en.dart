@@ -20,11 +20,14 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(mealName) => "Scelected - ${mealName}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addOrderPageAddOrder":
             MessageLookupByLibrary.simpleMessage("Add order"),
         "addOrders": MessageLookupByLibrary.simpleMessage("Add Orders"),
+        "addToOrder": MessageLookupByLibrary.simpleMessage("Add to order"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
         "enterMealName":
@@ -36,8 +39,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "newMeal": MessageLookupByLibrary.simpleMessage("New meal"),
         "notes": MessageLookupByLibrary.simpleMessage("Notes"),
+        "orderDetails": MessageLookupByLibrary.simpleMessage("Order details"),
         "orders": MessageLookupByLibrary.simpleMessage("Orders"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
-        "save": MessageLookupByLibrary.simpleMessage("Save")
+        "save": MessageLookupByLibrary.simpleMessage("Save"),
+        "scelectedMeal": m0,
+        "showOrderDetails":
+            MessageLookupByLibrary.simpleMessage("Show order details")
       };
 }
