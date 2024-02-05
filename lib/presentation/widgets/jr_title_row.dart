@@ -7,6 +7,7 @@ class JrTitleRow extends StatelessWidget {
   final Widget child;
   final bool expandedTitle;
   final TextStyle? style;
+  final TextAlign titleAlign;
 
   const JrTitleRow({
     super.key,
@@ -14,6 +15,7 @@ class JrTitleRow extends StatelessWidget {
     required this.child,
     this.expandedTitle = false,
     this.style,
+    this.titleAlign =  TextAlign.start
   });
 
   @override
@@ -21,6 +23,7 @@ class JrTitleRow extends StatelessWidget {
     Widget titleWidget = JrText(
       title,
       style: style,
+      textAlign: titleAlign,
       overflow: TextOverflow.ellipsis,
     );
 

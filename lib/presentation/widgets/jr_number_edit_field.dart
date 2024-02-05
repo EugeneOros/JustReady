@@ -45,7 +45,7 @@ class JrNumberEditField extends HookWidget {
         ),
         const SizedBox(width: Dimens.s),
         SizedBox(
-          width: Dimens.c,
+          width: Dimens.xl,
           height: Dimens.xxl,
           child: JrNumberTextField(
             formControlName: formControlName,

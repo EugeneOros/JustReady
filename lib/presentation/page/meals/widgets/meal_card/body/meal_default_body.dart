@@ -25,6 +25,7 @@ class MealDefaultBody extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: Dimens.l),
             child: JrText(
               meal.name,
+              textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
               color: context.colors.dark,
             ),

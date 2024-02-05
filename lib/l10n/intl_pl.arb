@@ -5,7 +5,6 @@
   "meals": "Dania",
   "dashboard": "Panel",
   "notes": "Uwagi",
-  "addOrderPageAddOrder": "Dodaj zamówienie",
 
   "save": "Zapisz",
   "cancel": "Anuluj",
@@ -21,5 +20,12 @@
   "orderDetails": "Szczegóły zamówienia",
   "addToOrder": "Dodaj do zamówienia",
   "showOrderDetails": "Pokaż szczegóły zamówienia",
-  "scelectedMeal": "Wybrano - {mealName}"
+  "scelectedMeal": "Wybrano - {mealName}",
+
+  "createOrder": "Stwórz zamówienie",
+  "orderNow": "Zamów teraz",
+  "addMealsToOrder": "Dodaj dania",
+
+  "scelectMeal": "Wybierz dania"
+  
 }

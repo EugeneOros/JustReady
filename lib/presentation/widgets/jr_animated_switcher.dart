@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class JrAnimatedSeitcher extends StatelessWidget {
+class JrAnimatedSwitcher extends StatelessWidget {
   final Widget child;
-  const JrAnimatedSeitcher({
+  const JrAnimatedSwitcher({
     super.key,
     required this.child,
   });
@@ -12,7 +12,6 @@ class JrAnimatedSeitcher extends StatelessWidget {
     return Align(
       alignment: Alignment.topCenter,
       child: AnimatedSwitcher(
-        
         // switchInCurve: Curves.fastEaseInToSlowEaseOut,
         // switchOutCurve: Curves.fastEaseInToSlowEaseOut,
         transitionBuilder: (child, animation) => ScaleTransition(

@@ -5,7 +5,6 @@
   "meals": "Meals",
   "dashboard": "Dashboard",
   "notes": "Notes",
-  "addOrderPageAddOrder": "Add order",
 
   "save": "Save",
   "cancel": "Cancel",
@@ -20,8 +19,15 @@
   "orderDetails": "Order details",
   "addToOrder": "Add to order",
   "showOrderDetails": "Show order details",
-  "scelectedMeal": "Scelected - {mealName}"
+  "scelectedMeal": "Scelected - {mealName}",
+
+  "createOrder": "Create order",
+  "orderNow": "Order now",
+  "addMealsToOrder": "Add meals",
+
+  "scelectMeal": "Scelect meal"
   
+
 
   
 }

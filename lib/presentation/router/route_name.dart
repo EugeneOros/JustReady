@@ -1,7 +1,8 @@
 enum JustReadyRoute {
   root('root', '/'),
   orders('orders', '/orders'),
-  addOrders('addOrder', '/add-orders'),
+  createOrder('createOrder', '/create-order'),
+  selectMeals('selectMeals', 'select_meals'),
   meals('meals', '/meals');
 
   final String name;

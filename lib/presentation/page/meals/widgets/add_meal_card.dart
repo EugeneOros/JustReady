@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:just_ready/domain/meals/models/meal.dart';
-import 'package:just_ready/presentation/page/meals/widgets/meal_card/meals_card.dart';
+import 'package:just_ready/presentation/page/meals/widgets/meal_card/meal_card.dart';
 import 'package:just_ready/presentation/widgets/jr_animated_switcher.dart';
 import 'package:just_ready/styles/images.dart';
 import 'package:just_ready/utils/ignore_else_state.dart';
@@ -24,10 +24,10 @@ class AddMealCard extends StatelessWidget {
   Widget build(BuildContext context) {
     int? number = getFreeMealNumber();
     if (number == null) return const SizedBox.shrink();
-    return JrAnimatedSeitcher(
+    return JrAnimatedSwitcher(
       child: showAddMeals
           ? MealCard(
-            actionIcon: IconsSvg.createMeal24,
+              actionIcon: IconsSvg.createMeal24,
               setIsEditing: (_) => doNothing(),
               isEditing: showAddMeals,
               meals: meals,

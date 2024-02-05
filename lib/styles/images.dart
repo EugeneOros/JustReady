@@ -21,6 +21,10 @@ class IconsSvg {
   static final delete24 = _icons.delete24.path;
   static final createMeal24 = _icons.createMeal24.path;
   static final editMeal24 = _icons.editMeal24.path;
+  static final chevronUp24 = _icons.chevronUp24.path;
+  static final chevronDown24 = _icons.chevronDown24.path;
+  static final chevronRight24 = _icons.chevronRight24.path;
+  static final chevronLeft24 = _icons.chevronLeft24.path;
 
 
   IconsSvg._();

@@ -4,7 +4,7 @@ part 'order_dto.g.dart';
 
 @JsonSerializable()
 class OrderDto {
-  final String id;
+  final String? id;
   final String note;
 
   const OrderDto({

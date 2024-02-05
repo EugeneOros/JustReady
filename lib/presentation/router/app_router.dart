@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:injectable/injectable.dart';
-import 'package:just_ready/presentation/page/add_orders/add_orders_page.dart';
+// import 'package:injectable/injectable.dart';
+import 'package:just_ready/presentation/page/create_order/create_order_page.dart';
+import 'package:just_ready/presentation/page/select_meals/select_meals_page.dart';
 import 'package:just_ready/presentation/page/home/home_page.dart';
 import 'package:just_ready/presentation/page/meals/meals_page.dart';
 import 'package:just_ready/presentation/page/orders/orders_page.dart';
 import 'package:just_ready/presentation/router/route_name.dart';
 
-@singleton
+// @singleton
 class AppRouter {
   static final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
   static final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>();
 
-  static final GoRouter _appRouter = GoRouter(
+  late final GoRouter router = GoRouter(
     debugLogDiagnostics: true,
     navigatorKey: _rootNavigatorKey,
     initialLocation: JustReadyRoute.meals.path,
@@ -26,7 +27,7 @@ class AppRouter {
         name: JustReadyRoute.root.name,
         pageBuilder: (context, state) => _pageBuilder(
           state,
-          child: const AddOrdersPage(),
+          child: const SelectMealsPage(),
         ),
       ),
       ShellRoute(
@@ -38,19 +39,39 @@ class AppRouter {
         },
         routes: [
           GoRoute(
-            path: JustReadyRoute.addOrders.path,
-            name: JustReadyRoute.addOrders.name,
-            builder: (context, state) => const AddOrdersPage(),
+            path: JustReadyRoute.createOrder.path,
+            name: JustReadyRoute.createOrder.name,
+            pageBuilder: (context, state) => _defaultTransition(
+              state: state,
+              child: const CreateOrderPage(),
+            ),
+            routes: [
+              GoRoute(
+                  parentNavigatorKey: _rootNavigatorKey,
+                  path: JustReadyRoute.selectMeals.path,
+                  name: JustReadyRoute.selectMeals.name,
+                  // builder: (context, state) => const SelectMealsPage(),
+                  pageBuilder: (context, state) => _slideTransition(
+                        state: state,
+                        child: const SelectMealsPage(),
+                      )),
+            ],
           ),
           GoRoute(
             path: JustReadyRoute.meals.path,
             name: JustReadyRoute.meals.name,
-            builder: (context, state) => const MealsPage(),
+            pageBuilder: (context, state) => _defaultTransition(
+              state: state,
+              child: const MealsPage(),
+            ),
           ),
           GoRoute(
             path: JustReadyRoute.orders.path,
             name: JustReadyRoute.orders.name,
-            builder: (context, state) => const OrdersPage(),
+            pageBuilder: (context, state) => _defaultTransition(
+              state: state,
+              child: const OrdersPage(),
+            ),
           ),
         ],
       ),
@@ -66,5 +87,36 @@ class AppRouter {
         child: child,
       );
 
-  static GoRouter get router => _appRouter;
+  // static GoRouter get router => _appRouter;
 }
+
+CustomTransitionPage _defaultTransition<T>({
+  required GoRouterState state,
+  required Widget child,
+}) =>
+    CustomTransitionPage(
+      key: state.pageKey,
+      transitionsBuilder: (_, animation, __, child) => FadeTransition(
+        opacity: animation,
+        child: child,
+      ),
+      child: child,
+    );
+
+CustomTransitionPage _slideTransition<T>({
+  required GoRouterState state,
+  required Widget child,
+}) =>
+    CustomTransitionPage(
+      key: state.pageKey,
+      transitionsBuilder: (_, animation, __, child) => SlideTransition(
+        position: animation.drive(
+          Tween<Offset>(
+            begin: const Offset(1, 0),
+            end: Offset.zero,
+          ).chain(CurveTween(curve: Curves.easeInOut)),
+        ),
+        child: child,
+      ),
+      child: child,
+    );

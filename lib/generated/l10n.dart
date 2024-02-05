@@ -100,16 +100,6 @@ class Strings {
     );
   }
 
-  /// `Add order`
-  String get addOrderPageAddOrder {
-    return Intl.message(
-      'Add order',
-      name: 'addOrderPageAddOrder',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Save`
   String get save {
     return Intl.message(
@@ -227,6 +217,26 @@ class Strings {
       name: 'scelectedMeal',
       desc: '',
       args: [mealName],
+    );
+  }
+
+  /// `Create order`
+  String get createOrder {
+    return Intl.message(
+      'Create order',
+      name: 'createOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scelect meal`
+  String get scelectMeal {
+    return Intl.message(
+      'Scelect meal',
+      name: 'scelectMeal',
+      desc: '',
+      args: [],
     );
   }
 }

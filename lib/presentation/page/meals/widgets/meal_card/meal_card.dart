@@ -78,7 +78,7 @@ class MealCard extends HookWidget {
                 showShadow: isEditing && onDelete != null,
                 isAnimated: true,
                 borderRadius: Dimens.ms,
-                height: isEditing ? Dimens.expandedMealCardWidth : Dimens.defaultMealCardWidth,
+                height: isEditing ? Dimens.expandedMealCardHeight : Dimens.defaultMealCardHeight,
                 margin: const EdgeInsets.symmetric(horizontal: Dimens.ms, vertical: Dimens.m),
                 child: MealCardBody(
                   isEditing: isEditing,
@@ -91,7 +91,7 @@ class MealCard extends HookWidget {
                 left: 0,
                 top: 0,
                 bottom: 0,
-                child: JrAnimatedSeitcher(
+                child: JrAnimatedSwitcher(
                   child: isEditing
                       ? const SizedBox.shrink()
                       : NumberCircle(
@@ -105,6 +105,8 @@ class MealCard extends HookWidget {
                   top: 0,
                   child: JrIconButton(
                     icon: IconsSvg.edit24,
+                    color: context.colors.primary,
+                    type: IconButtonType.tertiary,
                     onPressed: () => setIsEditing(true),
                     // onPressed: () => isEditing.value = !isEditing.value,
                   ),
@@ -121,7 +123,8 @@ class MealCard extends HookWidget {
                       Expanded(
                         child: JrButton(
                           title: Strings.of(context).cancel,
-                          type: ButtonType.secondary,
+                          type: ButtonType.tertiary,
+                          color: context.colors.secondary,
                           onTap: () async {
                             if (onCancel != null) onCancel!();
                             setIsEditing(false);
@@ -156,6 +159,7 @@ class MealCard extends HookWidget {
                         Expanded(
                           child: JrIconButton(
                             icon: IconsSvg.delete24,
+                            type: IconButtonType.tertiary,
                             color: context.colors.error,
                             onPressed: () async {
                               await onDelete!(meal.id);

@@ -56,6 +56,22 @@ class $AssetsImagesSvgGen {
   SvgGenImage get boardProgress24 =>
       const SvgGenImage('assets/images/svg/board_progress_24.svg');
 
+  /// File path: assets/images/svg/chevron_down_24.svg
+  SvgGenImage get chevronDown24 =>
+      const SvgGenImage('assets/images/svg/chevron_down_24.svg');
+
+  /// File path: assets/images/svg/chevron_left_24.svg
+  SvgGenImage get chevronLeft24 =>
+      const SvgGenImage('assets/images/svg/chevron_left_24.svg');
+
+  /// File path: assets/images/svg/chevron_right_24.svg
+  SvgGenImage get chevronRight24 =>
+      const SvgGenImage('assets/images/svg/chevron_right_24.svg');
+
+  /// File path: assets/images/svg/chevron_up_24.svg
+  SvgGenImage get chevronUp24 =>
+      const SvgGenImage('assets/images/svg/chevron_up_24.svg');
+
   /// File path: assets/images/svg/close_24.svg
   SvgGenImage get close24 =>
       const SvgGenImage('assets/images/svg/close_24.svg');
@@ -113,6 +129,10 @@ class $AssetsImagesSvgGen {
         bellRing24,
         boardDone24,
         boardProgress24,
+        chevronDown24,
+        chevronLeft24,
+        chevronRight24,
+        chevronUp24,
         close24,
         createMeal24,
         delete24,

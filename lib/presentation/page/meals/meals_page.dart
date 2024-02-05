@@ -6,7 +6,7 @@ import 'package:just_ready/generated/l10n.dart';
 import 'package:just_ready/presentation/page/meals/cubit/meals_cubit.dart';
 import 'package:just_ready/presentation/page/meals/cubit/meals_state.dart';
 import 'package:just_ready/presentation/page/meals/widgets/add_meal_card.dart';
-import 'package:just_ready/presentation/page/meals/widgets/meal_card/meals_card.dart';
+import 'package:just_ready/presentation/page/meals/widgets/meal_card/meal_card.dart';
 import 'package:just_ready/presentation/widgets/jr_app_bar.dart';
 import 'package:just_ready/styles/dimens.dart';
 import 'package:just_ready/styles/images.dart';
@@ -25,7 +25,7 @@ class MealsPage extends HookWidget {
 
     return state.maybeWhen(
       loaded: (meals) => Scaffold(
-        backgroundColor: context.colors.background,
+        extendBodyBehindAppBar: true,
         appBar: JrAppBar(
           title: Strings.of(context).meals,
           endIcon: IconsSvg.plus24,
@@ -36,6 +36,7 @@ class MealsPage extends HookWidget {
         ),
         body: ListView(
           children: [
+            const SizedBox(height: Dimens.m),
             Material(
               color: context.colors.transparent,
               child: AddMealCard(
@@ -67,14 +68,6 @@ class MealsPage extends HookWidget {
                 );
               },
             ),
-            // ...meals.map(
-            //   (meal) => MealCard(
-            //     meals: meals,
-            //     meal: meal,
-            //     onEdit: (meal) => cubit.createEditMeal(meal),
-            //     onDelete: (mealId) => cubit.deleteMeal(mealId),
-            //   ),
-            // ),
             const SizedBox(height: Dimens.xxxxc),
           ],
         ),

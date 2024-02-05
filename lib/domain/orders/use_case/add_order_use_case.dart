@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart' hide Order;
-import 'package:just_ready/domain/orders/models/Order.dart';
-import 'package:just_ready/domain/orders/orders_repository.dart';
+import 'package:just_ready/domain/orders/models/order.dart';
+import 'package:just_ready/domain/orders/repository/orders_repository.dart';
 
 @injectable
 class AddOrderUseCase {

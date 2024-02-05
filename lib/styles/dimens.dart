@@ -53,9 +53,9 @@ class Dimens {
   static const mMaxCardButtonWidth = 400.0;
   static const sMaxCardButtonWidth = 200.0;
 
-  static const defaultMealCardWidth = 100.0;
+  static const defaultMealCardHeight = 100.0;
 
-  static const expandedMealCardWidth = 370.0;
+  static const expandedMealCardHeight = 370.0;
 
   static const selectedMealCardHeight = 160.0;
 

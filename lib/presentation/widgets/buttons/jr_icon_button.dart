@@ -7,6 +7,7 @@ import 'package:just_ready/styles/dimens.dart';
 enum IconButtonType {
   primary,
   secondary,
+  tertiary,
 }
 
 class JrIconButton extends HookWidget {
@@ -27,20 +28,17 @@ class JrIconButton extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final isHover = useState(false);
-    final iconColor = type == IconButtonType.primary ? context.colors.background : (color ?? context.colors.primary);
-    final backgroundColor =
-        type == IconButtonType.primary ? (color ?? context.colors.primary) : context.colors.background;
     return Container(
       alignment: Alignment.center,
       width: size,
       height: size,
       child: Material(
-        color: backgroundColor,
+        color: getBackgroundColor(context),
         shape: const CircleBorder(),
         child: InkWell(
           onTap: onPressed,
           highlightColor: context.colors.transparent,
-          splashColor: context.colors.dark,
+          splashColor: getSplashColor(context),
           hoverColor: context.colors.darkLight,
           onHover: (value) => isHover.value = value,
           borderRadius: BorderRadius.circular(size / 2),
@@ -57,12 +55,45 @@ class JrIconButton extends HookWidget {
                 icon,
                 height: size * 0.6,
                 width: size * 0.6,
-                color: iconColor,
+                color: getIconColor(context),
               ),
             ),
           ),
         ),
       ),
     );
+  }
+
+  Color getIconColor(BuildContext context) {
+    switch (type) {
+      case IconButtonType.primary:
+        return context.colors.dark;
+      case IconButtonType.secondary:
+        return context.colors.dark;
+      case IconButtonType.tertiary:
+        return color ?? context.colors.primary;
+    }
+  }
+
+  Color getBackgroundColor(BuildContext context) {
+    switch (type) {
+      case IconButtonType.primary:
+        return color ?? context.colors.primary;
+      case IconButtonType.secondary:
+        return context.colors.bright;
+      case IconButtonType.tertiary:
+        return context.colors.bright;
+    }
+  }
+
+  Color getSplashColor(BuildContext context) {
+    switch (type) {
+      case IconButtonType.primary:
+        return context.colors.bright;
+      case IconButtonType.secondary:
+        return color ?? context.colors.primary;
+      case IconButtonType.tertiary:
+        return context.colors.dark;
+    }
   }
 }

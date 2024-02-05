@@ -2,21 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:just_ready/generated/l10n.dart';
-import 'package:just_ready/presentation/page/add_orders/cubit/add_orders_cubit.dart';
-import 'package:just_ready/presentation/page/add_orders/widgets/meal_number_item.dart';
-import 'package:just_ready/presentation/page/add_orders/widgets/selected_meal_card.dart';
+import 'package:just_ready/presentation/page/select_meals/cubit/select_meals_cubit.dart';
+import 'package:just_ready/presentation/page/select_meals/widgets/meal_number_item.dart';
+import 'package:just_ready/presentation/page/select_meals/widgets/selected_meal_card.dart';
 import 'package:just_ready/presentation/widgets/jr_animated_switcher.dart';
 import 'package:just_ready/presentation/widgets/jr_app_bar.dart';
 import 'package:just_ready/styles/dimens.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:just_ready/utils/hooks/use_once.dart';
 
-import '../../../utils/hooks/use_once.dart';
-
-class AddOrdersPage extends HookWidget {
-  const AddOrdersPage({super.key});
+class SelectMealsPage extends HookWidget {
+  const SelectMealsPage({super.key});
   @override
   Widget build(BuildContext context) {
-    final cubit = useBloc<AddOrdersCubit>();
+    final cubit = useBloc<SelectMealsCubit>();
     final state = useBlocBuilder(cubit);
     useOnce(cubit.init);
 
@@ -24,8 +22,10 @@ class AddOrdersPage extends HookWidget {
 
     return state.maybeWhen(
       loaded: (meals) => Scaffold(
+        extendBodyBehindAppBar: true,
         appBar: JrAppBar(
-          title: Strings.of(context).addOrders,
+          skipStartIcon: false,
+          title: Strings.of(context).scelectMeal,
         ),
         body: Stack(
           children: [
@@ -35,7 +35,7 @@ class AddOrdersPage extends HookWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const SizedBox(height: Dimens.l),
+                    const SizedBox(height: Dimens.l + Dimens.bannerHeight),
                     Wrap(
                       alignment: WrapAlignment.start,
                       direction: Axis.horizontal,
@@ -61,15 +61,15 @@ class AddOrdersPage extends HookWidget {
               ),
             ),
             Positioned(
-              bottom: Dimens.navBarHeight,
+              bottom: 0, // Dimens.navBarHeight,
               right: 0,
               left: 0,
-              child: JrAnimatedSeitcher(
+              child: JrAnimatedSwitcher(
                 child: selectedMealIndex.value != null
                     ? SelctedMealCard(
                         meal: meals[selectedMealIndex.value!],
                         onAddMealToOrder: (mealCount) {
-                          print(mealCount);
+                          cubit.addMealsToOrder(meals[selectedMealIndex.value!], mealCount);
                           selectedMealIndex.value = null;
                         },
                       )
@@ -82,10 +82,4 @@ class AddOrdersPage extends HookWidget {
       orElse: SizedBox.shrink,
     );
   }
-
-  void _onChange(
-    FormGroup form,
-    ValueNotifier<bool> isSignInButtonActive,
-  ) =>
-      isSignInButtonActive.value = form.valid;
 }

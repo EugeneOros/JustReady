@@ -3,7 +3,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:just_ready/domain/meals/models/meal.dart';
 import 'package:just_ready/extensions/extension_mixin.dart';
 import 'package:just_ready/generated/l10n.dart';
-import 'package:just_ready/presentation/page/add_orders/utils/select_form_control_names.dart';
+import 'package:just_ready/presentation/page/select_meals/utils/select_form_control_names.dart';
+import 'package:just_ready/presentation/page/select_meals/widgets/price_badge.dart';
 import 'package:just_ready/presentation/widgets/jr_title_row.dart';
 import 'package:just_ready/presentation/widgets/jr_number_edit_field.dart';
 import 'package:just_ready/presentation/widgets/buttons/jr_button.dart';
@@ -41,9 +42,9 @@ class SelctedMealCard extends HookWidget {
       formGroup: form,
       child: Align(
         child: Container(
-          padding: const EdgeInsets.all(Dimens.ms),
+          padding: const EdgeInsets.symmetric(vertical: Dimens.ms),
           constraints: const BoxConstraints(
-            maxWidth: Dimens.mMaxCardButtonWidth,
+            maxWidth: Dimens.lMaxCardButtonWidth,
           ),
           child: Stack(
             children: [
@@ -51,17 +52,26 @@ class SelctedMealCard extends HookWidget {
                 showShadow: true,
                 borderRadius: Dimens.ms,
                 height: Dimens.selectedMealCardHeight,
-                margin: const EdgeInsets.symmetric(horizontal: Dimens.zero, vertical: Dimens.m),
+                margin: const EdgeInsets.fromLTRB(Dimens.xxl, Dimens.l, Dimens.xxl, Dimens.m),
+                // margin: const EdgeInsets.all(Dimens.zero),
                 padding: const EdgeInsets.symmetric(horizontal: Dimens.m, vertical: Dimens.l),
                 child: JrTitleRow(
                   title: meal.name,
                   style: context.typography.header3,
+                  titleAlign: TextAlign.center,
                   expandedTitle: true,
                   child: JrNumberEditField(
                     form: form,
                     formControlName: SelectMealFormControlName.count,
                     initialValue: initMealCountValue,
                   ),
+                ),
+              ),
+              Positioned(
+                right: 0,
+                top: 0,
+                child: PriceBadge(
+                  price: meal.price,
                 ),
               ),
               Positioned(

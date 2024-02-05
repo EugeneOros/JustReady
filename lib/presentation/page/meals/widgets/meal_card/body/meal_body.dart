@@ -21,7 +21,7 @@ class MealCardBody extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return JrAnimatedSeitcher(
+    return JrAnimatedSwitcher(
       child: isEditing
           ? MealEditingBody(
               meal: meal,

@@ -37,7 +37,7 @@ class HomeCubit extends Cubit<HomeState> {
   String _getCurrentLocation(int index) {
     switch (index) {
       case 0:
-        return JustReadyRoute.addOrders.path;
+        return JustReadyRoute.createOrder.path;
       case 1:
         return JustReadyRoute.orders.path;
       case 2:

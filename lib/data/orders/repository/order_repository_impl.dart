@@ -1,17 +1,40 @@
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:just_ready/data/orders/data_source/orders_data_source.dart';
 import 'package:just_ready/data/orders/mapper/order_to_order_dto_mapper.dart';
-import 'package:just_ready/domain/orders/models/Order.dart';
-import 'package:just_ready/domain/orders/orders_repository.dart';
+import 'package:just_ready/domain/main_stream/service/main_stream_service.dart';
+import 'package:just_ready/domain/meals/models/meal.dart';
+import 'package:just_ready/domain/orders/models/order.dart';
+import 'package:just_ready/domain/orders/models/order_meal.dart';
+import 'package:just_ready/domain/orders/repository/orders_event.dart';
+import 'package:just_ready/domain/orders/repository/orders_repository.dart';
 
 @LazySingleton(as: OrdersRepository)
 class OrdersRepositoryImpl implements OrdersRepository {
+  final MainStreamService _mainStreamService;
   final OrdersDataSource _ordersDataSource;
   final OrderToOrderDtoMapper _orderToOrderDtoMapper;
+
+  //Todo: delete when end testing
+  Order? currentOrder = Order(
+    id: null,
+    orderNumber: null,
+    meals: [
+      OrderMeal(
+          meal: Meal(
+            id: '12',
+            name: "Kurczak Curry z ryem basmati",
+            mealNumber: 3,
+            price: 34,
+          ),
+          count: 3)
+    ],
+    note: '',
+  );
 
   OrdersRepositoryImpl(
     this._ordersDataSource,
     this._orderToOrderDtoMapper,
+    this._mainStreamService,
   );
 
   @override
@@ -21,6 +44,29 @@ class OrdersRepositoryImpl implements OrdersRepository {
     _ordersDataSource.addOrder(orderDto);
     // _mainStreamService.notifyRefreshStream(const ReorderEvent.updatedReorderProductsList());
   }
+
+  @override
+  void addMealToCurrentOrder(Meal meal, int count) {
+    currentOrder ??= Order(id: null, orderNumber: null, meals: [], note: '');
+
+    for (var orderMeal in currentOrder!.meals) {
+      if (orderMeal.meal == meal) {
+        orderMeal.count += count;
+        return;
+      }
+    }
+    currentOrder!.meals.add(OrderMeal(meal: meal, count: count));
+    _mainStreamService.notifyRefreshStream(const OrdersEvent.mealsAddToCurrentOrder());
+  }
+
+  @override
+  void addNoteCurrentOrder(String note) {
+    currentOrder ??= Order(id: null, orderNumber: null, meals: [], note: note);
+    currentOrder!.note = note;
+  }
+
+  @override
+  Order? getCurrentOrder() => currentOrder;
 
   @override
   Future<void> delete(Order reorderProduct) {

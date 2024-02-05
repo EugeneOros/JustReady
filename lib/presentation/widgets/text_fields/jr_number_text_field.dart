@@ -47,45 +47,53 @@ class JrNumberTextField extends HookWidget {
       [],
     );
 
-    return Align(
-      child: ReactiveTextField(
-        autofocus: false,
-        readOnly: !enabled,
-        focusNode: focusNode,
-        keyboardType: TextInputType.number,
-        formControlName: formControlName,
-        validationMessages: validationMessages,
-        textInputAction: TextInputAction.next,
-        maxLines: 1,
-        textAlign: TextAlign.center,
-        controller: controller,
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: context.colors.bright,
-          labelText: '',
-          labelStyle: context.typography.input,
-          alignLabelWithHint: true,
-          floatingLabelStyle: context.typography.input,
-          floatingLabelBehavior: FloatingLabelBehavior.never,
-          contentPadding: const EdgeInsets.all(Dimens.xm),
-          focusedBorder: _getBorder(color: context.colors.primary, width: Dimens.xxs),
-          border: _getBorder(color: context.colors.dark),
-          errorBorder: _getBorder(color: context.colors.error, width: Dimens.xxs),
-          focusedErrorBorder: _getBorder(color: context.colors.error, width: Dimens.xxs),
-          enabledBorder: _getBorder(color: context.colors.dark),
-          disabledBorder: _getBorder(color: context.colors.disabled),
-          errorStyle: context.typography.input.copyWith(fontSize: Dimens.zero),
-          prefixIconConstraints: _iconConstraints,
-          suffixIconConstraints: _iconConstraints,
-        ),
-        onTap: (formControl) => onTap?.call(formControl),
-        onChanged: (formControl) => onChanged?.call(formControl),
-        onSubmitted: onSubmit,
+    return ReactiveTextField(
+      textAlignVertical: TextAlignVertical.center,
+      autofocus: false,
+      readOnly: !enabled,
+      focusNode: focusNode,
+      keyboardType: TextInputType.number,
+      formControlName: formControlName,
+      validationMessages: validationMessages,
+      textInputAction: TextInputAction.next,
+      maxLines: 1,
+      textAlign: TextAlign.center,
+      controller: controller,
+      style: context.typography.input.copyWith(
+        color: form.control(formControlName).hasErrors ? context.colors.error : context.colors.dark,
       ),
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: context.colors.background,
+        labelText: '',
+        labelStyle: context.typography.input,
+        alignLabelWithHint: true,
+        floatingLabelStyle: context.typography.input,
+        floatingLabelBehavior: FloatingLabelBehavior.never,
+        contentPadding: const EdgeInsets.all(Dimens.zero),
+        focusedBorder: _getBorder(color: context.colors.transparent, width: Dimens.zero),
+        border: _getBorder(color: context.colors.transparent),
+        errorBorder: _getBorder(color: context.colors.transparent, width: Dimens.zero),
+        focusedErrorBorder: _getBorder(color: context.colors.transparent, width: Dimens.zero),
+        enabledBorder: _getBorder(color: context.colors.transparent),
+        disabledBorder: _getBorder(color: context.colors.transparent),
+        errorStyle: context.typography.input.copyWith(fontSize: Dimens.zero),
+        prefixIconConstraints: _iconConstraints,
+        suffixIconConstraints: _iconConstraints,
+      ),
+      onTap: (formControl) => onTap?.call(formControl),
+      onChanged: (formControl) => onChanged?.call(formControl),
+      onSubmitted: onSubmit,
     );
   }
 
-  OutlineInputBorder _getBorder({required Color color, double width = Dimens.xxxs}) => OutlineInputBorder(
+  UnderlineInputBorder _getUnderlineBorder({required Color color, double width = Dimens.zero}) => UnderlineInputBorder(
+        borderSide: BorderSide(color: color, width: width),
+        borderRadius: BorderRadius.circular(Dimens.s),
+        // gapPadding: Dimens.xxs,
+      );
+
+  OutlineInputBorder _getBorder({required Color color, double width = Dimens.zero}) => OutlineInputBorder(
         borderSide: BorderSide(color: color, width: width),
         borderRadius: BorderRadius.circular(Dimens.s),
         gapPadding: Dimens.xxs,
