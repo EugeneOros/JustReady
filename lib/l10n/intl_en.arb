@@ -21,11 +21,18 @@
   "showOrderDetails": "Show order details",
   "scelectedMeal": "Scelected - {mealName}",
 
-  "createOrder": "Create order",
-  "orderNow": "Order now",
+  "yourOrder": "Your order",
   "addMealsToOrder": "Add meals",
-
+  "orderSum": "Total price ({mealNumber}) :",
+  "goToSummary": "Go to summary",
+  "nothingHire": "Nothing hire",
+  "timeToAddSomethingTasty": "Time to add something tasty",
+  "additionalInstructions": "Additional instructions",
+  "additionalInstructionsExample": "Ex: No chiken",
+  
+  "orderNow": "Order now",
   "scelectMeal": "Scelect meal"
+
   
 
 

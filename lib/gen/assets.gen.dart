@@ -5,7 +5,7 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
+// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -91,6 +91,10 @@ class $AssetsImagesSvgGen {
   SvgGenImage get editMeal24 =>
       const SvgGenImage('assets/images/svg/edit_meal_24.svg');
 
+  /// File path: assets/images/svg/empty_meal_24.svg
+  SvgGenImage get emptyMeal24 =>
+      const SvgGenImage('assets/images/svg/empty_meal_24.svg');
+
   /// File path: assets/images/svg/eye_24.svg
   SvgGenImage get eye24 => const SvgGenImage('assets/images/svg/eye_24.svg');
 
@@ -107,6 +111,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/meal_hot_24.svg
   SvgGenImage get mealHot24 =>
       const SvgGenImage('assets/images/svg/meal_hot_24.svg');
+
+  /// File path: assets/images/svg/menu_24.svg
+  SvgGenImage get menu24 => const SvgGenImage('assets/images/svg/menu_24.svg');
 
   /// File path: assets/images/svg/minus_24.svg
   SvgGenImage get minus24 =>
@@ -138,11 +145,13 @@ class $AssetsImagesSvgGen {
         delete24,
         edit24,
         editMeal24,
+        emptyMeal24,
         eye24,
         eyeSlash24,
         logo,
         meal24,
         mealHot24,
+        menu24,
         minus24,
         orders24,
         ordersTorn24,
@@ -214,16 +223,7 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider({
-    AssetBundle? bundle,
-    String? package,
-  }) {
-    return AssetImage(
-      _assetName,
-      bundle: bundle,
-      package: package,
-    );
-  }
+  ImageProvider provider() => AssetImage(_assetName);
 
   String get path => _assetName;
 
@@ -246,14 +246,13 @@ class SvgGenImage {
     AlignmentGeometry alignment = Alignment.center,
     bool allowDrawingOutsideViewBox = false,
     WidgetBuilder? placeholderBuilder,
+    Color? color,
+    BlendMode colorBlendMode = BlendMode.srcIn,
     String? semanticsLabel,
     bool excludeFromSemantics = false,
-    SvgTheme theme = const SvgTheme(),
-    ColorFilter? colorFilter,
     Clip clipBehavior = Clip.hardEdge,
-    @deprecated Color? color,
-    @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
-    @deprecated bool cacheColorFilter = false,
+    bool cacheColorFilter = false,
+    SvgTheme? theme,
   }) {
     return SvgPicture.asset(
       _assetName,
@@ -267,14 +266,13 @@ class SvgGenImage {
       alignment: alignment,
       allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
       placeholderBuilder: placeholderBuilder,
-      semanticsLabel: semanticsLabel,
-      excludeFromSemantics: excludeFromSemantics,
-      theme: theme,
-      colorFilter: colorFilter,
       color: color,
       colorBlendMode: colorBlendMode,
+      semanticsLabel: semanticsLabel,
+      excludeFromSemantics: excludeFromSemantics,
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
+      theme: theme,
     );
   }
 

@@ -22,6 +22,6 @@ class SelectMealsCubit extends Cubit<SelectMealsState> {
   }
 
   Future<void> addMealsToOrder(Meal meal, int count) async {
-    _addMealToCurrentOrderUseCase(meal, count);
+    await _addMealToCurrentOrderUseCase(meal, count);
   }
 }

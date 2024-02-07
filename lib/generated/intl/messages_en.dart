@@ -20,31 +20,44 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static String m0(mealName) => "Scelected - ${mealName}";
+  static String m0(mealNumber) => "Total price (${mealNumber}) :";
+
+  static String m1(mealName) => "Scelected - ${mealName}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "addMealsToOrder": MessageLookupByLibrary.simpleMessage("Add meals"),
         "addOrders": MessageLookupByLibrary.simpleMessage("Add Orders"),
         "addToOrder": MessageLookupByLibrary.simpleMessage("Add to order"),
+        "additionalInstructions":
+            MessageLookupByLibrary.simpleMessage("Additional instructions"),
+        "additionalInstructionsExample":
+            MessageLookupByLibrary.simpleMessage("Ex: No chiken"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-        "createOrder": MessageLookupByLibrary.simpleMessage("Create order"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
         "enterMealName":
             MessageLookupByLibrary.simpleMessage("Enter meal name"),
         "enterPriceName":
             MessageLookupByLibrary.simpleMessage("Enter meal price"),
+        "goToSummary": MessageLookupByLibrary.simpleMessage("Go to summary"),
         "mealNumber": MessageLookupByLibrary.simpleMessage("Meal number"),
         "meals": MessageLookupByLibrary.simpleMessage("Meals"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "newMeal": MessageLookupByLibrary.simpleMessage("New meal"),
         "notes": MessageLookupByLibrary.simpleMessage("Notes"),
+        "nothingHire": MessageLookupByLibrary.simpleMessage("Nothing hire"),
         "orderDetails": MessageLookupByLibrary.simpleMessage("Order details"),
+        "orderNow": MessageLookupByLibrary.simpleMessage("Order now"),
+        "orderSum": m0,
         "orders": MessageLookupByLibrary.simpleMessage("Orders"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "scelectMeal": MessageLookupByLibrary.simpleMessage("Scelect meal"),
-        "scelectedMeal": m0,
+        "scelectedMeal": m1,
         "showOrderDetails":
-            MessageLookupByLibrary.simpleMessage("Show order details")
+            MessageLookupByLibrary.simpleMessage("Show order details"),
+        "timeToAddSomethingTasty":
+            MessageLookupByLibrary.simpleMessage("Time to add something tasty"),
+        "yourOrder": MessageLookupByLibrary.simpleMessage("Your order")
       };
 }

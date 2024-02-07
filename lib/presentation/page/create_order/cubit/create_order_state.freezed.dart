@@ -22,7 +22,7 @@ mixin _$CreateOrderState {
     required TResult Function() loadedEmpty,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function() initial,
+    required TResult Function() idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,7 +31,7 @@ mixin _$CreateOrderState {
     TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function()? initial,
+    TResult? Function()? idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +40,7 @@ mixin _$CreateOrderState {
     TResult Function()? loadedEmpty,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function()? initial,
+    TResult Function()? idle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -50,7 +50,7 @@ mixin _$CreateOrderState {
     required TResult Function(LoadedEmpty value) loadedEmpty,
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
-    required TResult Function(Initial value) initial,
+    required TResult Function(Idle value) idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,7 +59,7 @@ mixin _$CreateOrderState {
     TResult? Function(LoadedEmpty value)? loadedEmpty,
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
-    TResult? Function(Initial value)? initial,
+    TResult? Function(Idle value)? idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,7 +68,7 @@ mixin _$CreateOrderState {
     TResult Function(LoadedEmpty value)? loadedEmpty,
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
-    TResult Function(Initial value)? initial,
+    TResult Function(Idle value)? idle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -160,7 +160,7 @@ class _$LoadedImpl implements Loaded {
     required TResult Function() loadedEmpty,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function() initial,
+    required TResult Function() idle,
   }) {
     return loaded(order);
   }
@@ -172,7 +172,7 @@ class _$LoadedImpl implements Loaded {
     TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function()? initial,
+    TResult? Function()? idle,
   }) {
     return loaded?.call(order);
   }
@@ -184,7 +184,7 @@ class _$LoadedImpl implements Loaded {
     TResult Function()? loadedEmpty,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function()? initial,
+    TResult Function()? idle,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -200,7 +200,7 @@ class _$LoadedImpl implements Loaded {
     required TResult Function(LoadedEmpty value) loadedEmpty,
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
-    required TResult Function(Initial value) initial,
+    required TResult Function(Idle value) idle,
   }) {
     return loaded(this);
   }
@@ -212,7 +212,7 @@ class _$LoadedImpl implements Loaded {
     TResult? Function(LoadedEmpty value)? loadedEmpty,
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
-    TResult? Function(Initial value)? initial,
+    TResult? Function(Idle value)? idle,
   }) {
     return loaded?.call(this);
   }
@@ -224,7 +224,7 @@ class _$LoadedImpl implements Loaded {
     TResult Function(LoadedEmpty value)? loadedEmpty,
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
-    TResult Function(Initial value)? initial,
+    TResult Function(Idle value)? idle,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -285,7 +285,7 @@ class _$LoadedEmptyImpl implements LoadedEmpty {
     required TResult Function() loadedEmpty,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function() initial,
+    required TResult Function() idle,
   }) {
     return loadedEmpty();
   }
@@ -297,7 +297,7 @@ class _$LoadedEmptyImpl implements LoadedEmpty {
     TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function()? initial,
+    TResult? Function()? idle,
   }) {
     return loadedEmpty?.call();
   }
@@ -309,7 +309,7 @@ class _$LoadedEmptyImpl implements LoadedEmpty {
     TResult Function()? loadedEmpty,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function()? initial,
+    TResult Function()? idle,
     required TResult orElse(),
   }) {
     if (loadedEmpty != null) {
@@ -325,7 +325,7 @@ class _$LoadedEmptyImpl implements LoadedEmpty {
     required TResult Function(LoadedEmpty value) loadedEmpty,
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
-    required TResult Function(Initial value) initial,
+    required TResult Function(Idle value) idle,
   }) {
     return loadedEmpty(this);
   }
@@ -337,7 +337,7 @@ class _$LoadedEmptyImpl implements LoadedEmpty {
     TResult? Function(LoadedEmpty value)? loadedEmpty,
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
-    TResult? Function(Initial value)? initial,
+    TResult? Function(Idle value)? idle,
   }) {
     return loadedEmpty?.call(this);
   }
@@ -349,7 +349,7 @@ class _$LoadedEmptyImpl implements LoadedEmpty {
     TResult Function(LoadedEmpty value)? loadedEmpty,
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
-    TResult Function(Initial value)? initial,
+    TResult Function(Idle value)? idle,
     required TResult orElse(),
   }) {
     if (loadedEmpty != null) {
@@ -405,7 +405,7 @@ class _$LoadingImpl implements Loading {
     required TResult Function() loadedEmpty,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function() initial,
+    required TResult Function() idle,
   }) {
     return loading();
   }
@@ -417,7 +417,7 @@ class _$LoadingImpl implements Loading {
     TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function()? initial,
+    TResult? Function()? idle,
   }) {
     return loading?.call();
   }
@@ -429,7 +429,7 @@ class _$LoadingImpl implements Loading {
     TResult Function()? loadedEmpty,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function()? initial,
+    TResult Function()? idle,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -445,7 +445,7 @@ class _$LoadingImpl implements Loading {
     required TResult Function(LoadedEmpty value) loadedEmpty,
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
-    required TResult Function(Initial value) initial,
+    required TResult Function(Idle value) idle,
   }) {
     return loading(this);
   }
@@ -457,7 +457,7 @@ class _$LoadingImpl implements Loading {
     TResult? Function(LoadedEmpty value)? loadedEmpty,
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
-    TResult? Function(Initial value)? initial,
+    TResult? Function(Idle value)? idle,
   }) {
     return loading?.call(this);
   }
@@ -469,7 +469,7 @@ class _$LoadingImpl implements Loading {
     TResult Function(LoadedEmpty value)? loadedEmpty,
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
-    TResult Function(Initial value)? initial,
+    TResult Function(Idle value)? idle,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -549,7 +549,7 @@ class _$ErrorImpl implements Error {
     required TResult Function() loadedEmpty,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function() initial,
+    required TResult Function() idle,
   }) {
     return error(this.error);
   }
@@ -561,7 +561,7 @@ class _$ErrorImpl implements Error {
     TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function()? initial,
+    TResult? Function()? idle,
   }) {
     return error?.call(this.error);
   }
@@ -573,7 +573,7 @@ class _$ErrorImpl implements Error {
     TResult Function()? loadedEmpty,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function()? initial,
+    TResult Function()? idle,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -589,7 +589,7 @@ class _$ErrorImpl implements Error {
     required TResult Function(LoadedEmpty value) loadedEmpty,
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
-    required TResult Function(Initial value) initial,
+    required TResult Function(Idle value) idle,
   }) {
     return error(this);
   }
@@ -601,7 +601,7 @@ class _$ErrorImpl implements Error {
     TResult? Function(LoadedEmpty value)? loadedEmpty,
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
-    TResult? Function(Initial value)? initial,
+    TResult? Function(Idle value)? idle,
   }) {
     return error?.call(this);
   }
@@ -613,7 +613,7 @@ class _$ErrorImpl implements Error {
     TResult Function(LoadedEmpty value)? loadedEmpty,
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
-    TResult Function(Initial value)? initial,
+    TResult Function(Idle value)? idle,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -633,35 +633,34 @@ abstract class Error implements CreateOrderState {
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$IdleImplCopyWith<$Res> {
+  factory _$$IdleImplCopyWith(
+          _$IdleImpl value, $Res Function(_$IdleImpl) then) =
+      __$$IdleImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$CreateOrderStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$IdleImplCopyWithImpl<$Res>
+    extends _$CreateOrderStateCopyWithImpl<$Res, _$IdleImpl>
+    implements _$$IdleImplCopyWith<$Res> {
+  __$$IdleImplCopyWithImpl(_$IdleImpl _value, $Res Function(_$IdleImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$InitialImpl implements Initial {
-  const _$InitialImpl();
+class _$IdleImpl implements Idle {
+  const _$IdleImpl();
 
   @override
   String toString() {
-    return 'CreateOrderState.initial()';
+    return 'CreateOrderState.idle()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType && other is _$IdleImpl);
   }
 
   @override
@@ -674,9 +673,9 @@ class _$InitialImpl implements Initial {
     required TResult Function() loadedEmpty,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function() initial,
+    required TResult Function() idle,
   }) {
-    return initial();
+    return idle();
   }
 
   @override
@@ -686,9 +685,9 @@ class _$InitialImpl implements Initial {
     TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function()? initial,
+    TResult? Function()? idle,
   }) {
-    return initial?.call();
+    return idle?.call();
   }
 
   @override
@@ -698,11 +697,11 @@ class _$InitialImpl implements Initial {
     TResult Function()? loadedEmpty,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function()? initial,
+    TResult Function()? idle,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (idle != null) {
+      return idle();
     }
     return orElse();
   }
@@ -714,9 +713,9 @@ class _$InitialImpl implements Initial {
     required TResult Function(LoadedEmpty value) loadedEmpty,
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
-    required TResult Function(Initial value) initial,
+    required TResult Function(Idle value) idle,
   }) {
-    return initial(this);
+    return idle(this);
   }
 
   @override
@@ -726,9 +725,9 @@ class _$InitialImpl implements Initial {
     TResult? Function(LoadedEmpty value)? loadedEmpty,
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
-    TResult? Function(Initial value)? initial,
+    TResult? Function(Idle value)? idle,
   }) {
-    return initial?.call(this);
+    return idle?.call(this);
   }
 
   @override
@@ -738,16 +737,16 @@ class _$InitialImpl implements Initial {
     TResult Function(LoadedEmpty value)? loadedEmpty,
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
-    TResult Function(Initial value)? initial,
+    TResult Function(Idle value)? idle,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (idle != null) {
+      return idle(this);
     }
     return orElse();
   }
 }
 
-abstract class Initial implements CreateOrderState {
-  const factory Initial() = _$InitialImpl;
+abstract class Idle implements CreateOrderState {
+  const factory Idle() = _$IdleImpl;
 }

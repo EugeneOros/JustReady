@@ -8,5 +8,5 @@ class AddMealToCurrentOrderUseCase {
 
   const AddMealToCurrentOrderUseCase(this._ordersRepository);
 
-  void call(Meal meal, int count) => _ordersRepository.addMealToCurrentOrder(meal, count);
+  Future<void> call(Meal meal, int count) => _ordersRepository.addMealToCurrentOrder(meal, count);
 }

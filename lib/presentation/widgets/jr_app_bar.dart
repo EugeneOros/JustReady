@@ -137,11 +137,13 @@ class JrAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   Widget _buildStartIcon(BuildContext context) => Padding(
         padding: const EdgeInsets.only(right: Dimens.l),
-        child: JrIconButton(
-          type: IconButtonType.secondary,
-          icon: startIcon ?? IconsSvg.chevronLeft24,
-          onPressed: () => onStartIconTap != null ? onStartIconTap!(context) : context.pop(),
-        ),
+        child: Builder(builder: (context) {
+          return JrIconButton(
+            type: IconButtonType.secondary,
+            icon: startIcon ?? IconsSvg.chevronLeft24,
+            onPressed: () => onStartIconTap != null ? onStartIconTap!(context) : context.pop(),
+          );
+        }),
       );
 
   Widget _buildEndIcon(BuildContext context) => Padding(

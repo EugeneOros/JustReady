@@ -16,6 +16,8 @@ class JrButton extends HookWidget {
   final ButtonType type;
   final String? prefixIcon;
   final Color? color;
+  final double? width;
+  final BoxConstraints? constraints;
 
   const JrButton({
     super.key,
@@ -24,6 +26,8 @@ class JrButton extends HookWidget {
     this.type = ButtonType.primary,
     this.prefixIcon,
     this.color,
+    this.width,
+    this.constraints,
   });
 
   @override
@@ -31,48 +35,48 @@ class JrButton extends HookWidget {
     final isHover = useState(false);
     final bordrRadius = BorderRadius.circular(Dimens.xl);
 
-    return Align(
-      child: Material(
-        color: getBackgroundColor(context),
+    return Material(
+      color: getBackgroundColor(context),
+      borderRadius: bordrRadius,
+      child: InkWell(
+        onTap: onTap,
+        highlightColor: context.colors.transparent,
+        splashColor: getSplashColor(context),
+        hoverColor: context.colors.darkLight,
+        onHover: (value) => isHover.value = value,
         borderRadius: bordrRadius,
-        child: InkWell(
-          onTap: onTap,
-          highlightColor: context.colors.transparent,
-          splashColor: getSplashColor(context),
-          hoverColor: context.colors.darkLight,
-          onHover: (value) => isHover.value = value,
-          borderRadius: bordrRadius,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: bordrRadius,
-              border: Border.all(color: context.colors.dark, width: Dimens.xxxs),
-              color: context.colors.transparent, // isHover.value ? context.colors.dark : context.colors.bright,
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                if (prefixIcon != null)
-                  JrSvgPicture(
-                    prefixIcon!,
-                    height: Dimens.xl,
-                    width: Dimens.xl,
-                    color: getTitleColor(context),
-                  ),
-                Flexible(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: Dimens.xs, horizontal: Dimens.xm),
-                    child: Text(
-                      title,
-                      overflow: TextOverflow.ellipsis,
-                      style: context.typography.button.copyWith(
-                        color: getTitleColor(context),
-                      ),
+        child: Container(
+          width: width,
+          constraints: constraints,
+          decoration: BoxDecoration(
+            borderRadius: bordrRadius,
+            border: Border.all(color: context.colors.dark, width: Dimens.xxxs),
+            color: context.colors.transparent, // isHover.value ? context.colors.dark : context.colors.bright,
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              if (prefixIcon != null)
+                JrSvgPicture(
+                  prefixIcon!,
+                  height: Dimens.xl,
+                  width: Dimens.xl,
+                  color: getTitleColor(context),
+                ),
+              Flexible(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: Dimens.xs, horizontal: Dimens.xm),
+                  child: Text(
+                    title,
+                    overflow: TextOverflow.ellipsis,
+                    style: context.typography.button.copyWith(
+                      color: getTitleColor(context),
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

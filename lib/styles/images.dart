@@ -25,6 +25,8 @@ class IconsSvg {
   static final chevronDown24 = _icons.chevronDown24.path;
   static final chevronRight24 = _icons.chevronRight24.path;
   static final chevronLeft24 = _icons.chevronLeft24.path;
+  static final menu24 = _icons.menu24.path;
+  static final emptyMeal24 = _icons.emptyMeal24.path;
 
 
   IconsSvg._();
@@ -34,6 +36,7 @@ class Illustrations {
   static final _illustrations = Assets.images.illustrations;
   static final lightning = _illustrations.piorun.path;
   static final banner = _illustrations.banner.path;
+  static final bannerHoly = _illustrations.bannerHoly.path;
 
   Illustrations._();
 }

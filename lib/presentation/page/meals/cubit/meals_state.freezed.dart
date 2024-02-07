@@ -21,7 +21,7 @@ mixin _$MealsState {
     required TResult Function(List<Meal> meals) loaded,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function() initial,
+    required TResult Function() idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$MealsState {
     TResult? Function(List<Meal> meals)? loaded,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function()? initial,
+    TResult? Function()? idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$MealsState {
     TResult Function(List<Meal> meals)? loaded,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function()? initial,
+    TResult Function()? idle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -46,7 +46,7 @@ mixin _$MealsState {
     required TResult Function(MealsStateLoaded value) loaded,
     required TResult Function(MealsStateLoading value) loading,
     required TResult Function(MealsStateError value) error,
-    required TResult Function(MealsStateInitial value) initial,
+    required TResult Function(MealsStateIdle value) idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,7 +54,7 @@ mixin _$MealsState {
     TResult? Function(MealsStateLoaded value)? loaded,
     TResult? Function(MealsStateLoading value)? loading,
     TResult? Function(MealsStateError value)? error,
-    TResult? Function(MealsStateInitial value)? initial,
+    TResult? Function(MealsStateIdle value)? idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,7 +62,7 @@ mixin _$MealsState {
     TResult Function(MealsStateLoaded value)? loaded,
     TResult Function(MealsStateLoading value)? loading,
     TResult Function(MealsStateError value)? error,
-    TResult Function(MealsStateInitial value)? initial,
+    TResult Function(MealsStateIdle value)? idle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -160,7 +160,7 @@ class _$MealsStateLoadedImpl implements MealsStateLoaded {
     required TResult Function(List<Meal> meals) loaded,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function() initial,
+    required TResult Function() idle,
   }) {
     return loaded(meals);
   }
@@ -171,7 +171,7 @@ class _$MealsStateLoadedImpl implements MealsStateLoaded {
     TResult? Function(List<Meal> meals)? loaded,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function()? initial,
+    TResult? Function()? idle,
   }) {
     return loaded?.call(meals);
   }
@@ -182,7 +182,7 @@ class _$MealsStateLoadedImpl implements MealsStateLoaded {
     TResult Function(List<Meal> meals)? loaded,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function()? initial,
+    TResult Function()? idle,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -197,7 +197,7 @@ class _$MealsStateLoadedImpl implements MealsStateLoaded {
     required TResult Function(MealsStateLoaded value) loaded,
     required TResult Function(MealsStateLoading value) loading,
     required TResult Function(MealsStateError value) error,
-    required TResult Function(MealsStateInitial value) initial,
+    required TResult Function(MealsStateIdle value) idle,
   }) {
     return loaded(this);
   }
@@ -208,7 +208,7 @@ class _$MealsStateLoadedImpl implements MealsStateLoaded {
     TResult? Function(MealsStateLoaded value)? loaded,
     TResult? Function(MealsStateLoading value)? loading,
     TResult? Function(MealsStateError value)? error,
-    TResult? Function(MealsStateInitial value)? initial,
+    TResult? Function(MealsStateIdle value)? idle,
   }) {
     return loaded?.call(this);
   }
@@ -219,7 +219,7 @@ class _$MealsStateLoadedImpl implements MealsStateLoaded {
     TResult Function(MealsStateLoaded value)? loaded,
     TResult Function(MealsStateLoading value)? loading,
     TResult Function(MealsStateError value)? error,
-    TResult Function(MealsStateInitial value)? initial,
+    TResult Function(MealsStateIdle value)? idle,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -280,7 +280,7 @@ class _$MealsStateLoadingImpl implements MealsStateLoading {
     required TResult Function(List<Meal> meals) loaded,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function() initial,
+    required TResult Function() idle,
   }) {
     return loading();
   }
@@ -291,7 +291,7 @@ class _$MealsStateLoadingImpl implements MealsStateLoading {
     TResult? Function(List<Meal> meals)? loaded,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function()? initial,
+    TResult? Function()? idle,
   }) {
     return loading?.call();
   }
@@ -302,7 +302,7 @@ class _$MealsStateLoadingImpl implements MealsStateLoading {
     TResult Function(List<Meal> meals)? loaded,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function()? initial,
+    TResult Function()? idle,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -317,7 +317,7 @@ class _$MealsStateLoadingImpl implements MealsStateLoading {
     required TResult Function(MealsStateLoaded value) loaded,
     required TResult Function(MealsStateLoading value) loading,
     required TResult Function(MealsStateError value) error,
-    required TResult Function(MealsStateInitial value) initial,
+    required TResult Function(MealsStateIdle value) idle,
   }) {
     return loading(this);
   }
@@ -328,7 +328,7 @@ class _$MealsStateLoadingImpl implements MealsStateLoading {
     TResult? Function(MealsStateLoaded value)? loaded,
     TResult? Function(MealsStateLoading value)? loading,
     TResult? Function(MealsStateError value)? error,
-    TResult? Function(MealsStateInitial value)? initial,
+    TResult? Function(MealsStateIdle value)? idle,
   }) {
     return loading?.call(this);
   }
@@ -339,7 +339,7 @@ class _$MealsStateLoadingImpl implements MealsStateLoading {
     TResult Function(MealsStateLoaded value)? loaded,
     TResult Function(MealsStateLoading value)? loading,
     TResult Function(MealsStateError value)? error,
-    TResult Function(MealsStateInitial value)? initial,
+    TResult Function(MealsStateIdle value)? idle,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -419,7 +419,7 @@ class _$MealsStateErrorImpl implements MealsStateError {
     required TResult Function(List<Meal> meals) loaded,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function() initial,
+    required TResult Function() idle,
   }) {
     return error(this.error);
   }
@@ -430,7 +430,7 @@ class _$MealsStateErrorImpl implements MealsStateError {
     TResult? Function(List<Meal> meals)? loaded,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function()? initial,
+    TResult? Function()? idle,
   }) {
     return error?.call(this.error);
   }
@@ -441,7 +441,7 @@ class _$MealsStateErrorImpl implements MealsStateError {
     TResult Function(List<Meal> meals)? loaded,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function()? initial,
+    TResult Function()? idle,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -456,7 +456,7 @@ class _$MealsStateErrorImpl implements MealsStateError {
     required TResult Function(MealsStateLoaded value) loaded,
     required TResult Function(MealsStateLoading value) loading,
     required TResult Function(MealsStateError value) error,
-    required TResult Function(MealsStateInitial value) initial,
+    required TResult Function(MealsStateIdle value) idle,
   }) {
     return error(this);
   }
@@ -467,7 +467,7 @@ class _$MealsStateErrorImpl implements MealsStateError {
     TResult? Function(MealsStateLoaded value)? loaded,
     TResult? Function(MealsStateLoading value)? loading,
     TResult? Function(MealsStateError value)? error,
-    TResult? Function(MealsStateInitial value)? initial,
+    TResult? Function(MealsStateIdle value)? idle,
   }) {
     return error?.call(this);
   }
@@ -478,7 +478,7 @@ class _$MealsStateErrorImpl implements MealsStateError {
     TResult Function(MealsStateLoaded value)? loaded,
     TResult Function(MealsStateLoading value)? loading,
     TResult Function(MealsStateError value)? error,
-    TResult Function(MealsStateInitial value)? initial,
+    TResult Function(MealsStateIdle value)? idle,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -498,35 +498,35 @@ abstract class MealsStateError implements MealsState {
 }
 
 /// @nodoc
-abstract class _$$MealsStateInitialImplCopyWith<$Res> {
-  factory _$$MealsStateInitialImplCopyWith(_$MealsStateInitialImpl value,
-          $Res Function(_$MealsStateInitialImpl) then) =
-      __$$MealsStateInitialImplCopyWithImpl<$Res>;
+abstract class _$$MealsStateIdleImplCopyWith<$Res> {
+  factory _$$MealsStateIdleImplCopyWith(_$MealsStateIdleImpl value,
+          $Res Function(_$MealsStateIdleImpl) then) =
+      __$$MealsStateIdleImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$MealsStateInitialImplCopyWithImpl<$Res>
-    extends _$MealsStateCopyWithImpl<$Res, _$MealsStateInitialImpl>
-    implements _$$MealsStateInitialImplCopyWith<$Res> {
-  __$$MealsStateInitialImplCopyWithImpl(_$MealsStateInitialImpl _value,
-      $Res Function(_$MealsStateInitialImpl) _then)
+class __$$MealsStateIdleImplCopyWithImpl<$Res>
+    extends _$MealsStateCopyWithImpl<$Res, _$MealsStateIdleImpl>
+    implements _$$MealsStateIdleImplCopyWith<$Res> {
+  __$$MealsStateIdleImplCopyWithImpl(
+      _$MealsStateIdleImpl _value, $Res Function(_$MealsStateIdleImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$MealsStateInitialImpl implements MealsStateInitial {
-  const _$MealsStateInitialImpl();
+class _$MealsStateIdleImpl implements MealsStateIdle {
+  const _$MealsStateIdleImpl();
 
   @override
   String toString() {
-    return 'MealsState.initial()';
+    return 'MealsState.idle()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$MealsStateInitialImpl);
+        (other.runtimeType == runtimeType && other is _$MealsStateIdleImpl);
   }
 
   @override
@@ -538,9 +538,9 @@ class _$MealsStateInitialImpl implements MealsStateInitial {
     required TResult Function(List<Meal> meals) loaded,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function() initial,
+    required TResult Function() idle,
   }) {
-    return initial();
+    return idle();
   }
 
   @override
@@ -549,9 +549,9 @@ class _$MealsStateInitialImpl implements MealsStateInitial {
     TResult? Function(List<Meal> meals)? loaded,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function()? initial,
+    TResult? Function()? idle,
   }) {
-    return initial?.call();
+    return idle?.call();
   }
 
   @override
@@ -560,11 +560,11 @@ class _$MealsStateInitialImpl implements MealsStateInitial {
     TResult Function(List<Meal> meals)? loaded,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function()? initial,
+    TResult Function()? idle,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (idle != null) {
+      return idle();
     }
     return orElse();
   }
@@ -575,9 +575,9 @@ class _$MealsStateInitialImpl implements MealsStateInitial {
     required TResult Function(MealsStateLoaded value) loaded,
     required TResult Function(MealsStateLoading value) loading,
     required TResult Function(MealsStateError value) error,
-    required TResult Function(MealsStateInitial value) initial,
+    required TResult Function(MealsStateIdle value) idle,
   }) {
-    return initial(this);
+    return idle(this);
   }
 
   @override
@@ -586,9 +586,9 @@ class _$MealsStateInitialImpl implements MealsStateInitial {
     TResult? Function(MealsStateLoaded value)? loaded,
     TResult? Function(MealsStateLoading value)? loading,
     TResult? Function(MealsStateError value)? error,
-    TResult? Function(MealsStateInitial value)? initial,
+    TResult? Function(MealsStateIdle value)? idle,
   }) {
-    return initial?.call(this);
+    return idle?.call(this);
   }
 
   @override
@@ -597,16 +597,16 @@ class _$MealsStateInitialImpl implements MealsStateInitial {
     TResult Function(MealsStateLoaded value)? loaded,
     TResult Function(MealsStateLoading value)? loading,
     TResult Function(MealsStateError value)? error,
-    TResult Function(MealsStateInitial value)? initial,
+    TResult Function(MealsStateIdle value)? idle,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (idle != null) {
+      return idle(this);
     }
     return orElse();
   }
 }
 
-abstract class MealsStateInitial implements MealsState {
-  const factory MealsStateInitial() = _$MealsStateInitialImpl;
+abstract class MealsStateIdle implements MealsState {
+  const factory MealsStateIdle() = _$MealsStateIdleImpl;
 }

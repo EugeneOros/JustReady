@@ -9,5 +9,5 @@ class CreateOrderState with _$CreateOrderState {
   const factory CreateOrderState.loadedEmpty() = LoadedEmpty;
   const factory CreateOrderState.loading() = Loading;
   const factory CreateOrderState.error(Object error) = Error;
-  const factory CreateOrderState.initial() = Initial;
+  const factory CreateOrderState.idle() = Idle;
 }

@@ -16,7 +16,7 @@ class Order {
   double getSumPrice() {
     double sumPrice = 0;
     for (var orderMeal in meals) {
-      sumPrice += orderMeal.meal.price;
+      sumPrice += orderMeal.meal.price * orderMeal.count;
     }
     return sumPrice;
   }

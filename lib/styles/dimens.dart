@@ -1,6 +1,8 @@
 class Dimens {
   static const zero = 0.0;
 
+  static const xxxxs = 0.5;
+
   static const xxxs = 1.0;
 
   static const xxs = 2.0;
@@ -35,11 +37,14 @@ class Dimens {
 
   static const xxsButtonWidth = 116.0;
 
-  static const noteTextFieldHeight = 45.0;
+  static const noteTextFieldHeight = 100.0;
 
   static const xsButtonWidth = 136.0;
 
-  static const sButtonWidth = 152.0;
+  static const buttonMinWidth = 200.0;
+  static const buttonMaxWidth = 400.0;
+
+  static const buttonBoxChildMaxWidth = 600.0;
 
   static const mButtonWidth = 252.0;
 
@@ -49,15 +54,19 @@ class Dimens {
 
   static const sideMenuWidth = 285.0;
 
-  static const lMaxCardButtonWidth = 600.0;
-  static const mMaxCardButtonWidth = 400.0;
+  static const sMaxCardHeight = 100.0;
+  static const mMaxCardHeight = 115.0;
+  static const lMaxCardHeight = 130.0;
+
   static const sMaxCardButtonWidth = 200.0;
+  static const mMaxCardButtonWidth = 400.0;
+  static const lMaxCardButtonWidth = 600.0;
 
   static const defaultMealCardHeight = 100.0;
 
   static const expandedMealCardHeight = 370.0;
 
-  static const selectedMealCardHeight = 160.0;
+  static const selectedMealCardHeight = 170.0;
 
   static const navBarHeight = 80.0;
 

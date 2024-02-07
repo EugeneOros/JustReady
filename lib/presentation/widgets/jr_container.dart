@@ -15,6 +15,8 @@ class JrContainer extends StatelessWidget {
   final bool isAnimated;
   final Color? backgroundColor;
   final bool showShadow;
+  final Function()? onTap;
+  final BoxConstraints? constraints;
   const JrContainer({
     super.key,
     required this.child,
@@ -29,6 +31,8 @@ class JrContainer extends StatelessWidget {
     this.isAnimated = false,
     this.backgroundColor,
     this.showShadow = false,
+    this.onTap,
+    this.constraints,
   });
 
   @override
@@ -59,7 +63,6 @@ class JrContainer extends StatelessWidget {
                       ]
                     : null,
               ),
-              child: child,
             ),
           ),
           Positioned(
@@ -69,13 +72,27 @@ class JrContainer extends StatelessWidget {
             bottom: borderOffset,
             child: Container(
               margin: margin,
-              padding: padding,
               decoration: BoxDecoration(
-                border: Border.all(color: context.colors.dark, width: borderWidth),
+                  border: Border.all(color: borderColor, width: borderWidth),
+                  borderRadius: BorderRadius.circular(borderRadius),
+                  color: context.colors.transparent
+                  // color: backgroundColor ?? context.colors.background,
+                  ),
+              child: Material(
                 borderRadius: BorderRadius.circular(borderRadius),
                 color: backgroundColor ?? context.colors.background,
+                child: InkWell(
+                  highlightColor: context.colors.transparent,
+                  splashColor: context.colors.primary,
+                  hoverColor: context.colors.darkLight,
+                  borderRadius: BorderRadius.circular(borderRadius),
+                  onTap: onTap,
+                  child: Container(
+                    padding: padding,
+                    child: child,
+                  ),
+                ),
               ),
-              child: child,
             ),
           ),
         ],
@@ -85,13 +102,15 @@ class JrContainer extends StatelessWidget {
 
   Widget getContainer({required Widget child}) => isAnimated
       ? AnimatedContainer(
+          constraints: constraints,
           duration: const Duration(milliseconds: 150),
           curve: Curves.easeInOut,
           height: height,
           width: width,
           child: child,
         )
-      : SizedBox(
+      : Container(
+          constraints: constraints,
           height: height,
           width: width,
           child: child,

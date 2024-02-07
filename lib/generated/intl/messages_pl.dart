@@ -20,34 +20,47 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'pl';
 
-  static String m0(mealName) => "Wybrano - ${mealName}";
+  static String m0(mealNumber) => "Suma (${mealNumber}) :";
+
+  static String m1(mealName) => "Wybrano - ${mealName}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "addMealsToOrder": MessageLookupByLibrary.simpleMessage("Dodaj dania"),
         "addOrders": MessageLookupByLibrary.simpleMessage("Zamów"),
         "addToOrder":
             MessageLookupByLibrary.simpleMessage("Dodaj do zamówienia"),
+        "additionalInstructions":
+            MessageLookupByLibrary.simpleMessage("Dodatkowe instrukcje"),
+        "additionalInstructionsExample":
+            MessageLookupByLibrary.simpleMessage("N.p.: Bez kurczaka"),
         "cancel": MessageLookupByLibrary.simpleMessage("Anuluj"),
-        "createOrder":
-            MessageLookupByLibrary.simpleMessage("Stwórz zamówienie"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Panel"),
         "enterMealName":
             MessageLookupByLibrary.simpleMessage("Wprowadź nazwe dania"),
         "enterPriceName":
             MessageLookupByLibrary.simpleMessage("Wprowadź cene dania"),
+        "goToSummary":
+            MessageLookupByLibrary.simpleMessage("Przejdź do podsumowania"),
         "mealNumber": MessageLookupByLibrary.simpleMessage("Numer dania"),
         "meals": MessageLookupByLibrary.simpleMessage("Dania"),
         "name": MessageLookupByLibrary.simpleMessage("Nazwa"),
         "newMeal": MessageLookupByLibrary.simpleMessage("Nowe danie"),
         "notes": MessageLookupByLibrary.simpleMessage("Uwagi"),
+        "nothingHire": MessageLookupByLibrary.simpleMessage("Nic tu niema"),
         "orderDetails":
             MessageLookupByLibrary.simpleMessage("Szczegóły zamówienia"),
+        "orderNow": MessageLookupByLibrary.simpleMessage("Zamów teraz"),
+        "orderSum": m0,
         "orders": MessageLookupByLibrary.simpleMessage("Zamówienia"),
         "price": MessageLookupByLibrary.simpleMessage("Cena"),
         "save": MessageLookupByLibrary.simpleMessage("Zapisz"),
         "scelectMeal": MessageLookupByLibrary.simpleMessage("Wybierz dania"),
-        "scelectedMeal": m0,
+        "scelectedMeal": m1,
         "showOrderDetails":
-            MessageLookupByLibrary.simpleMessage("Pokaż szczegóły zamówienia")
+            MessageLookupByLibrary.simpleMessage("Pokaż szczegóły zamówienia"),
+        "timeToAddSomethingTasty":
+            MessageLookupByLibrary.simpleMessage("Czas dodać coś smacznego"),
+        "yourOrder": MessageLookupByLibrary.simpleMessage("Twoje zamówienie")
       };
 }

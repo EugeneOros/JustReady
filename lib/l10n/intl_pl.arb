@@ -22,10 +22,16 @@
   "showOrderDetails": "Pokaż szczegóły zamówienia",
   "scelectedMeal": "Wybrano - {mealName}",
 
-  "createOrder": "Stwórz zamówienie",
-  "orderNow": "Zamów teraz",
+  "yourOrder": "Twoje zamówienie",
   "addMealsToOrder": "Dodaj dania",
-
+  "orderSum": "Suma ({mealNumber}) :",
+  "goToSummary": "Przejdź do podsumowania",
+  "nothingHire": "Nic tu niema",
+  "timeToAddSomethingTasty": "Czas dodać coś smacznego",
+  "additionalInstructions": "Dodatkowe instrukcje",
+  "additionalInstructionsExample": "N.p.: Bez kurczaka",
+  
+  "orderNow": "Zamów teraz",
   "scelectMeal": "Wybierz dania"
   
 }

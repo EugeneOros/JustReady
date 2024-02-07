@@ -87,15 +87,8 @@ class JrNumberTextField extends HookWidget {
     );
   }
 
-  UnderlineInputBorder _getUnderlineBorder({required Color color, double width = Dimens.zero}) => UnderlineInputBorder(
-        borderSide: BorderSide(color: color, width: width),
-        borderRadius: BorderRadius.circular(Dimens.s),
-        // gapPadding: Dimens.xxs,
-      );
-
   OutlineInputBorder _getBorder({required Color color, double width = Dimens.zero}) => OutlineInputBorder(
         borderSide: BorderSide(color: color, width: width),
         borderRadius: BorderRadius.circular(Dimens.s),
-        gapPadding: Dimens.xxs,
       );
 }

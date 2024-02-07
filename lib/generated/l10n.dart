@@ -220,11 +220,91 @@ class Strings {
     );
   }
 
-  /// `Create order`
-  String get createOrder {
+  /// `Your order`
+  String get yourOrder {
     return Intl.message(
-      'Create order',
-      name: 'createOrder',
+      'Your order',
+      name: 'yourOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add meals`
+  String get addMealsToOrder {
+    return Intl.message(
+      'Add meals',
+      name: 'addMealsToOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total price ({mealNumber}) :`
+  String orderSum(Object mealNumber) {
+    return Intl.message(
+      'Total price ($mealNumber) :',
+      name: 'orderSum',
+      desc: '',
+      args: [mealNumber],
+    );
+  }
+
+  /// `Go to summary`
+  String get goToSummary {
+    return Intl.message(
+      'Go to summary',
+      name: 'goToSummary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nothing hire`
+  String get nothingHire {
+    return Intl.message(
+      'Nothing hire',
+      name: 'nothingHire',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time to add something tasty`
+  String get timeToAddSomethingTasty {
+    return Intl.message(
+      'Time to add something tasty',
+      name: 'timeToAddSomethingTasty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Additional instructions`
+  String get additionalInstructions {
+    return Intl.message(
+      'Additional instructions',
+      name: 'additionalInstructions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ex: No chiken`
+  String get additionalInstructionsExample {
+    return Intl.message(
+      'Ex: No chiken',
+      name: 'additionalInstructionsExample',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order now`
+  String get orderNow {
+    return Intl.message(
+      'Order now',
+      name: 'orderNow',
       desc: '',
       args: [],
     );

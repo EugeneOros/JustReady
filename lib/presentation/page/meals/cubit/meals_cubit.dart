@@ -57,7 +57,7 @@ class MealsCubit extends Cubit<MealsState> {
   }
 
   Future<void> createEditMeal(meal) async {
-    emit(const MealsState.loading());
+    emit(const MealsState.idle());
     if (!meals.any((m) => m.id == meal.id)) {
       await _addMealUseCase(meal);
     } else {

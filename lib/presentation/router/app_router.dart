@@ -58,6 +58,14 @@ class AppRouter {
             ],
           ),
           GoRoute(
+            path: JustReadyRoute.orders.path,
+            name: JustReadyRoute.orders.name,
+            pageBuilder: (context, state) => _defaultTransition(
+              state: state,
+              child: const OrdersPage(),
+            ),
+          ),
+          GoRoute(
             path: JustReadyRoute.meals.path,
             name: JustReadyRoute.meals.name,
             pageBuilder: (context, state) => _defaultTransition(
@@ -66,8 +74,8 @@ class AppRouter {
             ),
           ),
           GoRoute(
-            path: JustReadyRoute.orders.path,
-            name: JustReadyRoute.orders.name,
+            path: JustReadyRoute.dashboard.path,
+            name: JustReadyRoute.dashboard.name,
             pageBuilder: (context, state) => _defaultTransition(
               state: state,
               child: const OrdersPage(),

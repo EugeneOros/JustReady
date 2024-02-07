@@ -121,52 +121,56 @@ class MealCard extends HookWidget {
                     children: [
                       const SizedBox(width: Dimens.l),
                       Expanded(
-                        child: JrButton(
-                          title: Strings.of(context).cancel,
-                          type: ButtonType.tertiary,
-                          color: context.colors.secondary,
-                          onTap: () async {
-                            if (onCancel != null) onCancel!();
-                            setIsEditing(false);
-                            // isEditing.value = !isEditing.value;
-                            form.markAllAsTouched();
-                          },
+                        child: Center(
+                          child: JrButton(
+                            title: Strings.of(context).cancel,
+                            type: ButtonType.tertiary,
+                            color: context.colors.secondary,
+                            onTap: () async {
+                              if (onCancel != null) onCancel!();
+                              setIsEditing(false);
+                              // isEditing.value = !isEditing.value;
+                              form.markAllAsTouched();
+                            },
+                          ),
                         ),
                       ),
                       const SizedBox(width: Dimens.m),
                       Expanded(
-                        child: JrButton(
-                          title: Strings.of(context).save,
-                          onTap: () async {
-                            if (form.valid) {
-                              await onEdit(Meal(
-                                id: meal.id,
-                                name: form.controls[MealFormControlName.name]!.value.toString(),
-                                mealNumber: form.controls[MealFormControlName.number]!.value as int,
-                                price: form.controls[MealFormControlName.price]!.value as double,
-                              ));
-                              // updateForm(form);
-                              setIsEditing(false);
-                              // isEditing.value = !isEditing.value;
-                            } else {
-                              form.markAllAsTouched();
-                            }
-                          },
+                        child: Center(
+                          child: JrButton(
+                            title: Strings.of(context).save,
+                            onTap: () async {
+                              if (form.valid) {
+                                await onEdit(Meal(
+                                  id: meal.id,
+                                  name: form.controls[MealFormControlName.name]!.value.toString(),
+                                  mealNumber: form.controls[MealFormControlName.number]!.value as int,
+                                  price: form.controls[MealFormControlName.price]!.value as double,
+                                ));
+                                setIsEditing(false);
+                              } else {
+                                form.markAllAsTouched();
+                              }
+                            },
+                          ),
                         ),
                       ),
                       if (onDelete != null) ...[
                         const SizedBox(width: Dimens.m),
                         Expanded(
-                          child: JrIconButton(
-                            icon: IconsSvg.delete24,
-                            type: IconButtonType.tertiary,
-                            color: context.colors.error,
-                            onPressed: () async {
-                              await onDelete!(meal.id);
-                              setIsEditing(false);
-                              // isEditing.value = !isEditing.value;
-                              form.markAllAsTouched();
-                            },
+                          child: Center(
+                            child: JrIconButton(
+                              icon: IconsSvg.delete24,
+                              type: IconButtonType.tertiary,
+                              color: context.colors.error,
+                              onPressed: () async {
+                                await onDelete!(meal.id);
+                                setIsEditing(false);
+                                // isEditing.value = !isEditing.value;
+                                form.markAllAsTouched();
+                              },
+                            ),
                           ),
                         ),
                       ],

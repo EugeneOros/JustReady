@@ -5,10 +5,11 @@ import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:just_ready/extensions/extension_mixin.dart';
 import 'package:just_ready/presentation/page/home/cubit/home_cubit.dart';
 import 'package:just_ready/presentation/page/home/cubit/home_state.dart';
-import 'package:just_ready/presentation/page/home/widgets/home_nav_bar.dart';
-import 'package:just_ready/styles/dimens.dart';
+import 'package:just_ready/presentation/page/home/widgets/drower/jr_menu_drawer.dart';
 import 'package:just_ready/utils/hooks/use_once.dart';
 import 'package:just_ready/utils/ignore_else_state.dart';
+
+GlobalKey<ScaffoldState> homeKey = GlobalKey();
 
 class HomePage extends HookWidget {
   final Widget child;
@@ -26,27 +27,26 @@ class HomePage extends HookWidget {
     useOnce(() => cubit.init());
 
     return Scaffold(
-      backgroundColor: context.colors.background,
-      body: Stack(
-        children: [
-          Positioned.fill(child: child),
-          Positioned(
-            bottom: Dimens.zero,
-            left: Dimens.zero,
-            right: Dimens.zero,
-            child: state.maybeWhen(
-                selectedPage: (index, path) {
-                  return HomeNavBar(
-                    selectedIndex: index,
-                    onTap: (int tapIndex) => cubit.selectPage(
-                      NavTabs.values[tapIndex],
-                    ),
-                  );
-                },
-                orElse: () => const SizedBox.shrink()),
-          )
-        ],
+      key: homeKey,
+      // appBar: JrAppBar(
+      //   title: Strings.of(context).meals,
+      //   skipStartIcon: false,
+      //   startIcon: IconsSvg.menu24,
+      //   onStartIconTap: (_) {
+      //     homeKey.currentState!.openDrawer();
+      //   },
+      // ),
+      drawer: state.maybeWhen(
+        selectedPage: (index, path) {
+          return JrMenuDrawer(
+            selectedIndex: index,
+            onTap: (int tapIndex) => cubit.selectPage(NavTabs.values[tapIndex]),
+          );
+        },
+        orElse: () => const SizedBox.shrink(),
       ),
+      backgroundColor: context.colors.background,
+      body: child,
     );
   }
 

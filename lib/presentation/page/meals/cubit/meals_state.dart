@@ -8,5 +8,5 @@ class MealsState with _$MealsState {
   const factory MealsState.loaded(List<Meal> meals) = MealsStateLoaded;
   const factory MealsState.loading() = MealsStateLoading;
   const factory MealsState.error(Object error) = MealsStateError;
-  const factory MealsState.initial() = MealsStateInitial;
+  const factory MealsState.idle() = MealsStateIdle;
 }

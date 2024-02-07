@@ -43,9 +43,9 @@ class HomeCubit extends Cubit<HomeState> {
       case 2:
         return JustReadyRoute.meals.path;
       case 3:
-        return JustReadyRoute.orders.path;
+        return JustReadyRoute.dashboard.path;
       default:
-        return JustReadyRoute.orders.path;
+        return JustReadyRoute.createOrder.path;
     }
   }
 }

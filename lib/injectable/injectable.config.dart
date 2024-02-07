@@ -27,10 +27,10 @@ import '../domain/main_stream/usecase/subscribe_main_stream_use_case.dart'
     as _i21;
 import '../domain/meals/meals_repository.dart' as _i12;
 import '../domain/meals/use_case/add_meal_use_case.dart' as _i23;
-import '../domain/meals/use_case/delete_meal_use_case.dart' as _i26;
-import '../domain/meals/use_case/edit_meal_use_case.dart' as _i27;
+import '../domain/meals/use_case/delete_meal_use_case.dart' as _i27;
+import '../domain/meals/use_case/edit_meal_use_case.dart' as _i29;
 import '../domain/meals/use_case/get_free_meal_number_use_case.dart' as _i4;
-import '../domain/meals/use_case/get_meals_use_case.dart' as _i29;
+import '../domain/meals/use_case/get_meals_use_case.dart' as _i31;
 import '../domain/meals/use_case/is_meal_number_taken_use_case.dart' as _i6;
 import '../domain/orders/repository/orders_repository.dart' as _i19;
 import '../domain/orders/use_case/add_maal_to_current_order_use_case.dart'
@@ -38,15 +38,19 @@ import '../domain/orders/use_case/add_maal_to_current_order_use_case.dart'
 import '../domain/orders/use_case/add_note_to_current_order_use_case.dart'
     as _i24;
 import '../domain/orders/use_case/add_order_use_case.dart' as _i25;
-import '../domain/orders/use_case/get_current_order_use_case.dart' as _i28;
+import '../domain/orders/use_case/delete_current_order_meal_use_case.dart'
+    as _i26;
+import '../domain/orders/use_case/edit_current_order_meal_count_use_case.dart'
+    as _i28;
+import '../domain/orders/use_case/get_current_order_use_case.dart' as _i30;
 import '../presentation/page/create_order/cubit/create_order_cubit.dart'
-    as _i32;
+    as _i34;
 import '../presentation/page/home/cubit/home_cubit.dart' as _i5;
-import '../presentation/page/meals/cubit/meals_cubit.dart' as _i30;
+import '../presentation/page/meals/cubit/meals_cubit.dart' as _i32;
 import '../presentation/page/orders/cubit/orders_cubit.dart' as _i17;
 import '../presentation/page/select_meals/cubit/select_meals_cubit.dart'
-    as _i31;
-import 'firestore_injectable.dart' as _i33;
+    as _i33;
+import 'firestore_injectable.dart' as _i35;
 
 const String _dev = 'dev';
 const String _prod = 'prod';
@@ -109,32 +113,38 @@ _i1.GetIt $initGetIt(
       () => _i24.AddNoteToCurrentOrderUseCase(gh<_i19.OrdersRepository>()));
   gh.factory<_i25.AddOrderUseCase>(
       () => _i25.AddOrderUseCase(gh<_i19.OrdersRepository>()));
-  gh.factory<_i26.DeleteMealUseCase>(
-      () => _i26.DeleteMealUseCase(gh<_i12.MealsRepository>()));
-  gh.factory<_i27.EditMealUseCase>(
-      () => _i27.EditMealUseCase(gh<_i12.MealsRepository>()));
-  gh.factory<_i28.GetCurrentOrderUseCase>(
-      () => _i28.GetCurrentOrderUseCase(gh<_i19.OrdersRepository>()));
-  gh.factory<_i29.GetMealsUseCase>(
-      () => _i29.GetMealsUseCase(gh<_i12.MealsRepository>()));
-  gh.factory<_i30.MealsCubit>(() => _i30.MealsCubit(
+  gh.factory<_i26.DeleteCurrentOrderMealUseCase>(
+      () => _i26.DeleteCurrentOrderMealUseCase(gh<_i19.OrdersRepository>()));
+  gh.factory<_i27.DeleteMealUseCase>(
+      () => _i27.DeleteMealUseCase(gh<_i12.MealsRepository>()));
+  gh.factory<_i28.EditCurrentOrderMealCountUseCase>(
+      () => _i28.EditCurrentOrderMealCountUseCase(gh<_i19.OrdersRepository>()));
+  gh.factory<_i29.EditMealUseCase>(
+      () => _i29.EditMealUseCase(gh<_i12.MealsRepository>()));
+  gh.factory<_i30.GetCurrentOrderUseCase>(
+      () => _i30.GetCurrentOrderUseCase(gh<_i19.OrdersRepository>()));
+  gh.factory<_i31.GetMealsUseCase>(
+      () => _i31.GetMealsUseCase(gh<_i12.MealsRepository>()));
+  gh.factory<_i32.MealsCubit>(() => _i32.MealsCubit(
         gh<_i23.AddMealUseCase>(),
-        gh<_i27.EditMealUseCase>(),
-        gh<_i29.GetMealsUseCase>(),
-        gh<_i26.DeleteMealUseCase>(),
+        gh<_i29.EditMealUseCase>(),
+        gh<_i31.GetMealsUseCase>(),
+        gh<_i27.DeleteMealUseCase>(),
         gh<_i4.GetFreeMealNumberUseCase>(),
         gh<_i6.IsMealNumberTakenUseCase>(),
       ));
-  gh.factory<_i31.SelectMealsCubit>(() => _i31.SelectMealsCubit(
-        gh<_i29.GetMealsUseCase>(),
+  gh.factory<_i33.SelectMealsCubit>(() => _i33.SelectMealsCubit(
+        gh<_i31.GetMealsUseCase>(),
         gh<_i22.AddMealToCurrentOrderUseCase>(),
       ));
-  gh.factory<_i32.CreateOrderCubit>(() => _i32.CreateOrderCubit(
-        gh<_i28.GetCurrentOrderUseCase>(),
+  gh.factory<_i34.CreateOrderCubit>(() => _i34.CreateOrderCubit(
+        gh<_i30.GetCurrentOrderUseCase>(),
         gh<_i24.AddNoteToCurrentOrderUseCase>(),
         gh<_i21.SubscribeMainStreamUseCase>(),
+        gh<_i26.DeleteCurrentOrderMealUseCase>(),
+        gh<_i28.EditCurrentOrderMealCountUseCase>(),
       ));
   return getIt;
 }
 
-class _$FirestoreModule extends _i33.FirestoreModule {}
+class _$FirestoreModule extends _i35.FirestoreModule {}

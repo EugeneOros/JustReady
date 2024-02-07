@@ -5,6 +5,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color dark;
   final Color darkLight;
   final Color primary;
+  final Color primaryLight;
   final Color secondary;
   final Color bright;
   final Color background;
@@ -16,6 +17,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.dark,
     required this.darkLight,
     required this.primary,
+    required this.primaryLight,
     required this.secondary,
     required this.bright,
     required this.background,
@@ -29,6 +31,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? dark,
     Color? darkLight,
     Color? primary,
+    Color? primaryLight,
     Color? secondary,
     Color? bright,
     Color? background,
@@ -40,6 +43,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
         dark: dark ?? this.dark,
         darkLight: darkLight ?? this.darkLight,
         primary: primary ?? this.primary,
+        primaryLight: primaryLight ?? this.primaryLight,
         secondary: secondary ?? this.secondary,
         bright: bright ?? this.bright,
         background: background ?? this.background,
@@ -60,6 +64,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       dark: _getColorLerp(dark, other.dark, t),
       darkLight: _getColorLerp(darkLight, other.darkLight, t),
       primary: _getColorLerp(primary, other.primary, t),
+      primaryLight: _getColorLerp(primaryLight, other.primaryLight, t),
       secondary: _getColorLerp(secondary, other.secondary, t),
       bright: _getColorLerp(bright, other.bright, t),
       background: _getColorLerp(background, other.background, t),
@@ -75,6 +80,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     dark: Color(0xff000000),
     darkLight: Color(0xff555555),
     primary: Color(0xffbfe34b),
+    primaryLight: Color(0xffECFFDC),
     secondary: Color(0xff4392AE),
     bright: Color(0xffffffff),
     background: Color(0xffffffff),
@@ -87,6 +93,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     dark: Color(0xff98C1D9),
     darkLight: Color(0xff3D5A80),
     primary: Color(0xffbfe34b),
+    primaryLight: Color(0xffF1FFC3),
     secondary: Color(0xff4392AE),
     bright: Color(0xffffffff),
     background: Color(0xff000000),

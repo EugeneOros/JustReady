@@ -5,7 +5,7 @@ import 'package:just_ready/extensions/extension_mixin.dart';
 import 'package:just_ready/generated/l10n.dart';
 import 'package:just_ready/presentation/page/select_meals/utils/select_form_control_names.dart';
 import 'package:just_ready/presentation/page/select_meals/widgets/price_badge.dart';
-import 'package:just_ready/presentation/widgets/jr_title_row.dart';
+import 'package:just_ready/presentation/widgets/jr_text.dart';
 import 'package:just_ready/presentation/widgets/jr_number_edit_field.dart';
 import 'package:just_ready/presentation/widgets/buttons/jr_button.dart';
 import 'package:just_ready/presentation/widgets/jr_container.dart';
@@ -55,22 +55,38 @@ class SelctedMealCard extends HookWidget {
                 margin: const EdgeInsets.fromLTRB(Dimens.xxl, Dimens.l, Dimens.xxl, Dimens.m),
                 // margin: const EdgeInsets.all(Dimens.zero),
                 padding: const EdgeInsets.symmetric(horizontal: Dimens.m, vertical: Dimens.l),
-                child: JrTitleRow(
-                  title: meal.name,
-                  style: context.typography.header3,
-                  titleAlign: TextAlign.center,
-                  expandedTitle: true,
-                  child: JrNumberEditField(
-                    form: form,
-                    formControlName: SelectMealFormControlName.count,
-                    initialValue: initMealCountValue,
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    JrText(
+                      meal.name,
+                      style: context.typography.body1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    JrNumberEditField(
+                      form: form,
+                      formControlName: SelectMealFormControlName.count,
+                      initialValue: initMealCountValue,
+                    ),
+                  ],
                 ),
+                // child: JrTitleRow(
+                //   title: meal.name,
+                //   style: context.typography.header3,
+                //   titleAlign: TextAlign.center,
+                //   expandedTitle: true,
+                //   child: JrNumberEditField(
+                //     form: form,
+                //     formControlName: SelectMealFormControlName.count,
+                //     initialValue: initMealCountValue,
+                //   ),
+                // ),
               ),
               Positioned(
                 right: 0,
                 top: 0,
                 child: PriceBadge(
+                  angle: 0.6,
                   price: meal.price,
                 ),
               ),
@@ -78,24 +94,17 @@ class SelctedMealCard extends HookWidget {
                 right: 0,
                 left: 0,
                 bottom: 0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const SizedBox(width: Dimens.l),
-                    Expanded(
-                      child: JrButton(
-                        title: Strings.of(context).addToOrder,
-                        onTap: () async {
-                          if (form.valid) {
-                            onAddMealToOrder(form.control(SelectMealFormControlName.count).value);
-                          } else {
-                            form.markAllAsTouched();
-                          }
-                        },
-                      ),
-                    ),
-                    const SizedBox(width: Dimens.l),
-                  ],
+                child: Center(
+                  child: JrButton(
+                    title: Strings.of(context).addToOrder,
+                    onTap: () async {
+                      if (form.valid) {
+                        onAddMealToOrder(form.control(SelectMealFormControlName.count).value);
+                      } else {
+                        form.markAllAsTouched();
+                      }
+                    },
+                  ),
                 ),
               ),
               // Other widgets can be added inside the Stack if needed

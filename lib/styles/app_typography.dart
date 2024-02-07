@@ -17,6 +17,7 @@ class AppTypography {
   );
   static const header3 = TextStyle(
     fontSize: 18,
+    fontWeight: FontWeight.w600,
     height: 1.3,
   );
 
@@ -42,7 +43,7 @@ class AppTypography {
   );
   static const subtitle2 = TextStyle(
     fontSize: 10,
-    height: 0.8,
+    height: 1,
   );
 
   /// Button
