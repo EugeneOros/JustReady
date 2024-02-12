@@ -8,5 +8,5 @@ class AddOrderUseCase {
 
   const AddOrderUseCase(this._ordersRepository);
 
-  Future<void> call(Order order) => _ordersRepository.addOrder(order);
+  Future<int> call(Order order) => _ordersRepository.sendOrder(order);
 }

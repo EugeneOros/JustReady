@@ -7,9 +7,8 @@ class MealToMealDtoMapper {
   MealToMealDtoMapper();
 
   MealDto call(Meal meal) => MealDto(
-        id: meal.id,
         name: meal.name,
-        mealNumber: meal.mealNumber,
+        number: meal.number,
         price: meal.price,
       );
 }

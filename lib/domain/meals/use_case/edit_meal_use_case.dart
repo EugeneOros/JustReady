@@ -8,5 +8,5 @@ class EditMealUseCase {
 
   const EditMealUseCase(this._mealsRepository);
 
-  Future<void> call(Meal meal) => _mealsRepository.editMeal(meal);
+  Future<void> call(Meal meal, int oldMealNumber) => _mealsRepository.editMeal(meal, oldMealNumber);
 }

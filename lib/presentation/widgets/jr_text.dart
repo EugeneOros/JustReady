@@ -7,7 +7,7 @@ class JrText extends StatelessWidget {
   final Color? color;
   final Color? decorationColor;
   final TextAlign? textAlign;
-  final TextOverflow? overflow;
+  final TextOverflow overflow;
   final int maxLines;
 
   const JrText(
@@ -17,8 +17,8 @@ class JrText extends StatelessWidget {
     this.color,
     this.decorationColor,
     this.textAlign = TextAlign.left,
-    this.overflow,
-     this.maxLines = 3,
+    this.overflow = TextOverflow.ellipsis,
+    this.maxLines = 3,
   });
 
   @override

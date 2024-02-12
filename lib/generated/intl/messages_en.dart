@@ -46,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "newMeal": MessageLookupByLibrary.simpleMessage("New meal"),
         "notes": MessageLookupByLibrary.simpleMessage("Notes"),
         "nothingHire": MessageLookupByLibrary.simpleMessage("Nothing hire"),
+        "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "orderDetails": MessageLookupByLibrary.simpleMessage("Order details"),
         "orderNow": MessageLookupByLibrary.simpleMessage("Order now"),
         "orderSum": m0,
@@ -58,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Show order details"),
         "timeToAddSomethingTasty":
             MessageLookupByLibrary.simpleMessage("Time to add something tasty"),
-        "yourOrder": MessageLookupByLibrary.simpleMessage("Your order")
+        "yourOrder": MessageLookupByLibrary.simpleMessage("Your order"),
+        "yourOrderNumber": MessageLookupByLibrary.simpleMessage("Your number")
       };
 }

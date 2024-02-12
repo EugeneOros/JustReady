@@ -24,7 +24,7 @@ class AppTypography {
   /// Body
   static const body1 = TextStyle(
     fontSize: 16,
-    height: 1,
+    height: 1.3,
   );
   static const body2 = TextStyle(
     fontSize: 14,

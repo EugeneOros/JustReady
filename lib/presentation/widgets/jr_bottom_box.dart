@@ -25,7 +25,7 @@ class JrBottomBox extends StatelessWidget {
           filter: ImageFilter.blur(sigmaY: 8, sigmaX: 8),
           child: Container(
             width: double.infinity,
-            padding: const EdgeInsets.symmetric(horizontal: Dimens.xl, vertical: Dimens.s),
+            padding: const EdgeInsets.fromLTRB( Dimens.xl, Dimens.s, Dimens.xl, Dimens.m),
             decoration: BoxDecoration(
               border: Border(
                 top: BorderSide(

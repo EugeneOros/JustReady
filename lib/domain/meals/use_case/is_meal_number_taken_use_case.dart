@@ -6,6 +6,6 @@ class IsMealNumberTakenUseCase {
   const IsMealNumberTakenUseCase();
 
   bool call(List<Meal> meals, int number) {
-    return meals.any((meal) => meal.mealNumber == number);
+    return meals.any((meal) => meal.number == number);
   }
 }

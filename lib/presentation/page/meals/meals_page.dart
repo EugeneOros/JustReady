@@ -43,8 +43,8 @@ class MealsPage extends HookWidget {
           onCreateEditMeal: cubit.createEditMeal,
           onDeleteMeal: cubit.deleteMeal,
           getFreeMealNumber: cubit.getFreeMealNumber,
-          onMealAdded: (meal) {
-            cubit.createEditMeal(meal);
+          onMealAdded: (meal, number) {
+            cubit.createEditMeal(meal, number);
             showAddMeal.value = false;
           },
           showAddMeal: showAddMeal.value,

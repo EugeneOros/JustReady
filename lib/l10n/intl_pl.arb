@@ -30,6 +30,9 @@
   "timeToAddSomethingTasty": "Czas dodać coś smacznego",
   "additionalInstructions": "Dodatkowe instrukcje",
   "additionalInstructionsExample": "N.p.: Bez kurczaka",
+
+  "yourOrderNumber": "Twój numer",
+  "ok": "Ok",
   
   "orderNow": "Zamów teraz",
   "scelectMeal": "Wybierz dania"

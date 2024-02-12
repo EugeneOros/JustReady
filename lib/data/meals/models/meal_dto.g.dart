@@ -6,16 +6,14 @@ part of 'meal_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-MealDto _$MealDtoFromJson(Map<String, dynamic> json) => MealDto(
-      id: json['id'] as String,
+MealDto _$MealDtoFromJson(Map json) => MealDto(
       name: json['name'] as String,
-      mealNumber: json['mealNumber'] as int,
+      number: json['number'] as int,
       price: (json['price'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$MealDtoToJson(MealDto instance) => <String, dynamic>{
-      'id': instance.id,
       'name': instance.name,
-      'mealNumber': instance.mealNumber,
+      'number': instance.number,
       'price': instance.price,
     };

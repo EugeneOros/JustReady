@@ -7,5 +7,5 @@ class DeleteMealUseCase {
 
   const DeleteMealUseCase(this._mealsRepository);
 
-  Future<void> call(String mealId) => _mealsRepository.deleteMeal(mealId);
+  Future<void> call(int mealNumber) => _mealsRepository.deleteMeal(mealNumber);
 }

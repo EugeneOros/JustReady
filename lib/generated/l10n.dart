@@ -300,6 +300,26 @@ class Strings {
     );
   }
 
+  /// `Your number`
+  String get yourOrderNumber {
+    return Intl.message(
+      'Your number',
+      name: 'yourOrderNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ok`
+  String get ok {
+    return Intl.message(
+      'Ok',
+      name: 'ok',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Order now`
   String get orderNow {
     return Intl.message(

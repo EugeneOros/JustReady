@@ -1,3 +1,4 @@
+//Todo delete if not needed
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:just_ready/domain/meals/models/meal.dart';
@@ -70,17 +71,6 @@ class SelctedMealCard extends HookWidget {
                     ),
                   ],
                 ),
-                // child: JrTitleRow(
-                //   title: meal.name,
-                //   style: context.typography.header3,
-                //   titleAlign: TextAlign.center,
-                //   expandedTitle: true,
-                //   child: JrNumberEditField(
-                //     form: form,
-                //     formControlName: SelectMealFormControlName.count,
-                //     initialValue: initMealCountValue,
-                //   ),
-                // ),
               ),
               Positioned(
                 right: 0,

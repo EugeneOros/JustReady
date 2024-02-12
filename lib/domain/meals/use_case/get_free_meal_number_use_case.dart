@@ -7,7 +7,7 @@ class GetFreeMealNumberUseCase {
 
   int? call(List<Meal> meals) {
     for (int number = 1; number < 100; number++) {
-      if (!meals.any((meal) => meal.mealNumber == number)) return number;
+      if (!meals.any((meal) => meal.number == number)) return number;
     }
     return null;
   }

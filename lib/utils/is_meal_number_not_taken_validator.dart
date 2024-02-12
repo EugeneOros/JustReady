@@ -17,7 +17,7 @@ class IsMealNumberNotTakenValidator<T> extends Validator<int> {
 
   @override
   Map<String, dynamic>? validate(AbstractControl<int> control) =>
-      control.value != mealNumber && meals.any((meal) => meal.mealNumber == control.value)
+      control.value != mealNumber && meals.any((meal) => meal.number == control.value)
           ? <String, dynamic>{
               validationMessage: <String, dynamic>{
                 requiredValidationMessageKey: null,

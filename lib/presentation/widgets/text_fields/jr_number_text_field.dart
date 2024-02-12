@@ -64,7 +64,7 @@ class JrNumberTextField extends HookWidget {
       ),
       decoration: InputDecoration(
         filled: true,
-        fillColor: context.colors.background,
+        fillColor: context.colors.transparent,
         labelText: '',
         labelStyle: context.typography.input,
         alignLabelWithHint: true,

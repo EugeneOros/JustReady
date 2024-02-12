@@ -8,11 +8,11 @@ import 'package:just_ready/styles/dimens.dart';
 
 class MealsLoadedBody extends HookWidget {
   final List<Meal> meals;
-  final Function(Meal) onCreateEditMeal;
-  final Function(String)? onDeleteMeal;
+  final Function(Meal, int) onCreateEditMeal;
+  final Function(int)? onDeleteMeal;
   final int? Function() getFreeMealNumber;
   final bool showAddMeal;
-  final Function(Meal) onMealAdded;
+  final Function(Meal, int) onMealAdded;
   final Function() hideAddMealCard;
 
   const MealsLoadedBody({

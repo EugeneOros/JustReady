@@ -17,15 +17,14 @@ class MealDefaultBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Expanded(
           child: Container(
-            alignment: Alignment.center,
-            padding: const EdgeInsets.symmetric(horizontal: Dimens.l),
+            // alignment: Alignment.center,
+            padding: const EdgeInsets.only(left: Dimens.xl, right: Dimens.m),
             child: JrText(
               meal.name,
-              textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
               color: context.colors.dark,
             ),

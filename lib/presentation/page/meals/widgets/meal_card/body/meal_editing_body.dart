@@ -51,7 +51,7 @@ class MealEditingBody extends StatelessWidget {
             child: JrNumberEditField(
               form: form,
               formControlName: MealFormControlName.number,
-              initialValue: meal.mealNumber,
+              initialValue: meal.number,
             ),
           ),
           const SizedBox(height: Dimens.m),

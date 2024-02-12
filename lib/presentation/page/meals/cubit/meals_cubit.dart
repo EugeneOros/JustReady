@@ -35,8 +35,8 @@ class MealsCubit extends Cubit<MealsState> {
     emit(MealsState.loaded(meals));
   }
 
-  Future<void> deleteMeal(String mealId) async {
-    await _deleteMealUseCase(mealId);
+  Future<void> deleteMeal(int mealNumber) async {
+    await _deleteMealUseCase(mealNumber);
     await _emmitLoaded();
   }
 
@@ -48,20 +48,19 @@ class MealsCubit extends Cubit<MealsState> {
     logger.i('adding to meal');
     await _addMealUseCase(
       Meal(
-        id: '1',
         name: 'Croisant',
-        mealNumber: 12,
+        number: 12,
         price: 13.45,
       ),
     );
   }
 
-  Future<void> createEditMeal(meal) async {
+  Future<void> createEditMeal(Meal meal, int number) async {
     emit(const MealsState.idle());
-    if (!meals.any((m) => m.id == meal.id)) {
+    if (!meals.any((m) => m.number == number)) {
       await _addMealUseCase(meal);
     } else {
-      await _editMealUseCase(meal);
+      await _editMealUseCase(meal, number);
     }
 
     await _emmitLoaded();

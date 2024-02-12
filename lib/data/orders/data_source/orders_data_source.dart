@@ -9,11 +9,10 @@ class OrdersDataSource {
 
   OrdersDataSource(this.firestore);
 
-  Future<String> addOrder(OrderDto order) async {
+  Future<int?> sendOrder(OrderDto dto) async {
     final CollectionReference collection = firestore.collection(DatabaseCollections.orders);
-    final DocumentReference documentReference = await collection.add(order.toJson());
-    await collection.doc(documentReference.id).update({'id': documentReference.id});
-    return documentReference.id;
+    await collection.doc(dto.number.toString()).set(dto.toJson());
+    return dto.number;
   }
 
   Future<void> editOrder(OrderDto order, String eventId) async {
@@ -21,32 +20,30 @@ class OrdersDataSource {
     await collection.doc(eventId).set(order.toJson());
   }
 
-  Future<void> deleteOrder(String eventId) async {
+  Future<void> deleteOrder(String orderId) async {
     final CollectionReference collection = firestore.collection(DatabaseCollections.orders);
-    final documentReference = collection.doc(eventId);
+    final documentReference = collection.doc(orderId);
 
-    await _deleteSubCollection(documentReference, DatabaseCollections.orders);
+    // await _deleteSubCollection(documentReference, DatabaseCollections.orders);
 
     await documentReference.delete();
   }
 
-  Future<void> _deleteSubCollection(
-    DocumentReference<Object?> documentReference,
-    String collectionName,
-  ) async =>
-      documentReference.collection(collectionName).get().then(
-            (collection) => collection.docs.forEach(
-              (collectionDocument) => documentReference.collection(collectionName).doc(collectionDocument.id).delete(),
-            ),
-          );
+  // Future<void> _deleteSubCollection(
+  //   DocumentReference<Object?> documentReference,
+  //   String collectionName,
+  // ) async =>
+  //     documentReference.collection(collectionName).get().then(
+  //           (collection) => collection.docs.forEach(
+  //             (collectionDocument) => documentReference.collection(collectionName).doc(collectionDocument.id).delete(),
+  //           ),
+  //         );
 
   Future<List<OrderDto>> getOrders() async {
-    QuerySnapshot<Map<String, dynamic>> snapshot =
-        await firestore.collection(DatabaseCollections.orders).orderBy('importDate', descending: true).get();
+    QuerySnapshot<Map<String, dynamic>> snapshot = await firestore.collection(DatabaseCollections.orders).get();
 
     return snapshot.docs.map((docSnapshot) {
       Map<String, dynamic> data = docSnapshot.data();
-      data['id'] = docSnapshot.id;
       return OrderDto.fromJson(data);
     }).toList();
   }

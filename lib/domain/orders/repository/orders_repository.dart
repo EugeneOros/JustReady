@@ -3,7 +3,7 @@ import 'package:just_ready/domain/orders/models/order.dart';
 import 'package:just_ready/domain/orders/models/order_meal.dart';
 
 abstract class OrdersRepository {
-  Future<void> addOrder(Order order);
+  Future<int> sendOrder(Order order);
 
   Future<void> delete(Order order);
 
@@ -18,4 +18,6 @@ abstract class OrdersRepository {
   void addNoteCurrentOrder(String note);
 
   void deleteCurrentOrderMeal(OrderMeal meal);
+
+  void clearCurrentOrder();
 }

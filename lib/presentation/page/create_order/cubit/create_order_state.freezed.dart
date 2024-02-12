@@ -21,6 +21,7 @@ mixin _$CreateOrderState {
     required TResult Function(Order order) loaded,
     required TResult Function() loadedEmpty,
     required TResult Function() loading,
+    required TResult Function(int orderNumber) showOrderSuccesfullyAddedDialog,
     required TResult Function(Object error) error,
     required TResult Function() idle,
   }) =>
@@ -30,6 +31,7 @@ mixin _$CreateOrderState {
     TResult? Function(Order order)? loaded,
     TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
+    TResult? Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
   }) =>
@@ -39,6 +41,7 @@ mixin _$CreateOrderState {
     TResult Function(Order order)? loaded,
     TResult Function()? loadedEmpty,
     TResult Function()? loading,
+    TResult Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
     TResult Function(Object error)? error,
     TResult Function()? idle,
     required TResult orElse(),
@@ -49,6 +52,8 @@ mixin _$CreateOrderState {
     required TResult Function(Loaded value) loaded,
     required TResult Function(LoadedEmpty value) loadedEmpty,
     required TResult Function(Loading value) loading,
+    required TResult Function(ShowOrderSuccesfullyAddedDialog value)
+        showOrderSuccesfullyAddedDialog,
     required TResult Function(Error value) error,
     required TResult Function(Idle value) idle,
   }) =>
@@ -58,6 +63,8 @@ mixin _$CreateOrderState {
     TResult? Function(Loaded value)? loaded,
     TResult? Function(LoadedEmpty value)? loadedEmpty,
     TResult? Function(Loading value)? loading,
+    TResult? Function(ShowOrderSuccesfullyAddedDialog value)?
+        showOrderSuccesfullyAddedDialog,
     TResult? Function(Error value)? error,
     TResult? Function(Idle value)? idle,
   }) =>
@@ -67,6 +74,8 @@ mixin _$CreateOrderState {
     TResult Function(Loaded value)? loaded,
     TResult Function(LoadedEmpty value)? loadedEmpty,
     TResult Function(Loading value)? loading,
+    TResult Function(ShowOrderSuccesfullyAddedDialog value)?
+        showOrderSuccesfullyAddedDialog,
     TResult Function(Error value)? error,
     TResult Function(Idle value)? idle,
     required TResult orElse(),
@@ -159,6 +168,7 @@ class _$LoadedImpl implements Loaded {
     required TResult Function(Order order) loaded,
     required TResult Function() loadedEmpty,
     required TResult Function() loading,
+    required TResult Function(int orderNumber) showOrderSuccesfullyAddedDialog,
     required TResult Function(Object error) error,
     required TResult Function() idle,
   }) {
@@ -171,6 +181,7 @@ class _$LoadedImpl implements Loaded {
     TResult? Function(Order order)? loaded,
     TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
+    TResult? Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
   }) {
@@ -183,6 +194,7 @@ class _$LoadedImpl implements Loaded {
     TResult Function(Order order)? loaded,
     TResult Function()? loadedEmpty,
     TResult Function()? loading,
+    TResult Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
     TResult Function(Object error)? error,
     TResult Function()? idle,
     required TResult orElse(),
@@ -199,6 +211,8 @@ class _$LoadedImpl implements Loaded {
     required TResult Function(Loaded value) loaded,
     required TResult Function(LoadedEmpty value) loadedEmpty,
     required TResult Function(Loading value) loading,
+    required TResult Function(ShowOrderSuccesfullyAddedDialog value)
+        showOrderSuccesfullyAddedDialog,
     required TResult Function(Error value) error,
     required TResult Function(Idle value) idle,
   }) {
@@ -211,6 +225,8 @@ class _$LoadedImpl implements Loaded {
     TResult? Function(Loaded value)? loaded,
     TResult? Function(LoadedEmpty value)? loadedEmpty,
     TResult? Function(Loading value)? loading,
+    TResult? Function(ShowOrderSuccesfullyAddedDialog value)?
+        showOrderSuccesfullyAddedDialog,
     TResult? Function(Error value)? error,
     TResult? Function(Idle value)? idle,
   }) {
@@ -223,6 +239,8 @@ class _$LoadedImpl implements Loaded {
     TResult Function(Loaded value)? loaded,
     TResult Function(LoadedEmpty value)? loadedEmpty,
     TResult Function(Loading value)? loading,
+    TResult Function(ShowOrderSuccesfullyAddedDialog value)?
+        showOrderSuccesfullyAddedDialog,
     TResult Function(Error value)? error,
     TResult Function(Idle value)? idle,
     required TResult orElse(),
@@ -284,6 +302,7 @@ class _$LoadedEmptyImpl implements LoadedEmpty {
     required TResult Function(Order order) loaded,
     required TResult Function() loadedEmpty,
     required TResult Function() loading,
+    required TResult Function(int orderNumber) showOrderSuccesfullyAddedDialog,
     required TResult Function(Object error) error,
     required TResult Function() idle,
   }) {
@@ -296,6 +315,7 @@ class _$LoadedEmptyImpl implements LoadedEmpty {
     TResult? Function(Order order)? loaded,
     TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
+    TResult? Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
   }) {
@@ -308,6 +328,7 @@ class _$LoadedEmptyImpl implements LoadedEmpty {
     TResult Function(Order order)? loaded,
     TResult Function()? loadedEmpty,
     TResult Function()? loading,
+    TResult Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
     TResult Function(Object error)? error,
     TResult Function()? idle,
     required TResult orElse(),
@@ -324,6 +345,8 @@ class _$LoadedEmptyImpl implements LoadedEmpty {
     required TResult Function(Loaded value) loaded,
     required TResult Function(LoadedEmpty value) loadedEmpty,
     required TResult Function(Loading value) loading,
+    required TResult Function(ShowOrderSuccesfullyAddedDialog value)
+        showOrderSuccesfullyAddedDialog,
     required TResult Function(Error value) error,
     required TResult Function(Idle value) idle,
   }) {
@@ -336,6 +359,8 @@ class _$LoadedEmptyImpl implements LoadedEmpty {
     TResult? Function(Loaded value)? loaded,
     TResult? Function(LoadedEmpty value)? loadedEmpty,
     TResult? Function(Loading value)? loading,
+    TResult? Function(ShowOrderSuccesfullyAddedDialog value)?
+        showOrderSuccesfullyAddedDialog,
     TResult? Function(Error value)? error,
     TResult? Function(Idle value)? idle,
   }) {
@@ -348,6 +373,8 @@ class _$LoadedEmptyImpl implements LoadedEmpty {
     TResult Function(Loaded value)? loaded,
     TResult Function(LoadedEmpty value)? loadedEmpty,
     TResult Function(Loading value)? loading,
+    TResult Function(ShowOrderSuccesfullyAddedDialog value)?
+        showOrderSuccesfullyAddedDialog,
     TResult Function(Error value)? error,
     TResult Function(Idle value)? idle,
     required TResult orElse(),
@@ -404,6 +431,7 @@ class _$LoadingImpl implements Loading {
     required TResult Function(Order order) loaded,
     required TResult Function() loadedEmpty,
     required TResult Function() loading,
+    required TResult Function(int orderNumber) showOrderSuccesfullyAddedDialog,
     required TResult Function(Object error) error,
     required TResult Function() idle,
   }) {
@@ -416,6 +444,7 @@ class _$LoadingImpl implements Loading {
     TResult? Function(Order order)? loaded,
     TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
+    TResult? Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
   }) {
@@ -428,6 +457,7 @@ class _$LoadingImpl implements Loading {
     TResult Function(Order order)? loaded,
     TResult Function()? loadedEmpty,
     TResult Function()? loading,
+    TResult Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
     TResult Function(Object error)? error,
     TResult Function()? idle,
     required TResult orElse(),
@@ -444,6 +474,8 @@ class _$LoadingImpl implements Loading {
     required TResult Function(Loaded value) loaded,
     required TResult Function(LoadedEmpty value) loadedEmpty,
     required TResult Function(Loading value) loading,
+    required TResult Function(ShowOrderSuccesfullyAddedDialog value)
+        showOrderSuccesfullyAddedDialog,
     required TResult Function(Error value) error,
     required TResult Function(Idle value) idle,
   }) {
@@ -456,6 +488,8 @@ class _$LoadingImpl implements Loading {
     TResult? Function(Loaded value)? loaded,
     TResult? Function(LoadedEmpty value)? loadedEmpty,
     TResult? Function(Loading value)? loading,
+    TResult? Function(ShowOrderSuccesfullyAddedDialog value)?
+        showOrderSuccesfullyAddedDialog,
     TResult? Function(Error value)? error,
     TResult? Function(Idle value)? idle,
   }) {
@@ -468,6 +502,8 @@ class _$LoadingImpl implements Loading {
     TResult Function(Loaded value)? loaded,
     TResult Function(LoadedEmpty value)? loadedEmpty,
     TResult Function(Loading value)? loading,
+    TResult Function(ShowOrderSuccesfullyAddedDialog value)?
+        showOrderSuccesfullyAddedDialog,
     TResult Function(Error value)? error,
     TResult Function(Idle value)? idle,
     required TResult orElse(),
@@ -481,6 +517,175 @@ class _$LoadingImpl implements Loading {
 
 abstract class Loading implements CreateOrderState {
   const factory Loading() = _$LoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$ShowOrderSuccesfullyAddedDialogImplCopyWith<$Res> {
+  factory _$$ShowOrderSuccesfullyAddedDialogImplCopyWith(
+          _$ShowOrderSuccesfullyAddedDialogImpl value,
+          $Res Function(_$ShowOrderSuccesfullyAddedDialogImpl) then) =
+      __$$ShowOrderSuccesfullyAddedDialogImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int orderNumber});
+}
+
+/// @nodoc
+class __$$ShowOrderSuccesfullyAddedDialogImplCopyWithImpl<$Res>
+    extends _$CreateOrderStateCopyWithImpl<$Res,
+        _$ShowOrderSuccesfullyAddedDialogImpl>
+    implements _$$ShowOrderSuccesfullyAddedDialogImplCopyWith<$Res> {
+  __$$ShowOrderSuccesfullyAddedDialogImplCopyWithImpl(
+      _$ShowOrderSuccesfullyAddedDialogImpl _value,
+      $Res Function(_$ShowOrderSuccesfullyAddedDialogImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderNumber = null,
+  }) {
+    return _then(_$ShowOrderSuccesfullyAddedDialogImpl(
+      null == orderNumber
+          ? _value.orderNumber
+          : orderNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ShowOrderSuccesfullyAddedDialogImpl
+    implements ShowOrderSuccesfullyAddedDialog {
+  const _$ShowOrderSuccesfullyAddedDialogImpl(this.orderNumber);
+
+  @override
+  final int orderNumber;
+
+  @override
+  String toString() {
+    return 'CreateOrderState.showOrderSuccesfullyAddedDialog(orderNumber: $orderNumber)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ShowOrderSuccesfullyAddedDialogImpl &&
+            (identical(other.orderNumber, orderNumber) ||
+                other.orderNumber == orderNumber));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, orderNumber);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ShowOrderSuccesfullyAddedDialogImplCopyWith<
+          _$ShowOrderSuccesfullyAddedDialogImpl>
+      get copyWith => __$$ShowOrderSuccesfullyAddedDialogImplCopyWithImpl<
+          _$ShowOrderSuccesfullyAddedDialogImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Order order) loaded,
+    required TResult Function() loadedEmpty,
+    required TResult Function() loading,
+    required TResult Function(int orderNumber) showOrderSuccesfullyAddedDialog,
+    required TResult Function(Object error) error,
+    required TResult Function() idle,
+  }) {
+    return showOrderSuccesfullyAddedDialog(orderNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Order order)? loaded,
+    TResult? Function()? loadedEmpty,
+    TResult? Function()? loading,
+    TResult? Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
+    TResult? Function(Object error)? error,
+    TResult? Function()? idle,
+  }) {
+    return showOrderSuccesfullyAddedDialog?.call(orderNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Order order)? loaded,
+    TResult Function()? loadedEmpty,
+    TResult Function()? loading,
+    TResult Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
+    TResult Function(Object error)? error,
+    TResult Function()? idle,
+    required TResult orElse(),
+  }) {
+    if (showOrderSuccesfullyAddedDialog != null) {
+      return showOrderSuccesfullyAddedDialog(orderNumber);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(LoadedEmpty value) loadedEmpty,
+    required TResult Function(Loading value) loading,
+    required TResult Function(ShowOrderSuccesfullyAddedDialog value)
+        showOrderSuccesfullyAddedDialog,
+    required TResult Function(Error value) error,
+    required TResult Function(Idle value) idle,
+  }) {
+    return showOrderSuccesfullyAddedDialog(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(LoadedEmpty value)? loadedEmpty,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(ShowOrderSuccesfullyAddedDialog value)?
+        showOrderSuccesfullyAddedDialog,
+    TResult? Function(Error value)? error,
+    TResult? Function(Idle value)? idle,
+  }) {
+    return showOrderSuccesfullyAddedDialog?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Loaded value)? loaded,
+    TResult Function(LoadedEmpty value)? loadedEmpty,
+    TResult Function(Loading value)? loading,
+    TResult Function(ShowOrderSuccesfullyAddedDialog value)?
+        showOrderSuccesfullyAddedDialog,
+    TResult Function(Error value)? error,
+    TResult Function(Idle value)? idle,
+    required TResult orElse(),
+  }) {
+    if (showOrderSuccesfullyAddedDialog != null) {
+      return showOrderSuccesfullyAddedDialog(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ShowOrderSuccesfullyAddedDialog implements CreateOrderState {
+  const factory ShowOrderSuccesfullyAddedDialog(final int orderNumber) =
+      _$ShowOrderSuccesfullyAddedDialogImpl;
+
+  int get orderNumber;
+  @JsonKey(ignore: true)
+  _$$ShowOrderSuccesfullyAddedDialogImplCopyWith<
+          _$ShowOrderSuccesfullyAddedDialogImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -548,6 +753,7 @@ class _$ErrorImpl implements Error {
     required TResult Function(Order order) loaded,
     required TResult Function() loadedEmpty,
     required TResult Function() loading,
+    required TResult Function(int orderNumber) showOrderSuccesfullyAddedDialog,
     required TResult Function(Object error) error,
     required TResult Function() idle,
   }) {
@@ -560,6 +766,7 @@ class _$ErrorImpl implements Error {
     TResult? Function(Order order)? loaded,
     TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
+    TResult? Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
   }) {
@@ -572,6 +779,7 @@ class _$ErrorImpl implements Error {
     TResult Function(Order order)? loaded,
     TResult Function()? loadedEmpty,
     TResult Function()? loading,
+    TResult Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
     TResult Function(Object error)? error,
     TResult Function()? idle,
     required TResult orElse(),
@@ -588,6 +796,8 @@ class _$ErrorImpl implements Error {
     required TResult Function(Loaded value) loaded,
     required TResult Function(LoadedEmpty value) loadedEmpty,
     required TResult Function(Loading value) loading,
+    required TResult Function(ShowOrderSuccesfullyAddedDialog value)
+        showOrderSuccesfullyAddedDialog,
     required TResult Function(Error value) error,
     required TResult Function(Idle value) idle,
   }) {
@@ -600,6 +810,8 @@ class _$ErrorImpl implements Error {
     TResult? Function(Loaded value)? loaded,
     TResult? Function(LoadedEmpty value)? loadedEmpty,
     TResult? Function(Loading value)? loading,
+    TResult? Function(ShowOrderSuccesfullyAddedDialog value)?
+        showOrderSuccesfullyAddedDialog,
     TResult? Function(Error value)? error,
     TResult? Function(Idle value)? idle,
   }) {
@@ -612,6 +824,8 @@ class _$ErrorImpl implements Error {
     TResult Function(Loaded value)? loaded,
     TResult Function(LoadedEmpty value)? loadedEmpty,
     TResult Function(Loading value)? loading,
+    TResult Function(ShowOrderSuccesfullyAddedDialog value)?
+        showOrderSuccesfullyAddedDialog,
     TResult Function(Error value)? error,
     TResult Function(Idle value)? idle,
     required TResult orElse(),
@@ -672,6 +886,7 @@ class _$IdleImpl implements Idle {
     required TResult Function(Order order) loaded,
     required TResult Function() loadedEmpty,
     required TResult Function() loading,
+    required TResult Function(int orderNumber) showOrderSuccesfullyAddedDialog,
     required TResult Function(Object error) error,
     required TResult Function() idle,
   }) {
@@ -684,6 +899,7 @@ class _$IdleImpl implements Idle {
     TResult? Function(Order order)? loaded,
     TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
+    TResult? Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
   }) {
@@ -696,6 +912,7 @@ class _$IdleImpl implements Idle {
     TResult Function(Order order)? loaded,
     TResult Function()? loadedEmpty,
     TResult Function()? loading,
+    TResult Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
     TResult Function(Object error)? error,
     TResult Function()? idle,
     required TResult orElse(),
@@ -712,6 +929,8 @@ class _$IdleImpl implements Idle {
     required TResult Function(Loaded value) loaded,
     required TResult Function(LoadedEmpty value) loadedEmpty,
     required TResult Function(Loading value) loading,
+    required TResult Function(ShowOrderSuccesfullyAddedDialog value)
+        showOrderSuccesfullyAddedDialog,
     required TResult Function(Error value) error,
     required TResult Function(Idle value) idle,
   }) {
@@ -724,6 +943,8 @@ class _$IdleImpl implements Idle {
     TResult? Function(Loaded value)? loaded,
     TResult? Function(LoadedEmpty value)? loadedEmpty,
     TResult? Function(Loading value)? loading,
+    TResult? Function(ShowOrderSuccesfullyAddedDialog value)?
+        showOrderSuccesfullyAddedDialog,
     TResult? Function(Error value)? error,
     TResult? Function(Idle value)? idle,
   }) {
@@ -736,6 +957,8 @@ class _$IdleImpl implements Idle {
     TResult Function(Loaded value)? loaded,
     TResult Function(LoadedEmpty value)? loadedEmpty,
     TResult Function(Loading value)? loading,
+    TResult Function(ShowOrderSuccesfullyAddedDialog value)?
+        showOrderSuccesfullyAddedDialog,
     TResult Function(Error value)? error,
     TResult Function(Idle value)? idle,
     required TResult orElse(),

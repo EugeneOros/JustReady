@@ -1,13 +1,11 @@
 class Meal {
-  final String id;
   final String name;
-  final int mealNumber;
+  final int number;
   final double price;
 
   Meal({
-    required this.id,
     required this.name,
-    required this.mealNumber,
+    required this.number,
     required this.price,
   });
 }

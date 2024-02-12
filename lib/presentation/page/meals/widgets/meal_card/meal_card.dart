@@ -18,9 +18,9 @@ import 'package:reactive_forms/reactive_forms.dart';
 class MealCard extends HookWidget {
   final List<Meal> meals;
   final Meal meal;
-  final Function(Meal) onEdit;
+  final Function(Meal, int) onEdit;
   final Function? onCancel;
-  final Function(String)? onDelete;
+  final Function(int)? onDelete;
   final Function(bool) setIsEditing;
   final bool isEditing;
   final String? actionIcon;
@@ -54,12 +54,12 @@ class MealCard extends HookWidget {
         ],
       ),
       MealFormControlName.number: FormControl<int>(
-        value: meal.mealNumber,
+        value: meal.number,
         validators: [
           Validators.number,
           Validators.min(1),
           Validators.max(100),
-          IsMealNumberNotTakenValidator(meal.mealNumber, meals),
+          IsMealNumberNotTakenValidator(meal.number, meals),
         ],
       ),
     });
@@ -79,7 +79,7 @@ class MealCard extends HookWidget {
                 isAnimated: true,
                 borderRadius: Dimens.ms,
                 height: isEditing ? Dimens.expandedMealCardHeight : Dimens.defaultMealCardHeight,
-                margin: const EdgeInsets.symmetric(horizontal: Dimens.ms, vertical: Dimens.m),
+                margin: const EdgeInsets.symmetric(horizontal: Dimens.xm, vertical: Dimens.xm),
                 child: MealCardBody(
                   isEditing: isEditing,
                   meal: meal,
@@ -95,7 +95,7 @@ class MealCard extends HookWidget {
                   child: isEditing
                       ? const SizedBox.shrink()
                       : NumberCircle(
-                          number: meal.mealNumber,
+                          number: meal.number,
                         ),
                 ),
               ),
@@ -104,6 +104,7 @@ class MealCard extends HookWidget {
                   right: 0,
                   top: 0,
                   child: JrIconButton(
+                    size: Dimens.xl,
                     icon: IconsSvg.edit24,
                     color: context.colors.primary,
                     type: IconButtonType.tertiary,
@@ -142,12 +143,14 @@ class MealCard extends HookWidget {
                             title: Strings.of(context).save,
                             onTap: () async {
                               if (form.valid) {
-                                await onEdit(Meal(
-                                  id: meal.id,
-                                  name: form.controls[MealFormControlName.name]!.value.toString(),
-                                  mealNumber: form.controls[MealFormControlName.number]!.value as int,
-                                  price: form.controls[MealFormControlName.price]!.value as double,
-                                ));
+                                await onEdit(
+                                  Meal(
+                                    name: form.controls[MealFormControlName.name]!.value.toString(),
+                                    number: form.controls[MealFormControlName.number]!.value as int,
+                                    price: form.controls[MealFormControlName.price]!.value as double,
+                                  ),
+                                  meal.number,
+                                );
                                 setIsEditing(false);
                               } else {
                                 form.markAllAsTouched();
@@ -165,7 +168,7 @@ class MealCard extends HookWidget {
                               type: IconButtonType.tertiary,
                               color: context.colors.error,
                               onPressed: () async {
-                                await onDelete!(meal.id);
+                                await onDelete!(meal.number);
                                 setIsEditing(false);
                                 // isEditing.value = !isEditing.value;
                                 form.markAllAsTouched();

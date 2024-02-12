@@ -8,7 +8,7 @@ import 'package:just_ready/utils/ignore_else_state.dart';
 class AddMealCard extends StatelessWidget {
   final List<Meal> meals;
   final bool showAddMeals;
-  final Function(Meal) onAddMeals;
+  final Function(Meal, int) onAddMeals;
   final Function onCancel;
   final int? Function() getFreeMealNumber;
   const AddMealCard({
@@ -33,8 +33,7 @@ class AddMealCard extends StatelessWidget {
               meals: meals,
               meal: Meal(
                 name: '',
-                id: '',
-                mealNumber: number,
+                number: number,
                 price: 0.0,
               ),
               onCancel: onCancel,

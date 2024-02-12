@@ -38,6 +38,7 @@ class JrContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return getContainer(
+      context,
       child: Stack(
         children: [
           Positioned(
@@ -100,8 +101,9 @@ class JrContainer extends StatelessWidget {
     );
   }
 
-  Widget getContainer({required Widget child}) => isAnimated
+  Widget getContainer(BuildContext context, {required Widget child}) => isAnimated
       ? AnimatedContainer(
+          color: context.colors.transparent,
           constraints: constraints,
           duration: const Duration(milliseconds: 150),
           curve: Curves.easeInOut,
@@ -110,6 +112,8 @@ class JrContainer extends StatelessWidget {
           child: child,
         )
       : Container(
+          color: context.colors.transparent,
+          alignment: Alignment.center,
           constraints: constraints,
           height: height,
           width: width,

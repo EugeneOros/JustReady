@@ -48,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "newMeal": MessageLookupByLibrary.simpleMessage("Nowe danie"),
         "notes": MessageLookupByLibrary.simpleMessage("Uwagi"),
         "nothingHire": MessageLookupByLibrary.simpleMessage("Nic tu niema"),
+        "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "orderDetails":
             MessageLookupByLibrary.simpleMessage("Szczegóły zamówienia"),
         "orderNow": MessageLookupByLibrary.simpleMessage("Zamów teraz"),
@@ -61,6 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Pokaż szczegóły zamówienia"),
         "timeToAddSomethingTasty":
             MessageLookupByLibrary.simpleMessage("Czas dodać coś smacznego"),
-        "yourOrder": MessageLookupByLibrary.simpleMessage("Twoje zamówienie")
+        "yourOrder": MessageLookupByLibrary.simpleMessage("Twoje zamówienie"),
+        "yourOrderNumber": MessageLookupByLibrary.simpleMessage("Twój numer")
       };
 }

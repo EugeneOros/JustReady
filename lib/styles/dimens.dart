@@ -58,6 +58,14 @@ class Dimens {
   static const mMaxCardHeight = 115.0;
   static const lMaxCardHeight = 130.0;
 
+  static const sDialogHeight = 200.0;
+  static const mDialogHeight = 400.0;
+  static const lDialogHeight = 600.0;
+
+  static const sDialogWidth = 200.0;
+  static const mDialogWidth = 400.0;
+  static const lDialogWidth = 600.0;
+
   static const sMaxCardButtonWidth = 200.0;
   static const mMaxCardButtonWidth = 400.0;
   static const lMaxCardButtonWidth = 600.0;

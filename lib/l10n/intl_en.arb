@@ -30,6 +30,9 @@
   "additionalInstructions": "Additional instructions",
   "additionalInstructionsExample": "Ex: No chiken",
   
+  "yourOrderNumber": "Your number",
+  "ok": "Ok",
+  
   "orderNow": "Order now",
   "scelectMeal": "Scelect meal"
 

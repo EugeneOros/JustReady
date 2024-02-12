@@ -6,12 +6,19 @@ part of 'order_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-OrderDto _$OrderDtoFromJson(Map<String, dynamic> json) => OrderDto(
-      id: json['id'] as String?,
+OrderDto _$OrderDtoFromJson(Map json) => OrderDto(
       note: json['note'] as String,
+      number: json['number'] as int?,
+      orderMeals: (json['orderMeals'] as List<dynamic>)
+          .map(
+              (e) => OrderMealDto.fromJson(Map<String, dynamic>.from(e as Map)))
+          .toList(),
+      createdDate: FirestoreTimestampMapper.fromJson(json['createdDate']),
     );
 
 Map<String, dynamic> _$OrderDtoToJson(OrderDto instance) => <String, dynamic>{
-      'id': instance.id,
+      'number': instance.number,
       'note': instance.note,
+      'orderMeals': instance.orderMeals.map((e) => e.toJson()).toList(),
+      'createdDate': FirestoreTimestampMapper.toJson(instance.createdDate),
     };

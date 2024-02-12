@@ -15,13 +15,13 @@ class NumberCircle extends StatelessWidget {
     return Container(
       width: Dimens.xxl,
       decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: context.colors.secondary, // Color of the circle
-      ),
+          shape: BoxShape.circle,
+          color: context.colors.background,
+          border: Border.all(color: context.colors.dark, width: Dimens.xxxs)),
       child: Center(
         child: JrText(
           number.toString(),
-          color: context.colors.background,
+          color: context.colors.secondary,
         ),
       ),
     );

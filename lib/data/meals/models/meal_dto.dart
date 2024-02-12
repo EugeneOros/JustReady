@@ -4,15 +4,13 @@ part 'meal_dto.g.dart';
 
 @JsonSerializable()
 class MealDto {
-  final String id;
   final String name;
-  final int mealNumber;
+  final int number;
   final double price;
 
   const MealDto({
-    required this.id,
     required this.name,
-    required this.mealNumber,
+    required this.number,
     required this.price,
   });
 

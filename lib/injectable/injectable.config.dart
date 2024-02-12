@@ -17,40 +17,43 @@ import '../data/meals/data_source/meal_data_source.dart' as _i11;
 import '../data/meals/mapper/meal_dto_to_meal_mapper.dart' as _i9;
 import '../data/meals/mapper/meal_to_meal_dto_mapper.dart' as _i10;
 import '../data/meals/repository/meals_repository_impl.dart' as _i13;
-import '../data/orders/data_source/orders_data_source.dart' as _i18;
-import '../data/orders/mapper/order_dto_to_order_mapper.dart' as _i15;
-import '../data/orders/mapper/order_to_order_dto_mapper.dart' as _i16;
-import '../data/orders/repository/order_repository_impl.dart' as _i20;
+import '../data/orders/data_source/orders_data_source.dart' as _i19;
+import '../data/orders/mapper/order_dto_to_order_mapper.dart' as _i35;
+import '../data/orders/mapper/order_meal_dto_to_order_meal_mapper.dart' as _i15;
+import '../data/orders/mapper/order_meal_to_order_meal_dto_mapper.dart' as _i16;
+import '../data/orders/mapper/order_to_order_dto_mapper.dart' as _i17;
+import '../data/orders/repository/order_repository_impl.dart' as _i21;
 import '../domain/main_stream/service/main_stream_service.dart' as _i7;
 import '../domain/main_stream/usecase/notify_main_stream_use_case.dart' as _i14;
 import '../domain/main_stream/usecase/subscribe_main_stream_use_case.dart'
-    as _i21;
-import '../domain/meals/meals_repository.dart' as _i12;
-import '../domain/meals/use_case/add_meal_use_case.dart' as _i23;
-import '../domain/meals/use_case/delete_meal_use_case.dart' as _i27;
-import '../domain/meals/use_case/edit_meal_use_case.dart' as _i29;
-import '../domain/meals/use_case/get_free_meal_number_use_case.dart' as _i4;
-import '../domain/meals/use_case/get_meals_use_case.dart' as _i31;
-import '../domain/meals/use_case/is_meal_number_taken_use_case.dart' as _i6;
-import '../domain/orders/repository/orders_repository.dart' as _i19;
-import '../domain/orders/use_case/add_maal_to_current_order_use_case.dart'
     as _i22;
+import '../domain/meals/meals_repository.dart' as _i12;
+import '../domain/meals/use_case/add_meal_use_case.dart' as _i24;
+import '../domain/meals/use_case/delete_meal_use_case.dart' as _i29;
+import '../domain/meals/use_case/edit_meal_use_case.dart' as _i31;
+import '../domain/meals/use_case/get_free_meal_number_use_case.dart' as _i4;
+import '../domain/meals/use_case/get_meals_use_case.dart' as _i33;
+import '../domain/meals/use_case/is_meal_number_taken_use_case.dart' as _i6;
+import '../domain/orders/repository/orders_repository.dart' as _i20;
+import '../domain/orders/use_case/add_maal_to_current_order_use_case.dart'
+    as _i23;
 import '../domain/orders/use_case/add_note_to_current_order_use_case.dart'
-    as _i24;
-import '../domain/orders/use_case/add_order_use_case.dart' as _i25;
+    as _i25;
+import '../domain/orders/use_case/add_order_use_case.dart' as _i26;
+import '../domain/orders/use_case/clear_current_order.dart' as _i27;
 import '../domain/orders/use_case/delete_current_order_meal_use_case.dart'
-    as _i26;
-import '../domain/orders/use_case/edit_current_order_meal_count_use_case.dart'
     as _i28;
-import '../domain/orders/use_case/get_current_order_use_case.dart' as _i30;
+import '../domain/orders/use_case/edit_current_order_meal_count_use_case.dart'
+    as _i30;
+import '../domain/orders/use_case/get_current_order_use_case.dart' as _i32;
 import '../presentation/page/create_order/cubit/create_order_cubit.dart'
-    as _i34;
+    as _i37;
 import '../presentation/page/home/cubit/home_cubit.dart' as _i5;
-import '../presentation/page/meals/cubit/meals_cubit.dart' as _i32;
-import '../presentation/page/orders/cubit/orders_cubit.dart' as _i17;
+import '../presentation/page/meals/cubit/meals_cubit.dart' as _i34;
+import '../presentation/page/orders/cubit/orders_cubit.dart' as _i18;
 import '../presentation/page/select_meals/cubit/select_meals_cubit.dart'
-    as _i33;
-import 'firestore_injectable.dart' as _i35;
+    as _i36;
+import 'firestore_injectable.dart' as _i38;
 
 const String _dev = 'dev';
 const String _prod = 'prod';
@@ -93,58 +96,68 @@ _i1.GetIt $initGetIt(
       ));
   gh.factory<_i14.NotifyMainStreamUseCase>(
       () => _i14.NotifyMainStreamUseCase(gh<_i7.MainStreamService>()));
-  gh.factory<_i15.OrderDtoToOrderMapper>(() => _i15.OrderDtoToOrderMapper());
-  gh.factory<_i16.OrderToOrderDtoMapper>(() => _i16.OrderToOrderDtoMapper());
-  gh.factory<_i17.OrdersCubit>(() => _i17.OrdersCubit());
-  gh.factory<_i18.OrdersDataSource>(
-      () => _i18.OrdersDataSource(gh<_i3.FirebaseFirestore>()));
-  gh.lazySingleton<_i19.OrdersRepository>(() => _i20.OrdersRepositoryImpl(
-        gh<_i18.OrdersDataSource>(),
-        gh<_i16.OrderToOrderDtoMapper>(),
+  gh.factory<_i15.OrderMealDtoToOrderMealMapper>(
+      () => _i15.OrderMealDtoToOrderMealMapper(gh<_i9.MealDtoToMealMapper>()));
+  gh.factory<_i16.OrderMealToOrderMealDtoMapper>(
+      () => _i16.OrderMealToOrderMealDtoMapper(gh<_i10.MealToMealDtoMapper>()));
+  gh.factory<_i17.OrderToOrderDtoMapper>(() =>
+      _i17.OrderToOrderDtoMapper(gh<_i16.OrderMealToOrderMealDtoMapper>()));
+  gh.factory<_i18.OrdersCubit>(() => _i18.OrdersCubit());
+  gh.factory<_i19.OrdersDataSource>(
+      () => _i19.OrdersDataSource(gh<_i3.FirebaseFirestore>()));
+  gh.lazySingleton<_i20.OrdersRepository>(() => _i21.OrdersRepositoryImpl(
+        gh<_i19.OrdersDataSource>(),
+        gh<_i17.OrderToOrderDtoMapper>(),
         gh<_i7.MainStreamService>(),
       ));
-  gh.factory<_i21.SubscribeMainStreamUseCase>(
-      () => _i21.SubscribeMainStreamUseCase(gh<_i7.MainStreamService>()));
-  gh.factory<_i22.AddMealToCurrentOrderUseCase>(
-      () => _i22.AddMealToCurrentOrderUseCase(gh<_i19.OrdersRepository>()));
-  gh.factory<_i23.AddMealUseCase>(
-      () => _i23.AddMealUseCase(gh<_i12.MealsRepository>()));
-  gh.factory<_i24.AddNoteToCurrentOrderUseCase>(
-      () => _i24.AddNoteToCurrentOrderUseCase(gh<_i19.OrdersRepository>()));
-  gh.factory<_i25.AddOrderUseCase>(
-      () => _i25.AddOrderUseCase(gh<_i19.OrdersRepository>()));
-  gh.factory<_i26.DeleteCurrentOrderMealUseCase>(
-      () => _i26.DeleteCurrentOrderMealUseCase(gh<_i19.OrdersRepository>()));
-  gh.factory<_i27.DeleteMealUseCase>(
-      () => _i27.DeleteMealUseCase(gh<_i12.MealsRepository>()));
-  gh.factory<_i28.EditCurrentOrderMealCountUseCase>(
-      () => _i28.EditCurrentOrderMealCountUseCase(gh<_i19.OrdersRepository>()));
-  gh.factory<_i29.EditMealUseCase>(
-      () => _i29.EditMealUseCase(gh<_i12.MealsRepository>()));
-  gh.factory<_i30.GetCurrentOrderUseCase>(
-      () => _i30.GetCurrentOrderUseCase(gh<_i19.OrdersRepository>()));
-  gh.factory<_i31.GetMealsUseCase>(
-      () => _i31.GetMealsUseCase(gh<_i12.MealsRepository>()));
-  gh.factory<_i32.MealsCubit>(() => _i32.MealsCubit(
-        gh<_i23.AddMealUseCase>(),
-        gh<_i29.EditMealUseCase>(),
-        gh<_i31.GetMealsUseCase>(),
-        gh<_i27.DeleteMealUseCase>(),
+  gh.factory<_i22.SubscribeMainStreamUseCase>(
+      () => _i22.SubscribeMainStreamUseCase(gh<_i7.MainStreamService>()));
+  gh.factory<_i23.AddMealToCurrentOrderUseCase>(
+      () => _i23.AddMealToCurrentOrderUseCase(gh<_i20.OrdersRepository>()));
+  gh.factory<_i24.AddMealUseCase>(
+      () => _i24.AddMealUseCase(gh<_i12.MealsRepository>()));
+  gh.factory<_i25.AddNoteToCurrentOrderUseCase>(
+      () => _i25.AddNoteToCurrentOrderUseCase(gh<_i20.OrdersRepository>()));
+  gh.factory<_i26.AddOrderUseCase>(
+      () => _i26.AddOrderUseCase(gh<_i20.OrdersRepository>()));
+  gh.factory<_i27.ClearCurrentOrderUseCase>(
+      () => _i27.ClearCurrentOrderUseCase(gh<_i20.OrdersRepository>()));
+  gh.factory<_i28.DeleteCurrentOrderMealUseCase>(
+      () => _i28.DeleteCurrentOrderMealUseCase(gh<_i20.OrdersRepository>()));
+  gh.factory<_i29.DeleteMealUseCase>(
+      () => _i29.DeleteMealUseCase(gh<_i12.MealsRepository>()));
+  gh.factory<_i30.EditCurrentOrderMealCountUseCase>(
+      () => _i30.EditCurrentOrderMealCountUseCase(gh<_i20.OrdersRepository>()));
+  gh.factory<_i31.EditMealUseCase>(
+      () => _i31.EditMealUseCase(gh<_i12.MealsRepository>()));
+  gh.factory<_i32.GetCurrentOrderUseCase>(
+      () => _i32.GetCurrentOrderUseCase(gh<_i20.OrdersRepository>()));
+  gh.factory<_i33.GetMealsUseCase>(
+      () => _i33.GetMealsUseCase(gh<_i12.MealsRepository>()));
+  gh.factory<_i34.MealsCubit>(() => _i34.MealsCubit(
+        gh<_i24.AddMealUseCase>(),
+        gh<_i31.EditMealUseCase>(),
+        gh<_i33.GetMealsUseCase>(),
+        gh<_i29.DeleteMealUseCase>(),
         gh<_i4.GetFreeMealNumberUseCase>(),
         gh<_i6.IsMealNumberTakenUseCase>(),
       ));
-  gh.factory<_i33.SelectMealsCubit>(() => _i33.SelectMealsCubit(
-        gh<_i31.GetMealsUseCase>(),
-        gh<_i22.AddMealToCurrentOrderUseCase>(),
+  gh.factory<_i35.OrderDtoToOrderMapper>(() =>
+      _i35.OrderDtoToOrderMapper(gh<_i15.OrderMealDtoToOrderMealMapper>()));
+  gh.factory<_i36.SelectMealsCubit>(() => _i36.SelectMealsCubit(
+        gh<_i33.GetMealsUseCase>(),
+        gh<_i23.AddMealToCurrentOrderUseCase>(),
       ));
-  gh.factory<_i34.CreateOrderCubit>(() => _i34.CreateOrderCubit(
-        gh<_i30.GetCurrentOrderUseCase>(),
-        gh<_i24.AddNoteToCurrentOrderUseCase>(),
-        gh<_i21.SubscribeMainStreamUseCase>(),
-        gh<_i26.DeleteCurrentOrderMealUseCase>(),
-        gh<_i28.EditCurrentOrderMealCountUseCase>(),
+  gh.factory<_i37.CreateOrderCubit>(() => _i37.CreateOrderCubit(
+        gh<_i32.GetCurrentOrderUseCase>(),
+        gh<_i25.AddNoteToCurrentOrderUseCase>(),
+        gh<_i22.SubscribeMainStreamUseCase>(),
+        gh<_i28.DeleteCurrentOrderMealUseCase>(),
+        gh<_i30.EditCurrentOrderMealCountUseCase>(),
+        gh<_i26.AddOrderUseCase>(),
+        gh<_i27.ClearCurrentOrderUseCase>(),
       ));
   return getIt;
 }
 
-class _$FirestoreModule extends _i35.FirestoreModule {}
+class _$FirestoreModule extends _i38.FirestoreModule {}

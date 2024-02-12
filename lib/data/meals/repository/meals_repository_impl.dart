@@ -23,43 +23,24 @@ class MealsRepositoryImpl implements MealsRepository {
     final dto = _mealToMealDtoMapper(meal);
 
     await _mealsDataSource.addMeal(dto);
-    // _mainStreamService.notifyRefreshStream(const ReorderEvent.updatedReorderProductsList());
   }
 
   @override
-  Future<void> editMeal(Meal meal) async {
+  Future<void> editMeal(Meal meal, int oldNumber) async {
     final dto = _mealToMealDtoMapper(meal);
 
-    await _mealsDataSource.editMeal(dto);
+    await _mealsDataSource.editMeal(dto, oldNumber);
   }
 
   @override
-  Future<void> deleteMeal(String mealId) async {
-    await _mealsDataSource.deleteMeal(mealId);
+  Future<void> deleteMeal(int mealNumber) async {
+    await _mealsDataSource.deleteMeal(mealNumber);
   }
 
   @override
   Future<List<Meal>> meals() async {
     List<MealDto> dtos = await _mealsDataSource.getMeals();
-    dtos.sort((a, b) => a.mealNumber.compareTo(b.mealNumber));
+    dtos.sort((a, b) => a.number.compareTo(b.number));
     return dtos.map((dto) => _mealDtoToMealMapper(dto)).toList(growable: false);
   }
-
-  // @override
-  // Stream<List<Order>> orders() {
-  //   final Stream<List<EventEntityDto>> eventDtoListStream = _ordersDataSource.events(status);
-  //   return eventDtoListStream.asyncMap(
-  //     (eventDtoList) async {
-  //       final eventList = eventDtoList
-  //           .map(
-  //             (eventDto) async => _eventDtoToEventMapper(
-  //               eventDto,
-  //               advertisement: await _getAdvertisement(eventDto.mainSponsor, eventDto.id),
-  //             ),
-  //           )
-  //           .toList(growable: false);
-  //       return await Future.wait(eventList);
-  //     },
-  //   );
-  // }
 }
