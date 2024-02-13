@@ -339,6 +339,46 @@ class Strings {
       args: [],
     );
   }
+
+  /// `To do`
+  String get ordered {
+    return Intl.message(
+      'To do',
+      name: 'ordered',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In progress`
+  String get inProgress {
+    return Intl.message(
+      'In progress',
+      name: 'inProgress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ready`
+  String get ready {
+    return Intl.message(
+      'Ready',
+      name: 'ready',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delivered`
+  String get delivered {
+    return Intl.message(
+      'Delivered',
+      name: 'delivered',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Strings> {

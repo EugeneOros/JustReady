@@ -8,5 +8,5 @@ class EditCurrentOrderMealCountUseCase {
 
   const EditCurrentOrderMealCountUseCase(this._ordersRepository);
 
-  void call(OrderMeal orderMeal, int count) => _ordersRepository.editOrderMealCount(orderMeal, count);
+  void call(OrderMeal orderMeal, int count) => _ordersRepository.editCurrentOrderMealCount(orderMeal, count);
 }

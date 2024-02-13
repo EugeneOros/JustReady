@@ -1,21 +1,24 @@
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:just_ready/data/orders/data_source/orders_data_source.dart';
+import 'package:just_ready/data/orders/mapper/order_dto_to_order_mapper.dart';
 import 'package:just_ready/data/orders/mapper/order_to_order_dto_mapper.dart';
 import 'package:just_ready/data/orders/models/order_dto.dart';
 import 'package:just_ready/domain/main_stream/service/main_stream_service.dart';
 import 'package:just_ready/domain/meals/models/meal.dart';
 import 'package:just_ready/domain/orders/models/order.dart';
 import 'package:just_ready/domain/orders/models/order_meal.dart';
+import 'package:just_ready/domain/orders/models/order_status.dart';
 import 'package:just_ready/domain/orders/repository/orders_event.dart';
 import 'package:just_ready/domain/orders/repository/orders_repository.dart';
 
-const int maxOrderNumber = 99;
+const int maxOrderNumber = 5;
 
 @LazySingleton(as: OrdersRepository)
 class OrdersRepositoryImpl implements OrdersRepository {
   final MainStreamService _mainStreamService;
   final OrdersDataSource _ordersDataSource;
   final OrderToOrderDtoMapper _orderToOrderDtoMapper;
+  final OrderDtoToOrderMapper _orderDtoToOrderMapper;
 
   Order? currentOrder;
 
@@ -23,12 +26,13 @@ class OrdersRepositoryImpl implements OrdersRepository {
     this._ordersDataSource,
     this._orderToOrderDtoMapper,
     this._mainStreamService,
+    this._orderDtoToOrderMapper,
   );
 
   @override
   Future<int> sendOrder(Order order) async {
     final orderNumber = await _getNewOrderNumber();
-    final orderDto = _orderToOrderDtoMapper(order, orderNumber);
+    final orderDto = _orderToOrderDtoMapper(order, orderNumber: orderNumber);
     await _ordersDataSource.sendOrder(orderDto);
     return orderNumber;
     // _mainStreamService.notifyRefreshStream(const ReorderEvent.updatedReorderProductsList());
@@ -59,7 +63,7 @@ class OrdersRepositoryImpl implements OrdersRepository {
 
   @override
   Future<void> addMealToCurrentOrder(Meal meal, int count) async {
-    currentOrder ??= Order(orderNumber: null, orderMeals: [], note: '');
+    currentOrder ??= Order(number: null, orderMeals: [], note: '', status: OrderStatus.ordered);
 
     for (var orderMeal in currentOrder!.orderMeals) {
       if (orderMeal.meal.number == meal.number) {
@@ -68,13 +72,13 @@ class OrdersRepositoryImpl implements OrdersRepository {
         return;
       }
     }
-    currentOrder!.orderMeals.add(OrderMeal(meal: meal, count: count));
+    currentOrder!.orderMeals.add(OrderMeal(meal: meal, count: count, isDone: false));
     _mainStreamService.notifyRefreshStream(const OrdersEvent.mealsAddToCurrentOrder());
   }
 
   @override
   void addNoteCurrentOrder(String note) {
-    currentOrder ??= Order(orderNumber: null, orderMeals: [], note: note);
+    currentOrder ??= Order(number: null, orderMeals: [], note: note, status: OrderStatus.ordered);
     currentOrder!.note = note;
   }
 
@@ -88,7 +92,7 @@ class OrdersRepositoryImpl implements OrdersRepository {
   }
 
   @override
-  void editOrderMealCount(OrderMeal orderMeal, int count) {
+  void editCurrentOrderMealCount(OrderMeal orderMeal, int count) {
     if (currentOrder == null) return;
     for (var meal in currentOrder!.orderMeals) {
       if (meal == orderMeal) {
@@ -99,32 +103,29 @@ class OrdersRepositoryImpl implements OrdersRepository {
   }
 
   @override
-  Future<void> delete(Order reorderProduct) {
-    // TODO: implement delete
-    throw UnimplementedError();
+  Future<void> editOrder(Order order, int oldNumber) async {
+    final dto = _orderToOrderDtoMapper(order);
+
+    await _ordersDataSource.editOrder(dto, oldNumber);
   }
 
   @override
-  Future<List<Order>> orders() {
-    // TODO: implement orders
-    throw UnimplementedError();
+  Future<void> deleteOrder(Order order) async {
+    if (order.number != null) await _ordersDataSource.deleteOrder(order.number!);
   }
 
-  // @override
-  // Stream<List<Order>> orders() {
-  //   final Stream<List<EventEntityDto>> eventDtoListStream = _ordersDataSource.events(status);
-  //   return eventDtoListStream.asyncMap(
-  //     (eventDtoList) async {
-  //       final eventList = eventDtoList
-  //           .map(
-  //             (eventDto) async => _eventDtoToEventMapper(
-  //               eventDto,
-  //               advertisement: await _getAdvertisement(eventDto.mainSponsor, eventDto.id),
-  //             ),
-  //           )
-  //           .toList(growable: false);
-  //       return await Future.wait(eventList);
-  //     },
-  //   );
-  // }
+  @override
+  Stream<List<Order>> ordersStream() {
+    final Stream<List<OrderDto>> orderDtoListStream = _ordersDataSource.orders();
+    return orderDtoListStream.asyncMap(
+      (orderDtos) async {
+        final orders = orderDtos
+            .map(
+              (orderDto) async => _orderDtoToOrderMapper(orderDto),
+            )
+            .toList(growable: false);
+        return await Future.wait(orders);
+      },
+    );
+  }
 }

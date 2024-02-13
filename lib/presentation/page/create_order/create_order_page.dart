@@ -12,8 +12,7 @@ import 'package:just_ready/presentation/page/create_order/cubit/create_order_sta
 import 'package:just_ready/presentation/page/home/home_page.dart';
 import 'package:just_ready/presentation/widgets/jr_app_bar.dart';
 import 'package:just_ready/presentation/widgets/jr_dialog.dart';
-import 'package:just_ready/presentation/widgets/jr_text.dart';
-import 'package:just_ready/styles/dimens.dart';
+import 'package:just_ready/presentation/widgets/jr_number_circle.dart';
 import 'package:just_ready/styles/images.dart';
 import 'package:just_ready/utils/hooks/use_once.dart';
 import 'package:just_ready/utils/ignore_else_state.dart';
@@ -28,7 +27,7 @@ class CreateOrderPage extends HookWidget {
     useOnce(cubit.init);
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      extendBodyBehindAppBar: state is Loaded,
       appBar: JrAppBar(
         skipStartIcon: false,
         startIcon: IconsSvg.menu24,
@@ -63,23 +62,11 @@ class CreateOrderPage extends HookWidget {
             title: Strings.of(context).yourOrderNumber,
             actionText: Strings.of(context).ok,
             actionButtonOnTap: () => context.pop(),
-            child: Container(
-              width: Dimens.xxc,
-              height: Dimens.xxc,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: context.colors.secondary,
-                border: Border.all(
-                  width: Dimens.xxxs,
-                ),
-              ),
-              child: Center(
-                child: JrText(
-                  orderNumber.toString(),
-                  style: context.typography.header1,
-                  color: context.colors.background,
-                ),
-              ),
+            child: JrNumberCircle(
+              color: context.colors.secondary,
+              numberColor: context.colors.background,
+              size: NumberCircleSize.l,
+              number: orderNumber,
             ),
           ),
         ),

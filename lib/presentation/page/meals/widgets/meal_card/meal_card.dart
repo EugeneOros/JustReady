@@ -5,11 +5,11 @@ import 'package:just_ready/extensions/build_context_extension.dart';
 import 'package:just_ready/generated/l10n.dart';
 import 'package:just_ready/presentation/page/meals/widgets/meal_card/body/meal_body.dart';
 import 'package:just_ready/presentation/page/meals/widgets/meal_card/utils/meal_form_control_names.dart';
-import 'package:just_ready/presentation/page/meals/widgets/meal_card/widgets/number_circle.dart';
 import 'package:just_ready/presentation/widgets/buttons/jr_button.dart';
 import 'package:just_ready/presentation/widgets/buttons/jr_icon_button.dart';
 import 'package:just_ready/presentation/widgets/jr_animated_switcher.dart';
 import 'package:just_ready/presentation/widgets/jr_container.dart';
+import 'package:just_ready/presentation/widgets/jr_number_circle.dart';
 import 'package:just_ready/styles/dimens.dart';
 import 'package:just_ready/styles/images.dart';
 import 'package:just_ready/utils/is_meal_number_not_taken_validator.dart';
@@ -70,7 +70,7 @@ class MealCard extends HookWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: Dimens.ms),
           constraints: const BoxConstraints(
-            maxWidth: Dimens.lMaxCardButtonWidth,
+            maxWidth: Dimens.lWidth,
           ),
           child: Stack(
             children: [
@@ -78,8 +78,8 @@ class MealCard extends HookWidget {
                 showShadow: isEditing && onDelete != null,
                 isAnimated: true,
                 borderRadius: Dimens.ms,
-                height: isEditing ? Dimens.expandedMealCardHeight : Dimens.defaultMealCardHeight,
-                margin: const EdgeInsets.symmetric(horizontal: Dimens.xm, vertical: Dimens.xm),
+                height: isEditing ? Dimens.expandedMealCardHeight : Dimens.xxsHeight,
+                margin: const EdgeInsets.fromLTRB(Dimens.m, Dimens.xm, Dimens.xm, Dimens.xm),
                 child: MealCardBody(
                   isEditing: isEditing,
                   meal: meal,
@@ -94,7 +94,8 @@ class MealCard extends HookWidget {
                 child: JrAnimatedSwitcher(
                   child: isEditing
                       ? const SizedBox.shrink()
-                      : NumberCircle(
+                      : JrNumberCircle(
+                          size: NumberCircleSize.s,
                           number: meal.number,
                         ),
                 ),

@@ -12,7 +12,7 @@ enum NavTabs {
 
 @injectable
 class HomeCubit extends Cubit<HomeState> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   HomeCubit() : super(const HomeState.idle());
 

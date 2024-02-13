@@ -10,10 +10,12 @@ OrderMealDto _$OrderMealDtoFromJson(Map json) => OrderMealDto(
       count: json['count'] as int,
       mealDto:
           MealDto.fromJson(Map<String, dynamic>.from(json['mealDto'] as Map)),
+      isDone: json['isDone'] as bool,
     );
 
 Map<String, dynamic> _$OrderMealDtoToJson(OrderMealDto instance) =>
     <String, dynamic>{
       'count': instance.count,
       'mealDto': instance.mealDto.toJson(),
+      'isDone': instance.isDone,
     };

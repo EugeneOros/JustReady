@@ -28,14 +28,6 @@ class HomePage extends HookWidget {
 
     return Scaffold(
       key: homeKey,
-      // appBar: JrAppBar(
-      //   title: Strings.of(context).meals,
-      //   skipStartIcon: false,
-      //   startIcon: IconsSvg.menu24,
-      //   onStartIconTap: (_) {
-      //     homeKey.currentState!.openDrawer();
-      //   },
-      // ),
       drawer: state.maybeWhen(
         selectedPage: (index, path) {
           return JrMenuDrawer(

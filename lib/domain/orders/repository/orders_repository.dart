@@ -5,13 +5,13 @@ import 'package:just_ready/domain/orders/models/order_meal.dart';
 abstract class OrdersRepository {
   Future<int> sendOrder(Order order);
 
-  Future<void> delete(Order order);
+  Future<void> editOrder(Order order, int oldNumber);
 
-  Future<List<Order>> orders();
+  Future<void> deleteOrder(Order order);
 
   Future<void> addMealToCurrentOrder(Meal meal, int count);
 
-  void editOrderMealCount(OrderMeal meal, int count);
+  void editCurrentOrderMealCount(OrderMeal meal, int count);
 
   Order? getCurrentOrder();
 
@@ -20,4 +20,6 @@ abstract class OrdersRepository {
   void deleteCurrentOrderMeal(OrderMeal meal);
 
   void clearCurrentOrder();
+
+  Stream<List<Order>> ordersStream();
 }

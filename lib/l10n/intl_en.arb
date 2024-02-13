@@ -34,7 +34,12 @@
   "ok": "Ok",
   
   "orderNow": "Order now",
-  "scelectMeal": "Scelect meal"
+  "scelectMeal": "Scelect meal",
+
+  "ordered": "To do",
+  "inProgress": "In progress",
+  "ready": "Ready",
+  "delivered": "Delivered"
 
   
 

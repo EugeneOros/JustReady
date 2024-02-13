@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 class CustomColors extends ThemeExtension<CustomColors> {
   final Color dark;
   final Color darkLight;
+  final Color grey;
   final Color primary;
   final Color primaryLight;
   final Color secondary;
+  final Color secondaryLight;
   final Color bright;
   final Color background;
   final Color error;
@@ -16,9 +18,11 @@ class CustomColors extends ThemeExtension<CustomColors> {
   const CustomColors({
     required this.dark,
     required this.darkLight,
+    required this.grey,
     required this.primary,
     required this.primaryLight,
     required this.secondary,
+    required this.secondaryLight,
     required this.bright,
     required this.background,
     required this.error,
@@ -30,9 +34,11 @@ class CustomColors extends ThemeExtension<CustomColors> {
   ThemeExtension<CustomColors> copyWith({
     Color? dark,
     Color? darkLight,
+    Color? grey,
     Color? primary,
     Color? primaryLight,
     Color? secondary,
+    Color? secondaryLight,
     Color? bright,
     Color? background,
     Color? error,
@@ -42,9 +48,11 @@ class CustomColors extends ThemeExtension<CustomColors> {
       CustomColors(
         dark: dark ?? this.dark,
         darkLight: darkLight ?? this.darkLight,
+        grey: grey ?? this.grey,
         primary: primary ?? this.primary,
         primaryLight: primaryLight ?? this.primaryLight,
         secondary: secondary ?? this.secondary,
+        secondaryLight: secondaryLight ?? this.secondaryLight,
         bright: bright ?? this.bright,
         background: background ?? this.background,
         error: error ?? this.error,
@@ -63,9 +71,11 @@ class CustomColors extends ThemeExtension<CustomColors> {
     return CustomColors(
       dark: _getColorLerp(dark, other.dark, t),
       darkLight: _getColorLerp(darkLight, other.darkLight, t),
+      grey: _getColorLerp(grey, other.grey, t),
       primary: _getColorLerp(primary, other.primary, t),
       primaryLight: _getColorLerp(primaryLight, other.primaryLight, t),
       secondary: _getColorLerp(secondary, other.secondary, t),
+      secondaryLight: _getColorLerp(secondaryLight, other.secondaryLight, t),
       bright: _getColorLerp(bright, other.bright, t),
       background: _getColorLerp(background, other.background, t),
       error: _getColorLerp(error, other.error, t),
@@ -79,9 +89,11 @@ class CustomColors extends ThemeExtension<CustomColors> {
   static const lightTheme = CustomColors(
     dark: Color(0xff000000),
     darkLight: Color(0xff555555),
+    grey: Color(0xff888888),
     primary: Color(0xffbfe34b),
     primaryLight: Color(0xffECFFDC),
     secondary: Color(0xff4392AE),
+    secondaryLight: Color(0xff6CB6D3),
     bright: Color(0xffffffff),
     background: Color(0xffffffff),
     error: Color(0xffee6c4d),
@@ -92,9 +104,11 @@ class CustomColors extends ThemeExtension<CustomColors> {
   static const darkTheme = CustomColors(
     dark: Color(0xff98C1D9),
     darkLight: Color(0xff3D5A80),
+    grey: Color(0xff3D5A80),
     primary: Color(0xffbfe34b),
     primaryLight: Color(0xffF1FFC3),
     secondary: Color(0xff4392AE),
+    secondaryLight: Color(0xff6EA2B6),
     bright: Color(0xffffffff),
     background: Color(0xff000000),
     error: Color(0xffee6c4d),

@@ -58,19 +58,19 @@ class Dimens {
   static const mMaxCardHeight = 115.0;
   static const lMaxCardHeight = 130.0;
 
-  static const sDialogHeight = 200.0;
-  static const mDialogHeight = 400.0;
-  static const lDialogHeight = 600.0;
+  static const xxsHeight = 100.0;
+  static const xsHeight = 150.0;
+  static const sHeight = 200.0;
+  static const mHeight = 400.0;
+  static const lHeight = 600.0;
 
-  static const sDialogWidth = 200.0;
-  static const mDialogWidth = 400.0;
-  static const lDialogWidth = 600.0;
+  static const xxsWidth = 100.0;
+  static const xsWidth = 150.0;
+  static const sWidth = 200.0;
+  static const mWidth = 400.0;
+  static const lWidth = 600.0;
 
-  static const sMaxCardButtonWidth = 200.0;
-  static const mMaxCardButtonWidth = 400.0;
-  static const lMaxCardButtonWidth = 600.0;
-
-  static const defaultMealCardHeight = 100.0;
+  static const orderCardWidth = 300.0;
 
   static const expandedMealCardHeight = 370.0;
 

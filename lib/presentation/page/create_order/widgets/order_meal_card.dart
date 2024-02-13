@@ -50,7 +50,7 @@ class OrderMealCard extends HookWidget {
         child: Container(
           padding: const EdgeInsets.fromLTRB(Dimens.xm, Dimens.s, Dimens.xm, Dimens.zero),
           constraints: const BoxConstraints(
-            maxWidth: Dimens.lMaxCardButtonWidth,
+            maxWidth: Dimens.lWidth,
           ),
           child: Stack(
             children: [

@@ -28,7 +28,7 @@ class DrowerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return JrContainer(
       borderRadius: Dimens.ms,
-      height: Dimens.defaultMealCardHeight,
+      height: Dimens.xxsHeight,
       margin: const EdgeInsets.symmetric(horizontal: Dimens.ms, vertical: Dimens.m),
       padding: const EdgeInsets.symmetric(horizontal: Dimens.m),
       backgroundColor: index == selectdIndex ? context.colors.primary : context.colors.background,

@@ -27,6 +27,8 @@ class IconsSvg {
   static final chevronLeft24 = _icons.chevronLeft24.path;
   static final menu24 = _icons.menu24.path;
   static final emptyMeal24 = _icons.emptyMeal24.path;
+  static final tickSquare24 = _icons.tickSquare24.path;
+  static final square24 = _icons.square24.path;
 
 
   IconsSvg._();

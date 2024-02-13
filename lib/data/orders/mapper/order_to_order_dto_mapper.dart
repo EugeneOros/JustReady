@@ -12,12 +12,13 @@ class OrderToOrderDtoMapper {
     this._orderMealToOrderMealDtoMapper,
   );
 
-  OrderDto call(Order order, int orderNumber) => OrderDto(
+  OrderDto call(Order order, {int? orderNumber}) => OrderDto(
         note: order.note,
-        number: orderNumber,
+        number: orderNumber ?? order.number,
         createdDate:
             order.createdDate != null ? Timestamp.fromDate(order.createdDate!) : Timestamp.fromDate(DateTime.now()),
         orderMeals:
             order.orderMeals.map((orderMeal) => _orderMealToOrderMealDtoMapper(orderMeal)).toList(growable: false),
+        status: order.status.name,
       );
 }

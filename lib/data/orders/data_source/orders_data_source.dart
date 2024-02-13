@@ -15,14 +15,15 @@ class OrdersDataSource {
     return dto.number;
   }
 
-  Future<void> editOrder(OrderDto order, String eventId) async {
+  Future<void> editOrder(OrderDto dto, int oldNumber) async {
+    if (dto.number != oldNumber) await deleteOrder(oldNumber);
     final CollectionReference collection = firestore.collection(DatabaseCollections.orders);
-    await collection.doc(eventId).set(order.toJson());
+    await collection.doc(dto.number.toString()).set(dto.toJson());
   }
 
-  Future<void> deleteOrder(String orderId) async {
+  Future<void> deleteOrder(int number) async {
     final CollectionReference collection = firestore.collection(DatabaseCollections.orders);
-    final documentReference = collection.doc(orderId);
+    final documentReference = collection.doc(number.toString());
 
     // await _deleteSubCollection(documentReference, DatabaseCollections.orders);
 
@@ -46,5 +47,18 @@ class OrdersDataSource {
       Map<String, dynamic> data = docSnapshot.data();
       return OrderDto.fromJson(data);
     }).toList();
+  }
+
+  Stream<List<OrderDto>> orders() async* {
+    bool didYield = false;
+    final collection = firestore.collection(DatabaseCollections.orders).snapshots();
+    await for (final snapshots in collection) {
+      if (snapshots.size > 0) {
+        yield snapshots.docs.map((order) => OrderDto.fromJson(order.data())).toList(growable: false);
+        didYield = true;
+      }
+    }
+
+    if (!didYield) yield [];
   }
 }

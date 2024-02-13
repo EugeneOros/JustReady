@@ -16,7 +16,7 @@ class AppRouter {
   late final GoRouter router = GoRouter(
     debugLogDiagnostics: true,
     navigatorKey: _rootNavigatorKey,
-    initialLocation: JustReadyRoute.meals.path,
+    initialLocation: JustReadyRoute.orders.path,
     errorPageBuilder: (context, state) => _pageBuilder(
       state,
       child: Container(),

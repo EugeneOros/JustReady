@@ -39,8 +39,8 @@ class JrDialog extends StatelessWidget {
           children: [
             JrContainer(
               showShadow: false,
-              height: Dimens.sDialogHeight,
-              width: Dimens.sDialogWidth,
+              height: Dimens.sHeight,
+              width: Dimens.sWidth,
               margin: const EdgeInsets.symmetric(horizontal: Dimens.xm, vertical: Dimens.xm),
               child: Column(
                 // mainAxisSize: MainAxisSize.min,

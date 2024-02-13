@@ -11,6 +11,7 @@ class OrderDto {
   final int? number;
   final String note;
   final List<OrderMealDto> orderMeals;
+  final String status;
   @JsonKey(
     fromJson: FirestoreTimestampMapper.fromJson,
     toJson: FirestoreTimestampMapper.toJson,
@@ -22,6 +23,7 @@ class OrderDto {
     required this.number,
     required this.orderMeals,
     required this.createdDate,
+    required this.status,
   });
 
   Map<String, dynamic> toJson() => _$OrderDtoToJson(this);

@@ -39,8 +39,6 @@ class JrTextButton extends StatelessWidget {
           title,
           style: context.typography.bodySemiBoldUnderline,
           color: state == JrTextButtonState.disabled ? context.colors.darkLight : textColor ?? context.colors.primary,
-          decorationColor:
-              state == JrTextButtonState.disabled ? context.colors.darkLight : textColor ?? context.colors.primary,
         ),
       );
 }

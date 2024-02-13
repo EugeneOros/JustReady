@@ -130,6 +130,14 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/plus_24.svg
   SvgGenImage get plus24 => const SvgGenImage('assets/images/svg/plus_24.svg');
 
+  /// File path: assets/images/svg/square_24.svg
+  SvgGenImage get square24 =>
+      const SvgGenImage('assets/images/svg/square_24.svg');
+
+  /// File path: assets/images/svg/tick_square_24.svg
+  SvgGenImage get tickSquare24 =>
+      const SvgGenImage('assets/images/svg/tick_square_24.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
         bell24,
@@ -155,7 +163,9 @@ class $AssetsImagesSvgGen {
         minus24,
         orders24,
         ordersTorn24,
-        plus24
+        plus24,
+        square24,
+        tickSquare24
       ];
 }
 

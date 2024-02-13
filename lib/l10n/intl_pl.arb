@@ -35,6 +35,10 @@
   "ok": "Ok",
   
   "orderNow": "Zamów teraz",
-  "scelectMeal": "Wybierz dania"
+  "scelectMeal": "Wybierz dania",
   
+  "ordered": "Do zrobienia",
+  "inProgress": "W trakcie",
+  "ready": "Gotowe",
+  "delivered": "Dostarczone"
 }

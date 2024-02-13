@@ -36,12 +36,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("N.p.: Bez kurczaka"),
         "cancel": MessageLookupByLibrary.simpleMessage("Anuluj"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Panel"),
+        "delivered": MessageLookupByLibrary.simpleMessage("Dostarczone"),
         "enterMealName":
             MessageLookupByLibrary.simpleMessage("Wprowadź nazwe dania"),
         "enterPriceName":
             MessageLookupByLibrary.simpleMessage("Wprowadź cene dania"),
         "goToSummary":
             MessageLookupByLibrary.simpleMessage("Przejdź do podsumowania"),
+        "inProgress": MessageLookupByLibrary.simpleMessage("W trakcie"),
         "mealNumber": MessageLookupByLibrary.simpleMessage("Numer dania"),
         "meals": MessageLookupByLibrary.simpleMessage("Dania"),
         "name": MessageLookupByLibrary.simpleMessage("Nazwa"),
@@ -53,8 +55,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Szczegóły zamówienia"),
         "orderNow": MessageLookupByLibrary.simpleMessage("Zamów teraz"),
         "orderSum": m0,
+        "ordered": MessageLookupByLibrary.simpleMessage("Do zrobienia"),
         "orders": MessageLookupByLibrary.simpleMessage("Zamówienia"),
         "price": MessageLookupByLibrary.simpleMessage("Cena"),
+        "ready": MessageLookupByLibrary.simpleMessage("Gotowe"),
         "save": MessageLookupByLibrary.simpleMessage("Zapisz"),
         "scelectMeal": MessageLookupByLibrary.simpleMessage("Wybierz dania"),
         "scelectedMeal": m1,

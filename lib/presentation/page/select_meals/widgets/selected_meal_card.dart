@@ -45,7 +45,7 @@ class SelctedMealCard extends HookWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: Dimens.ms),
           constraints: const BoxConstraints(
-            maxWidth: Dimens.lMaxCardButtonWidth,
+            maxWidth: Dimens.lWidth,
           ),
           child: Stack(
             children: [

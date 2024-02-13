@@ -11,5 +11,6 @@ class OrderMealToOrderMealDtoMapper {
   OrderMealDto call(OrderMeal orderMeal) => OrderMealDto(
         count: orderMeal.count,
         mealDto: _mealToMealDtoMapper(orderMeal.meal),
+        isDone: orderMeal.isDone,
       );
 }
