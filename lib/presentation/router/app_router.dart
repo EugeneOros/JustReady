@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 // import 'package:injectable/injectable.dart';
 import 'package:just_ready/presentation/page/create_order/create_order_page.dart';
+import 'package:just_ready/presentation/page/dashboard/dashboard_page.dart';
 import 'package:just_ready/presentation/page/select_meals/select_meals_page.dart';
 import 'package:just_ready/presentation/page/home/home_page.dart';
 import 'package:just_ready/presentation/page/meals/meals_page.dart';
@@ -79,7 +80,7 @@ class AppRouter {
             name: JustReadyRoute.dashboard.name,
             pageBuilder: (context, state) => _defaultTransition(
               state: state,
-              child: const OrdersPage(),
+              child: const DashboardPage(),
             ),
           ),
         ],

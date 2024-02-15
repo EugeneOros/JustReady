@@ -18,7 +18,7 @@ class MealNumberItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return JrContainer(
-      backgroundColor: isSelected ? context.colors.primary : context.colors.background,
+      backgroundColor: isSelected ? context.colors.primary : context.colors.bright,
       borderRadius: Dimens.xm,
       width: Dimens.xxxc,
       height: Dimens.c,

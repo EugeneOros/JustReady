@@ -67,6 +67,7 @@ class Dimens {
   static const xxsWidth = 100.0;
   static const xsWidth = 150.0;
   static const sWidth = 200.0;
+  static const xmWidth = 300.0;
   static const mWidth = 400.0;
   static const lWidth = 600.0;
 

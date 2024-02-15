@@ -6,6 +6,7 @@ import 'package:just_ready/extensions/extension_mixin.dart';
 import 'package:just_ready/presentation/page/home/cubit/home_cubit.dart';
 import 'package:just_ready/presentation/page/home/cubit/home_state.dart';
 import 'package:just_ready/presentation/page/home/widgets/drower/jr_menu_drawer.dart';
+import 'package:just_ready/styles/dimens.dart';
 import 'package:just_ready/utils/hooks/use_once.dart';
 import 'package:just_ready/utils/ignore_else_state.dart';
 
@@ -38,7 +39,9 @@ class HomePage extends HookWidget {
         },
         orElse: () => const SizedBox.shrink(),
       ),
-      body: child,
+      body: MouseEdgeDetector(
+        child: child,
+      ),
     );
   }
 
@@ -48,4 +51,34 @@ class HomePage extends HookWidget {
       );
 
   bool _buildWhen(HomeState state) => state is SelectedPageState;
+}
+
+class MouseEdgeDetector extends StatelessWidget {
+  final Widget child;
+
+  const MouseEdgeDetector({
+    super.key,
+    required this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Listener(
+      onPointerHover: (PointerEvent event) {
+        final mousePosition = event.position.dx;
+        const edgeDistance = Dimens.xs;
+        if (mousePosition <= edgeDistance) {
+          homeKey.currentState!.openDrawer();
+        }
+      },
+      onPointerMove: (PointerEvent event) {
+        final mousePosition = event.position.dx;
+        const edgeDistance = Dimens.xl;
+        if (mousePosition <= edgeDistance) {
+          homeKey.currentState!.openDrawer();
+        }
+      },
+      child: child,
+    );
+  }
 }
