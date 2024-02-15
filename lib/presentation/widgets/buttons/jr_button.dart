@@ -11,8 +11,8 @@ enum ButtonType {
 }
 
 class JrButton extends HookWidget {
-  final VoidCallback onTap;
   final String title;
+  final VoidCallback onTap;
   final ButtonType type;
   final String? prefixIcon;
   final Color? color;
@@ -21,8 +21,8 @@ class JrButton extends HookWidget {
 
   const JrButton({
     super.key,
-    required this.onTap,
     required this.title,
+    required this.onTap,
     this.type = ButtonType.primary,
     this.prefixIcon,
     this.color,

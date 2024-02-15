@@ -19,23 +19,21 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> init() async {
     emit(HomeState.selectedPage(
       index: _selectedIndex,
-      path: _getCurrentLocation(_selectedIndex),
+      path: _getCurrentLocation(),
     ));
   }
 
-  void selectPage(
-    NavTabs page,
-  ) async {
+  void selectPage(NavTabs page) async {
     emit(const HomeState.idle());
     _selectedIndex = page.index;
     emit(HomeState.selectedPage(
       index: _selectedIndex,
-      path: _getCurrentLocation(_selectedIndex),
+      path: _getCurrentLocation(),
     ));
   }
 
-  String _getCurrentLocation(int index) {
-    switch (index) {
+  String _getCurrentLocation() {
+    switch (_selectedIndex) {
       case 0:
         return JustReadyRoute.createOrder.path;
       case 1:

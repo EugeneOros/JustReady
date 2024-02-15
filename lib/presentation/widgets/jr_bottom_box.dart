@@ -14,8 +14,7 @@ class JrBottomBox extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
+  Widget build(BuildContext context) => ClipRRect(
       child: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
@@ -55,5 +54,4 @@ class JrBottomBox extends StatelessWidget {
         ),
       ),
     );
-  }
 }

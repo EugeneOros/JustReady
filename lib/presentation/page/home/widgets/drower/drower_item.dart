@@ -31,7 +31,7 @@ class DrowerItem extends StatelessWidget {
       height: Dimens.xxsHeight,
       margin: const EdgeInsets.symmetric(horizontal: Dimens.ms, vertical: Dimens.m),
       padding: const EdgeInsets.symmetric(horizontal: Dimens.m),
-      backgroundColor: index == selectdIndex ? context.colors.primary : context.colors.background,
+      backgroundColor: index == selectdIndex ? context.colors.primary : context.colors.bright,
       onTap: () {
         onTap(index);
         Navigator.of(context).pop();

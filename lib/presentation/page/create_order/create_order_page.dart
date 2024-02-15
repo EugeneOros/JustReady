@@ -64,7 +64,7 @@ class CreateOrderPage extends HookWidget {
             actionButtonOnTap: () => context.pop(),
             child: JrNumberCircle(
               color: context.colors.secondary,
-              numberColor: context.colors.background,
+              numberColor: context.colors.bright,
               size: NumberCircleSize.l,
               number: orderNumber,
             ),

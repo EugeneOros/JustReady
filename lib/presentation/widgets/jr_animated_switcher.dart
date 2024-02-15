@@ -8,8 +8,7 @@ class JrAnimatedSwitcher extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return Align(
+  Widget build(BuildContext context) => Align(
       alignment: Alignment.topCenter,
       child: AnimatedSwitcher(
         // switchInCurve: Curves.fastEaseInToSlowEaseOut,
@@ -24,5 +23,4 @@ class JrAnimatedSwitcher extends StatelessWidget {
         child: child,
       ),
     );
-  }
 }

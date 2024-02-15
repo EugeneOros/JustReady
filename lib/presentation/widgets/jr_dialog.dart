@@ -26,8 +26,7 @@ class JrDialog extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return BackdropFilter(
+  Widget build(BuildContext context) => BackdropFilter(
       filter: ImageFilter.blur(sigmaY: 8, sigmaX: 8),
       child: AlertDialog(
         backgroundColor: context.colors.transparent,
@@ -106,5 +105,4 @@ class JrDialog extends StatelessWidget {
         ),
       ),
     );
-  }
 }

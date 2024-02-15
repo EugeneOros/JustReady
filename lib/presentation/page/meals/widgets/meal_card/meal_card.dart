@@ -94,9 +94,11 @@ class MealCard extends HookWidget {
                 child: JrAnimatedSwitcher(
                   child: isEditing
                       ? const SizedBox.shrink()
-                      : JrNumberCircle(
-                          size: NumberCircleSize.s,
-                          number: meal.number,
+                      : Center(
+                          child: JrNumberCircle(
+                            size: NumberCircleSize.m,
+                            number: meal.number,
+                          ),
                         ),
                 ),
               ),

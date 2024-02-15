@@ -95,7 +95,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     secondary: Color(0xff4392AE),
     secondaryLight: Color(0xff6CB6D3),
     bright: Color(0xffffffff),
-    background: Color(0xffffffff),
+    background: Color(0xffFEFCF5),
     error: Color(0xffee6c4d),
     disabled: Color(0xffd7dadd),
     transparent: Color(0x00000000),

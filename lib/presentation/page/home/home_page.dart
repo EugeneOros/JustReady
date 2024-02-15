@@ -28,6 +28,7 @@ class HomePage extends HookWidget {
 
     return Scaffold(
       key: homeKey,
+      backgroundColor: context.colors.background,
       drawer: state.maybeWhen(
         selectedPage: (index, path) {
           return JrMenuDrawer(
@@ -37,7 +38,6 @@ class HomePage extends HookWidget {
         },
         orElse: () => const SizedBox.shrink(),
       ),
-      backgroundColor: context.colors.background,
       body: child,
     );
   }

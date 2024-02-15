@@ -25,11 +25,13 @@ class JrNumberCircle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        width: _getContainerWidthe(),
+        width: _getContainerWidth(),
+        height: _getContainerWidth(),
         decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: color ?? context.colors.background,
-            border: Border.all(color: context.colors.dark, width: Dimens.xxxs)),
+          shape: BoxShape.circle,
+          color: color ?? context.colors.bright,
+          border: Border.all(color: context.colors.dark, width: Dimens.xxxs),
+        ),
         child: Center(
           child: JrText(
             number.toString(),
@@ -39,14 +41,14 @@ class JrNumberCircle extends StatelessWidget {
         ),
       );
 
-  double _getContainerWidthe() {
+  double _getContainerWidth() {
     switch (size) {
       case NumberCircleSize.s:
-        return Dimens.xxl;
+        return Dimens.xl;
       case NumberCircleSize.m:
-        return Dimens.c;
+        return Dimens.xxl;
       case NumberCircleSize.l:
-        return Dimens.xxc;
+        return Dimens.xxxl;
     }
   }
 

@@ -77,7 +77,7 @@ class JrAppBar extends StatelessWidget implements PreferredSizeWidget {
               alignment: Alignment.center,
               child: JrText(
                 title,
-                color: context.colors.background,
+                color: context.colors.bright,
                 style: context.typography.header1,
               ),
             ),
@@ -105,36 +105,6 @@ class JrAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       );
 
-  // AppBar(
-  //       scrolledUnderElevation: 0,
-  //       elevation: 0,
-  //       bottomOpacity: 0.0,
-  //       shadowColor: context.colors.transparent,
-  //       backgroundColor: backgroundColor ?? context.colors.primary,
-  //       leading: skipStartIcon ? null : _buildStartIcon(context),
-  //       automaticallyImplyLeading: !skipStartIcon,
-  //       flexibleSpace: Container(
-  //         decoration: BoxDecoration(
-  //           image: DecorationImage(
-  //             image: AssetImage(Illustrations.banner), // Replace with your image path
-  //             fit: BoxFit.cover,
-  //           ),
-  //         ),
-  //       ),
-  //       title: JrText(
-  //         title,
-  //         style: context.typography.header1,
-  //         color: titleColor ?? context.colors.background,
-  //       ),
-  //       centerTitle: true,
-  //       titleSpacing: Dimens.zero,
-  //       actions: [if (endIcon != null) _buildEndIcon(context)],
-  //       bottom: const PreferredSize(
-  //         preferredSize: Size.fromHeight(Dimens.m),
-  //         child: SizedBox.shrink(),
-  //       ),
-  //     );
-
   Widget _buildStartIcon(BuildContext context) => Padding(
         padding: const EdgeInsets.only(right: Dimens.l),
         child: Builder(builder: (context) {
@@ -153,12 +123,5 @@ class JrAppBar extends StatelessWidget implements PreferredSizeWidget {
           icon: endIcon!,
           onPressed: () => onEndIconTap?.call(context),
         ),
-        //  InkWell(
-        //   onTap: () => onEndIconTap?.call(context),
-        //   child: JrSvgPicture(
-        //     endIcon!,
-        //     color: titleColor ?? context.colors.background,
-        //   ),
-        // ),
       );
 }

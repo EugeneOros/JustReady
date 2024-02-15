@@ -36,8 +36,7 @@ class JrContainer extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return getContainer(
+  Widget build(BuildContext context) => getContainer(
       context,
       child: Stack(
         children: [
@@ -77,11 +76,10 @@ class JrContainer extends StatelessWidget {
                   border: Border.all(color: borderColor, width: borderWidth),
                   borderRadius: BorderRadius.circular(borderRadius),
                   color: context.colors.transparent
-                  // color: backgroundColor ?? context.colors.background,
                   ),
               child: Material(
                 borderRadius: BorderRadius.circular(borderRadius),
-                color: backgroundColor ?? context.colors.background,
+                color: backgroundColor ?? context.colors.bright,
                 child: InkWell(
                   highlightColor: context.colors.transparent,
                   splashColor: context.colors.primary,
@@ -99,7 +97,6 @@ class JrContainer extends StatelessWidget {
         ],
       ),
     );
-  }
 
   Widget getContainer(BuildContext context, {required Widget child}) => isAnimated
       ? AnimatedContainer(

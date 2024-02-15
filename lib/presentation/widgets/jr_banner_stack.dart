@@ -14,8 +14,7 @@ class JrBannerStack extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return Stack(
+  Widget build(BuildContext context) => Stack(
       children: [
         Positioned(
           top: 0,
@@ -42,5 +41,4 @@ class JrBannerStack extends StatelessWidget {
         child,
       ],
     );
-  }
 }

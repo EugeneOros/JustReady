@@ -47,14 +47,15 @@ class AppRouter {
             ),
             routes: [
               GoRoute(
-                  parentNavigatorKey: _rootNavigatorKey,
-                  path: JustReadyRoute.selectMeals.path,
-                  name: JustReadyRoute.selectMeals.name,
-                  // builder: (context, state) => const SelectMealsPage(),
-                  pageBuilder: (context, state) => _slideTransition(
-                        state: state,
-                        child: const SelectMealsPage(),
-                      )),
+                parentNavigatorKey: _rootNavigatorKey,
+                path: JustReadyRoute.selectMeals.path,
+                name: JustReadyRoute.selectMeals.name,
+                // builder: (context, state) => const SelectMealsPage(),
+                pageBuilder: (context, state) => _slideTransition(
+                  state: state,
+                  child: const SelectMealsPage(),
+                ),
+              ),
             ],
           ),
           GoRoute(

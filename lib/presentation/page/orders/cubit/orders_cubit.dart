@@ -46,10 +46,10 @@ class OrdersCubit extends Cubit<OrdersState> {
     }
   }
 
-  Future<void> updateOrderStatus(Order order, OrderStatus status) async {
-    _editOrderUseCase(order.copyWith(status: status));
-    if (status == OrderStatus.deliverd) _deleteOrderUseCase(order);
-  }
+  Future<void> updateOrderStatus(Order order, OrderStatus status) async =>
+      _editOrderUseCase(order.copyWith(status: status));
+
+  Future<void> deleteOrder(Order order) async => _deleteOrderUseCase(order);
 
   Future<void> ordersUpdated(List<Order> updatedOrders) async {
     orders = updatedOrders;
