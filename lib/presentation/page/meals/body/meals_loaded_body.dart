@@ -1,3 +1,5 @@
+import 'package:animated_list_plus/animated_list_plus.dart';
+import 'package:animated_list_plus/transitions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:just_ready/domain/meals/models/meal.dart';
@@ -45,13 +47,17 @@ class MealsLoadedBody extends HookWidget {
             );
           }),
         ),
-        ListView.builder(
-          itemCount: meals.length,
-          shrinkWrap: true,
+        ImplicitlyAnimatedList<Meal>(
+          items: meals,
           physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (context, index) => MealCard(
+          areItemsTheSame: (a, b) => a.number == b.number,
+          shrinkWrap: true,
+          itemBuilder: (context, animation, item, index) => SizeFadeTransition(
+            curve: Curves.easeInOut,
+            animation: animation,
+            child: MealCard(
               meals: meals,
-              meal: meals[index],
+              meal: item,
               onEdit: onCreateEditMeal,
               onDelete: onDeleteMeal,
               isEditing: selectedMealIndex.value == index,
@@ -60,6 +66,7 @@ class MealsLoadedBody extends HookWidget {
                 hideAddMealCard();
               },
             ),
+          ),
         ),
         const SizedBox(height: Dimens.xxxxc),
       ],

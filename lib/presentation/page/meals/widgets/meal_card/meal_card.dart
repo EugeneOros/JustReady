@@ -38,7 +38,6 @@ class MealCard extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final isEditing = useState<bool>(onDelete != null ? false : true);
 
     FormGroup form = FormGroup({
       MealFormControlName.name: FormControl<String>(
@@ -75,7 +74,7 @@ class MealCard extends HookWidget {
           child: Stack(
             children: [
               JrContainer(
-                showShadow: isEditing && onDelete != null,
+                showShadow: isEditing, //&& onDelete != null,
                 isAnimated: true,
                 borderRadius: Dimens.ms,
                 height: isEditing ? Dimens.expandedMealCardHeight : Dimens.xxsHeight,

@@ -55,8 +55,8 @@ class JrContainer extends StatelessWidget {
                       ? [
                           BoxShadow(
                             color: context.colors.darkLight.withOpacity(0.5),
-                            spreadRadius: Dimens.s,
-                            blurRadius: Dimens.m,
+                            spreadRadius: Dimens.xxxs,
+                            blurRadius: Dimens.xs,
                             offset: const Offset(Dimens.xxs, Dimens.xxs),
                           ),
                         ]

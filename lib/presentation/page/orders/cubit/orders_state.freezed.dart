@@ -280,7 +280,8 @@ class _$OrdersStateLoadingLoadedImpl implements OrdersStateLoadingLoaded {
   }
 }
 
-abstract class OrdersStateLoadingLoaded implements OrdersState {
+abstract class OrdersStateLoadingLoaded
+    implements OrdersState, OrdersStateBuilder {
   const factory OrdersStateLoadingLoaded(
       final List<Order> orders,
       final Order? orderToDelete,
@@ -420,7 +421,8 @@ class _$OrdersStateLoadingLoadedEmptyImpl
   }
 }
 
-abstract class OrdersStateLoadingLoadedEmpty implements OrdersState {
+abstract class OrdersStateLoadingLoadedEmpty
+    implements OrdersState, OrdersStateBuilder {
   const factory OrdersStateLoadingLoadedEmpty() =
       _$OrdersStateLoadingLoadedEmptyImpl;
 }
@@ -547,7 +549,7 @@ class _$OrdersStateLoadingImpl implements OrdersStateLoading {
   }
 }
 
-abstract class OrdersStateLoading implements OrdersState {
+abstract class OrdersStateLoading implements OrdersState, OrdersStateBuilder {
   const factory OrdersStateLoading() = _$OrdersStateLoadingImpl;
 }
 
@@ -700,7 +702,8 @@ class _$OrdersStateLoadingErrorImpl implements OrdersStateLoadingError {
   }
 }
 
-abstract class OrdersStateLoadingError implements OrdersState {
+abstract class OrdersStateLoadingError
+    implements OrdersState, OrdersStateBuilder {
   const factory OrdersStateLoadingError(final Object error) =
       _$OrdersStateLoadingErrorImpl;
 

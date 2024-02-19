@@ -19,6 +19,7 @@ class MealsCubit extends Cubit<MealsState> {
   final GetFreeMealNumberUseCase _getFreeMealNumberUseCase;
   final IsMealNumberTakenUseCase _isMealNumberTakenUseCase;
 
+  //Meal(name: 'Pieczarki', number: 1, price: 12.50)
   List<Meal> meals = [];
 
   MealsCubit(

@@ -60,6 +60,7 @@ class JrNumberEditField extends HookWidget {
               onChanged: (formControl) {
                 final isControllerEmpty = controller.text.isEmpty;
                 number.value = formControl.value ?? 0;
+                form.control(formControlName).value = number.value;
                 controller.text = number.value.toString();
                 isControllerEmpty ? controller.selectAll() : controller.moveCursorToEnd();
                 if (onChange != null) onChange!(controller.text);
