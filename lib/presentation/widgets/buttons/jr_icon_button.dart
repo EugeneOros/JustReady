@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:just_ready/extensions/extension_mixin.dart';
 import 'package:just_ready/presentation/widgets/jr_svg_picture.dart';
 import 'package:just_ready/styles/dimens.dart';
+import 'package:just_ready/utils/ignore_else_state.dart';
 
 enum IconButtonType {
   primary,
@@ -10,33 +11,43 @@ enum IconButtonType {
   tertiary,
 }
 
+enum IconButtonState {
+  active,
+  loading,
+  disabled,
+}
+
 class JrIconButton extends HookWidget {
   final String icon;
   final IconButtonType type;
-  final VoidCallback onPressed;
+  final IconButtonState state;
+  final VoidCallback onTap;
   final double size;
   final Color? color;
 
-  const JrIconButton(
-      {super.key,
-      required this.icon,
-      required this.onPressed,
-      this.size = Dimens.xxl,
-      this.color,
-      this.type = IconButtonType.secondary});
+  const JrIconButton({
+    super.key,
+    required this.icon,
+    required this.onTap,
+    this.size = Dimens.xxl,
+    this.color,
+    this.type = IconButtonType.secondary,
+    this.state = IconButtonState.active,
+  });
 
   @override
   Widget build(BuildContext context) {
     final isHover = useState(false);
+
     return Container(
       alignment: Alignment.center,
       width: size,
       height: size,
       child: Material(
-        color: getBackgroundColor(context),
+        color: _getBackgroundColor(context),
         shape: const CircleBorder(),
         child: InkWell(
-          onTap: onPressed,
+          onTap: state == IconButtonState.disabled ? doNothing : onTap,
           highlightColor: context.colors.transparent,
           splashColor: getSplashColor(context),
           hoverColor: context.colors.darkLight,
@@ -46,16 +57,15 @@ class JrIconButton extends HookWidget {
             width: size,
             height: size,
             decoration: BoxDecoration(
-              border: Border.all(color: context.colors.dark, width: Dimens.xxxs),
+              border: Border.all(color: _getBordersColor(context), width: Dimens.xxxs),
               shape: BoxShape.circle,
               color: context.colors.transparent, // isHover.value ? context.colors.dark : context.colors.bright,
             ),
             child: Center(
               child: JrSvgPicture(
                 icon,
-                height: size * 0.6,
-                width: size * 0.6,
-                color: getIconColor(context),
+                size: size * 0.6,
+                color: _getIconColor(context),
               ),
             ),
           ),
@@ -64,7 +74,13 @@ class JrIconButton extends HookWidget {
     );
   }
 
-  Color getIconColor(BuildContext context) {
+  Color _getBordersColor(BuildContext context) {
+    if (state == IconButtonState.disabled) return context.colors.disabled;
+    return context.colors.dark;
+  }
+
+  Color _getIconColor(BuildContext context) {
+    if (state == IconButtonState.disabled) return context.colors.disabled;
     switch (type) {
       case IconButtonType.primary:
         return context.colors.dark;
@@ -75,7 +91,8 @@ class JrIconButton extends HookWidget {
     }
   }
 
-  Color getBackgroundColor(BuildContext context) {
+  Color _getBackgroundColor(BuildContext context) {
+    if (state == IconButtonState.disabled) return context.colors.bright;
     switch (type) {
       case IconButtonType.primary:
         return color ?? context.colors.primary;

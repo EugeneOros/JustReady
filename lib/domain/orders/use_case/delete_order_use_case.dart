@@ -8,5 +8,5 @@ class DeleteOrderUseCase {
 
   const DeleteOrderUseCase(this._ordersRepository);
 
-  Future<void> call(Order order) => _ordersRepository.deleteOrder(order);
+  Future<void> call(Order order) async => await _ordersRepository.deleteOrder(order);
 }

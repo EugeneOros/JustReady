@@ -111,7 +111,7 @@ class MealCard extends HookWidget {
                     icon: IconsSvg.edit24,
                     color: context.colors.primary,
                     type: IconButtonType.tertiary,
-                    onPressed: () => setIsEditing(true),
+                    onTap: () => setIsEditing(true),
                     // onPressed: () => isEditing.value = !isEditing.value,
                   ),
                 ),
@@ -169,8 +169,8 @@ class MealCard extends HookWidget {
                             child: JrIconButton(
                               icon: IconsSvg.delete24,
                               type: IconButtonType.tertiary,
-                              color: context.colors.error,
-                              onPressed: () async {
+                              color: context.colors.red,
+                              onTap: () async {
                                 await onDelete!(meal.number);
                                 setIsEditing(false);
                                 // isEditing.value = !isEditing.value;

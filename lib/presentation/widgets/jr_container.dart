@@ -37,69 +37,68 @@ class JrContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => getContainer(
-      context,
-      child: Stack(
-        children: [
-          Positioned(
-            left: borderOffset,
-            right: 0,
-            top: borderOffset,
-            bottom: 0,
-            child: Container(
-              margin: margin,
-              padding: padding,
-              decoration: BoxDecoration(
-                border: Border.all(color: context.colors.dark, width: borderWidth),
-                borderRadius: BorderRadius.circular(borderRadius),
-                color: borderColor,
-                boxShadow: showShadow
-                    ? [
-                        BoxShadow(
-                          color: context.colors.darkLight.withOpacity(0.5),
-                          spreadRadius: Dimens.s,
-                          blurRadius: Dimens.m,
-                          offset: const Offset(Dimens.xxs, Dimens.xxs),
-                        ),
-                      ]
-                    : null,
+        context,
+        child: Stack(
+          children: [
+            Positioned(
+              left: borderOffset,
+              right: 0,
+              top: borderOffset,
+              bottom: 0,
+              child: Container(
+                padding: padding,
+                decoration: BoxDecoration(
+                  border: Border.all(color: borderColor, width: borderOffset + Dimens.xxs),
+                  borderRadius: BorderRadius.circular(borderRadius),
+                  // color: borderColor,
+                  boxShadow: showShadow
+                      ? [
+                          BoxShadow(
+                            color: context.colors.darkLight.withOpacity(0.5),
+                            spreadRadius: Dimens.s,
+                            blurRadius: Dimens.m,
+                            offset: const Offset(Dimens.xxs, Dimens.xxs),
+                          ),
+                        ]
+                      : null,
+                ),
               ),
             ),
-          ),
-          Positioned(
-            left: 0,
-            right: borderOffset,
-            top: 0,
-            bottom: borderOffset,
-            child: Container(
-              margin: margin,
-              decoration: BoxDecoration(
+            Positioned(
+              left: 0,
+              right: borderOffset,
+              top: 0,
+              bottom: borderOffset,
+              child: Container(
+                decoration: BoxDecoration(
                   border: Border.all(color: borderColor, width: borderWidth),
                   borderRadius: BorderRadius.circular(borderRadius),
-                  color: context.colors.transparent
-                  ),
-              child: Material(
-                borderRadius: BorderRadius.circular(borderRadius),
-                color: backgroundColor ?? context.colors.bright,
-                child: InkWell(
-                  highlightColor: context.colors.transparent,
-                  splashColor: context.colors.primary,
-                  hoverColor: context.colors.darkLight,
+                  color: context.colors.transparent,
+                ),
+                child: Material(
                   borderRadius: BorderRadius.circular(borderRadius),
-                  onTap: onTap,
-                  child: Container(
-                    padding: padding,
-                    child: child,
+                  color: backgroundColor ?? context.colors.bright,
+                  child: InkWell(
+                    highlightColor: context.colors.transparent,
+                    splashColor: context.colors.primary,
+                    hoverColor: context.colors.darkLight,
+                    borderRadius: BorderRadius.circular(borderRadius),
+                    onTap: onTap,
+                    child: Container(
+                      padding: padding,
+                      child: child,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
 
   Widget getContainer(BuildContext context, {required Widget child}) => isAnimated
       ? AnimatedContainer(
+          margin: margin,
           color: context.colors.transparent,
           constraints: constraints,
           duration: const Duration(milliseconds: 150),
@@ -109,6 +108,7 @@ class JrContainer extends StatelessWidget {
           child: child,
         )
       : Container(
+          margin: margin,
           color: context.colors.transparent,
           alignment: Alignment.center,
           constraints: constraints,

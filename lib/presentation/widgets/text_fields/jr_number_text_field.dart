@@ -60,7 +60,7 @@ class JrNumberTextField extends HookWidget {
       textAlign: TextAlign.center,
       controller: controller,
       style: context.typography.input.copyWith(
-        color: form.control(formControlName).hasErrors ? context.colors.error : context.colors.dark,
+        color: form.control(formControlName).hasErrors ? context.colors.red : context.colors.dark,
       ),
       decoration: InputDecoration(
         filled: true,

@@ -56,6 +56,10 @@ class $AssetsImagesSvgGen {
   SvgGenImage get boardProgress24 =>
       const SvgGenImage('assets/images/svg/board_progress_24.svg');
 
+  /// File path: assets/images/svg/check_24.svg
+  SvgGenImage get check24 =>
+      const SvgGenImage('assets/images/svg/check_24.svg');
+
   /// File path: assets/images/svg/chevron_down_24.svg
   SvgGenImage get chevronDown24 =>
       const SvgGenImage('assets/images/svg/chevron_down_24.svg');
@@ -144,6 +148,7 @@ class $AssetsImagesSvgGen {
         bellRing24,
         boardDone24,
         boardProgress24,
+        check24,
         chevronDown24,
         chevronLeft24,
         chevronRight24,

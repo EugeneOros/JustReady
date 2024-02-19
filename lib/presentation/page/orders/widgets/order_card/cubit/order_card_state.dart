@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:just_ready/domain/orders/models/order.dart';
 
 part 'order_card_state.freezed.dart';
 
@@ -8,7 +9,7 @@ class OrderCardState with _$OrderCardState {
   const factory OrderCardState.loaded({required bool showCountdown, required int countdown}) = Loaded;
 
   @Implements<OrderCardStateListener>()
-  const factory OrderCardState.deleteOrder() = DeleteOrder;
+  const factory OrderCardState.deleteOrder(Order order) = DeleteOrder;
 
   @Implements<OrderCardStateBuilder>()
   const factory OrderCardState.idle() = Idle;

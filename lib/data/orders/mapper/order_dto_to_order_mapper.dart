@@ -18,5 +18,6 @@ class OrderDtoToOrderMapper {
         status: OrderStatus.values.firstWhere(
           (status) => status.name == dto.status,
         ),
+        announcedReady: dto.announcedReady,
       );
 }

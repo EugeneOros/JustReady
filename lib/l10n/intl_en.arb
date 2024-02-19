@@ -1,48 +1,100 @@
 {
   "@@locale": "en",
   "orders": "Orders",
+  "@orders": {},
   "addOrders": "Add Orders",
+  "@addOrders": {},
   "meals": "Meals",
+  "@meals": {},
   "dashboard": "Dashboard",
+  "@dashboard": {},
   "notes": "Notes",
+  "@notes": {},
 
   "save": "Save",
+  "@save": {},
   "cancel": "Cancel",
+  "@cancel": {},
 
   "mealNumber": "Meal number",
+  "@mealNumber": {},
   "name": "Name",
+  "@name": {},
   "enterMealName": "Enter meal name",
+  "@enterMealName": {},
   "price": "Price",
+  "@price": {},
   "enterPriceName": "Enter meal price",
+  "@enterPriceName": {},
   "newMeal": "New meal",
+  "@newMeal": {},
 
   "orderDetails": "Order details",
+  "@orderDetails": {},
   "addToOrder": "Add to order",
+  "@addToOrder": {},
   "showOrderDetails": "Show order details",
+  "@showOrderDetails": {},
   "scelectedMeal": "Scelected - {mealName}",
+  "@scelectedMeal": {
+    "placeholders": {
+      "mealName": {}
+    }
+  },
+  "scelectedMealAddedToOrder": "Added to order",
+  "@scelectedMealAddedToOrder": {},
+  "scelectedMealReturnToOrder": "Return to order",
+  "@scelectedMealReturnToOrder": {},
 
   "yourOrder": "Your order",
+  "@yourOrder": {},
   "addMealsToOrder": "Add meals",
+  "@addMealsToOrder": {},
   "orderSum": "Total price ({mealNumber}) :",
+  "@orderSum": {
+    "placeholders": {
+      "mealNumber": {}
+    }
+  },
   "goToSummary": "Go to summary",
+  "@goToSummary": {},
   "nothingHire": "Nothing hire",
+  "@nothingHire": {},
   "timeToAddSomethingTasty": "Time to add something tasty",
+  "@timeToAddSomethingTasty": {},
   "additionalInstructions": "Additional instructions",
+  "@additionalInstructions": {},
   "additionalInstructionsExample": "Ex: No chiken",
+  "@additionalInstructionsExample": {},
   
   "yourOrderNumber": "Your number",
+  "@yourOrderNumber": {},
   "ok": "Ok",
+  "@ok": {},
   
   "orderNow": "Order now",
-  "scelectMeal": "Scelect meal",
+  "@orderNow": {},
+  "selectMeal": "Scelect meal",
+  "@selectMeal": {},
+  "selectMealNumber": "Scelect meal number",
+  "@selectMealNumber": {},
 
   "ordered": "To do",
+  "@ordered": {},
   "inProgress": "In progress",
+  "@inProgress": {},
   "ready": "Ready",
-  "delivered": "Delivered"
+  "@ready": {},
+  "delivered": "Delivered",
+  "@delivered": {},
 
-  
+  "dashbordWaitingTitle": "Waiting",
+  "@dashbordWaitingTitle": {},
+  "dashbordInProgresTitle": "In Progress",
+  "@dashbordInProgresTitle": {},
+  "dashbordDoneTitle": "Done",
+  "@dashbordDoneTitle": {},
 
-
-  
+  "somthingWentWrong": "Ups. Somthing went wrong",
+  "@somthingWentWrong": {}
 }

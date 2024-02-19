@@ -10,6 +10,7 @@ import 'package:just_ready/presentation/page/create_order/body/create_order_load
 import 'package:just_ready/presentation/page/create_order/cubit/create_order_cubit.dart';
 import 'package:just_ready/presentation/page/create_order/cubit/create_order_state.dart';
 import 'package:just_ready/presentation/page/home/home_page.dart';
+import 'package:just_ready/presentation/page/select_meals/select_meals_page.dart';
 import 'package:just_ready/presentation/widgets/jr_app_bar.dart';
 import 'package:just_ready/presentation/widgets/jr_dialog.dart';
 import 'package:just_ready/presentation/widgets/jr_number_circle.dart';
@@ -37,13 +38,16 @@ class CreateOrderPage extends HookWidget {
         title: Strings.of(context).yourOrder,
       ),
       body: state.maybeWhen(
-        loadedEmpty: () => const CreateOrderLoadedEmptyBody(),
+        loadedEmpty: () => CreateOrderLoadedEmptyBody(
+          onAddMeals: () => context.showBottomSheet(body: const SelectMealsPage()),
+        ),
         loaded: (order) => CreateOrderLoadedBody(
           order: order,
           onDeleteMeal: cubit.onDeleteOrderMeal,
           onEditMealCount: cubit.onEditOrderMealCount,
           onAditionalInstructionChanged: cubit.addNoteToOrder,
           sendOrder: cubit.sendCurrentOrder,
+          onAddMoreMeals: () => context.showBottomSheet(body: const SelectMealsPage()),
         ),
         loading: () => const CreateOrderLoadingBody(),
         orElse: SizedBox.shrink,

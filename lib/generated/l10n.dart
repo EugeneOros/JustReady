@@ -220,6 +220,26 @@ class Strings {
     );
   }
 
+  /// `Added to order`
+  String get scelectedMealAddedToOrder {
+    return Intl.message(
+      'Added to order',
+      name: 'scelectedMealAddedToOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Return to order`
+  String get scelectedMealReturnToOrder {
+    return Intl.message(
+      'Return to order',
+      name: 'scelectedMealReturnToOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Your order`
   String get yourOrder {
     return Intl.message(
@@ -331,10 +351,20 @@ class Strings {
   }
 
   /// `Scelect meal`
-  String get scelectMeal {
+  String get selectMeal {
     return Intl.message(
       'Scelect meal',
-      name: 'scelectMeal',
+      name: 'selectMeal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scelect meal number`
+  String get selectMealNumber {
+    return Intl.message(
+      'Scelect meal number',
+      name: 'selectMealNumber',
       desc: '',
       args: [],
     );
@@ -375,6 +405,46 @@ class Strings {
     return Intl.message(
       'Delivered',
       name: 'delivered',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Waiting`
+  String get dashbordWaitingTitle {
+    return Intl.message(
+      'Waiting',
+      name: 'dashbordWaitingTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In Progress`
+  String get dashbordInProgresTitle {
+    return Intl.message(
+      'In Progress',
+      name: 'dashbordInProgresTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Done`
+  String get dashbordDoneTitle {
+    return Intl.message(
+      'Done',
+      name: 'dashbordDoneTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ups. Somthing went wrong`
+  String get somthingWentWrong {
+    return Intl.message(
+      'Ups. Somthing went wrong',
+      name: 'somthingWentWrong',
       desc: '',
       args: [],
     );

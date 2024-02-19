@@ -20,8 +20,10 @@ class MealNumberItem extends StatelessWidget {
     return JrContainer(
       backgroundColor: isSelected ? context.colors.primary : context.colors.bright,
       borderRadius: Dimens.xm,
+      // width: Dimens.xxxc,
       width: Dimens.xxxc,
-      height: Dimens.c,
+      // height: Dimens.c,
+      height: Dimens.xc,
       margin: const EdgeInsets.all(Dimens.s),
       // padding: const EdgeInsets.symmetric(horizontal: Dimens.s, vertical: Dimens.xxs),
       child: InkWell(

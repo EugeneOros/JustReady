@@ -19,21 +19,21 @@ mixin _$OrderCardState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool showCountdown, int countdown) loaded,
-    required TResult Function() deleteOrder,
+    required TResult Function(Order order) deleteOrder,
     required TResult Function() idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool showCountdown, int countdown)? loaded,
-    TResult? Function()? deleteOrder,
+    TResult? Function(Order order)? deleteOrder,
     TResult? Function()? idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool showCountdown, int countdown)? loaded,
-    TResult Function()? deleteOrder,
+    TResult Function(Order order)? deleteOrder,
     TResult Function()? idle,
     required TResult orElse(),
   }) =>
@@ -155,7 +155,7 @@ class _$LoadedImpl implements Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool showCountdown, int countdown) loaded,
-    required TResult Function() deleteOrder,
+    required TResult Function(Order order) deleteOrder,
     required TResult Function() idle,
   }) {
     return loaded(showCountdown, countdown);
@@ -165,7 +165,7 @@ class _$LoadedImpl implements Loaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool showCountdown, int countdown)? loaded,
-    TResult? Function()? deleteOrder,
+    TResult? Function(Order order)? deleteOrder,
     TResult? Function()? idle,
   }) {
     return loaded?.call(showCountdown, countdown);
@@ -175,7 +175,7 @@ class _$LoadedImpl implements Loaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool showCountdown, int countdown)? loaded,
-    TResult Function()? deleteOrder,
+    TResult Function(Order order)? deleteOrder,
     TResult Function()? idle,
     required TResult orElse(),
   }) {
@@ -237,6 +237,8 @@ abstract class _$$DeleteOrderImplCopyWith<$Res> {
   factory _$$DeleteOrderImplCopyWith(
           _$DeleteOrderImpl value, $Res Function(_$DeleteOrderImpl) then) =
       __$$DeleteOrderImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Order order});
 }
 
 /// @nodoc
@@ -246,57 +248,81 @@ class __$$DeleteOrderImplCopyWithImpl<$Res>
   __$$DeleteOrderImplCopyWithImpl(
       _$DeleteOrderImpl _value, $Res Function(_$DeleteOrderImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? order = null,
+  }) {
+    return _then(_$DeleteOrderImpl(
+      null == order
+          ? _value.order
+          : order // ignore: cast_nullable_to_non_nullable
+              as Order,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$DeleteOrderImpl implements DeleteOrder {
-  const _$DeleteOrderImpl();
+  const _$DeleteOrderImpl(this.order);
+
+  @override
+  final Order order;
 
   @override
   String toString() {
-    return 'OrderCardState.deleteOrder()';
+    return 'OrderCardState.deleteOrder(order: $order)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$DeleteOrderImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteOrderImpl &&
+            (identical(other.order, order) || other.order == order));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, order);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteOrderImplCopyWith<_$DeleteOrderImpl> get copyWith =>
+      __$$DeleteOrderImplCopyWithImpl<_$DeleteOrderImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool showCountdown, int countdown) loaded,
-    required TResult Function() deleteOrder,
+    required TResult Function(Order order) deleteOrder,
     required TResult Function() idle,
   }) {
-    return deleteOrder();
+    return deleteOrder(order);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool showCountdown, int countdown)? loaded,
-    TResult? Function()? deleteOrder,
+    TResult? Function(Order order)? deleteOrder,
     TResult? Function()? idle,
   }) {
-    return deleteOrder?.call();
+    return deleteOrder?.call(order);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool showCountdown, int countdown)? loaded,
-    TResult Function()? deleteOrder,
+    TResult Function(Order order)? deleteOrder,
     TResult Function()? idle,
     required TResult orElse(),
   }) {
     if (deleteOrder != null) {
-      return deleteOrder();
+      return deleteOrder(order);
     }
     return orElse();
   }
@@ -337,7 +363,12 @@ class _$DeleteOrderImpl implements DeleteOrder {
 }
 
 abstract class DeleteOrder implements OrderCardState, OrderCardStateListener {
-  const factory DeleteOrder() = _$DeleteOrderImpl;
+  const factory DeleteOrder(final Order order) = _$DeleteOrderImpl;
+
+  Order get order;
+  @JsonKey(ignore: true)
+  _$$DeleteOrderImplCopyWith<_$DeleteOrderImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -378,7 +409,7 @@ class _$IdleImpl implements Idle {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool showCountdown, int countdown) loaded,
-    required TResult Function() deleteOrder,
+    required TResult Function(Order order) deleteOrder,
     required TResult Function() idle,
   }) {
     return idle();
@@ -388,7 +419,7 @@ class _$IdleImpl implements Idle {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool showCountdown, int countdown)? loaded,
-    TResult? Function()? deleteOrder,
+    TResult? Function(Order order)? deleteOrder,
     TResult? Function()? idle,
   }) {
     return idle?.call();
@@ -398,7 +429,7 @@ class _$IdleImpl implements Idle {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool showCountdown, int countdown)? loaded,
-    TResult Function()? deleteOrder,
+    TResult Function(Order order)? deleteOrder,
     TResult Function()? idle,
     required TResult orElse(),
   }) {

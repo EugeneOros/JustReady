@@ -38,7 +38,7 @@ class JrNumberEditField extends HookWidget {
           JrIconButton(
             size: Dimens.l,
             icon: IconsSvg.minus24,
-            onPressed: () {
+            onTap: () {
               if (number.value > min) {
                 number.value--;
                 form.control(formControlName).value = number.value;
@@ -70,7 +70,7 @@ class JrNumberEditField extends HookWidget {
           JrIconButton(
             size: Dimens.l,
             icon: IconsSvg.plus24,
-            onPressed: () {
+            onTap: () {
               number.value++;
               form.control(formControlName).value = number.value;
               controller.text = number.value.toString();

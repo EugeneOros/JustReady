@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:just_ready/domain/orders/models/order.dart';
 import 'package:just_ready/extensions/extension_mixin.dart';
 import 'package:just_ready/generated/l10n.dart';
 import 'package:just_ready/presentation/page/create_order/utils/create_order_form_control_names.dart';
-import 'package:just_ready/presentation/router/route_name.dart';
 import 'package:just_ready/presentation/widgets/buttons/jr_button.dart';
 import 'package:just_ready/presentation/widgets/jr_bottom_box.dart';
 import 'package:just_ready/presentation/widgets/jr_divider.dart';
@@ -18,12 +16,14 @@ class CreateOrderBottomBox extends StatelessWidget {
   final Order order;
   final Function(String) onAditionalInstructionChanged;
   final Function() sendOrder;
+  final Function() onAddMoreMeals;
 
   const CreateOrderBottomBox({
     super.key,
     required this.order,
     required this.onAditionalInstructionChanged,
     required this.sendOrder,
+    required this.onAddMoreMeals,
   });
 
   @override
@@ -42,7 +42,7 @@ class CreateOrderBottomBox extends StatelessWidget {
             width: double.infinity,
             type: ButtonType.secondary,
             title: Strings.of(context).addMealsToOrder,
-            onTap: () => context.goNamed(JustReadyRoute.selectMeals.name),
+            onTap: onAddMoreMeals,
           ),
           JrButton(
             constraints: const BoxConstraints(

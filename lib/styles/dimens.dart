@@ -58,7 +58,7 @@ class Dimens {
   static const mMaxCardHeight = 115.0;
   static const lMaxCardHeight = 130.0;
 
-  static const xxsHeight = 100.0;
+  static const xxsHeight = 70.0;
   static const xsHeight = 150.0;
   static const sHeight = 200.0;
   static const mHeight = 400.0;
@@ -75,7 +75,7 @@ class Dimens {
 
   static const expandedMealCardHeight = 370.0;
 
-  static const selectedMealCardHeight = 170.0;
+  static const selectedMealCardHeight = 140.0;
 
   static const navBarHeight = 80.0;
 

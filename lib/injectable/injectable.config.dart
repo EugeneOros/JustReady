@@ -51,6 +51,7 @@ import '../domain/orders/use_case/get_current_order_use_case.dart' as _i37;
 import '../domain/orders/use_case/get_orders_stream_use_case.dart' as _i38;
 import '../presentation/page/create_order/cubit/create_order_cubit.dart'
     as _i41;
+import '../presentation/page/dashboard/cubit/dashboard_cubit.dart' as _i42;
 import '../presentation/page/home/cubit/home_cubit.dart' as _i5;
 import '../presentation/page/meals/cubit/meals_cubit.dart' as _i25;
 import '../presentation/page/orders/cubit/orders_cubit.dart' as _i39;
@@ -58,7 +59,7 @@ import '../presentation/page/orders/widgets/order_card/cubit/order_card_cubit.da
     as _i15;
 import '../presentation/page/select_meals/cubit/select_meals_cubit.dart'
     as _i40;
-import 'firestore_injectable.dart' as _i42;
+import 'firestore_injectable.dart' as _i43;
 
 const String _dev = 'dev';
 const String _prod = 'prod';
@@ -174,7 +175,11 @@ _i1.GetIt $initGetIt(
         gh<_i31.AddOrderUseCase>(),
         gh<_i32.ClearCurrentOrderUseCase>(),
       ));
+  gh.factory<_i42.DashboardCubit>(() => _i42.DashboardCubit(
+        gh<_i38.GetOrdersStreamUseCase>(),
+        gh<_i36.EditOrderUseCase>(),
+      ));
   return getIt;
 }
 
-class _$FirestoreModule extends _i42.FirestoreModule {}
+class _$FirestoreModule extends _i43.FirestoreModule {}

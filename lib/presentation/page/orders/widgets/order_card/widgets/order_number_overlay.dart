@@ -20,7 +20,7 @@ class OrderNumberOverlay extends StatelessWidget {
         height: Dimens.xxl,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          border: Border.all(color: context.colors.error, width: Dimens.xxs),
+          border: Border.all(color: context.colors.red, width: Dimens.xxs),
           color: context.colors.background.withOpacity(0.4 + ((deletionContdownInitValue - countdown) / 10)),
         ),
         child: ClipRRect(

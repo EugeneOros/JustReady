@@ -25,8 +25,8 @@ class OrdersCubit extends Cubit<OrdersState> {
     emit(const OrdersState.loading());
     _emmitLoaded();
     final publicStream = _getOrdersStreamUseCase().asBroadcastStream();
-    await for (final orders in publicStream) {
-      ordersUpdated(orders);
+    await for (final updatedOrders in publicStream) {
+      ordersUpdated(updatedOrders);
       if (!(await publicStream.isEmpty)) emit(const OrdersState.loading());
     }
   }
@@ -46,16 +46,20 @@ class OrdersCubit extends Cubit<OrdersState> {
     }
   }
 
-  Future<void> updateOrderStatus(Order order, OrderStatus status) async =>
-      _editOrderUseCase(order.copyWith(status: status));
+  Future<void> updateOrderStatus(Order order, OrderStatus status) async {
+    return await _editOrderUseCase(order.copyWith(status: status, announcedReady: false));
+  }
 
-  Future<void> deleteOrder(Order order) async => _deleteOrderUseCase(order);
+  Future<void> deleteOrder(Order order) async => await _deleteOrderUseCase(order);
 
   Future<void> ordersUpdated(List<Order> updatedOrders) async {
+    // emit(const OrdersState.loading());
+    // await Future.delayed(Duration(seconds: 1));
     orders = updatedOrders;
     orders.sort((a, b) => a.createdDate!.compareTo(b.createdDate!));
     _emmitLoaded();
   }
 
-  void _emmitLoaded() => orders.isEmpty ? emit(const OrdersState.loadedEmpty()) : emit(OrdersState.loaded(orders));
+  void _emmitLoaded() =>
+      orders.isEmpty ? emit(const OrdersState.loadedEmpty()) : emit(OrdersState.loaded(List<Order>.from(orders)));
 }

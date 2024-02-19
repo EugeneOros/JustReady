@@ -75,7 +75,7 @@ class OrderStatusDropDown extends StatelessWidget {
           icon: JrSvgPicture(
             IconsSvg.chevronUp24,
             color: context.colors.bright,
-            height: Dimens.m,
+            size: Dimens.m,
           ),
         ),
         menuItemStyleData: const MenuItemStyleData(

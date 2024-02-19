@@ -11,7 +11,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color secondaryLight;
   final Color bright;
   final Color background;
-  final Color error;
+  final Color red;
   final Color disabled;
   final Color transparent;
 
@@ -25,7 +25,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.secondaryLight,
     required this.bright,
     required this.background,
-    required this.error,
+    required this.red,
     required this.disabled,
     required this.transparent,
   });
@@ -55,7 +55,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
         secondaryLight: secondaryLight ?? this.secondaryLight,
         bright: bright ?? this.bright,
         background: background ?? this.background,
-        error: error ?? this.error,
+        red: error ?? this.red,
         disabled: disabled ?? this.disabled,
         transparent: transparent ?? this.transparent,
       );
@@ -78,7 +78,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       secondaryLight: _getColorLerp(secondaryLight, other.secondaryLight, t),
       bright: _getColorLerp(bright, other.bright, t),
       background: _getColorLerp(background, other.background, t),
-      error: _getColorLerp(error, other.error, t),
+      red: _getColorLerp(red, other.red, t),
       disabled: _getColorLerp(disabled, other.disabled, t),
       transparent: _getColorLerp(transparent, other.transparent, t),
     );
@@ -96,7 +96,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     secondaryLight: Color(0xff6CB6D3),
     bright: Color(0xffffffff),
     background: Color(0xffFEFCF5),
-    error: Color(0xffee6c4d),
+    red: Color(0xffee6c4d),
     disabled: Color(0xffd7dadd),
     transparent: Color(0x00000000),
   );
@@ -111,7 +111,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     secondaryLight: Color(0xff6EA2B6),
     bright: Color(0xffffffff),
     background: Color(0xff000000),
-    error: Color(0xffee6c4d),
+    red: Color(0xffee6c4d),
     disabled: Color(0xffd7dadd),
     transparent: Color(0x00000000),
   );

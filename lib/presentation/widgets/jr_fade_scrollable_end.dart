@@ -21,16 +21,18 @@ class JrFadeScrollableEnd extends StatelessWidget {
       bottom: isTop ? null : 0.0,
       width: width,
       height: height,
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: isTop ? Alignment.topCenter : Alignment.bottomCenter,
-            end: isTop ? Alignment.bottomCenter : Alignment.topCenter,
-            stops: [0.0, 1.0],
-            colors: [
-              color,
-              color.withOpacity(0.0),
-            ],
+      child: IgnorePointer(
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: isTop ? Alignment.topCenter : Alignment.bottomCenter,
+              end: isTop ? Alignment.bottomCenter : Alignment.topCenter,
+              stops: [0.0, 1.0],
+              colors: [
+                color,
+                color.withOpacity(0.0),
+              ],
+            ),
           ),
         ),
       ),

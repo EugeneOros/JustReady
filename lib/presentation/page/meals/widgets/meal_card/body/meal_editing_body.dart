@@ -32,7 +32,7 @@ class MealEditingBody extends StatelessWidget {
         children: [
           JrSvgPicture(
             icon ?? IconsSvg.editMeal24,
-            height: Dimens.xxxc,
+            size: Dimens.xxxc,
           ),
           const SizedBox(height: Dimens.m),
           JrTitleRow(

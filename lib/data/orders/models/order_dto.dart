@@ -11,6 +11,7 @@ class OrderDto {
   final int? number;
   final String note;
   final List<OrderMealDto> orderMeals;
+  final bool announcedReady;
   final String status;
   @JsonKey(
     fromJson: FirestoreTimestampMapper.fromJson,
@@ -23,6 +24,7 @@ class OrderDto {
     required this.number,
     required this.orderMeals,
     required this.createdDate,
+    required this.announcedReady,
     required this.status,
   });
 

@@ -20,24 +20,30 @@ mixin _$SelectMealsState {
   TResult when<TResult extends Object?>({
     required TResult Function(List<Meal> meals) loaded,
     required TResult Function() loading,
+    required TResult Function() showMealAddedSnackBar,
+    required TResult Function() showErrorSnackBar,
     required TResult Function(Object error) error,
-    required TResult Function() initial,
+    required TResult Function() idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Meal> meals)? loaded,
     TResult? Function()? loading,
+    TResult? Function()? showMealAddedSnackBar,
+    TResult? Function()? showErrorSnackBar,
     TResult? Function(Object error)? error,
-    TResult? Function()? initial,
+    TResult? Function()? idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Meal> meals)? loaded,
     TResult Function()? loading,
+    TResult Function()? showMealAddedSnackBar,
+    TResult Function()? showErrorSnackBar,
     TResult Function(Object error)? error,
-    TResult Function()? initial,
+    TResult Function()? idle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -45,24 +51,31 @@ mixin _$SelectMealsState {
   TResult map<TResult extends Object?>({
     required TResult Function(Loaded value) loaded,
     required TResult Function(Loading value) loading,
+    required TResult Function(ShowMealAddedSnackBar value)
+        showMealAddedSnackBar,
+    required TResult Function(ShowErrorSnackBar value) showErrorSnackBar,
     required TResult Function(Error value) error,
-    required TResult Function(Initial value) initial,
+    required TResult Function(Idle value) idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Loaded value)? loaded,
     TResult? Function(Loading value)? loading,
+    TResult? Function(ShowMealAddedSnackBar value)? showMealAddedSnackBar,
+    TResult? Function(ShowErrorSnackBar value)? showErrorSnackBar,
     TResult? Function(Error value)? error,
-    TResult? Function(Initial value)? initial,
+    TResult? Function(Idle value)? idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Loaded value)? loaded,
     TResult Function(Loading value)? loading,
+    TResult Function(ShowMealAddedSnackBar value)? showMealAddedSnackBar,
+    TResult Function(ShowErrorSnackBar value)? showErrorSnackBar,
     TResult Function(Error value)? error,
-    TResult Function(Initial value)? initial,
+    TResult Function(Idle value)? idle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -158,8 +171,10 @@ class _$LoadedImpl implements Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function(List<Meal> meals) loaded,
     required TResult Function() loading,
+    required TResult Function() showMealAddedSnackBar,
+    required TResult Function() showErrorSnackBar,
     required TResult Function(Object error) error,
-    required TResult Function() initial,
+    required TResult Function() idle,
   }) {
     return loaded(meals);
   }
@@ -169,8 +184,10 @@ class _$LoadedImpl implements Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Meal> meals)? loaded,
     TResult? Function()? loading,
+    TResult? Function()? showMealAddedSnackBar,
+    TResult? Function()? showErrorSnackBar,
     TResult? Function(Object error)? error,
-    TResult? Function()? initial,
+    TResult? Function()? idle,
   }) {
     return loaded?.call(meals);
   }
@@ -180,8 +197,10 @@ class _$LoadedImpl implements Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Meal> meals)? loaded,
     TResult Function()? loading,
+    TResult Function()? showMealAddedSnackBar,
+    TResult Function()? showErrorSnackBar,
     TResult Function(Object error)? error,
-    TResult Function()? initial,
+    TResult Function()? idle,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -195,8 +214,11 @@ class _$LoadedImpl implements Loaded {
   TResult map<TResult extends Object?>({
     required TResult Function(Loaded value) loaded,
     required TResult Function(Loading value) loading,
+    required TResult Function(ShowMealAddedSnackBar value)
+        showMealAddedSnackBar,
+    required TResult Function(ShowErrorSnackBar value) showErrorSnackBar,
     required TResult Function(Error value) error,
-    required TResult Function(Initial value) initial,
+    required TResult Function(Idle value) idle,
   }) {
     return loaded(this);
   }
@@ -206,8 +228,10 @@ class _$LoadedImpl implements Loaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Loaded value)? loaded,
     TResult? Function(Loading value)? loading,
+    TResult? Function(ShowMealAddedSnackBar value)? showMealAddedSnackBar,
+    TResult? Function(ShowErrorSnackBar value)? showErrorSnackBar,
     TResult? Function(Error value)? error,
-    TResult? Function(Initial value)? initial,
+    TResult? Function(Idle value)? idle,
   }) {
     return loaded?.call(this);
   }
@@ -217,8 +241,10 @@ class _$LoadedImpl implements Loaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Loaded value)? loaded,
     TResult Function(Loading value)? loading,
+    TResult Function(ShowMealAddedSnackBar value)? showMealAddedSnackBar,
+    TResult Function(ShowErrorSnackBar value)? showErrorSnackBar,
     TResult Function(Error value)? error,
-    TResult Function(Initial value)? initial,
+    TResult Function(Idle value)? idle,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -228,7 +254,7 @@ class _$LoadedImpl implements Loaded {
   }
 }
 
-abstract class Loaded implements SelectMealsState {
+abstract class Loaded implements SelectMealsState, SelectMealsStateBuilder {
   const factory Loaded(final List<Meal> meals) = _$LoadedImpl;
 
   List<Meal> get meals;
@@ -277,8 +303,10 @@ class _$LoadingImpl implements Loading {
   TResult when<TResult extends Object?>({
     required TResult Function(List<Meal> meals) loaded,
     required TResult Function() loading,
+    required TResult Function() showMealAddedSnackBar,
+    required TResult Function() showErrorSnackBar,
     required TResult Function(Object error) error,
-    required TResult Function() initial,
+    required TResult Function() idle,
   }) {
     return loading();
   }
@@ -288,8 +316,10 @@ class _$LoadingImpl implements Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Meal> meals)? loaded,
     TResult? Function()? loading,
+    TResult? Function()? showMealAddedSnackBar,
+    TResult? Function()? showErrorSnackBar,
     TResult? Function(Object error)? error,
-    TResult? Function()? initial,
+    TResult? Function()? idle,
   }) {
     return loading?.call();
   }
@@ -299,8 +329,10 @@ class _$LoadingImpl implements Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Meal> meals)? loaded,
     TResult Function()? loading,
+    TResult Function()? showMealAddedSnackBar,
+    TResult Function()? showErrorSnackBar,
     TResult Function(Object error)? error,
-    TResult Function()? initial,
+    TResult Function()? idle,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -314,8 +346,11 @@ class _$LoadingImpl implements Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(Loaded value) loaded,
     required TResult Function(Loading value) loading,
+    required TResult Function(ShowMealAddedSnackBar value)
+        showMealAddedSnackBar,
+    required TResult Function(ShowErrorSnackBar value) showErrorSnackBar,
     required TResult Function(Error value) error,
-    required TResult Function(Initial value) initial,
+    required TResult Function(Idle value) idle,
   }) {
     return loading(this);
   }
@@ -325,8 +360,10 @@ class _$LoadingImpl implements Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Loaded value)? loaded,
     TResult? Function(Loading value)? loading,
+    TResult? Function(ShowMealAddedSnackBar value)? showMealAddedSnackBar,
+    TResult? Function(ShowErrorSnackBar value)? showErrorSnackBar,
     TResult? Function(Error value)? error,
-    TResult? Function(Initial value)? initial,
+    TResult? Function(Idle value)? idle,
   }) {
     return loading?.call(this);
   }
@@ -336,8 +373,10 @@ class _$LoadingImpl implements Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Loaded value)? loaded,
     TResult Function(Loading value)? loading,
+    TResult Function(ShowMealAddedSnackBar value)? showMealAddedSnackBar,
+    TResult Function(ShowErrorSnackBar value)? showErrorSnackBar,
     TResult Function(Error value)? error,
-    TResult Function(Initial value)? initial,
+    TResult Function(Idle value)? idle,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -347,8 +386,266 @@ class _$LoadingImpl implements Loading {
   }
 }
 
-abstract class Loading implements SelectMealsState {
+abstract class Loading implements SelectMealsState, SelectMealsStateBuilder {
   const factory Loading() = _$LoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$ShowMealAddedSnackBarImplCopyWith<$Res> {
+  factory _$$ShowMealAddedSnackBarImplCopyWith(
+          _$ShowMealAddedSnackBarImpl value,
+          $Res Function(_$ShowMealAddedSnackBarImpl) then) =
+      __$$ShowMealAddedSnackBarImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ShowMealAddedSnackBarImplCopyWithImpl<$Res>
+    extends _$SelectMealsStateCopyWithImpl<$Res, _$ShowMealAddedSnackBarImpl>
+    implements _$$ShowMealAddedSnackBarImplCopyWith<$Res> {
+  __$$ShowMealAddedSnackBarImplCopyWithImpl(_$ShowMealAddedSnackBarImpl _value,
+      $Res Function(_$ShowMealAddedSnackBarImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ShowMealAddedSnackBarImpl implements ShowMealAddedSnackBar {
+  const _$ShowMealAddedSnackBarImpl();
+
+  @override
+  String toString() {
+    return 'SelectMealsState.showMealAddedSnackBar()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ShowMealAddedSnackBarImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<Meal> meals) loaded,
+    required TResult Function() loading,
+    required TResult Function() showMealAddedSnackBar,
+    required TResult Function() showErrorSnackBar,
+    required TResult Function(Object error) error,
+    required TResult Function() idle,
+  }) {
+    return showMealAddedSnackBar();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<Meal> meals)? loaded,
+    TResult? Function()? loading,
+    TResult? Function()? showMealAddedSnackBar,
+    TResult? Function()? showErrorSnackBar,
+    TResult? Function(Object error)? error,
+    TResult? Function()? idle,
+  }) {
+    return showMealAddedSnackBar?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<Meal> meals)? loaded,
+    TResult Function()? loading,
+    TResult Function()? showMealAddedSnackBar,
+    TResult Function()? showErrorSnackBar,
+    TResult Function(Object error)? error,
+    TResult Function()? idle,
+    required TResult orElse(),
+  }) {
+    if (showMealAddedSnackBar != null) {
+      return showMealAddedSnackBar();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(Loading value) loading,
+    required TResult Function(ShowMealAddedSnackBar value)
+        showMealAddedSnackBar,
+    required TResult Function(ShowErrorSnackBar value) showErrorSnackBar,
+    required TResult Function(Error value) error,
+    required TResult Function(Idle value) idle,
+  }) {
+    return showMealAddedSnackBar(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(ShowMealAddedSnackBar value)? showMealAddedSnackBar,
+    TResult? Function(ShowErrorSnackBar value)? showErrorSnackBar,
+    TResult? Function(Error value)? error,
+    TResult? Function(Idle value)? idle,
+  }) {
+    return showMealAddedSnackBar?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Loaded value)? loaded,
+    TResult Function(Loading value)? loading,
+    TResult Function(ShowMealAddedSnackBar value)? showMealAddedSnackBar,
+    TResult Function(ShowErrorSnackBar value)? showErrorSnackBar,
+    TResult Function(Error value)? error,
+    TResult Function(Idle value)? idle,
+    required TResult orElse(),
+  }) {
+    if (showMealAddedSnackBar != null) {
+      return showMealAddedSnackBar(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ShowMealAddedSnackBar
+    implements SelectMealsState, SelectMealsStateListener {
+  const factory ShowMealAddedSnackBar() = _$ShowMealAddedSnackBarImpl;
+}
+
+/// @nodoc
+abstract class _$$ShowErrorSnackBarImplCopyWith<$Res> {
+  factory _$$ShowErrorSnackBarImplCopyWith(_$ShowErrorSnackBarImpl value,
+          $Res Function(_$ShowErrorSnackBarImpl) then) =
+      __$$ShowErrorSnackBarImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ShowErrorSnackBarImplCopyWithImpl<$Res>
+    extends _$SelectMealsStateCopyWithImpl<$Res, _$ShowErrorSnackBarImpl>
+    implements _$$ShowErrorSnackBarImplCopyWith<$Res> {
+  __$$ShowErrorSnackBarImplCopyWithImpl(_$ShowErrorSnackBarImpl _value,
+      $Res Function(_$ShowErrorSnackBarImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ShowErrorSnackBarImpl implements ShowErrorSnackBar {
+  const _$ShowErrorSnackBarImpl();
+
+  @override
+  String toString() {
+    return 'SelectMealsState.showErrorSnackBar()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ShowErrorSnackBarImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<Meal> meals) loaded,
+    required TResult Function() loading,
+    required TResult Function() showMealAddedSnackBar,
+    required TResult Function() showErrorSnackBar,
+    required TResult Function(Object error) error,
+    required TResult Function() idle,
+  }) {
+    return showErrorSnackBar();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<Meal> meals)? loaded,
+    TResult? Function()? loading,
+    TResult? Function()? showMealAddedSnackBar,
+    TResult? Function()? showErrorSnackBar,
+    TResult? Function(Object error)? error,
+    TResult? Function()? idle,
+  }) {
+    return showErrorSnackBar?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<Meal> meals)? loaded,
+    TResult Function()? loading,
+    TResult Function()? showMealAddedSnackBar,
+    TResult Function()? showErrorSnackBar,
+    TResult Function(Object error)? error,
+    TResult Function()? idle,
+    required TResult orElse(),
+  }) {
+    if (showErrorSnackBar != null) {
+      return showErrorSnackBar();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(Loading value) loading,
+    required TResult Function(ShowMealAddedSnackBar value)
+        showMealAddedSnackBar,
+    required TResult Function(ShowErrorSnackBar value) showErrorSnackBar,
+    required TResult Function(Error value) error,
+    required TResult Function(Idle value) idle,
+  }) {
+    return showErrorSnackBar(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(ShowMealAddedSnackBar value)? showMealAddedSnackBar,
+    TResult? Function(ShowErrorSnackBar value)? showErrorSnackBar,
+    TResult? Function(Error value)? error,
+    TResult? Function(Idle value)? idle,
+  }) {
+    return showErrorSnackBar?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Loaded value)? loaded,
+    TResult Function(Loading value)? loading,
+    TResult Function(ShowMealAddedSnackBar value)? showMealAddedSnackBar,
+    TResult Function(ShowErrorSnackBar value)? showErrorSnackBar,
+    TResult Function(Error value)? error,
+    TResult Function(Idle value)? idle,
+    required TResult orElse(),
+  }) {
+    if (showErrorSnackBar != null) {
+      return showErrorSnackBar(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ShowErrorSnackBar
+    implements SelectMealsState, SelectMealsStateListener {
+  const factory ShowErrorSnackBar() = _$ShowErrorSnackBarImpl;
 }
 
 /// @nodoc
@@ -415,8 +712,10 @@ class _$ErrorImpl implements Error {
   TResult when<TResult extends Object?>({
     required TResult Function(List<Meal> meals) loaded,
     required TResult Function() loading,
+    required TResult Function() showMealAddedSnackBar,
+    required TResult Function() showErrorSnackBar,
     required TResult Function(Object error) error,
-    required TResult Function() initial,
+    required TResult Function() idle,
   }) {
     return error(this.error);
   }
@@ -426,8 +725,10 @@ class _$ErrorImpl implements Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Meal> meals)? loaded,
     TResult? Function()? loading,
+    TResult? Function()? showMealAddedSnackBar,
+    TResult? Function()? showErrorSnackBar,
     TResult? Function(Object error)? error,
-    TResult? Function()? initial,
+    TResult? Function()? idle,
   }) {
     return error?.call(this.error);
   }
@@ -437,8 +738,10 @@ class _$ErrorImpl implements Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Meal> meals)? loaded,
     TResult Function()? loading,
+    TResult Function()? showMealAddedSnackBar,
+    TResult Function()? showErrorSnackBar,
     TResult Function(Object error)? error,
-    TResult Function()? initial,
+    TResult Function()? idle,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -452,8 +755,11 @@ class _$ErrorImpl implements Error {
   TResult map<TResult extends Object?>({
     required TResult Function(Loaded value) loaded,
     required TResult Function(Loading value) loading,
+    required TResult Function(ShowMealAddedSnackBar value)
+        showMealAddedSnackBar,
+    required TResult Function(ShowErrorSnackBar value) showErrorSnackBar,
     required TResult Function(Error value) error,
-    required TResult Function(Initial value) initial,
+    required TResult Function(Idle value) idle,
   }) {
     return error(this);
   }
@@ -463,8 +769,10 @@ class _$ErrorImpl implements Error {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Loaded value)? loaded,
     TResult? Function(Loading value)? loading,
+    TResult? Function(ShowMealAddedSnackBar value)? showMealAddedSnackBar,
+    TResult? Function(ShowErrorSnackBar value)? showErrorSnackBar,
     TResult? Function(Error value)? error,
-    TResult? Function(Initial value)? initial,
+    TResult? Function(Idle value)? idle,
   }) {
     return error?.call(this);
   }
@@ -474,8 +782,10 @@ class _$ErrorImpl implements Error {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Loaded value)? loaded,
     TResult Function(Loading value)? loading,
+    TResult Function(ShowMealAddedSnackBar value)? showMealAddedSnackBar,
+    TResult Function(ShowErrorSnackBar value)? showErrorSnackBar,
     TResult Function(Error value)? error,
-    TResult Function(Initial value)? initial,
+    TResult Function(Idle value)? idle,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -485,7 +795,7 @@ class _$ErrorImpl implements Error {
   }
 }
 
-abstract class Error implements SelectMealsState {
+abstract class Error implements SelectMealsState, SelectMealsStateBuilder {
   const factory Error(final Object error) = _$ErrorImpl;
 
   Object get error;
@@ -495,35 +805,34 @@ abstract class Error implements SelectMealsState {
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$IdleImplCopyWith<$Res> {
+  factory _$$IdleImplCopyWith(
+          _$IdleImpl value, $Res Function(_$IdleImpl) then) =
+      __$$IdleImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$SelectMealsStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$IdleImplCopyWithImpl<$Res>
+    extends _$SelectMealsStateCopyWithImpl<$Res, _$IdleImpl>
+    implements _$$IdleImplCopyWith<$Res> {
+  __$$IdleImplCopyWithImpl(_$IdleImpl _value, $Res Function(_$IdleImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$InitialImpl implements Initial {
-  const _$InitialImpl();
+class _$IdleImpl implements Idle {
+  const _$IdleImpl();
 
   @override
   String toString() {
-    return 'SelectMealsState.initial()';
+    return 'SelectMealsState.idle()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType && other is _$IdleImpl);
   }
 
   @override
@@ -534,10 +843,12 @@ class _$InitialImpl implements Initial {
   TResult when<TResult extends Object?>({
     required TResult Function(List<Meal> meals) loaded,
     required TResult Function() loading,
+    required TResult Function() showMealAddedSnackBar,
+    required TResult Function() showErrorSnackBar,
     required TResult Function(Object error) error,
-    required TResult Function() initial,
+    required TResult Function() idle,
   }) {
-    return initial();
+    return idle();
   }
 
   @override
@@ -545,10 +856,12 @@ class _$InitialImpl implements Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Meal> meals)? loaded,
     TResult? Function()? loading,
+    TResult? Function()? showMealAddedSnackBar,
+    TResult? Function()? showErrorSnackBar,
     TResult? Function(Object error)? error,
-    TResult? Function()? initial,
+    TResult? Function()? idle,
   }) {
-    return initial?.call();
+    return idle?.call();
   }
 
   @override
@@ -556,12 +869,14 @@ class _$InitialImpl implements Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Meal> meals)? loaded,
     TResult Function()? loading,
+    TResult Function()? showMealAddedSnackBar,
+    TResult Function()? showErrorSnackBar,
     TResult Function(Object error)? error,
-    TResult Function()? initial,
+    TResult Function()? idle,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (idle != null) {
+      return idle();
     }
     return orElse();
   }
@@ -571,10 +886,13 @@ class _$InitialImpl implements Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(Loaded value) loaded,
     required TResult Function(Loading value) loading,
+    required TResult Function(ShowMealAddedSnackBar value)
+        showMealAddedSnackBar,
+    required TResult Function(ShowErrorSnackBar value) showErrorSnackBar,
     required TResult Function(Error value) error,
-    required TResult Function(Initial value) initial,
+    required TResult Function(Idle value) idle,
   }) {
-    return initial(this);
+    return idle(this);
   }
 
   @override
@@ -582,10 +900,12 @@ class _$InitialImpl implements Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Loaded value)? loaded,
     TResult? Function(Loading value)? loading,
+    TResult? Function(ShowMealAddedSnackBar value)? showMealAddedSnackBar,
+    TResult? Function(ShowErrorSnackBar value)? showErrorSnackBar,
     TResult? Function(Error value)? error,
-    TResult? Function(Initial value)? initial,
+    TResult? Function(Idle value)? idle,
   }) {
-    return initial?.call(this);
+    return idle?.call(this);
   }
 
   @override
@@ -593,17 +913,19 @@ class _$InitialImpl implements Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Loaded value)? loaded,
     TResult Function(Loading value)? loading,
+    TResult Function(ShowMealAddedSnackBar value)? showMealAddedSnackBar,
+    TResult Function(ShowErrorSnackBar value)? showErrorSnackBar,
     TResult Function(Error value)? error,
-    TResult Function(Initial value)? initial,
+    TResult Function(Idle value)? idle,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (idle != null) {
+      return idle(this);
     }
     return orElse();
   }
 }
 
-abstract class Initial implements SelectMealsState {
-  const factory Initial() = _$InitialImpl;
+abstract class Idle implements SelectMealsState {
+  const factory Idle() = _$IdleImpl;
 }

@@ -15,7 +15,6 @@ import 'package:reactive_forms/reactive_forms.dart';
 class OrderMealCard extends HookWidget {
   final OrderMeal orderMeal;
   final Function(int) onEditCount;
-  final Function? onCancel;
   final Function() onDelete;
   final String? actionIcon;
 
@@ -24,7 +23,6 @@ class OrderMealCard extends HookWidget {
     required this.orderMeal,
     required this.onEditCount,
     required this.onDelete,
-    this.onCancel,
     this.actionIcon,
   });
 
@@ -58,7 +56,7 @@ class OrderMealCard extends HookWidget {
                 showShadow: false,
                 isAnimated: true,
                 borderRadius: Dimens.ms,
-                height: Dimens.mMaxCardHeight,
+                height: Dimens.sMaxCardHeight,
                 margin: const EdgeInsets.all(Dimens.xm),
                 padding: const EdgeInsets.symmetric(horizontal: Dimens.xm, vertical: Dimens.s),
                 child: Column(
@@ -104,9 +102,9 @@ class OrderMealCard extends HookWidget {
                 child: JrIconButton(
                   icon: IconsSvg.delete24,
                   type: IconButtonType.tertiary,
-                  color: context.colors.error,
+                  color: context.colors.red,
                   size: Dimens.xl,
-                  onPressed: onDelete,
+                  onTap: onDelete,
                 ),
               ),
             ],

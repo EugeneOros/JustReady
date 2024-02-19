@@ -96,7 +96,7 @@ class JrAppBar extends StatelessWidget implements PreferredSizeWidget {
                     JrIconButton(
                       type: IconButtonType.primary,
                       icon: endIcon!,
-                      onPressed: () => onEndIconTap?.call(context),
+                      onTap: () => onEndIconTap?.call(context),
                     )
                 ],
               ),
@@ -111,7 +111,7 @@ class JrAppBar extends StatelessWidget implements PreferredSizeWidget {
           return JrIconButton(
             type: IconButtonType.secondary,
             icon: startIcon ?? IconsSvg.chevronLeft24,
-            onPressed: () => onStartIconTap != null ? onStartIconTap!(context) : context.pop(),
+            onTap: () => onStartIconTap != null ? onStartIconTap!(context) : context.pop(),
           );
         }),
       );
@@ -121,7 +121,7 @@ class JrAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: JrIconButton(
           type: IconButtonType.primary,
           icon: endIcon!,
-          onPressed: () => onEndIconTap?.call(context),
+          onTap: () => onEndIconTap?.call(context),
         ),
       );
 }

@@ -5,16 +5,14 @@ import 'package:just_ready/extensions/extension_mixin.dart';
 class JrSvgPicture extends StatelessWidget {
   final String assetName;
   final bool inactive;
-  final double? height;
-  final double? width;
+  final double? size;
   final String? semanticsLabel;
   final Color? color;
 
   const JrSvgPicture(
     this.assetName, {
     super.key,
-    this.height,
-    this.width,
+    this.size,
     this.inactive = false,
     this.semanticsLabel,
     this.color,
@@ -23,8 +21,8 @@ class JrSvgPicture extends StatelessWidget {
   @override
   Widget build(BuildContext context) => SvgPicture.asset(
         assetName,
-        height: height,
-        width: width,
+        height: size,
+        width: size,
         colorFilter: _getColor(context),
         semanticsLabel: semanticsLabel,
       );

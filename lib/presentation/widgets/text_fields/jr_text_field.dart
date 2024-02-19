@@ -116,8 +116,8 @@ class JrTextField extends HookWidget {
           contentPadding: const EdgeInsets.all(Dimens.xm),
           focusedBorder: _getBorder(context.colors.dark),
           border: _getBorder(context.colors.dark),
-          errorBorder: _getBorder(context.colors.error),
-          focusedErrorBorder: _getBorder(context.colors.error),
+          errorBorder: _getBorder(context.colors.red),
+          focusedErrorBorder: _getBorder(context.colors.red),
           enabledBorder: _getBorder(context.colors.dark),
           disabledBorder: _getBorder(context.colors.disabled),
           focusColor: context.colors.dark,
@@ -170,7 +170,7 @@ class JrTextField extends HookWidget {
           padding: const EdgeInsets.all(Dimens.xm),
           child: JrSvgPicture(
             prefixIcon!,
-            height: Dimens.l,
+            size: Dimens.l,
           ),
         )
       : null;

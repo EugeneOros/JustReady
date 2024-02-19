@@ -29,7 +29,7 @@ class IconsSvg {
   static final emptyMeal24 = _icons.emptyMeal24.path;
   static final tickSquare24 = _icons.tickSquare24.path;
   static final square24 = _icons.square24.path;
-
+  static final check24 = _icons.check24.path;
 
   IconsSvg._();
 }

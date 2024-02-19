@@ -7,6 +7,7 @@ class Order {
   String note;
   final DateTime? createdDate;
   final OrderStatus status;
+  final bool announcedReady;
 
   Order({
     required this.number,
@@ -14,6 +15,7 @@ class Order {
     required this.note,
     this.createdDate,
     required this.status,
+    required this.announcedReady,
   });
 
   Order copyWith({
@@ -22,6 +24,7 @@ class Order {
     String? note,
     DateTime? createdDate,
     OrderStatus? status,
+    bool? announcedReady,
   }) =>
       Order(
         number: number ?? this.number,
@@ -29,6 +32,7 @@ class Order {
         note: note ?? this.note,
         createdDate: createdDate ?? this.createdDate,
         status: status ?? this.status,
+        announcedReady: announcedReady ?? this.announcedReady,
       );
 
   double getSumPrice() {

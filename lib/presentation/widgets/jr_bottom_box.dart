@@ -16,7 +16,7 @@ class JrBottomBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) => ClipRRect(
       child: Container(
-        alignment: Alignment.center,
+        // alignment: Alignment.center,
         decoration: BoxDecoration(
           color: context.colors.primaryLight.withOpacity(0.6),
         ),
@@ -33,7 +33,8 @@ class JrBottomBox extends StatelessWidget {
                 ),
               ),
             ),
-            child: Column(
+            child:  
+            Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 if (child != null)

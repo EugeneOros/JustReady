@@ -35,6 +35,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ex: No chiken"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
+        "dashbordDoneTitle": MessageLookupByLibrary.simpleMessage("Done"),
+        "dashbordInProgresTitle":
+            MessageLookupByLibrary.simpleMessage("In Progress"),
+        "dashbordWaitingTitle": MessageLookupByLibrary.simpleMessage("Waiting"),
         "delivered": MessageLookupByLibrary.simpleMessage("Delivered"),
         "enterMealName":
             MessageLookupByLibrary.simpleMessage("Enter meal name"),
@@ -57,10 +61,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "price": MessageLookupByLibrary.simpleMessage("Price"),
         "ready": MessageLookupByLibrary.simpleMessage("Ready"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
-        "scelectMeal": MessageLookupByLibrary.simpleMessage("Scelect meal"),
         "scelectedMeal": m1,
+        "scelectedMealAddedToOrder":
+            MessageLookupByLibrary.simpleMessage("Added to order"),
+        "scelectedMealReturnToOrder":
+            MessageLookupByLibrary.simpleMessage("Return to order"),
+        "selectMeal": MessageLookupByLibrary.simpleMessage("Scelect meal"),
+        "selectMealNumber":
+            MessageLookupByLibrary.simpleMessage("Scelect meal number"),
         "showOrderDetails":
             MessageLookupByLibrary.simpleMessage("Show order details"),
+        "somthingWentWrong":
+            MessageLookupByLibrary.simpleMessage("Ups. Somthing went wrong"),
         "timeToAddSomethingTasty":
             MessageLookupByLibrary.simpleMessage("Time to add something tasty"),
         "yourOrder": MessageLookupByLibrary.simpleMessage("Your order"),

@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:just_ready/extensions/extension_mixin.dart';
 import 'package:just_ready/presentation/widgets/jr_svg_picture.dart';
 import 'package:just_ready/styles/dimens.dart';
+import 'package:just_ready/utils/ignore_else_state.dart';
 
 enum ButtonType {
   primary,
@@ -10,11 +11,19 @@ enum ButtonType {
   tertiary,
 }
 
+enum ButtonState {
+  active,
+  loading,
+  disabled,
+}
+
 class JrButton extends HookWidget {
   final String title;
   final VoidCallback onTap;
   final ButtonType type;
+  final ButtonState state;
   final String? prefixIcon;
+  final String? sufixIcon;
   final Color? color;
   final double? width;
   final BoxConstraints? constraints;
@@ -24,7 +33,9 @@ class JrButton extends HookWidget {
     required this.title,
     required this.onTap,
     this.type = ButtonType.primary,
+    this.state = ButtonState.active,
     this.prefixIcon,
+    this.sufixIcon,
     this.color,
     this.width,
     this.constraints,
@@ -36,12 +47,12 @@ class JrButton extends HookWidget {
     final bordrRadius = BorderRadius.circular(Dimens.xl);
 
     return Material(
-      color: getBackgroundColor(context),
+      color: _getBackgroundColor(context),
       borderRadius: bordrRadius,
       child: InkWell(
-        onTap: onTap,
+        onTap: state == ButtonState.disabled ? doNothing : onTap,
         highlightColor: context.colors.transparent,
-        splashColor: getSplashColor(context),
+        splashColor: _getSplashColor(context),
         hoverColor: context.colors.darkLight,
         onHover: (value) => isHover.value = value,
         borderRadius: bordrRadius,
@@ -50,7 +61,7 @@ class JrButton extends HookWidget {
           constraints: constraints,
           decoration: BoxDecoration(
             borderRadius: bordrRadius,
-            border: Border.all(color: context.colors.dark, width: Dimens.xxxs),
+            border: Border.all(color: _getBordersColor(context), width: Dimens.xxxs),
             color: context.colors.transparent, // isHover.value ? context.colors.dark : context.colors.bright,
           ),
           child: Row(
@@ -60,22 +71,25 @@ class JrButton extends HookWidget {
               if (prefixIcon != null)
                 JrSvgPicture(
                   prefixIcon!,
-                  height: Dimens.xl,
-                  width: Dimens.xl,
-                  color: getTitleColor(context),
+                  size: Dimens.xl,
+                  color: _getTitleColor(context),
                 ),
-              Flexible(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: Dimens.xs, horizontal: Dimens.xm),
-                  child: Text(
-                    title,
-                    overflow: TextOverflow.ellipsis,
-                    style: context.typography.button.copyWith(
-                      color: getTitleColor(context),
-                    ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: Dimens.xs, horizontal: Dimens.xm),
+                child: Text(
+                  title,
+                  overflow: TextOverflow.ellipsis,
+                  style: context.typography.button.copyWith(
+                    color: _getTitleColor(context),
                   ),
                 ),
               ),
+              if (sufixIcon != null)
+                JrSvgPicture(
+                  sufixIcon!,
+                  size: Dimens.xl,
+                  color: _getTitleColor(context),
+                ),
             ],
           ),
         ),
@@ -83,7 +97,13 @@ class JrButton extends HookWidget {
     );
   }
 
-  Color getTitleColor(BuildContext context) {
+  Color _getBordersColor(BuildContext context) {
+    if (state == ButtonState.disabled) return context.colors.disabled;
+    return context.colors.dark;
+  }
+
+  Color _getTitleColor(BuildContext context) {
+    if (state == ButtonState.disabled) return context.colors.disabled;
     switch (type) {
       case ButtonType.primary:
         return context.colors.dark;
@@ -94,7 +114,8 @@ class JrButton extends HookWidget {
     }
   }
 
-  Color getBackgroundColor(BuildContext context) {
+  Color _getBackgroundColor(BuildContext context) {
+    if (state == ButtonState.disabled) return context.colors.bright;
     switch (type) {
       case ButtonType.primary:
         return color ?? context.colors.primary;
@@ -105,7 +126,7 @@ class JrButton extends HookWidget {
     }
   }
 
-  Color getSplashColor(BuildContext context) {
+  Color _getSplashColor(BuildContext context) {
     switch (type) {
       case ButtonType.primary:
         return context.colors.bright;
@@ -115,9 +136,4 @@ class JrButton extends HookWidget {
         return context.colors.dark;
     }
   }
-
-  // Color getBackgroundColor(BuildContext context, bool isHover) {
-  //   if (isHover) return type == ButtonType.primary ? context.colors.primary : context.colors.dark;
-  //   return type == ButtonType.primary ? context.colors.dark : context.colors.primary;
-  // }
 }

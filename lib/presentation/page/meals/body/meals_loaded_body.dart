@@ -49,8 +49,7 @@ class MealsLoadedBody extends HookWidget {
           itemCount: meals.length,
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (context, index) {
-            return MealCard(
+          itemBuilder: (context, index) => MealCard(
               meals: meals,
               meal: meals[index],
               onEdit: onCreateEditMeal,
@@ -60,8 +59,7 @@ class MealsLoadedBody extends HookWidget {
                 selectedMealIndex.value = value == true ? index : null;
                 hideAddMealCard();
               },
-            );
-          },
+            ),
         ),
         const SizedBox(height: Dimens.xxxxc),
       ],

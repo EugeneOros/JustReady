@@ -42,7 +42,7 @@ class DrowerItem extends StatelessWidget {
         children: [
           JrSvgPicture(
             index == selectdIndex ? selectedIcon : unselectedIcon,
-            height: Dimens.xxxl,
+            size: Dimens.xxxl,
             color: context.colors.dark,
           ),
           const SizedBox(width: Dimens.s),
@@ -56,7 +56,7 @@ class DrowerItem extends StatelessWidget {
           ),
           JrSvgPicture(
             IconsSvg.chevronRight24,
-            height: Dimens.l,
+            size: Dimens.l,
             color: context.colors.dark,
           ),
         ],

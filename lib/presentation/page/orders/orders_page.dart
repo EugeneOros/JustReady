@@ -34,7 +34,7 @@ class OrdersPage extends HookWidget {
           orders: orders,
           toggleOrderMealIsDone: cubit.toggleOrderMealIsDone,
           updateOrderStatus: cubit.updateOrderStatus,
-          deleteOrdeer: cubit.deleteOrder,
+          deleteOrder: cubit.deleteOrder,
         ),
         loadedEmpty: () => const OrdersLoadedEmptyBody(),
         loading: () => const OrdersLoadingBody(),

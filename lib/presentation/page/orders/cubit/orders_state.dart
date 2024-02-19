@@ -5,9 +5,9 @@ part 'orders_state.freezed.dart';
 
 @freezed
 class OrdersState with _$OrdersState {
-  const factory OrdersState.loaded(List<Order> orders) = Loaded;
-  const factory OrdersState.loadedEmpty() = LoadedEmpty;
-  const factory OrdersState.loading() = Loading;
-  const factory OrdersState.error(Object error) = Error;
-  const factory OrdersState.initial() = Initial;
+  const factory OrdersState.loaded(List<Order> orders) =OrdersStateLoadingLoaded;
+  const factory OrdersState.loadedEmpty() = OrdersStateLoadingLoadedEmpty;
+  const factory OrdersState.loading() = OrdersStateLoading;
+  const factory OrdersState.error(Object error) = OrdersStateLoadingError;
+  const factory OrdersState.idle() = OrdersStateLoadingIdle;
 }

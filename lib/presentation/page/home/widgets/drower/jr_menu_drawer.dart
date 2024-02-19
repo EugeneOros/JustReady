@@ -48,7 +48,7 @@ class JrMenuDrawer extends StatelessWidget {
                         alignment: Alignment.center,
                         child: JrSvgPicture(
                           IconsSvg.logo,
-                          height: Dimens.xxxl,
+                          size: Dimens.xxxl,
                           color: context.colors.bright,
                         ),
                       ),

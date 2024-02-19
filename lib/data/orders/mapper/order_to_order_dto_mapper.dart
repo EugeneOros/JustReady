@@ -20,5 +20,6 @@ class OrderToOrderDtoMapper {
         orderMeals:
             order.orderMeals.map((orderMeal) => _orderMealToOrderMealDtoMapper(orderMeal)).toList(growable: false),
         status: order.status.name,
+        announcedReady: order.announcedReady,
       );
 }

@@ -20,14 +20,14 @@ class OrderCardBody extends StatelessWidget {
   Widget build(BuildContext context) => Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // const SizedBox(height: Dimens.xs),
           Expanded(
             child: JrFadeEndStack(
-              fadeHeight: Dimens.xxxl,
+              topFadeHeight: Dimens.xxl,
+              bottomFadeHeight: Dimens.xxxc,
               child: ListView(
                 shrinkWrap: true,
                 children: [
-                  const SizedBox(height: Dimens.m),
+                  const SizedBox(height: Dimens.ms),
                   ...order.orderMeals.map(
                     (orderMeal) => Padding(
                       padding: const EdgeInsets.symmetric(horizontal: Dimens.m),
@@ -37,7 +37,7 @@ class OrderCardBody extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: Dimens.xm),
+                  const SizedBox(height: Dimens.xxl),
                 ],
               ),
             ),

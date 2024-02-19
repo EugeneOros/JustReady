@@ -29,9 +29,7 @@ class MealsPage extends HookWidget {
         endIcon: state is MealsStateLoaded ? IconsSvg.plus24 : null,
         skipStartIcon: false,
         startIcon: IconsSvg.menu24,
-        onStartIconTap: (_) {
-          homeKey.currentState!.openDrawer();
-        },
+        onStartIconTap: (_) => homeKey.currentState!.openDrawer(),
         onEndIconTap: (_) {
           showAddMeal.value = true;
           selectedMealIndex.value = null;

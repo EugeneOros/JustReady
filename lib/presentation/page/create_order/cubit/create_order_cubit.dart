@@ -42,7 +42,7 @@ class CreateOrderCubit extends Cubit<CreateOrderState> {
   Future<void> init() async {
     emit(const CreateOrderState.loading());
     //Todo if you will have more time check why on add selected meal again main stream is not updating view if i dont wait
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(microseconds: 200));
     _emmitLoaded();
   }
 
@@ -76,7 +76,8 @@ class CreateOrderCubit extends Cubit<CreateOrderState> {
     });
   }
 
-  void _emmitLoaded() {
+  Future<void> _emmitLoaded() async {
+    emit(const CreateOrderState.loading());
     order = _getCurrentOrderUseCase();
     order == null || order!.orderMeals.isEmpty
         ? emit(const CreateOrderState.loadedEmpty())

@@ -63,7 +63,13 @@ class OrdersRepositoryImpl implements OrdersRepository {
 
   @override
   Future<void> addMealToCurrentOrder(Meal meal, int count) async {
-    currentOrder ??= Order(number: null, orderMeals: [], note: '', status: OrderStatus.ordered);
+    currentOrder ??= Order(
+      number: null,
+      orderMeals: [],
+      note: '',
+      status: OrderStatus.ordered,
+      announcedReady: false,
+    );
 
     for (var orderMeal in currentOrder!.orderMeals) {
       if (orderMeal.meal.number == meal.number) {
@@ -78,7 +84,13 @@ class OrdersRepositoryImpl implements OrdersRepository {
 
   @override
   void addNoteCurrentOrder(String note) {
-    currentOrder ??= Order(number: null, orderMeals: [], note: note, status: OrderStatus.ordered);
+    currentOrder ??= Order(
+      number: null,
+      orderMeals: [],
+      note: note,
+      status: OrderStatus.ordered,
+      announcedReady: false,
+    );
     currentOrder!.note = note;
   }
 

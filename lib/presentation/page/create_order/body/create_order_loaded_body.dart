@@ -1,3 +1,5 @@
+import 'package:animated_list_plus/animated_list_plus.dart';
+import 'package:animated_list_plus/transitions.dart';
 import 'package:flutter/material.dart';
 import 'package:just_ready/domain/orders/models/order.dart';
 import 'package:just_ready/domain/orders/models/order_meal.dart';
@@ -11,6 +13,7 @@ class CreateOrderLoadedBody extends StatelessWidget {
   final Function(String) onAditionalInstructionChanged;
   final Function(OrderMeal, int) onEditMealCount;
   final Function() sendOrder;
+  final Function() onAddMoreMeals;
 
   const CreateOrderLoadedBody({
     super.key,
@@ -19,6 +22,7 @@ class CreateOrderLoadedBody extends StatelessWidget {
     required this.onEditMealCount,
     required this.onAditionalInstructionChanged,
     required this.sendOrder,
+    required this.onAddMoreMeals,
   });
 
   @override
@@ -27,15 +31,20 @@ class CreateOrderLoadedBody extends StatelessWidget {
           Positioned.fill(
             child: ListView(
               children: [
-                ListView.builder(
+                ImplicitlyAnimatedList<OrderMeal>(
+                  items: order.orderMeals,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount: order.orderMeals.length,
+                  areItemsTheSame: (a, b) => a.meal.number == b.meal.number,
                   shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    return OrderMealCard(
-                      orderMeal: order.orderMeals[index],
-                      onEditCount: (count) => onEditMealCount(order.orderMeals[index], count),
-                      onDelete: () => onDeleteMeal(order.orderMeals[index]),
+                  itemBuilder: (context, animation, item, index) {
+                    return SizeFadeTransition(
+                      curve: Curves.easeInOut,
+                      animation: animation,
+                      child: OrderMealCard(
+                        orderMeal: item,
+                        onEditCount: (count) => onEditMealCount(order.orderMeals[index], count),
+                        onDelete: () => onDeleteMeal(order.orderMeals[index]),
+                      ),
                     );
                   },
                 ),
@@ -48,10 +57,10 @@ class CreateOrderLoadedBody extends StatelessWidget {
             right: 0,
             left: 0,
             child: CreateOrderBottomBox(
-              order: order,
-              onAditionalInstructionChanged: onAditionalInstructionChanged,
-              sendOrder: sendOrder,
-            ),
+                order: order,
+                onAditionalInstructionChanged: onAditionalInstructionChanged,
+                sendOrder: sendOrder,
+                onAddMoreMeals: onAddMoreMeals),
           ),
         ],
       );

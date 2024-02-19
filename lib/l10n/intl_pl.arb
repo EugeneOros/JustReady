@@ -1,44 +1,101 @@
 {
   "@@locale": "pl",
   "orders": "Zamówienia",
+  "@orders": {},
   "addOrders": "Zamów",
+  "@addOrders": {},
   "meals": "Dania",
+  "@meals": {},
   "dashboard": "Panel",
+  "@dashboard": {},
   "notes": "Uwagi",
+  "@notes": {},
 
   "save": "Zapisz",
+  "@save": {},
   "cancel": "Anuluj",
+  "@cancel": {},
 
   "mealNumber": "Numer dania",
+  "@mealNumber": {},
   "name": "Nazwa",
+  "@name": {},
   "enterMealName": "Wprowadź nazwe dania",
+  "@enterMealName": {},
   "price": "Cena",
+  "@price": {},
   "enterPriceName": "Wprowadź cene dania",
+  "@enterPriceName": {},
   "newMeal": "Nowe danie",
+  "@newMeal": {},
 
 
   "orderDetails": "Szczegóły zamówienia",
+  "@orderDetails": {},
   "addToOrder": "Dodaj do zamówienia",
+  "@addToOrder": {},
   "showOrderDetails": "Pokaż szczegóły zamówienia",
+  "@showOrderDetails": {},
   "scelectedMeal": "Wybrano - {mealName}",
+  "@scelectedMeal": {
+    "placeholders": {
+      "mealName": {}
+    }
+  },
+  "scelectedMealAddedToOrder": "Dodano do zamówienia",
+  "@scelectedMealAddedToOrder": {},
+  "scelectedMealReturnToOrder": "Wróć do zamówienia",
+  "@scelectedMealReturnToOrder": {},
 
   "yourOrder": "Twoje zamówienie",
+  "@yourOrder": {},
   "addMealsToOrder": "Dodaj dania",
+  "@addMealsToOrder": {},
   "orderSum": "Suma ({mealNumber}) :",
+  "@orderSum": {
+    "placeholders": {
+      "mealNumber": {}
+    }
+  },
   "goToSummary": "Przejdź do podsumowania",
+  "@goToSummary": {},
   "nothingHire": "Nic tu niema",
+  "@nothingHire": {},
   "timeToAddSomethingTasty": "Czas dodać coś smacznego",
+  "@timeToAddSomethingTasty": {},
   "additionalInstructions": "Dodatkowe instrukcje",
+  "@additionalInstructions": {},
   "additionalInstructionsExample": "N.p.: Bez kurczaka",
+  "@additionalInstructionsExample": {},
 
   "yourOrderNumber": "Twój numer",
+  "@yourOrderNumber": {},
   "ok": "Ok",
+  "@ok": {},
   
   "orderNow": "Zamów teraz",
-  "scelectMeal": "Wybierz dania",
+  "@orderNow": {},
+  "selectMeal": "Wybierz dania",
+  "@selectMeal": {},
+  "selectMealNumber": "Wybierz numer dania",
+  "@selectMealNumber": {},
   
   "ordered": "Do zrobienia",
+  "@ordered": {},
   "inProgress": "W trakcie",
+  "@inProgress": {},
   "ready": "Gotowe",
-  "delivered": "Dostarczone"
+  "@ready": {},
+  "delivered": "Dostarczone",
+  "@delivered": {},
+
+  "dashbordWaitingTitle": "W oczekiwaniu",
+  "@dashbordWaitingTitle": {},
+  "dashbordInProgresTitle": "Już się szykuje",
+  "@dashbordInProgresTitle": {},
+  "dashbordDoneTitle": "Do odbioru",
+  "@dashbordDoneTitle": {},
+
+  "somthingWentWrong": "Ups. Coś poszło nie tak",
+  "@somthingWentWrong": {}
 }
