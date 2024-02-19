@@ -30,11 +30,14 @@ class OrdersPage extends HookWidget {
         title: Strings.of(context).orders,
       ),
       body: state.maybeWhen(
-        loaded: (orders) => OrdersLoadedBody(
+        loaded: (orders, orderToDelete, deletionCountdown) => OrdersLoadedBody(
           orders: orders,
           toggleOrderMealIsDone: cubit.toggleOrderMealIsDone,
           updateOrderStatus: cubit.updateOrderStatus,
           deleteOrder: cubit.deleteOrder,
+          cancelDeletionCountdown: cubit.cancelDeletionCountdown,
+          deletionCountdown: deletionCountdown,
+          orderToDelete: orderToDelete,
         ),
         loadedEmpty: () => const OrdersLoadedEmptyBody(),
         loading: () => const OrdersLoadingBody(),

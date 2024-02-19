@@ -12,6 +12,9 @@ class OrdersLoadedBody extends HookWidget {
   final Function(Order, int) toggleOrderMealIsDone;
   final Function(Order, OrderStatus) updateOrderStatus;
   final Function(Order) deleteOrder;
+  final Function() cancelDeletionCountdown;
+  final int deletionCountdown;
+  final Order? orderToDelete;
 
   const OrdersLoadedBody({
     super.key,
@@ -19,6 +22,9 @@ class OrdersLoadedBody extends HookWidget {
     required this.toggleOrderMealIsDone,
     required this.updateOrderStatus,
     required this.deleteOrder,
+    required this.cancelDeletionCountdown,
+    required this.deletionCountdown,
+    required this.orderToDelete,
   });
 
   @override
@@ -30,17 +36,20 @@ class OrdersLoadedBody extends HookWidget {
           scrollDirection: Axis.horizontal,
           shrinkWrap: true,
 
-          itemBuilder: (context, animation, item, index) => SizeFadeTransition(
+          itemBuilder: (context, animation, order, index) => SizeFadeTransition(
             curve: Curves.easeInOut,
             axis: Axis.horizontal,
             animation: animation,
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: Dimens.m, horizontal: Dimens.s),
               child: OrderCard(
-                order: item,
+                order: order,
                 toggleOrderMealIsDone: toggleOrderMealIsDone,
                 updateOrderStatus: updateOrderStatus,
+                cancelDeletionCountdown: cancelDeletionCountdown,
+                deletionCountdown: deletionCountdown,
                 onDeleteOrder: deleteOrder,
+                showDeleteionCountdown: order.number == orderToDelete?.number,
               ),
             ),
           ),

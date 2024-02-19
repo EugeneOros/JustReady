@@ -5,9 +5,21 @@ part 'orders_state.freezed.dart';
 
 @freezed
 class OrdersState with _$OrdersState {
-  const factory OrdersState.loaded(List<Order> orders) =OrdersStateLoadingLoaded;
+  @Implements<OrdersStateBuilder>()
+  const factory OrdersState.loaded(List<Order> orders, Order? orderToDelete, int deletionCountdownValue) =
+      OrdersStateLoadingLoaded;
+
+  @Implements<OrdersStateBuilder>()
   const factory OrdersState.loadedEmpty() = OrdersStateLoadingLoadedEmpty;
+
+  @Implements<OrdersStateBuilder>()
   const factory OrdersState.loading() = OrdersStateLoading;
+
+  @Implements<OrdersStateBuilder>()
   const factory OrdersState.error(Object error) = OrdersStateLoadingError;
   const factory OrdersState.idle() = OrdersStateLoadingIdle;
 }
+
+abstract class OrdersStateBuilder {}
+
+abstract class OrdersStateListener {}

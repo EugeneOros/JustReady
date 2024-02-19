@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$OrdersState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Order> orders) loaded,
+    required TResult Function(List<Order> orders, Order? orderToDelete,
+            int deletionCountdownValue)
+        loaded,
     required TResult Function() loadedEmpty,
     required TResult Function() loading,
     required TResult Function(Object error) error,
@@ -27,7 +29,9 @@ mixin _$OrdersState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Order> orders)? loaded,
+    TResult? Function(List<Order> orders, Order? orderToDelete,
+            int deletionCountdownValue)?
+        loaded,
     TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
@@ -36,7 +40,9 @@ mixin _$OrdersState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Order> orders)? loaded,
+    TResult Function(List<Order> orders, Order? orderToDelete,
+            int deletionCountdownValue)?
+        loaded,
     TResult Function()? loadedEmpty,
     TResult Function()? loading,
     TResult Function(Object error)? error,
@@ -99,7 +105,8 @@ abstract class _$$OrdersStateLoadingLoadedImplCopyWith<$Res> {
           $Res Function(_$OrdersStateLoadingLoadedImpl) then) =
       __$$OrdersStateLoadingLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Order> orders});
+  $Res call(
+      {List<Order> orders, Order? orderToDelete, int deletionCountdownValue});
 }
 
 /// @nodoc
@@ -115,12 +122,22 @@ class __$$OrdersStateLoadingLoadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? orders = null,
+    Object? orderToDelete = freezed,
+    Object? deletionCountdownValue = null,
   }) {
     return _then(_$OrdersStateLoadingLoadedImpl(
       null == orders
           ? _value._orders
           : orders // ignore: cast_nullable_to_non_nullable
               as List<Order>,
+      freezed == orderToDelete
+          ? _value.orderToDelete
+          : orderToDelete // ignore: cast_nullable_to_non_nullable
+              as Order?,
+      null == deletionCountdownValue
+          ? _value.deletionCountdownValue
+          : deletionCountdownValue // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -128,7 +145,8 @@ class __$$OrdersStateLoadingLoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$OrdersStateLoadingLoadedImpl implements OrdersStateLoadingLoaded {
-  const _$OrdersStateLoadingLoadedImpl(final List<Order> orders)
+  const _$OrdersStateLoadingLoadedImpl(
+      final List<Order> orders, this.orderToDelete, this.deletionCountdownValue)
       : _orders = orders;
 
   final List<Order> _orders;
@@ -140,8 +158,13 @@ class _$OrdersStateLoadingLoadedImpl implements OrdersStateLoadingLoaded {
   }
 
   @override
+  final Order? orderToDelete;
+  @override
+  final int deletionCountdownValue;
+
+  @override
   String toString() {
-    return 'OrdersState.loaded(orders: $orders)';
+    return 'OrdersState.loaded(orders: $orders, orderToDelete: $orderToDelete, deletionCountdownValue: $deletionCountdownValue)';
   }
 
   @override
@@ -149,12 +172,19 @@ class _$OrdersStateLoadingLoadedImpl implements OrdersStateLoadingLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OrdersStateLoadingLoadedImpl &&
-            const DeepCollectionEquality().equals(other._orders, _orders));
+            const DeepCollectionEquality().equals(other._orders, _orders) &&
+            (identical(other.orderToDelete, orderToDelete) ||
+                other.orderToDelete == orderToDelete) &&
+            (identical(other.deletionCountdownValue, deletionCountdownValue) ||
+                other.deletionCountdownValue == deletionCountdownValue));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_orders));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_orders),
+      orderToDelete,
+      deletionCountdownValue);
 
   @JsonKey(ignore: true)
   @override
@@ -166,31 +196,37 @@ class _$OrdersStateLoadingLoadedImpl implements OrdersStateLoadingLoaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Order> orders) loaded,
+    required TResult Function(List<Order> orders, Order? orderToDelete,
+            int deletionCountdownValue)
+        loaded,
     required TResult Function() loadedEmpty,
     required TResult Function() loading,
     required TResult Function(Object error) error,
     required TResult Function() idle,
   }) {
-    return loaded(orders);
+    return loaded(orders, orderToDelete, deletionCountdownValue);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Order> orders)? loaded,
+    TResult? Function(List<Order> orders, Order? orderToDelete,
+            int deletionCountdownValue)?
+        loaded,
     TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
   }) {
-    return loaded?.call(orders);
+    return loaded?.call(orders, orderToDelete, deletionCountdownValue);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Order> orders)? loaded,
+    TResult Function(List<Order> orders, Order? orderToDelete,
+            int deletionCountdownValue)?
+        loaded,
     TResult Function()? loadedEmpty,
     TResult Function()? loading,
     TResult Function(Object error)? error,
@@ -198,7 +234,7 @@ class _$OrdersStateLoadingLoadedImpl implements OrdersStateLoadingLoaded {
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(orders);
+      return loaded(orders, orderToDelete, deletionCountdownValue);
     }
     return orElse();
   }
@@ -245,10 +281,14 @@ class _$OrdersStateLoadingLoadedImpl implements OrdersStateLoadingLoaded {
 }
 
 abstract class OrdersStateLoadingLoaded implements OrdersState {
-  const factory OrdersStateLoadingLoaded(final List<Order> orders) =
-      _$OrdersStateLoadingLoadedImpl;
+  const factory OrdersStateLoadingLoaded(
+      final List<Order> orders,
+      final Order? orderToDelete,
+      final int deletionCountdownValue) = _$OrdersStateLoadingLoadedImpl;
 
   List<Order> get orders;
+  Order? get orderToDelete;
+  int get deletionCountdownValue;
   @JsonKey(ignore: true)
   _$$OrdersStateLoadingLoadedImplCopyWith<_$OrdersStateLoadingLoadedImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -296,7 +336,9 @@ class _$OrdersStateLoadingLoadedEmptyImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Order> orders) loaded,
+    required TResult Function(List<Order> orders, Order? orderToDelete,
+            int deletionCountdownValue)
+        loaded,
     required TResult Function() loadedEmpty,
     required TResult Function() loading,
     required TResult Function(Object error) error,
@@ -308,7 +350,9 @@ class _$OrdersStateLoadingLoadedEmptyImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Order> orders)? loaded,
+    TResult? Function(List<Order> orders, Order? orderToDelete,
+            int deletionCountdownValue)?
+        loaded,
     TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
@@ -320,7 +364,9 @@ class _$OrdersStateLoadingLoadedEmptyImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Order> orders)? loaded,
+    TResult Function(List<Order> orders, Order? orderToDelete,
+            int deletionCountdownValue)?
+        loaded,
     TResult Function()? loadedEmpty,
     TResult Function()? loading,
     TResult Function(Object error)? error,
@@ -417,7 +463,9 @@ class _$OrdersStateLoadingImpl implements OrdersStateLoading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Order> orders) loaded,
+    required TResult Function(List<Order> orders, Order? orderToDelete,
+            int deletionCountdownValue)
+        loaded,
     required TResult Function() loadedEmpty,
     required TResult Function() loading,
     required TResult Function(Object error) error,
@@ -429,7 +477,9 @@ class _$OrdersStateLoadingImpl implements OrdersStateLoading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Order> orders)? loaded,
+    TResult? Function(List<Order> orders, Order? orderToDelete,
+            int deletionCountdownValue)?
+        loaded,
     TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
@@ -441,7 +491,9 @@ class _$OrdersStateLoadingImpl implements OrdersStateLoading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Order> orders)? loaded,
+    TResult Function(List<Order> orders, Order? orderToDelete,
+            int deletionCountdownValue)?
+        loaded,
     TResult Function()? loadedEmpty,
     TResult Function()? loading,
     TResult Function(Object error)? error,
@@ -564,7 +616,9 @@ class _$OrdersStateLoadingErrorImpl implements OrdersStateLoadingError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Order> orders) loaded,
+    required TResult Function(List<Order> orders, Order? orderToDelete,
+            int deletionCountdownValue)
+        loaded,
     required TResult Function() loadedEmpty,
     required TResult Function() loading,
     required TResult Function(Object error) error,
@@ -576,7 +630,9 @@ class _$OrdersStateLoadingErrorImpl implements OrdersStateLoadingError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Order> orders)? loaded,
+    TResult? Function(List<Order> orders, Order? orderToDelete,
+            int deletionCountdownValue)?
+        loaded,
     TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
@@ -588,7 +644,9 @@ class _$OrdersStateLoadingErrorImpl implements OrdersStateLoadingError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Order> orders)? loaded,
+    TResult Function(List<Order> orders, Order? orderToDelete,
+            int deletionCountdownValue)?
+        loaded,
     TResult Function()? loadedEmpty,
     TResult Function()? loading,
     TResult Function(Object error)? error,
@@ -693,7 +751,9 @@ class _$OrdersStateLoadingIdleImpl implements OrdersStateLoadingIdle {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Order> orders) loaded,
+    required TResult Function(List<Order> orders, Order? orderToDelete,
+            int deletionCountdownValue)
+        loaded,
     required TResult Function() loadedEmpty,
     required TResult Function() loading,
     required TResult Function(Object error) error,
@@ -705,7 +765,9 @@ class _$OrdersStateLoadingIdleImpl implements OrdersStateLoadingIdle {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Order> orders)? loaded,
+    TResult? Function(List<Order> orders, Order? orderToDelete,
+            int deletionCountdownValue)?
+        loaded,
     TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
@@ -717,7 +779,9 @@ class _$OrdersStateLoadingIdleImpl implements OrdersStateLoadingIdle {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Order> orders)? loaded,
+    TResult Function(List<Order> orders, Order? orderToDelete,
+            int deletionCountdownValue)?
+        loaded,
     TResult Function()? loadedEmpty,
     TResult Function()? loading,
     TResult Function(Object error)? error,

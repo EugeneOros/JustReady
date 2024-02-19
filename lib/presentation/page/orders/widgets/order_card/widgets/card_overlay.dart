@@ -23,7 +23,6 @@ class CardOverlay extends StatelessWidget {
         decoration: BoxDecoration( 
           border: Border.all(color: context.colors.red, width: Dimens.xxs),
           borderRadius: BorderRadius.circular(Dimens.ms),
-          // color: context.colors.background.withOpacity(0.4 + ((deletionContdownInitValue - countdown) / 10)),
         ),
         margin: const EdgeInsets.all(Dimens.xm),
         width: Dimens.orderCardWidth,
