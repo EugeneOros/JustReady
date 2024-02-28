@@ -24,7 +24,7 @@ class OrdersLoadedEmptyBody extends StatelessWidget {
             const SizedBox(height: Dimens.s),
             JrText(
               Strings.of(context).nothingHire,
-              style: context.typography.header2,
+              style: context.typography.header3,
             ),
             const SizedBox(height: Dimens.s),
             JrText(

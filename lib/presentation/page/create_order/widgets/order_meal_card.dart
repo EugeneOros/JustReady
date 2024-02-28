@@ -41,6 +41,7 @@ class OrderMealCard extends HookWidget {
         ],
       ),
     });
+    form.control(CreateOrderFormControlName.count).value = orderMeal.count;
 
     return ReactiveForm(
       formGroup: form,
@@ -63,33 +64,30 @@ class OrderMealCard extends HookWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: JrText(
-                          orderMeal.meal.name,
-                          overflow: TextOverflow.ellipsis,
-                          color: context.colors.dark,
-                          maxLines: 2,
-                        ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: JrText(
+                        orderMeal.meal.name,
+                        overflow: TextOverflow.ellipsis,
+                        color: context.colors.dark,
+                        maxLines: 2,
                       ),
                     ),
                     const SizedBox(height: Dimens.s),
                     Row(
                       children: [
-                        JrPrice(
-                          size: JrPriceSize.s,
-                          price: orderMeal.meal.price,
-                        ),
-                        const Spacer(),
                         JrNumberEditField(
                           form: form,
                           formControlName: CreateOrderFormControlName.count,
-                          initialValue: orderMeal.count,
                           onChange: (count) {
                             if (int.tryParse(count) == null) return;
                             onEditCount(int.parse(count));
                           },
+                        ),
+                        const Spacer(),
+                        JrPrice(
+                          size: JrPriceSize.s,
+                          price: orderMeal.meal.price,
                         ),
                       ],
                     ),

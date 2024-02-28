@@ -1,3 +1,4 @@
+import 'package:animated_list_plus/transitions.dart';
 import 'package:flutter/material.dart';
 
 class JrAnimatedSwitcher extends StatelessWidget {
@@ -9,18 +10,17 @@ class JrAnimatedSwitcher extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Align(
-      alignment: Alignment.topCenter,
-      child: AnimatedSwitcher(
-        // switchInCurve: Curves.fastEaseInToSlowEaseOut,
-        // switchOutCurve: Curves.fastEaseInToSlowEaseOut,
-        transitionBuilder: (child, animation) => ScaleTransition(
-          scale: animation,
-          child: ClipRect(
-            child: child,
+        alignment: Alignment.topCenter,
+        child: AnimatedSwitcher(
+          transitionBuilder: (child, animation) => SizeFadeTransition(
+            // scale: animation,
+            animation: animation,
+            child: ClipRect(
+              child: child,
+            ),
           ),
+          duration: const Duration(milliseconds: 200),
+          child: child,
         ),
-        duration: const Duration(milliseconds: 150),
-        child: child,
-      ),
-    );
+      );
 }

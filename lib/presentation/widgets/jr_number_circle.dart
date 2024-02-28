@@ -7,6 +7,7 @@ enum NumberCircleSize {
   s,
   m,
   l,
+  xl,
 }
 
 class JrNumberCircle extends StatelessWidget {
@@ -49,6 +50,8 @@ class JrNumberCircle extends StatelessWidget {
         return Dimens.xxl;
       case NumberCircleSize.l:
         return Dimens.xxxl;
+      case NumberCircleSize.xl:
+        return Dimens.xsWidth;
     }
   }
 
@@ -57,8 +60,10 @@ class JrNumberCircle extends StatelessWidget {
       case NumberCircleSize.s:
         return context.typography.body1;
       case NumberCircleSize.m:
-        return context.typography.header3;
+        return context.typography.header4;
       case NumberCircleSize.l:
+        return context.typography.header2;
+      case NumberCircleSize.xl:
         return context.typography.header1;
     }
   }

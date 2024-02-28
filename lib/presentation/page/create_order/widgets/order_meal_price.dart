@@ -20,7 +20,7 @@ class OrderMealPrice extends StatelessWidget {
         JrText(
           price.toInt().toString(),
           color: context.colors.secondary,
-          style: context.typography.header2,
+          style: context.typography.header3,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,

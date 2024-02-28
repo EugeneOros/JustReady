@@ -9,7 +9,7 @@ import 'package:just_ready/domain/orders/use_case/edit_order_use_case.dart';
 import 'package:just_ready/domain/orders/use_case/get_orders_stream_use_case.dart';
 import 'package:just_ready/presentation/page/orders/cubit/orders_state.dart';
 
-const deletionContdownInitValue = 7;
+const deletionContdownInitValue = 3;
 const oneSec = Duration(seconds: 1);
 
 @injectable

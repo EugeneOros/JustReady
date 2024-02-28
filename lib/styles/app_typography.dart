@@ -6,16 +6,21 @@ class AppTypography {
 
   /// Header
   static const header1 = TextStyle(
+    fontSize: 60,
+    height: 1.3,
+    fontWeight: FontWeight.w700,
+  );
+  static const header2 = TextStyle(
     fontSize: 27,
     height: 1.3,
     fontWeight: FontWeight.w600,
   );
-  static const header2 = TextStyle(
+  static const header3 = TextStyle(
     fontSize: 23,
     fontWeight: FontWeight.w600,
     height: 1.3,
   );
-  static const header3 = TextStyle(
+  static const header4 = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w600,
     height: 1.3,
@@ -74,6 +79,7 @@ class CustomTypography extends ThemeExtension<CustomTypography> {
   final TextStyle header1;
   final TextStyle header2;
   final TextStyle header3;
+  final TextStyle header4;
   final TextStyle body1;
   final TextStyle body2;
   final TextStyle body3;
@@ -87,6 +93,7 @@ class CustomTypography extends ThemeExtension<CustomTypography> {
     required this.header1,
     required this.header2,
     required this.header3,
+    required this.header4,
     required this.subtitle1,
     required this.subtitle2,
     required this.body1,
@@ -116,6 +123,7 @@ class CustomTypography extends ThemeExtension<CustomTypography> {
         header1: header1 ?? this.header1,
         header2: header2 ?? this.header2,
         header3: header3 ?? this.header3,
+        header4: header4 ?? this.header4,
         body1: body1 ?? this.body1,
         body2: body2 ?? this.body2,
         body3: body3 ?? this.body3,
@@ -133,6 +141,7 @@ class CustomTypography extends ThemeExtension<CustomTypography> {
     header1: AppTypography.header1.copyWith(fontFamily: AppTypography.fontFamily),
     header2: AppTypography.header2.copyWith(fontFamily: AppTypography.fontFamily),
     header3: AppTypography.header3.copyWith(fontFamily: AppTypography.fontFamily),
+    header4: AppTypography.header4.copyWith(fontFamily: AppTypography.fontFamily),
     body1: AppTypography.body1.copyWith(fontFamily: AppTypography.fontFamily),
     body2: AppTypography.body2.copyWith(fontFamily: AppTypography.fontFamily),
     body3: AppTypography.body3.copyWith(fontFamily: AppTypography.fontFamily),

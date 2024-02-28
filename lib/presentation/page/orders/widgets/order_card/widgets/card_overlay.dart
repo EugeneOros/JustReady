@@ -20,7 +20,7 @@ class CardOverlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        decoration: BoxDecoration( 
+        decoration: BoxDecoration(
           border: Border.all(color: context.colors.red, width: Dimens.xxs),
           borderRadius: BorderRadius.circular(Dimens.ms),
         ),
@@ -40,7 +40,7 @@ class CardOverlay extends StatelessWidget {
                 children: [
                   JrText(
                     countdown.toString(),
-                    style: context.typography.header1,
+                    style: context.typography.header2,
                     color: context.colors.red,
                   ),
                   const SizedBox(height: Dimens.xs),

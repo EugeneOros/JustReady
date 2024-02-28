@@ -18,6 +18,7 @@ class OrderStatusDropDown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final backgroundColor = context.colors.primaryLight;
     final bordrRadius = BorderRadius.circular(Dimens.ms);
     return DropdownButtonHideUnderline(
       child: DropdownButton2<OrderStatus>(
@@ -29,13 +30,13 @@ class OrderStatusDropDown extends StatelessWidget {
                 child: Container(
                   width: double.infinity,
                   height: double.infinity,
-                  color: status.getColor(context),
+                  color: context.colors.transparent,
                   child: Center(
                     child: JrText(
                       status.getString(context),
                       textAlign: TextAlign.center,
                       style: context.typography.body1,
-                      color: context.colors.bright,
+                      color: status.getColor(context),
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
@@ -54,10 +55,10 @@ class OrderStatusDropDown extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: Dimens.xs, horizontal: Dimens.xm),
           decoration: BoxDecoration(
             borderRadius: bordrRadius,
-            // border: Border.all(color: context.colors.dark, width: Dimens.xxxs),
-            color: currentStatus.getColor(context),
+            border: Border.all(color: context.colors.dark, width: Dimens.xxxs),
+            color: backgroundColor,
           ),
-          elevation: 2,
+          elevation: 0,
         ),
         dropdownStyleData: DropdownStyleData(
           maxHeight: Dimens.sHeight,
@@ -65,16 +66,16 @@ class OrderStatusDropDown extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: bordrRadius,
             border: Border.all(color: context.colors.dark, width: Dimens.xxxs),
-            color: context.colors.secondary,
+            color: backgroundColor,
           ),
           padding: const EdgeInsets.all(Dimens.zero),
           offset: const Offset(0, (Dimens.sHeight)),
-          elevation: 2,
+          elevation: 0,
         ),
         iconStyleData: IconStyleData(
           icon: JrSvgPicture(
             IconsSvg.chevronUp24,
-            color: context.colors.bright,
+            color: context.colors.dark,
             size: Dimens.m,
           ),
         ),

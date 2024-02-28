@@ -7,7 +7,6 @@ import 'package:just_ready/presentation/page/select_meals/body/select_meals_load
 import 'package:just_ready/presentation/page/select_meals/body/select_meals_loading_body.dart';
 import 'package:just_ready/presentation/page/select_meals/cubit/select_meals_cubit.dart';
 import 'package:just_ready/presentation/page/select_meals/cubit/select_meals_state.dart';
-import 'package:just_ready/presentation/page/select_meals/widgets/selected_meals_botom_box.dart';
 import 'package:just_ready/utils/hooks/use_once.dart';
 import 'package:just_ready/utils/ignore_else_state.dart';
 
@@ -20,22 +19,13 @@ class SelectMealsPage extends HookWidget {
     useBlocListener(cubit, _listener, listenWhen: _listenWhen);
     useOnce(cubit.init);
 
-
     return Scaffold(
       backgroundColor: context.colors.transparent,
       extendBodyBehindAppBar: true,
-      // appBar: JrAppBar(
-      //   skipStartIcon: false,
-      //   title: Strings.of(context).scelectMeal,
-      // ),
-      bottomNavigationBar: state.maybeWhen(
-        loaded: (meals) => const SelectedMealBottomBox(),
-        orElse: SizedBox.shrink,
-      ),
       body: state.maybeWhen(
         loaded: (meals) => SelectMealsLoadedBody(
           meals: meals,
-          addMealToOrder: (mealCount, meal) =>cubit.addMealsToOrder(meal, mealCount),
+          addMealToOrder: (mealCount, meal) => cubit.addMealsToOrder(meal, mealCount),
         ),
         loading: () => const SlectMealsLoadingBody(),
         orElse: SizedBox.shrink,
@@ -48,7 +38,7 @@ class SelectMealsPage extends HookWidget {
 
   void _listener(SelectMealsCubit bloc, SelectMealsState state, BuildContext context) => state.maybeWhen(
         showMealAddedSnackBar: () => context.showSteelSnackBar(message: Strings.current.scelectedMealAddedToOrder),
-        // showErrorSnackBar: context.showSteelSnackBar,
+        showErrorSnackBar: context.showSteelSnackBar,
         orElse: doNothing,
       );
 }

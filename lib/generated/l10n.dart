@@ -340,6 +340,16 @@ class Strings {
     );
   }
 
+  /// `Congratulation. Your order was created`
+  String get yourOrderWasCreated {
+    return Intl.message(
+      'Congratulation. Your order was created',
+      name: 'yourOrderWasCreated',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Order now`
   String get orderNow {
     return Intl.message(

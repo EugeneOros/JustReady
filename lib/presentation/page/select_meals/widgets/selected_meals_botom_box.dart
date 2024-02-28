@@ -32,18 +32,6 @@ class SelectedMealBottomBox extends StatelessWidget {
       formGroup: form,
       child: JrBottomBox(
         buttons: [
-          // if (meal != null)
-          //   JrButton(
-          //     constraints: const BoxConstraints(
-          //       maxWidth: Dimens.buttonMaxWidth,
-          //     ),
-          //     width: double.infinity,
-          //     title: Strings.of(context).addToOrder,
-          //     onTap: () {
-          //       addMealToOrder(form.control(SelectMealFormControlName.count).value);
-          //       changeSelectedIndex(null);
-          //     },
-          //   ),
           JrButton(
             constraints: const BoxConstraints(
               maxWidth: Dimens.buttonMaxWidth,
@@ -52,40 +40,8 @@ class SelectedMealBottomBox extends StatelessWidget {
             type: ButtonType.secondary,
             title: Strings.of(context).scelectedMealReturnToOrder,
             onTap: context.pop,
-            // prefixIcon: IconsSvg.chevronLeft24,
           ),
         ],
-        // child: meal != null
-        //     ? Column(
-        //         crossAxisAlignment: CrossAxisAlignment.start,
-        //         children: [
-        //           const SizedBox(height: Dimens.s),
-        //           Row(
-        //             children: [
-        //               Expanded(
-        //                 child: JrText(
-        //                   meal!.name,
-        //                   maxLines: 3,
-        //                   color: context.colors.dark,
-        //                 ),
-        //               ),
-        //               JrPrice(
-        //                 price: meal!.price,
-        //                 colorType: JrPriceColorType.primary,
-        //                 // color: context.colors.dark,
-        //               ),
-        //             ],
-        //           ),
-        //           const SizedBox(height: Dimens.s),
-        //           JrNumberEditField(
-        //             form: form,
-        //             formControlName: SelectMealFormControlName.count,
-        //             initialValue: initMealCountValue,
-        //           ),
-        //           const SizedBox(height: Dimens.s),
-        //         ],
-        //       )
-        //     : null,
       ),
     );
   }

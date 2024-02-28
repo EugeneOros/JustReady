@@ -23,50 +23,48 @@ class MealEditingBody extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(Dimens.m),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          JrSvgPicture(
-            icon ?? IconsSvg.editMeal24,
-            size: Dimens.xxxc,
-          ),
-          const SizedBox(height: Dimens.m),
-          JrTitleRow(
-            title: Strings.of(context).name,
-            child: JrTextField(
-              form: form,
-              isFloatingLabel: false,
-              formControlName: MealFormControlName.name,
-              labelText: Strings.of(context).enterMealName,
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.all(Dimens.m),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            JrSvgPicture(
+              icon ?? IconsSvg.editMeal24,
+              size: Dimens.xxxc,
             ),
-          ),
-          const SizedBox(height: Dimens.m),
-          JrTitleRow(
-            title: Strings.of(context).mealNumber,
-            expandedTitle: true,
-            child: JrNumberEditField(
-              form: form,
-              formControlName: MealFormControlName.number,
-              initialValue: meal.number,
+            const SizedBox(height: Dimens.m),
+            JrTitleRow(
+              title: Strings.of(context).name,
+              child: JrTextField(
+                form: form,
+                isFloatingLabel: false,
+                formControlName: MealFormControlName.name,
+                labelText: Strings.of(context).enterMealName,
+              ),
             ),
-          ),
-          const SizedBox(height: Dimens.m),
-          JrTitleRow(
-            title: Strings.of(context).price,
-            child: JrTextField(
-              form: form,
-              isFloatingLabel: false,
-              selectAllOnTap: true,
-              formControlName: MealFormControlName.price,
-              labelText: Strings.of(context).enterPriceName,
+            const SizedBox(height: Dimens.m),
+            JrTitleRow(
+              title: Strings.of(context).mealNumber,
+              expandedTitle: true,
+              child: JrNumberEditField(
+                form: form,
+                formControlName: MealFormControlName.number,
+                // initialValue: meal.number,
+              ),
             ),
-          ),
-        ],
-      ),
-    );
-  }
+            const SizedBox(height: Dimens.m),
+            JrTitleRow(
+              title: Strings.of(context).price,
+              child: JrTextField(
+                form: form,
+                isFloatingLabel: false,
+                selectAllOnTap: true,
+                formControlName: MealFormControlName.price,
+                labelText: Strings.of(context).enterPriceName,
+              ),
+            ),
+          ],
+        ),
+      );
 }

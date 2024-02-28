@@ -35,9 +35,9 @@ extension OrderStatusExtension on OrderStatus {
       case OrderStatus.inProgress:
         return context.colors.secondary;
       case OrderStatus.ready:
-        return context.colors.primary;
-      case OrderStatus.deliverd:
         return context.colors.dark;
+      case OrderStatus.deliverd:
+        return context.colors.red;
     }
   }
 }

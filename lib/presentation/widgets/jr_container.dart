@@ -101,7 +101,7 @@ class JrContainer extends StatelessWidget {
           margin: margin,
           color: context.colors.transparent,
           constraints: constraints,
-          duration: const Duration(milliseconds: 150),
+          duration: const Duration(milliseconds: 200),
           curve: Curves.easeInOut,
           height: height,
           width: width,

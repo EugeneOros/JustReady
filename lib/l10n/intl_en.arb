@@ -71,6 +71,9 @@
   "@yourOrderNumber": {},
   "ok": "Ok",
   "@ok": {},
+  "yourOrderWasCreated": "Congratulation. Your order was created",
+  "@yourOrderWasCreated": {},
+
   
   "orderNow": "Order now",
   "@orderNow": {},

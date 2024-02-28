@@ -11,7 +11,17 @@ class DashboardCubit extends Cubit<DashboardState> {
   final GetOrdersStreamUseCase _getOrdersStreamUseCase;
   final EditOrderUseCase _editOrderUseCase;
 
-  List<Order> orders = [];
+  List<Order> orders = [
+    // Order(number: 1, orderMeals: [], note: 'note', status: OrderStatus.ready, announcedReady: true),
+    // Order(number: 2, orderMeals: [], note: 'note', status: OrderStatus.ready, announcedReady: true),
+    // Order(number: 3, orderMeals: [], note: 'note', status: OrderStatus.ready, announcedReady: true),
+    // Order(number: 4, orderMeals: [], note: 'note', status: OrderStatus.ready, announcedReady: true),
+    // Order(number: 5, orderMeals: [], note: 'note', status: OrderStatus.ready, announcedReady: true),
+    // Order(number: 6, orderMeals: [], note: 'note', status: OrderStatus.ready, announcedReady: true),
+    // Order(number: 7, orderMeals: [], note: 'note', status: OrderStatus.ready, announcedReady: true)
+  ];
+  List<Order> ordersToAnnounce = [];
+  bool isAnnouncingOrder = false;
 
   DashboardCubit(
     this._getOrdersStreamUseCase,
@@ -19,7 +29,7 @@ class DashboardCubit extends Cubit<DashboardState> {
   ) : super(const DashboardState.loading());
 
   Future<void> loadOrders() async {
-    emit(const DashboardState.loading());
+    // emit(const DashboardState.loading());
     _emmitLoaded();
     final publicStream = _getOrdersStreamUseCase().asBroadcastStream();
     await for (final orders in publicStream) {
@@ -34,14 +44,24 @@ class DashboardCubit extends Cubit<DashboardState> {
     _emmitLoaded();
   }
 
-  Future<void> orderReadyAnnounce(Order order) async {
+  Future<void> orderReadyAnnounced(Order order) async {
     await _editOrderUseCase(order.copyWith(announcedReady: true));
   }
 
   void _emmitLoaded() {
-    final ordersToAnnouce =
-        orders.where((order) => order.status == OrderStatus.ready && !order.announcedReady).toList(growable: false);
-    if (ordersToAnnouce.isNotEmpty) emit(DashboardState.announceReady(ordersToAnnouce));
     emit(DashboardState.loaded(orders));
+    ordersToAnnounce =
+        orders.where((order) => order.status == OrderStatus.ready && !order.announcedReady).toList(growable: false);
+    if (!isAnnouncingOrder) announceNext();
+  }
+
+  void announceNext() {
+    emit(const DashboardState.idle());
+    if (ordersToAnnounce.isEmpty) {
+      isAnnouncingOrder = false;
+      return;
+    }
+    isAnnouncingOrder = true;
+    emit(DashboardState.announceReady(ordersToAnnounce[0]));
   }
 }

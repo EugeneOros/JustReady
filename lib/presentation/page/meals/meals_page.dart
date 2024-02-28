@@ -8,6 +8,7 @@ import 'package:just_ready/presentation/page/meals/body/meals_loading_body.dart'
 import 'package:just_ready/presentation/page/meals/cubit/meals_cubit.dart';
 import 'package:just_ready/presentation/page/meals/cubit/meals_state.dart';
 import 'package:just_ready/presentation/widgets/jr_app_bar.dart';
+import 'package:just_ready/presentation/widgets/jr_imaged_body.dart';
 import 'package:just_ready/styles/images.dart';
 import 'package:just_ready/utils/hooks/use_once.dart';
 
@@ -35,21 +36,23 @@ class MealsPage extends HookWidget {
           selectedMealIndex.value = null;
         },
       ),
-      body: state.maybeWhen(
-        loaded: (meals) => MealsLoadedBody(
-          meals: meals,
-          onCreateEditMeal: cubit.createEditMeal,
-          onDeleteMeal: cubit.deleteMeal,
-          getFreeMealNumber: cubit.getFreeMealNumber,
-          onMealAdded: (meal, number) {
-            cubit.createEditMeal(meal, number);
-            showAddMeal.value = false;
-          },
-          showAddMeal: showAddMeal.value,
-          hideAddMealCard: () => showAddMeal.value = false,
+      body: JrImagedBody(
+        child: state.maybeWhen(
+          loaded: (meals) => MealsLoadedBody(
+            meals: meals,
+            onCreateEditMeal: cubit.createEditMeal,
+            onDeleteMeal: cubit.deleteMeal,
+            getFreeMealNumber: cubit.getFreeMealNumber,
+            onMealAdded: (meal, number) {
+              cubit.createEditMeal(meal, number);
+              showAddMeal.value = false;
+            },
+            showAddMeal: showAddMeal.value,
+            hideAddMealCard: () => showAddMeal.value = false,
+          ),
+          loading: () => const MealsLoadingBody(),
+          orElse: SizedBox.shrink,
         ),
-        loading: () => const MealsLoadingBody(),
-        orElse: SizedBox.shrink,
       ),
     );
   }

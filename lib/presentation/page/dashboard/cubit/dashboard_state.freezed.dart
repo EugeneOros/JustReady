@@ -19,28 +19,28 @@ mixin _$DashboardState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(List<Order> orders) loaded,
-    required TResult Function(List<Order> readyOrders) announceReady,
+    required TResult Function(Order readyOrder) announceReady,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function() initial,
+    required TResult Function() idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Order> orders)? loaded,
-    TResult? Function(List<Order> readyOrders)? announceReady,
+    TResult? Function(Order readyOrder)? announceReady,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function()? initial,
+    TResult? Function()? idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Order> orders)? loaded,
-    TResult Function(List<Order> readyOrders)? announceReady,
+    TResult Function(Order readyOrder)? announceReady,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function()? initial,
+    TResult Function()? idle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -50,7 +50,7 @@ mixin _$DashboardState {
     required TResult Function(AnnounceReady value) announceReady,
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
-    required TResult Function(Initial value) initial,
+    required TResult Function(Idle value) idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,7 +59,7 @@ mixin _$DashboardState {
     TResult? Function(AnnounceReady value)? announceReady,
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
-    TResult? Function(Initial value)? initial,
+    TResult? Function(Idle value)? idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,7 +68,7 @@ mixin _$DashboardState {
     TResult Function(AnnounceReady value)? announceReady,
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
-    TResult Function(Initial value)? initial,
+    TResult Function(Idle value)? idle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -163,10 +163,10 @@ class _$LoadedImpl implements Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(List<Order> orders) loaded,
-    required TResult Function(List<Order> readyOrders) announceReady,
+    required TResult Function(Order readyOrder) announceReady,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function() initial,
+    required TResult Function() idle,
   }) {
     return loaded(orders);
   }
@@ -175,10 +175,10 @@ class _$LoadedImpl implements Loaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Order> orders)? loaded,
-    TResult? Function(List<Order> readyOrders)? announceReady,
+    TResult? Function(Order readyOrder)? announceReady,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function()? initial,
+    TResult? Function()? idle,
   }) {
     return loaded?.call(orders);
   }
@@ -187,10 +187,10 @@ class _$LoadedImpl implements Loaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Order> orders)? loaded,
-    TResult Function(List<Order> readyOrders)? announceReady,
+    TResult Function(Order readyOrder)? announceReady,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function()? initial,
+    TResult Function()? idle,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -206,7 +206,7 @@ class _$LoadedImpl implements Loaded {
     required TResult Function(AnnounceReady value) announceReady,
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
-    required TResult Function(Initial value) initial,
+    required TResult Function(Idle value) idle,
   }) {
     return loaded(this);
   }
@@ -218,7 +218,7 @@ class _$LoadedImpl implements Loaded {
     TResult? Function(AnnounceReady value)? announceReady,
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
-    TResult? Function(Initial value)? initial,
+    TResult? Function(Idle value)? idle,
   }) {
     return loaded?.call(this);
   }
@@ -230,7 +230,7 @@ class _$LoadedImpl implements Loaded {
     TResult Function(AnnounceReady value)? announceReady,
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
-    TResult Function(Initial value)? initial,
+    TResult Function(Idle value)? idle,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -240,7 +240,7 @@ class _$LoadedImpl implements Loaded {
   }
 }
 
-abstract class Loaded implements DashboardState {
+abstract class Loaded implements DashboardState, DashboardStateBuilder {
   const factory Loaded(final List<Order> orders) = _$LoadedImpl;
 
   List<Order> get orders;
@@ -255,7 +255,7 @@ abstract class _$$AnnounceReadyImplCopyWith<$Res> {
           _$AnnounceReadyImpl value, $Res Function(_$AnnounceReadyImpl) then) =
       __$$AnnounceReadyImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Order> readyOrders});
+  $Res call({Order readyOrder});
 }
 
 /// @nodoc
@@ -269,13 +269,13 @@ class __$$AnnounceReadyImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? readyOrders = null,
+    Object? readyOrder = null,
   }) {
     return _then(_$AnnounceReadyImpl(
-      null == readyOrders
-          ? _value._readyOrders
-          : readyOrders // ignore: cast_nullable_to_non_nullable
-              as List<Order>,
+      null == readyOrder
+          ? _value.readyOrder
+          : readyOrder // ignore: cast_nullable_to_non_nullable
+              as Order,
     ));
   }
 }
@@ -283,20 +283,14 @@ class __$$AnnounceReadyImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AnnounceReadyImpl implements AnnounceReady {
-  const _$AnnounceReadyImpl(final List<Order> readyOrders)
-      : _readyOrders = readyOrders;
+  const _$AnnounceReadyImpl(this.readyOrder);
 
-  final List<Order> _readyOrders;
   @override
-  List<Order> get readyOrders {
-    if (_readyOrders is EqualUnmodifiableListView) return _readyOrders;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_readyOrders);
-  }
+  final Order readyOrder;
 
   @override
   String toString() {
-    return 'DashboardState.announceReady(readyOrders: $readyOrders)';
+    return 'DashboardState.announceReady(readyOrder: $readyOrder)';
   }
 
   @override
@@ -304,13 +298,12 @@ class _$AnnounceReadyImpl implements AnnounceReady {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AnnounceReadyImpl &&
-            const DeepCollectionEquality()
-                .equals(other._readyOrders, _readyOrders));
+            (identical(other.readyOrder, readyOrder) ||
+                other.readyOrder == readyOrder));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_readyOrders));
+  int get hashCode => Object.hash(runtimeType, readyOrder);
 
   @JsonKey(ignore: true)
   @override
@@ -322,38 +315,38 @@ class _$AnnounceReadyImpl implements AnnounceReady {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(List<Order> orders) loaded,
-    required TResult Function(List<Order> readyOrders) announceReady,
+    required TResult Function(Order readyOrder) announceReady,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function() initial,
+    required TResult Function() idle,
   }) {
-    return announceReady(readyOrders);
+    return announceReady(readyOrder);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Order> orders)? loaded,
-    TResult? Function(List<Order> readyOrders)? announceReady,
+    TResult? Function(Order readyOrder)? announceReady,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function()? initial,
+    TResult? Function()? idle,
   }) {
-    return announceReady?.call(readyOrders);
+    return announceReady?.call(readyOrder);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Order> orders)? loaded,
-    TResult Function(List<Order> readyOrders)? announceReady,
+    TResult Function(Order readyOrder)? announceReady,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function()? initial,
+    TResult Function()? idle,
     required TResult orElse(),
   }) {
     if (announceReady != null) {
-      return announceReady(readyOrders);
+      return announceReady(readyOrder);
     }
     return orElse();
   }
@@ -365,7 +358,7 @@ class _$AnnounceReadyImpl implements AnnounceReady {
     required TResult Function(AnnounceReady value) announceReady,
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
-    required TResult Function(Initial value) initial,
+    required TResult Function(Idle value) idle,
   }) {
     return announceReady(this);
   }
@@ -377,7 +370,7 @@ class _$AnnounceReadyImpl implements AnnounceReady {
     TResult? Function(AnnounceReady value)? announceReady,
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
-    TResult? Function(Initial value)? initial,
+    TResult? Function(Idle value)? idle,
   }) {
     return announceReady?.call(this);
   }
@@ -389,7 +382,7 @@ class _$AnnounceReadyImpl implements AnnounceReady {
     TResult Function(AnnounceReady value)? announceReady,
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
-    TResult Function(Initial value)? initial,
+    TResult Function(Idle value)? idle,
     required TResult orElse(),
   }) {
     if (announceReady != null) {
@@ -399,11 +392,10 @@ class _$AnnounceReadyImpl implements AnnounceReady {
   }
 }
 
-abstract class AnnounceReady implements DashboardState {
-  const factory AnnounceReady(final List<Order> readyOrders) =
-      _$AnnounceReadyImpl;
+abstract class AnnounceReady implements DashboardState, DashboardStateListener {
+  const factory AnnounceReady(final Order readyOrder) = _$AnnounceReadyImpl;
 
-  List<Order> get readyOrders;
+  Order get readyOrder;
   @JsonKey(ignore: true)
   _$$AnnounceReadyImplCopyWith<_$AnnounceReadyImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -448,10 +440,10 @@ class _$LoadingImpl implements Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(List<Order> orders) loaded,
-    required TResult Function(List<Order> readyOrders) announceReady,
+    required TResult Function(Order readyOrder) announceReady,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function() initial,
+    required TResult Function() idle,
   }) {
     return loading();
   }
@@ -460,10 +452,10 @@ class _$LoadingImpl implements Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Order> orders)? loaded,
-    TResult? Function(List<Order> readyOrders)? announceReady,
+    TResult? Function(Order readyOrder)? announceReady,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function()? initial,
+    TResult? Function()? idle,
   }) {
     return loading?.call();
   }
@@ -472,10 +464,10 @@ class _$LoadingImpl implements Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Order> orders)? loaded,
-    TResult Function(List<Order> readyOrders)? announceReady,
+    TResult Function(Order readyOrder)? announceReady,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function()? initial,
+    TResult Function()? idle,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -491,7 +483,7 @@ class _$LoadingImpl implements Loading {
     required TResult Function(AnnounceReady value) announceReady,
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
-    required TResult Function(Initial value) initial,
+    required TResult Function(Idle value) idle,
   }) {
     return loading(this);
   }
@@ -503,7 +495,7 @@ class _$LoadingImpl implements Loading {
     TResult? Function(AnnounceReady value)? announceReady,
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
-    TResult? Function(Initial value)? initial,
+    TResult? Function(Idle value)? idle,
   }) {
     return loading?.call(this);
   }
@@ -515,7 +507,7 @@ class _$LoadingImpl implements Loading {
     TResult Function(AnnounceReady value)? announceReady,
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
-    TResult Function(Initial value)? initial,
+    TResult Function(Idle value)? idle,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -525,7 +517,7 @@ class _$LoadingImpl implements Loading {
   }
 }
 
-abstract class Loading implements DashboardState {
+abstract class Loading implements DashboardState, DashboardStateBuilder {
   const factory Loading() = _$LoadingImpl;
 }
 
@@ -592,10 +584,10 @@ class _$ErrorImpl implements Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(List<Order> orders) loaded,
-    required TResult Function(List<Order> readyOrders) announceReady,
+    required TResult Function(Order readyOrder) announceReady,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function() initial,
+    required TResult Function() idle,
   }) {
     return error(this.error);
   }
@@ -604,10 +596,10 @@ class _$ErrorImpl implements Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Order> orders)? loaded,
-    TResult? Function(List<Order> readyOrders)? announceReady,
+    TResult? Function(Order readyOrder)? announceReady,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function()? initial,
+    TResult? Function()? idle,
   }) {
     return error?.call(this.error);
   }
@@ -616,10 +608,10 @@ class _$ErrorImpl implements Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Order> orders)? loaded,
-    TResult Function(List<Order> readyOrders)? announceReady,
+    TResult Function(Order readyOrder)? announceReady,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function()? initial,
+    TResult Function()? idle,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -635,7 +627,7 @@ class _$ErrorImpl implements Error {
     required TResult Function(AnnounceReady value) announceReady,
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
-    required TResult Function(Initial value) initial,
+    required TResult Function(Idle value) idle,
   }) {
     return error(this);
   }
@@ -647,7 +639,7 @@ class _$ErrorImpl implements Error {
     TResult? Function(AnnounceReady value)? announceReady,
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
-    TResult? Function(Initial value)? initial,
+    TResult? Function(Idle value)? idle,
   }) {
     return error?.call(this);
   }
@@ -659,7 +651,7 @@ class _$ErrorImpl implements Error {
     TResult Function(AnnounceReady value)? announceReady,
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
-    TResult Function(Initial value)? initial,
+    TResult Function(Idle value)? idle,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -669,7 +661,7 @@ class _$ErrorImpl implements Error {
   }
 }
 
-abstract class Error implements DashboardState {
+abstract class Error implements DashboardState, DashboardStateBuilder {
   const factory Error(final Object error) = _$ErrorImpl;
 
   Object get error;
@@ -679,35 +671,34 @@ abstract class Error implements DashboardState {
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$IdleImplCopyWith<$Res> {
+  factory _$$IdleImplCopyWith(
+          _$IdleImpl value, $Res Function(_$IdleImpl) then) =
+      __$$IdleImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$IdleImplCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res, _$IdleImpl>
+    implements _$$IdleImplCopyWith<$Res> {
+  __$$IdleImplCopyWithImpl(_$IdleImpl _value, $Res Function(_$IdleImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$InitialImpl implements Initial {
-  const _$InitialImpl();
+class _$IdleImpl implements Idle {
+  const _$IdleImpl();
 
   @override
   String toString() {
-    return 'DashboardState.initial()';
+    return 'DashboardState.idle()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType && other is _$IdleImpl);
   }
 
   @override
@@ -717,38 +708,38 @@ class _$InitialImpl implements Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(List<Order> orders) loaded,
-    required TResult Function(List<Order> readyOrders) announceReady,
+    required TResult Function(Order readyOrder) announceReady,
     required TResult Function() loading,
     required TResult Function(Object error) error,
-    required TResult Function() initial,
+    required TResult Function() idle,
   }) {
-    return initial();
+    return idle();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Order> orders)? loaded,
-    TResult? Function(List<Order> readyOrders)? announceReady,
+    TResult? Function(Order readyOrder)? announceReady,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
-    TResult? Function()? initial,
+    TResult? Function()? idle,
   }) {
-    return initial?.call();
+    return idle?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Order> orders)? loaded,
-    TResult Function(List<Order> readyOrders)? announceReady,
+    TResult Function(Order readyOrder)? announceReady,
     TResult Function()? loading,
     TResult Function(Object error)? error,
-    TResult Function()? initial,
+    TResult Function()? idle,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (idle != null) {
+      return idle();
     }
     return orElse();
   }
@@ -760,9 +751,9 @@ class _$InitialImpl implements Initial {
     required TResult Function(AnnounceReady value) announceReady,
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
-    required TResult Function(Initial value) initial,
+    required TResult Function(Idle value) idle,
   }) {
-    return initial(this);
+    return idle(this);
   }
 
   @override
@@ -772,9 +763,9 @@ class _$InitialImpl implements Initial {
     TResult? Function(AnnounceReady value)? announceReady,
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
-    TResult? Function(Initial value)? initial,
+    TResult? Function(Idle value)? idle,
   }) {
-    return initial?.call(this);
+    return idle?.call(this);
   }
 
   @override
@@ -784,16 +775,16 @@ class _$InitialImpl implements Initial {
     TResult Function(AnnounceReady value)? announceReady,
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
-    TResult Function(Initial value)? initial,
+    TResult Function(Idle value)? idle,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (idle != null) {
+      return idle(this);
     }
     return orElse();
   }
 }
 
-abstract class Initial implements DashboardState {
-  const factory Initial() = _$InitialImpl;
+abstract class Idle implements DashboardState {
+  const factory Idle() = _$IdleImpl;
 }

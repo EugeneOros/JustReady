@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:just_ready/extensions/extension_mixin.dart';
+import 'package:just_ready/presentation/widgets/jr_scale_container.dart';
 import 'package:just_ready/presentation/widgets/jr_svg_picture.dart';
 import 'package:just_ready/styles/dimens.dart';
 import 'package:just_ready/utils/ignore_else_state.dart';
@@ -39,33 +40,35 @@ class JrIconButton extends HookWidget {
   Widget build(BuildContext context) {
     final isHover = useState(false);
 
-    return Container(
-      alignment: Alignment.center,
-      width: size,
-      height: size,
-      child: Material(
-        color: _getBackgroundColor(context),
-        shape: const CircleBorder(),
-        child: InkWell(
-          onTap: state == IconButtonState.disabled ? doNothing : onTap,
-          highlightColor: context.colors.transparent,
-          splashColor: getSplashColor(context),
-          hoverColor: context.colors.darkLight,
-          onHover: (value) => isHover.value = value,
-          borderRadius: BorderRadius.circular(size / 2),
-          child: Container(
-            width: size,
-            height: size,
-            decoration: BoxDecoration(
-              border: Border.all(color: _getBordersColor(context), width: Dimens.xxxs),
-              shape: BoxShape.circle,
-              color: context.colors.transparent, // isHover.value ? context.colors.dark : context.colors.bright,
-            ),
-            child: Center(
-              child: JrSvgPicture(
-                icon,
-                size: size * 0.6,
-                color: _getIconColor(context),
+    return JrPoppingContainer(
+      child: Container(
+        alignment: Alignment.center,
+        width: size,
+        height: size,
+        child: Material(
+          color: _getBackgroundColor(context),
+          shape: const CircleBorder(),
+          child: InkWell(
+            onTap: state == IconButtonState.disabled ? doNothing : onTap,
+            highlightColor: context.colors.transparent,
+            splashColor: getSplashColor(context),
+            hoverColor: context.colors.darkLight,
+            onHover: (value) => isHover.value = value,
+            borderRadius: BorderRadius.circular(size / 2),
+            child: Container(
+              width: size,
+              height: size,
+              decoration: BoxDecoration(
+                border: Border.all(color: _getBordersColor(context), width: Dimens.xxxs),
+                shape: BoxShape.circle,
+                color: context.colors.transparent, // isHover.value ? context.colors.dark : context.colors.bright,
+              ),
+              child: Center(
+                child: JrSvgPicture(
+                  icon,
+                  size: size * 0.6,
+                  color: _getIconColor(context),
+                ),
               ),
             ),
           ),

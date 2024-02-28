@@ -34,8 +34,7 @@ class OrderCard extends HookWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return Stack(
+  Widget build(BuildContext context) => Stack(
       children: [
         Positioned(
           child: JrContainer(
@@ -94,5 +93,4 @@ class OrderCard extends HookWidget {
         ),
       ],
     );
-  }
 }

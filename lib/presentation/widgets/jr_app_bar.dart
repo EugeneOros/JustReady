@@ -74,11 +74,13 @@ class JrAppBar extends StatelessWidget implements PreferredSizeWidget {
               color: context.colors.transparent,
               height: Dimens.bannerHeight,
               width: MediaQuery.of(context).size.width,
+              padding: const EdgeInsets.symmetric(horizontal: Dimens.xxc),
               alignment: Alignment.center,
               child: JrText(
                 title,
+                textAlign: TextAlign.center,
                 color: context.colors.bright,
-                style: context.typography.header1,
+                style: context.typography.header2,
               ),
             ),
             Padding(

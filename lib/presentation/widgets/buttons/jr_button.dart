@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:just_ready/extensions/extension_mixin.dart';
+import 'package:just_ready/presentation/widgets/jr_scale_container.dart';
 import 'package:just_ready/presentation/widgets/jr_svg_picture.dart';
 import 'package:just_ready/styles/dimens.dart';
 import 'package:just_ready/utils/ignore_else_state.dart';
@@ -46,51 +47,53 @@ class JrButton extends HookWidget {
     final isHover = useState(false);
     final bordrRadius = BorderRadius.circular(Dimens.xl);
 
-    return Material(
-      color: _getBackgroundColor(context),
-      borderRadius: bordrRadius,
-      child: InkWell(
-        onTap: state == ButtonState.disabled ? doNothing : onTap,
-        highlightColor: context.colors.transparent,
-        splashColor: _getSplashColor(context),
-        hoverColor: context.colors.darkLight,
-        onHover: (value) => isHover.value = value,
+    return JrPoppingContainer(
+      child: Material(
+        color: _getBackgroundColor(context),
         borderRadius: bordrRadius,
-        child: Container(
-          width: width,
-          constraints: constraints,
-          decoration: BoxDecoration(
-            borderRadius: bordrRadius,
-            border: Border.all(color: _getBordersColor(context), width: Dimens.xxxs),
-            color: context.colors.transparent, // isHover.value ? context.colors.dark : context.colors.bright,
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              if (prefixIcon != null)
-                JrSvgPicture(
-                  prefixIcon!,
-                  size: Dimens.xl,
-                  color: _getTitleColor(context),
-                ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: Dimens.xs, horizontal: Dimens.xm),
-                child: Text(
-                  title,
-                  overflow: TextOverflow.ellipsis,
-                  style: context.typography.button.copyWith(
+        child: InkWell(
+          onTap: state == ButtonState.disabled ? doNothing : onTap,
+          highlightColor: context.colors.transparent,
+          splashColor: _getSplashColor(context),
+          hoverColor: context.colors.darkLight,
+          onHover: (value) => isHover.value = value,
+          borderRadius: bordrRadius,
+          child: Container(
+            width: width,
+            constraints: constraints,
+            decoration: BoxDecoration(
+              borderRadius: bordrRadius,
+              border: Border.all(color: _getBordersColor(context), width: Dimens.xxxs),
+              color: context.colors.transparent, // isHover.value ? context.colors.dark : context.colors.bright,
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (prefixIcon != null)
+                  JrSvgPicture(
+                    prefixIcon!,
+                    size: Dimens.xl,
                     color: _getTitleColor(context),
                   ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: Dimens.xs, horizontal: Dimens.xm),
+                  child: Text(
+                    title,
+                    overflow: TextOverflow.ellipsis,
+                    style: context.typography.button.copyWith(
+                      color: _getTitleColor(context),
+                    ),
+                  ),
                 ),
-              ),
-              if (sufixIcon != null)
-                JrSvgPicture(
-                  sufixIcon!,
-                  size: Dimens.xl,
-                  color: _getTitleColor(context),
-                ),
-            ],
+                if (sufixIcon != null)
+                  JrSvgPicture(
+                    sufixIcon!,
+                    size: Dimens.xl,
+                    color: _getTitleColor(context),
+                  ),
+              ],
+            ),
           ),
         ),
       ),

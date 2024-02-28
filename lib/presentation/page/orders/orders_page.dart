@@ -8,6 +8,7 @@ import 'package:just_ready/presentation/page/orders/body/orders_loading_body.dar
 import 'package:just_ready/presentation/widgets/jr_app_bar.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:just_ready/presentation/page/orders/cubit/orders_cubit.dart';
+import 'package:just_ready/presentation/widgets/jr_imaged_body.dart';
 import 'package:just_ready/styles/images.dart';
 import 'package:just_ready/utils/hooks/use_once.dart';
 
@@ -20,7 +21,6 @@ class OrdersPage extends HookWidget {
     useOnce(cubit.loadOrders);
 
     return Scaffold(
-      // extendBodyBehindAppBar: true,
       appBar: JrAppBar(
         skipStartIcon: false,
         startIcon: IconsSvg.menu24,
@@ -29,19 +29,21 @@ class OrdersPage extends HookWidget {
         },
         title: Strings.of(context).orders,
       ),
-      body: state.maybeWhen(
-        loaded: (orders, orderToDelete, deletionCountdown) => OrdersLoadedBody(
-          orders: orders,
-          toggleOrderMealIsDone: cubit.toggleOrderMealIsDone,
-          updateOrderStatus: cubit.updateOrderStatus,
-          deleteOrder: cubit.deleteOrder,
-          cancelDeletionCountdown: cubit.cancelDeletionCountdown,
-          deletionCountdown: deletionCountdown,
-          orderToDelete: orderToDelete,
+      body: JrImagedBody(
+        child: state.maybeWhen(
+          loaded: (orders, orderToDelete, deletionCountdown) => OrdersLoadedBody(
+            orders: orders,
+            toggleOrderMealIsDone: cubit.toggleOrderMealIsDone,
+            updateOrderStatus: cubit.updateOrderStatus,
+            deleteOrder: cubit.deleteOrder,
+            cancelDeletionCountdown: cubit.cancelDeletionCountdown,
+            deletionCountdown: deletionCountdown,
+            orderToDelete: orderToDelete,
+          ),
+          loadedEmpty: () => const OrdersLoadedEmptyBody(),
+          loading: () => const OrdersLoadingBody(),
+          orElse: SizedBox.shrink,
         ),
-        loadedEmpty: () => const OrdersLoadedEmptyBody(),
-        loading: () => const OrdersLoadingBody(),
-        orElse: SizedBox.shrink,
       ),
     );
   }

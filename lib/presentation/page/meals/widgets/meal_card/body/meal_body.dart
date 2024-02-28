@@ -21,12 +21,33 @@ class MealCardBody extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final scaleController = useAnimationController(duration: const Duration(milliseconds: 500));
+    // late Animation<double> scaleAnimation = CurvedAnimation(parent: scaleController, curve: Curves.elasticOut);
+    // final checkController = useAnimationController(duration: const Duration(milliseconds: 300));
+    // late Animation<double> checkAnimation = CurvedAnimation(parent: checkController, curve: Curves.linear);
+
+    // useOnce(() {
+    //   checkController.addStatusListener((status) {
+    //     if (status == AnimationStatus.completed && onFinishAnimation != null) {
+    //       onFinishAnimation!();
+    //     }
+    //   });
+    //   scaleController.addStatusListener((status) {
+    //     if (status == AnimationStatus.completed) {
+    //       checkController.forward();
+    //     }
+    //   });
+    //   scaleController.forward();
+    // });
+
     return JrAnimatedSwitcher(
       child: isEditing
-          ? MealEditingBody(
-              meal: meal,
-              form: form,
-              icon: actionIcon,
+          ? SingleChildScrollView(
+              child: MealEditingBody(
+                meal: meal,
+                form: form,
+                icon: actionIcon,
+              ),
             )
           : MealDefaultBody(
               meal: meal,

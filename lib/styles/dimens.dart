@@ -71,15 +71,19 @@ class Dimens {
   static const mWidth = 400.0;
   static const lWidth = 600.0;
 
+  static const numberDialogHeight = 170.0;
+
   static const orderCardWidth = 300.0;
 
-  static const expandedMealCardHeight = 370.0;
+  static const expandedMealCardHeight = 330.0;
 
   static const selectedMealCardHeight = 140.0;
 
   static const navBarHeight = 80.0;
 
-  static const bannerHeight = 150.0;
+  static const bannerHeight = 100.0;
+
+  static const dashboardColumnTitleHeight = 150.0;
 
   Dimens._();
 }

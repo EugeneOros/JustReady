@@ -5,7 +5,7 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
+// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -30,16 +30,39 @@ class $AssetsImagesIllustrationsGen {
   AssetGenImage get bannerHoly =>
       const AssetGenImage('assets/images/illustrations/banner_holy.webp');
 
+  /// File path: assets/images/illustrations/dashboard_background.png
+  AssetGenImage get dashboardBackground => const AssetGenImage(
+      'assets/images/illustrations/dashboard_background.png');
+
+  /// File path: assets/images/illustrations/dashboard_ripped_background.png
+  AssetGenImage get dashboardRippedBackground => const AssetGenImage(
+      'assets/images/illustrations/dashboard_ripped_background.png');
+
   /// File path: assets/images/illustrations/piorun.png
   AssetGenImage get piorun =>
       const AssetGenImage('assets/images/illustrations/piorun.png');
 
+  /// File path: assets/images/illustrations/plate.png
+  AssetGenImage get plate =>
+      const AssetGenImage('assets/images/illustrations/plate.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [banner, bannerHoly, piorun];
+  List<AssetGenImage> get values => [
+        banner,
+        bannerHoly,
+        dashboardBackground,
+        dashboardRippedBackground,
+        piorun,
+        plate
+      ];
 }
 
 class $AssetsImagesSvgGen {
   const $AssetsImagesSvgGen();
+
+  /// File path: assets/images/svg/avocado_24.svg
+  SvgGenImage get avocado24 =>
+      const SvgGenImage('assets/images/svg/avocado_24.svg');
 
   /// File path: assets/images/svg/bell_24.svg
   SvgGenImage get bell24 => const SvgGenImage('assets/images/svg/bell_24.svg');
@@ -55,6 +78,14 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/board_progress_24.svg
   SvgGenImage get boardProgress24 =>
       const SvgGenImage('assets/images/svg/board_progress_24.svg');
+
+  /// File path: assets/images/svg/burger_24.svg
+  SvgGenImage get burger24 =>
+      const SvgGenImage('assets/images/svg/burger_24.svg');
+
+  /// File path: assets/images/svg/carrot_24.svg
+  SvgGenImage get carrot24 =>
+      const SvgGenImage('assets/images/svg/carrot_24.svg');
 
   /// File path: assets/images/svg/check_24.svg
   SvgGenImage get check24 =>
@@ -79,6 +110,10 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/close_24.svg
   SvgGenImage get close24 =>
       const SvgGenImage('assets/images/svg/close_24.svg');
+
+  /// File path: assets/images/svg/coffee_24.svg
+  SvgGenImage get coffee24 =>
+      const SvgGenImage('assets/images/svg/coffee_24.svg');
 
   /// File path: assets/images/svg/create_meal_24.svg
   SvgGenImage get createMeal24 =>
@@ -106,6 +141,18 @@ class $AssetsImagesSvgGen {
   SvgGenImage get eyeSlash24 =>
       const SvgGenImage('assets/images/svg/eye_slash_24.svg');
 
+  /// File path: assets/images/svg/grape_24.svg
+  SvgGenImage get grape24 =>
+      const SvgGenImage('assets/images/svg/grape_24.svg');
+
+  /// File path: assets/images/svg/lemon_24.svg
+  SvgGenImage get lemon24 =>
+      const SvgGenImage('assets/images/svg/lemon_24.svg');
+
+  /// File path: assets/images/svg/lemonade_24.svg
+  SvgGenImage get lemonade24 =>
+      const SvgGenImage('assets/images/svg/lemonade_24.svg');
+
   /// File path: assets/images/svg/logo.svg
   SvgGenImage get logo => const SvgGenImage('assets/images/svg/logo.svg');
 
@@ -123,6 +170,10 @@ class $AssetsImagesSvgGen {
   SvgGenImage get minus24 =>
       const SvgGenImage('assets/images/svg/minus_24.svg');
 
+  /// File path: assets/images/svg/nachos_24.svg
+  SvgGenImage get nachos24 =>
+      const SvgGenImage('assets/images/svg/nachos_24.svg');
+
   /// File path: assets/images/svg/orders_24.svg
   SvgGenImage get orders24 =>
       const SvgGenImage('assets/images/svg/orders_24.svg');
@@ -131,8 +182,16 @@ class $AssetsImagesSvgGen {
   SvgGenImage get ordersTorn24 =>
       const SvgGenImage('assets/images/svg/orders_torn_24.svg');
 
+  /// File path: assets/images/svg/pizza_24.svg
+  SvgGenImage get pizza24 =>
+      const SvgGenImage('assets/images/svg/pizza_24.svg');
+
   /// File path: assets/images/svg/plus_24.svg
   SvgGenImage get plus24 => const SvgGenImage('assets/images/svg/plus_24.svg');
+
+  /// File path: assets/images/svg/shake_24.svg
+  SvgGenImage get shake24 =>
+      const SvgGenImage('assets/images/svg/shake_24.svg');
 
   /// File path: assets/images/svg/square_24.svg
   SvgGenImage get square24 =>
@@ -142,18 +201,30 @@ class $AssetsImagesSvgGen {
   SvgGenImage get tickSquare24 =>
       const SvgGenImage('assets/images/svg/tick_square_24.svg');
 
+  /// File path: assets/images/svg/toast_24.svg
+  SvgGenImage get toast24 =>
+      const SvgGenImage('assets/images/svg/toast_24.svg');
+
+  /// File path: assets/images/svg/waffle_24.svg
+  SvgGenImage get waffle24 =>
+      const SvgGenImage('assets/images/svg/waffle_24.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
+        avocado24,
         bell24,
         bellRing24,
         boardDone24,
         boardProgress24,
+        burger24,
+        carrot24,
         check24,
         chevronDown24,
         chevronLeft24,
         chevronRight24,
         chevronUp24,
         close24,
+        coffee24,
         createMeal24,
         delete24,
         edit24,
@@ -161,16 +232,24 @@ class $AssetsImagesSvgGen {
         emptyMeal24,
         eye24,
         eyeSlash24,
+        grape24,
+        lemon24,
+        lemonade24,
         logo,
         meal24,
         mealHot24,
         menu24,
         minus24,
+        nachos24,
         orders24,
         ordersTorn24,
+        pizza24,
         plus24,
+        shake24,
         square24,
-        tickSquare24
+        tickSquare24,
+        toast24,
+        waffle24
       ];
 }
 
@@ -238,16 +317,7 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider({
-    AssetBundle? bundle,
-    String? package,
-  }) {
-    return AssetImage(
-      _assetName,
-      bundle: bundle,
-      package: package,
-    );
-  }
+  ImageProvider provider() => AssetImage(_assetName);
 
   String get path => _assetName;
 
@@ -270,14 +340,13 @@ class SvgGenImage {
     AlignmentGeometry alignment = Alignment.center,
     bool allowDrawingOutsideViewBox = false,
     WidgetBuilder? placeholderBuilder,
+    Color? color,
+    BlendMode colorBlendMode = BlendMode.srcIn,
     String? semanticsLabel,
     bool excludeFromSemantics = false,
-    SvgTheme theme = const SvgTheme(),
-    ColorFilter? colorFilter,
     Clip clipBehavior = Clip.hardEdge,
-    @deprecated Color? color,
-    @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
-    @deprecated bool cacheColorFilter = false,
+    bool cacheColorFilter = false,
+    SvgTheme? theme,
   }) {
     return SvgPicture.asset(
       _assetName,
@@ -291,14 +360,13 @@ class SvgGenImage {
       alignment: alignment,
       allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
       placeholderBuilder: placeholderBuilder,
-      semanticsLabel: semanticsLabel,
-      excludeFromSemantics: excludeFromSemantics,
-      theme: theme,
-      colorFilter: colorFilter,
       color: color,
       colorBlendMode: colorBlendMode,
+      semanticsLabel: semanticsLabel,
+      excludeFromSemantics: excludeFromSemantics,
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
+      theme: theme,
     );
   }
 

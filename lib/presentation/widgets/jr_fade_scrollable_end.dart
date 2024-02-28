@@ -27,7 +27,7 @@ class JrFadeScrollableEnd extends StatelessWidget {
             gradient: LinearGradient(
               begin: isTop ? Alignment.topCenter : Alignment.bottomCenter,
               end: isTop ? Alignment.bottomCenter : Alignment.topCenter,
-              stops: [0.0, 1.0],
+              stops: const [0.0, 1.0],
               colors: [
                 color,
                 color.withOpacity(0.0),

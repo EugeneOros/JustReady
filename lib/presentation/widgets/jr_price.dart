@@ -36,7 +36,7 @@ class JrPrice extends StatelessWidget {
         JrText(
           price.toInt().toString(),
           color: getPriceColor(context),
-          style: size == JrPriceSize.l ? context.typography.header2 : context.typography.header3,
+          style: size == JrPriceSize.l ? context.typography.header3 : context.typography.header4,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,

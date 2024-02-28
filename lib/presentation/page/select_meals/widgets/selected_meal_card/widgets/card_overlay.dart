@@ -18,7 +18,16 @@ class CardOverlay extends HookWidget {
     late Animation<double> progressAnimation = CurvedAnimation(parent: progressController, curve: Curves.linear);
     final isProgressAnimationReady = useState(false);
 
+    final fadeController = useAnimationController(duration: const Duration(milliseconds: 300));
+    late Animation<double> fadeAnimation = Tween<double>(begin: 1.0, end: 0.0).animate(fadeController);
+
     useOnce(() {
+      fadeController.addStatusListener((status) async {
+        if (status == AnimationStatus.completed) {
+          await Future.delayed(const Duration(milliseconds: 400));
+          if (onFinishAnimation != null) onFinishAnimation!();
+        }
+      });
       progressController.addStatusListener((status) {
         if (status == AnimationStatus.completed) {
           isProgressAnimationReady.value = true;
@@ -27,37 +36,40 @@ class CardOverlay extends HookWidget {
       progressController.forward();
     });
 
-    return Container(
-      margin: const EdgeInsets.all(Dimens.xm),
-      width: double.infinity,
-      height: Dimens.mMaxCardHeight,
-      child: Stack(
-        children: [
-          SizeTransition(
-            sizeFactor: progressAnimation,
-            axis: Axis.horizontal,
-            axisAlignment: -1,
-            child: Center(
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimens.ms),
-                  color: context.colors.primary.withOpacity(0.2),
+    return FadeTransition(
+      opacity: fadeAnimation,
+      child: Container(
+        margin: const EdgeInsets.all(Dimens.xm),
+        width: double.infinity,
+        height: Dimens.sMaxCardHeight,
+        child: Stack(
+          children: [
+            SizeTransition(
+              sizeFactor: progressAnimation,
+              axis: Axis.horizontal,
+              axisAlignment: -1,
+              child: Center(
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Dimens.ms),
+                    color: context.colors.primary.withOpacity(0.2),
+                  ),
+                  height: Dimens.mMaxCardHeight,
                 ),
-                height: Dimens.mMaxCardHeight,
               ),
             ),
-          ),
-          Positioned(
-            child: isProgressAnimationReady.value
-                ? Center(
-                    child: AnimatedCheck(
-                      onFinishAnimation: onFinishAnimation,
-                    ),
-                  )
-                : const SizedBox.shrink(),
-          )
-        ],
+            Positioned(
+              child: isProgressAnimationReady.value
+                  ? Center(
+                      child: AnimatedCheck(
+                        onFinishAnimation: () => fadeController.forward(),
+                      ),
+                    )
+                  : const SizedBox.shrink(),
+            )
+          ],
+        ),
       ),
     );
   }

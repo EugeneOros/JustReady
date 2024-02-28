@@ -72,6 +72,8 @@
   "@yourOrderNumber": {},
   "ok": "Ok",
   "@ok": {},
+  "yourOrderWasCreated": "Gratulacje. Zamówienie zostało złożone",
+  "@yourOrderWasCreated": {},
   
   "orderNow": "Zamów teraz",
   "@orderNow": {},

@@ -76,6 +76,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "timeToAddSomethingTasty":
             MessageLookupByLibrary.simpleMessage("Time to add something tasty"),
         "yourOrder": MessageLookupByLibrary.simpleMessage("Your order"),
-        "yourOrderNumber": MessageLookupByLibrary.simpleMessage("Your number")
+        "yourOrderNumber": MessageLookupByLibrary.simpleMessage("Your number"),
+        "yourOrderWasCreated": MessageLookupByLibrary.simpleMessage(
+            "Congratulation. Your order was created")
       };
 }

@@ -22,8 +22,6 @@ class SelectMealsCubit extends Cubit<SelectMealsState> {
   }
 
   Future<void> addMealsToOrder(Meal meal, int count) async {
-    // emit(const SelectMealsState.idle());
     await _addMealToCurrentOrderUseCase(meal, count);
-    // emit(const SelectMealsState.showMealAddedSnackBar());
   }
 }

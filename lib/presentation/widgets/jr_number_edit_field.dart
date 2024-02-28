@@ -12,13 +12,10 @@ class JrNumberEditField extends HookWidget {
   final String formControlName;
   final Function(String)? onChange;
 
-  final int initialValue;
-
   const JrNumberEditField({
     super.key,
     required this.form,
     required this.formControlName,
-    this.initialValue = 1,
     this.onChange,
   });
 
@@ -27,6 +24,8 @@ class JrNumberEditField extends HookWidget {
     const min = 1;
     final number = useState(form.control(formControlName).value as int);
     final controller = useTextEditingController(text: form.control(formControlName).value.toString());
+    controller.text = form.control(formControlName).value.toString();
+    number.value = form.control(formControlName).value as int;
 
     return SizedBox(
       height: Dimens.l,

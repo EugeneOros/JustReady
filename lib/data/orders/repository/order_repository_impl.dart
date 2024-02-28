@@ -11,7 +11,7 @@ import 'package:just_ready/domain/orders/models/order_status.dart';
 import 'package:just_ready/domain/orders/repository/orders_event.dart';
 import 'package:just_ready/domain/orders/repository/orders_repository.dart';
 
-const int maxOrderNumber = 5;
+const int maxOrderNumber = 99;
 
 @LazySingleton(as: OrdersRepository)
 class OrdersRepositoryImpl implements OrdersRepository {
