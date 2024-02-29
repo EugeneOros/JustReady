@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:just_ready/domain/meals/models/meal.dart';
 import 'package:just_ready/extensions/build_context_extension.dart';
 import 'package:just_ready/presentation/page/select_meals/utils/select_form_control_names.dart';
+import 'package:just_ready/presentation/page/select_meals/widgets/selected_meal_card/widgets/order_cart_label.dart';
 import 'package:just_ready/presentation/widgets/jr_container.dart';
 import 'package:just_ready/presentation/widgets/jr_number_edit_field.dart';
 import 'package:just_ready/presentation/widgets/jr_price.dart';
@@ -12,6 +13,7 @@ import 'package:reactive_forms/reactive_forms.dart';
 
 class MealCardBody extends HookWidget {
   final Meal meal;
+  final int orderCount;
   final int initMealCountValue;
   final FormGroup form;
   final bool showMealAddingProgress;
@@ -19,6 +21,7 @@ class MealCardBody extends HookWidget {
   const MealCardBody({
     super.key,
     required this.meal,
+    this.orderCount = 0,
     required this.initMealCountValue,
     required this.showMealAddingProgress,
     required this.form,
@@ -52,6 +55,11 @@ class MealCardBody extends HookWidget {
                   formControlName: SelectMealFormControlName.count,
                   // initialValue: initMealCountValue,
                 ),
+                if (orderCount != 0)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: Dimens.s),
+                    child: OrderCartLable(number: orderCount),
+                  ),
                 const Spacer(),
                 JrPrice(
                   size: JrPriceSize.s,

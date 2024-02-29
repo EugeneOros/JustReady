@@ -18,7 +18,6 @@ class JrNumberDialog extends StatelessWidget {
   final String title;
   final TextStyle? titleTextStyle;
   final int number;
-  final String heroTag;
 
   final String? actionText;
   final VoidCallback? actionButtonOnTap;
@@ -27,7 +26,6 @@ class JrNumberDialog extends StatelessWidget {
     super.key,
     required this.title,
     required this.number,
-    this.heroTag = '',
     this.actionText,
     this.actionButtonOnTap,
     this.titleTextStyle,
@@ -77,13 +75,11 @@ class JrNumberDialog extends StatelessWidget {
                           right: 0,
                           left: 0,
                           bottom: 0,
-                          child: Expanded(
-                            child: Center(
-                              child: JrButton(
-                                type: ButtonType.primary,
-                                title: actionText!,
-                                onTap: actionButtonOnTap!,
-                              ),
+                          child: Center(
+                            child: JrButton(
+                              type: ButtonType.primary,
+                              title: actionText!,
+                              onTap: actionButtonOnTap!,
                             ),
                           ),
                         ),
@@ -91,16 +87,13 @@ class JrNumberDialog extends StatelessWidget {
                         right: 0,
                         left: 0,
                         top: 0,
-                        child: Hero(
-                          tag: heroTag,
-                          child: Center(
-                            child: SizedBox(
-                              height: Dimens.xsWidth,
-                              width: Dimens.xsWidth,
-                              child: Image.asset(
-                                Illustrations.plate,
-                                fit: BoxFit.cover,
-                              ),
+                        child: Center(
+                          child: SizedBox(
+                            height: Dimens.xsWidth,
+                            width: Dimens.xsWidth,
+                            child: Image.asset(
+                              Illustrations.plate,
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ),

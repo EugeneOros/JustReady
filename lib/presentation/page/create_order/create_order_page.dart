@@ -14,6 +14,7 @@ import 'package:just_ready/presentation/page/select_meals/select_meals_page.dart
 import 'package:just_ready/presentation/widgets/dialogs/jr_number_dialog.dart';
 import 'package:just_ready/presentation/widgets/jr_app_bar.dart';
 import 'package:just_ready/presentation/widgets/jr_imaged_body.dart';
+import 'package:just_ready/styles/dimens.dart';
 import 'package:just_ready/styles/images.dart';
 import 'package:just_ready/utils/hooks/use_once.dart';
 import 'package:just_ready/utils/ignore_else_state.dart';
@@ -24,7 +25,7 @@ class CreateOrderPage extends HookWidget {
   Widget build(BuildContext context) {
     final cubit = useBloc<CreateOrderCubit>();
     final state = useBlocBuilder(cubit, buildWhen: _buildWhen);
-    useBlocListener(cubit, _listener);
+    useBlocListener(cubit, _listener, listenWhen: _listenWhen);
     useOnce(cubit.init);
 
     return Scaffold(
@@ -32,6 +33,7 @@ class CreateOrderPage extends HookWidget {
       appBar: JrAppBar(
         skipStartIcon: false,
         startIcon: IconsSvg.menu24,
+        height: Dimens.xxc,
         onStartIconTap: (_) {
           homeKey.currentState!.openDrawer();
         },
@@ -57,22 +59,37 @@ class CreateOrderPage extends HookWidget {
     );
   }
 
-  bool _buildWhen(CreateOrderState state) => state is Loaded || state is LoadedEmpty || state is Loading;
+  bool _buildWhen(CreateOrderState state) => state is CreateOrderStateBuilder;
+  bool _listenWhen(CreateOrderState state) => state is CreateOrderStateListener;
 
   void _listener(CreateOrderCubit cubit, CreateOrderState state, BuildContext context) => state.maybeWhen(
-        showOrderSuccesfullyAddedDialog: (orderNumber) => showDialog(
-          context: context,
-          barrierDismissible: false,
-          builder: (_) {
-            return JrNumberDialog(
-              title: Strings.of(context).yourOrderWasCreated,
-              titleTextStyle: context.typography.header3,
-              number: orderNumber,
-              actionText: Strings.of(context).ok,
-              actionButtonOnTap: () => context.pop(),
-            );
-          },
-        ),
+        showOrderSuccesfullyAddedDialog: (orderNumber) async {
+          await showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (_) {
+              return JrNumberDialog(
+                title: Strings.of(context).yourOrderWasCreated,
+                titleTextStyle: context.typography.header3,
+                number: orderNumber,
+                actionText: Strings.of(context).ok,
+                actionButtonOnTap: () => context.pop(),
+              );
+            },
+          );
+          return null;
+          // await showDialog(
+          //   context: context,
+          //   barrierDismissible: false,
+          //   builder: (_) {
+          //     Future.delayed(const Duration(seconds: 4), () => context.pop());
+          //     return JrNumberDialog(
+          //       title: phrases[index],
+          //       number: order.number!,
+          //     );
+          //   },
+          // );
+        },
         orElse: doNothing,
       );
 }

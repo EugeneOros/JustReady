@@ -17,6 +17,7 @@ class OrdersState with _$OrdersState {
 
   @Implements<OrdersStateBuilder>()
   const factory OrdersState.error(Object error) = OrdersStateLoadingError;
+  
   const factory OrdersState.idle() = OrdersStateLoadingIdle;
 }
 

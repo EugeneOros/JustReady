@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
     <g clip-path="url(#a)">
         <path stroke="#FFFCFC" stroke-width=".4"
-            d="M4.3 7.62h4.58M15 8h4.59M16.53 10.3h3.06M18.06 12.59h1.53M4.3 9.53h1.9" />
+            d="M4.3 7.62h4.58M15 8h4.59m-3.06 2.3h3.06m-1.53 2.29h1.53M4.3 9.53h1.9" />
         <path stroke="#fff" stroke-width=".4"
             d="M14.74 2.86h6.02c.81 0 1.12-.33 1.12-.72V0H2v2.14c0 .44.37.72 1.24.72h7.15m3.04 0h-1.55" />
         <path stroke="#fff" stroke-width=".4"

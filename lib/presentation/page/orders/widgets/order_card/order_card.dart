@@ -56,7 +56,7 @@ class OrderCard extends HookWidget {
             countdown: deletionCountdown,
             onCancel: () {
               cancelDeletionCountdown();
-              updateOrderStatus(order, OrderStatus.ready);
+              updateOrderStatus(order, OrderStatus.inProgress);
               // cubit.cancelCountdown();
             },
             deletionContdownInitValue: deletionContdownInitValue,

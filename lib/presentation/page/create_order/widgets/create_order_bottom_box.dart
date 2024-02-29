@@ -34,23 +34,25 @@ class CreateOrderBottomBox extends StatelessWidget {
     return ReactiveForm(
       formGroup: form,
       child: JrBottomBox(
+        direction: Axis.horizontal,
         buttons: [
           JrButton(
             constraints: const BoxConstraints(
               maxWidth: Dimens.buttonMaxWidth,
             ),
-            width: double.infinity,
-            type: ButtonType.secondary,
-            title: Strings.of(context).addMealsToOrder,
-            onTap: onAddMoreMeals,
+            type: ButtonType.primary,
+            color: context.colors.dark,
+            textColor: context.colors.bright,
+            title: Strings.of(context).orderNow,
+            onTap: sendOrder,
           ),
           JrButton(
             constraints: const BoxConstraints(
               maxWidth: Dimens.buttonMaxWidth,
             ),
-            width: double.infinity,
-            title: Strings.of(context).orderNow,
-            onTap: sendOrder,
+            type: ButtonType.primary,
+            title: Strings.of(context).addMealsToOrder,
+            onTap: onAddMoreMeals,
           ),
         ],
         child: Column(
@@ -76,7 +78,7 @@ class CreateOrderBottomBox extends StatelessWidget {
             Row(
               children: [
                 JrText(
-                  Strings.of(context).orderSum(order.orderMeals.length),
+                  Strings.of(context).orderSum(order.ordersCount),
                   color: context.colors.dark,
                 ),
                 const Spacer(),

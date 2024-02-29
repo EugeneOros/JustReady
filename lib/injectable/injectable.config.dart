@@ -162,6 +162,7 @@ _i1.GetIt $initGetIt(
   gh.factory<_i39.SelectMealsCubit>(() => _i39.SelectMealsCubit(
         gh<_i23.GetMealsUseCase>(),
         gh<_i28.AddMealToCurrentOrderUseCase>(),
+        gh<_i36.GetCurrentOrderUseCase>(),
       ));
   gh.factory<_i40.CreateOrderCubit>(() => _i40.CreateOrderCubit(
         gh<_i36.GetCurrentOrderUseCase>(),

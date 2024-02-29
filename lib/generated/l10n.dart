@@ -350,10 +350,10 @@ class Strings {
     );
   }
 
-  /// `Order now`
+  /// `Order`
   String get orderNow {
     return Intl.message(
-      'Order now',
+      'Order',
       name: 'orderNow',
       desc: '',
       args: [],

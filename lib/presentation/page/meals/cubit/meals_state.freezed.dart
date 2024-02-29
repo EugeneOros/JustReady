@@ -229,7 +229,7 @@ class _$MealsStateLoadedImpl implements MealsStateLoaded {
   }
 }
 
-abstract class MealsStateLoaded implements MealsState {
+abstract class MealsStateLoaded implements MealsState, MealsStateBuilder {
   const factory MealsStateLoaded(final List<Meal> meals) =
       _$MealsStateLoadedImpl;
 
@@ -349,7 +349,7 @@ class _$MealsStateLoadingImpl implements MealsStateLoading {
   }
 }
 
-abstract class MealsStateLoading implements MealsState {
+abstract class MealsStateLoading implements MealsState, MealsStateBuilder {
   const factory MealsStateLoading() = _$MealsStateLoadingImpl;
 }
 
@@ -488,7 +488,7 @@ class _$MealsStateErrorImpl implements MealsStateError {
   }
 }
 
-abstract class MealsStateError implements MealsState {
+abstract class MealsStateError implements MealsState, MealsStateBuilder {
   const factory MealsStateError(final Object error) = _$MealsStateErrorImpl;
 
   Object get error;

@@ -71,12 +71,6 @@ class DashboardPage extends HookWidget {
                           .toList(),
                     ),
                   ),
-                  // Expanded(
-                  //   child: DashboardColumn(
-                  //     title: Strings.of(context).dashbordInProgresTitle,
-                  //     orders: orders.where((order) => order.status == OrderStatus.inProgress).toList(),
-                  //   ),
-                  // ),
                   Expanded(
                     child: DashboardOrdersColumn(
                       orders: orders.where((order) => order.status == OrderStatus.ready).toList(),
@@ -99,17 +93,14 @@ class DashboardPage extends HookWidget {
   void _listener(DashboardCubit cubit, DashboardState state, BuildContext context) => state.maybeWhen(
         announceReady: (order) async {
           final phrases = [
-            // "Długo jeszcze mam czekać? Odbierz mnie",
             "Come to me",
             "Jestem tuuu cekam na ciebieee",
             "Licze do trzech. Jeden... Dwa... i ostatnie słowo mówie trzy",
-            "Gotowe do podbicia twojego żołądka",
+            "Jestem gotowy do podbicia twojego żołądka",
             "Szykuj się to będzie pyszne",
-            // "Czujesz to? To zapach smaku",
-            "Uważaj, bo zaraz wybuchnie kulinarna bomba!",
+            "Uważaj, zaraz wybuchnie kulinarna bomba!",
             "Prosto z serca dla twojego brzuszka",
             "Hop-hop! Twój posiłek czeka",
-            // "Ostrzegam, to nie jest zwykłe gotowanie - to kulinarny szok!"
             "Czy jesteś moim dzisiejszym odbiorcą? Bo ja tu czekam"
           ];
           final index = Random().nextInt(phrases.length);
@@ -122,7 +113,6 @@ class DashboardPage extends HookWidget {
               return JrNumberDialog(
                 title: phrases[index],
                 number: order.number!,
-                heroTag: 'hero-dashboard-number:${order.number!}',
               );
             },
           );

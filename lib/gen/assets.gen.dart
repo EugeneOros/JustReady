@@ -30,21 +30,17 @@ class $AssetsImagesIllustrationsGen {
   AssetGenImage get bannerHoly =>
       const AssetGenImage('assets/images/illustrations/banner_holy.webp');
 
-  /// File path: assets/images/illustrations/dashboard_background.png
+  /// File path: assets/images/illustrations/dashboard_background.webp
   AssetGenImage get dashboardBackground => const AssetGenImage(
-      'assets/images/illustrations/dashboard_background.png');
+      'assets/images/illustrations/dashboard_background.webp');
 
-  /// File path: assets/images/illustrations/dashboard_ripped_background.png
+  /// File path: assets/images/illustrations/dashboard_ripped_background.webp
   AssetGenImage get dashboardRippedBackground => const AssetGenImage(
-      'assets/images/illustrations/dashboard_ripped_background.png');
+      'assets/images/illustrations/dashboard_ripped_background.webp');
 
-  /// File path: assets/images/illustrations/piorun.png
-  AssetGenImage get piorun =>
-      const AssetGenImage('assets/images/illustrations/piorun.png');
-
-  /// File path: assets/images/illustrations/plate.png
+  /// File path: assets/images/illustrations/plate.webp
   AssetGenImage get plate =>
-      const AssetGenImage('assets/images/illustrations/plate.png');
+      const AssetGenImage('assets/images/illustrations/plate.webp');
 
   /// List of all assets
   List<AssetGenImage> get values => [
@@ -52,7 +48,6 @@ class $AssetsImagesIllustrationsGen {
         bannerHoly,
         dashboardBackground,
         dashboardRippedBackground,
-        piorun,
         plate
       ];
 }
@@ -86,6 +81,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/carrot_24.svg
   SvgGenImage get carrot24 =>
       const SvgGenImage('assets/images/svg/carrot_24.svg');
+
+  /// File path: assets/images/svg/cart_24.svg
+  SvgGenImage get cart24 => const SvgGenImage('assets/images/svg/cart_24.svg');
 
   /// File path: assets/images/svg/check_24.svg
   SvgGenImage get check24 =>
@@ -218,6 +216,7 @@ class $AssetsImagesSvgGen {
         boardProgress24,
         burger24,
         carrot24,
+        cart24,
         check24,
         chevronDown24,
         chevronLeft24,

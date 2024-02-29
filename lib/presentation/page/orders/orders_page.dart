@@ -5,6 +5,7 @@ import 'package:just_ready/presentation/page/home/home_page.dart';
 import 'package:just_ready/presentation/page/orders/body/orders_loaded_body.dart';
 import 'package:just_ready/presentation/page/orders/body/orders_loaded_empty_body.dart';
 import 'package:just_ready/presentation/page/orders/body/orders_loading_body.dart';
+import 'package:just_ready/presentation/page/orders/cubit/orders_state.dart';
 import 'package:just_ready/presentation/widgets/jr_app_bar.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:just_ready/presentation/page/orders/cubit/orders_cubit.dart';
@@ -17,7 +18,7 @@ class OrdersPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = useBloc<OrdersCubit>();
-    final state = useBlocBuilder(cubit);
+    final state = useBlocBuilder(cubit, buildWhen: _buildWhen);
     useOnce(cubit.loadOrders);
 
     return Scaffold(
@@ -47,4 +48,6 @@ class OrdersPage extends HookWidget {
       ),
     );
   }
+
+  bool _buildWhen(OrdersState state) => state is OrdersStateBuilder;
 }

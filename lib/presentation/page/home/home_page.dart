@@ -63,8 +63,10 @@ class MouseEdgeDetector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Listener(
       onPointerHover: (PointerEvent event) {
+        if (size.width < size.height) return;
         final mousePosition = event.position.dx;
         const edgeDistance = Dimens.xs;
         if (mousePosition <= edgeDistance) {
@@ -72,7 +74,9 @@ class MouseEdgeDetector extends StatelessWidget {
         }
       },
       onPointerMove: (PointerEvent event) {
+        if (size.width < size.height) return;
         final mousePosition = event.position.dx;
+
         const edgeDistance = Dimens.xl;
         if (mousePosition <= edgeDistance) {
           homeKey.currentState!.openDrawer();

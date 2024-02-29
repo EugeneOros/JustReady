@@ -23,9 +23,10 @@ class SelectMealsPage extends HookWidget {
       backgroundColor: context.colors.transparent,
       extendBodyBehindAppBar: true,
       body: state.maybeWhen(
-        loaded: (meals) => SelectMealsLoadedBody(
+        loaded: (meals, currentOrder) => SelectMealsLoadedBody(
           meals: meals,
           addMealToOrder: (mealCount, meal) => cubit.addMealsToOrder(meal, mealCount),
+          order: currentOrder,
         ),
         loading: () => const SlectMealsLoadingBody(),
         orElse: SizedBox.shrink,

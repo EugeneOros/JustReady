@@ -13,12 +13,14 @@ const initMealCountValue = 1;
 
 class MealCard extends HookWidget {
   final Meal meal;
+  final int orderCount;
   final Function(int) onAddToOrder;
   final Function(Meal) onMealAddedToOrder;
 
-  MealCard({
+  const MealCard({
     super.key,
     required this.meal,
+    this.orderCount = 0,
     required this.onAddToOrder,
     required this.onMealAddedToOrder,
   });
@@ -50,6 +52,7 @@ class MealCard extends HookWidget {
             children: [
               MealCardBody(
                 meal: meal,
+                orderCount: orderCount,
                 initMealCountValue: initMealCountValue,
                 form: form,
                 showMealAddingProgress: showMealAddingProgress.value,

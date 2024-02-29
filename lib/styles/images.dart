@@ -30,16 +30,17 @@ class IconsSvg {
   static final tickSquare24 = _icons.tickSquare24.path;
   static final square24 = _icons.square24.path;
   static final check24 = _icons.check24.path;
+  static final cart24 = _icons.cart24.path;
 
   static final carrot24 = _icons.carrot24.path;
   static final toast24 = _icons.toast24.path;
   static final lemonade24 = _icons.lemonade24.path;
   static final lemon24 = _icons.lemon24.path;
-    static final pizza24 = _icons.pizza24.path;
+  static final pizza24 = _icons.pizza24.path;
   static final waffle24 = _icons.waffle24.path;
   static final avocado24 = _icons.avocado24.path;
   static final grape24 = _icons.grape24.path;
-    static final nachos24 = _icons.nachos24.path;
+  static final nachos24 = _icons.nachos24.path;
   static final coffee24 = _icons.coffee24.path;
   static final shake24 = _icons.shake24.path;
   static final burger24 = _icons.burger24.path;
@@ -49,7 +50,6 @@ class IconsSvg {
 
 class Illustrations {
   static final _illustrations = Assets.images.illustrations;
-  static final lightning = _illustrations.piorun.path;
   static final banner = _illustrations.banner.path;
   static final bannerHoly = _illustrations.bannerHoly.path;
   static final plate = _illustrations.plate.path;

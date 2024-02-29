@@ -13,7 +13,7 @@ class JrImagedBody extends StatelessWidget {
         Positioned.fill(
           child: Image.asset(
             Illustrations.dashboardBackground,
-            fit: BoxFit.fitHeight,
+            fit: BoxFit.cover,
           ),
         ),
         Positioned.fill(

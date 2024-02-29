@@ -1,12 +1,13 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:just_ready/domain/meals/models/meal.dart';
+import 'package:just_ready/domain/orders/models/order.dart';
 
 part 'select_meals_state.freezed.dart';
 
 @freezed
 class SelectMealsState with _$SelectMealsState {
   @Implements<SelectMealsStateBuilder>()
-  const factory SelectMealsState.loaded(List<Meal> meals) = Loaded;
+  const factory SelectMealsState.loaded(List<Meal> meals, Order? currentOrder) = Loaded;
 
   @Implements<SelectMealsStateBuilder>()
   const factory SelectMealsState.loading() = Loading;

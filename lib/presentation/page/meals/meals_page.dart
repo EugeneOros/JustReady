@@ -57,5 +57,5 @@ class MealsPage extends HookWidget {
     );
   }
 
-  bool _buildWhen(MealsState state) => state is MealsStateLoaded || state is MealsStateLoading;
+  bool _buildWhen(MealsState state) => state is MealsStateBuilder;
 }

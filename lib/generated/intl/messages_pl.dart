@@ -58,7 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "orderDetails":
             MessageLookupByLibrary.simpleMessage("Szczegóły zamówienia"),
-        "orderNow": MessageLookupByLibrary.simpleMessage("Zamów teraz"),
+        "orderNow": MessageLookupByLibrary.simpleMessage("Zamów"),
         "orderSum": m0,
         "ordered": MessageLookupByLibrary.simpleMessage("Do zrobienia"),
         "orders": MessageLookupByLibrary.simpleMessage("Zamówienia"),

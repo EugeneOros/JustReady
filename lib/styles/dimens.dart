@@ -85,5 +85,7 @@ class Dimens {
 
   static const dashboardColumnTitleHeight = 150.0;
 
+  
+
   Dimens._();
 }

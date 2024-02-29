@@ -252,7 +252,7 @@ class _$LoadedImpl implements Loaded {
   }
 }
 
-abstract class Loaded implements CreateOrderState {
+abstract class Loaded implements CreateOrderState, CreateOrderStateBuilder {
   const factory Loaded(final Order order) = _$LoadedImpl;
 
   Order get order;
@@ -386,7 +386,8 @@ class _$LoadedEmptyImpl implements LoadedEmpty {
   }
 }
 
-abstract class LoadedEmpty implements CreateOrderState {
+abstract class LoadedEmpty
+    implements CreateOrderState, CreateOrderStateBuilder {
   const factory LoadedEmpty() = _$LoadedEmptyImpl;
 }
 
@@ -515,7 +516,7 @@ class _$LoadingImpl implements Loading {
   }
 }
 
-abstract class Loading implements CreateOrderState {
+abstract class Loading implements CreateOrderState, CreateOrderStateBuilder {
   const factory Loading() = _$LoadingImpl;
 }
 
@@ -677,7 +678,8 @@ class _$ShowOrderSuccesfullyAddedDialogImpl
   }
 }
 
-abstract class ShowOrderSuccesfullyAddedDialog implements CreateOrderState {
+abstract class ShowOrderSuccesfullyAddedDialog
+    implements CreateOrderState, CreateOrderStateListener {
   const factory ShowOrderSuccesfullyAddedDialog(final int orderNumber) =
       _$ShowOrderSuccesfullyAddedDialogImpl;
 
@@ -837,7 +839,7 @@ class _$ErrorImpl implements Error {
   }
 }
 
-abstract class Error implements CreateOrderState {
+abstract class Error implements CreateOrderState, CreateOrderStateListener {
   const factory Error(final Object error) = _$ErrorImpl;
 
   Object get error;
