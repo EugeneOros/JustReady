@@ -23,28 +23,28 @@ class HomeNavBar extends HookWidget {
     var items = [
       BottomNavigationBarItem(
         icon: JrSvgPicture(
-          selectedIndex == 0 ? IconsSvg.bellRin24 : IconsSvg.bell24,
+          selectedIndex == 0 ? IconsSvg.bellRin48 : IconsSvg.bell48,
           size: Dimens.xxl,
         ),
         label: Strings.of(context).addOrders,
       ),
       BottomNavigationBarItem(
         icon: JrSvgPicture(
-          selectedIndex == 1 ? IconsSvg.ordersTorn24 : IconsSvg.orders24,
+          selectedIndex == 1 ? IconsSvg.ordersTorn48 : IconsSvg.orders48,
           size: Dimens.xxl,
         ),
         label: Strings.of(context).orders,
       ),
       BottomNavigationBarItem(
         icon: JrSvgPicture(
-          selectedIndex == 2 ? IconsSvg.mealHot24 : IconsSvg.meal24,
+          selectedIndex == 2 ? IconsSvg.mealHot48 : IconsSvg.meal48,
           size: Dimens.xxl,
         ),
         label: Strings.of(context).meals,
       ),
       BottomNavigationBarItem(
         icon: JrSvgPicture(
-          selectedIndex == 3 ? IconsSvg.boardDone24 : IconsSvg.boardProgress24,
+          selectedIndex == 3 ? IconsSvg.boardDone48 : IconsSvg.boardProgress48,
           size: Dimens.xxl,
         ),
         label: Strings.of(context).dashboard,

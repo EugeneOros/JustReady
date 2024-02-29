@@ -7,11 +7,13 @@ class MealDto {
   final String name;
   final int number;
   final double price;
+  final double? doublePrice;
 
   const MealDto({
     required this.name,
     required this.number,
     required this.price,
+    this.doublePrice,
   });
 
   Map<String, dynamic> toJson() => _$MealDtoToJson(this);

@@ -42,8 +42,6 @@ class DrowerItem extends StatelessWidget {
         children: [
           JrSvgPicture(
             index == selectdIndex ? selectedIcon : unselectedIcon,
-            size: Dimens.xxxl,
-            color: context.colors.dark,
           ),
           const SizedBox(width: Dimens.s),
           Expanded(

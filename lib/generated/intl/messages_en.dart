@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter meal name"),
         "enterPriceName":
             MessageLookupByLibrary.simpleMessage("Enter meal price"),
+        "forTwo": MessageLookupByLibrary.simpleMessage("for two"),
         "goToSummary": MessageLookupByLibrary.simpleMessage("Go to summary"),
         "inProgress": MessageLookupByLibrary.simpleMessage("In progress"),
         "mealNumber": MessageLookupByLibrary.simpleMessage("Meal number"),
@@ -59,6 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ordered": MessageLookupByLibrary.simpleMessage("To do"),
         "orders": MessageLookupByLibrary.simpleMessage("Orders"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
+        "priceForTwo": MessageLookupByLibrary.simpleMessage("Price for two"),
         "ready": MessageLookupByLibrary.simpleMessage("Ready"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "scelectedMeal": m1,

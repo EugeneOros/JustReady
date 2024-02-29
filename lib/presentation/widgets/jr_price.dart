@@ -10,6 +10,7 @@ enum JrPriceColorType {
 
 enum JrPriceSize {
   s,
+  m,
   l,
 }
 
@@ -18,6 +19,7 @@ class JrPrice extends StatelessWidget {
   final String curency;
   final JrPriceColorType colorType;
   final Color? color;
+  final Color? currencyColor;
   final JrPriceSize size;
   const JrPrice({
     super.key,
@@ -26,6 +28,7 @@ class JrPrice extends StatelessWidget {
     this.colorType = JrPriceColorType.primary,
     this.size = JrPriceSize.l,
     this.color,
+    this.currencyColor,
   });
 
   @override
@@ -36,7 +39,7 @@ class JrPrice extends StatelessWidget {
         JrText(
           price.toInt().toString(),
           color: getPriceColor(context),
-          style: size == JrPriceSize.l ? context.typography.header3 : context.typography.header4,
+          style: getPriceTextStyle(context),
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,17 +48,28 @@ class JrPrice extends StatelessWidget {
             JrText(
               formatCents(extractCents(price)),
               color: getCentsColor(context),
-              style: size == JrPriceSize.l ? context.typography.subtitle2 : context.typography.subtitle2,
+              style: getCentsTextStyle(context),
             ),
             JrText(
               curency,
               color: getCurencyColor(context),
-              style: size == JrPriceSize.l ? context.typography.body3 : context.typography.subtitle2,
+              style: getCurencyTextStyle(context),
             )
           ],
         ),
       ],
     );
+  }
+
+  TextStyle getPriceTextStyle(BuildContext context) {
+    switch (size) {
+      case JrPriceSize.s:
+        return context.typography.body1;
+      case JrPriceSize.m:
+        return context.typography.header4;
+      case JrPriceSize.l:
+        return context.typography.header3;
+    }
   }
 
   Color getPriceColor(BuildContext context) {
@@ -64,6 +78,17 @@ class JrPrice extends StatelessWidget {
         return color ?? context.colors.secondary;
       case JrPriceColorType.bright:
         return context.colors.bright;
+    }
+  }
+
+  TextStyle getCentsTextStyle(BuildContext context) {
+    switch (size) {
+      case JrPriceSize.s:
+        return context.typography.subtitle3;
+      case JrPriceSize.m:
+        return context.typography.subtitle2;
+      case JrPriceSize.l:
+        return context.typography.subtitle2;
     }
   }
 
@@ -76,7 +101,19 @@ class JrPrice extends StatelessWidget {
     }
   }
 
+  TextStyle getCurencyTextStyle(BuildContext context) {
+    switch (size) {
+      case JrPriceSize.s:
+        return context.typography.subtitle3;
+      case JrPriceSize.m:
+        return context.typography.subtitle2;
+      case JrPriceSize.l:
+        return context.typography.body3;
+    }
+  }
+
   Color getCurencyColor(BuildContext context) {
+    if (currencyColor != null) return currencyColor!;
     switch (colorType) {
       case JrPriceColorType.primary:
         return size == JrPriceSize.l ? context.colors.dark : context.colors.darkLight;

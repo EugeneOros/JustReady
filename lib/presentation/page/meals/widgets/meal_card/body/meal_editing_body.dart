@@ -29,10 +29,7 @@ class MealEditingBody extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            JrSvgPicture(
-              icon ?? IconsSvg.editMeal24,
-              size: Dimens.xxxc,
-            ),
+            JrSvgPicture(icon ?? IconsSvg.editMeal104),
             const SizedBox(height: Dimens.m),
             JrTitleRow(
               title: Strings.of(context).name,
@@ -61,6 +58,17 @@ class MealEditingBody extends StatelessWidget {
                 isFloatingLabel: false,
                 selectAllOnTap: true,
                 formControlName: MealFormControlName.price,
+                labelText: Strings.of(context).enterPriceName,
+              ),
+            ),
+            const SizedBox(height: Dimens.m),
+            JrTitleRow(
+              title: Strings.of(context).priceForTwo,
+              child: JrTextField(
+                form: form,
+                isFloatingLabel: false,
+                selectAllOnTap: true,
+                formControlName: MealFormControlName.doublePrice,
                 labelText: Strings.of(context).enterPriceName,
               ),
             ),

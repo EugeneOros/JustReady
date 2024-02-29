@@ -46,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Wprowadź nazwe dania"),
         "enterPriceName":
             MessageLookupByLibrary.simpleMessage("Wprowadź cene dania"),
+        "forTwo": MessageLookupByLibrary.simpleMessage("za dwa"),
         "goToSummary":
             MessageLookupByLibrary.simpleMessage("Przejdź do podsumowania"),
         "inProgress": MessageLookupByLibrary.simpleMessage("W trakcie"),
@@ -63,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ordered": MessageLookupByLibrary.simpleMessage("Do zrobienia"),
         "orders": MessageLookupByLibrary.simpleMessage("Zamówienia"),
         "price": MessageLookupByLibrary.simpleMessage("Cena"),
+        "priceForTwo": MessageLookupByLibrary.simpleMessage("Cena za dwa"),
         "ready": MessageLookupByLibrary.simpleMessage("Gotowe"),
         "save": MessageLookupByLibrary.simpleMessage("Zapisz"),
         "scelectedMeal": m1,

@@ -160,6 +160,26 @@ class Strings {
     );
   }
 
+  /// `Price for two`
+  String get priceForTwo {
+    return Intl.message(
+      'Price for two',
+      name: 'priceForTwo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `for two`
+  String get forTwo {
+    return Intl.message(
+      'for two',
+      name: 'forTwo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Enter meal price`
   String get enterPriceName {
     return Intl.message(

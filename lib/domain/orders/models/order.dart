@@ -35,7 +35,7 @@ class Order {
         announcedReady: announcedReady ?? this.announcedReady,
       );
 
-  get ordersCount {
+  get mealsCount {
     int mealCount = 0;
     for (var mealOrder in orderMeals) {
       mealCount += mealOrder.count;
@@ -46,7 +46,7 @@ class Order {
   double getSumPrice() {
     double sumPrice = 0;
     for (var orderMeal in orderMeals) {
-      sumPrice += orderMeal.meal.price * orderMeal.count;
+      sumPrice += orderMeal.price;
     }
     return sumPrice;
   }

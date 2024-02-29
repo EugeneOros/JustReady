@@ -78,17 +78,6 @@ class CreateOrderPage extends HookWidget {
             },
           );
           return null;
-          // await showDialog(
-          //   context: context,
-          //   barrierDismissible: false,
-          //   builder: (_) {
-          //     Future.delayed(const Duration(seconds: 4), () => context.pop());
-          //     return JrNumberDialog(
-          //       title: phrases[index],
-          //       number: order.number!,
-          //     );
-          //   },
-          // );
         },
         orElse: doNothing,
       );

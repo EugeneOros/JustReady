@@ -50,7 +50,7 @@ class SelectedMealCardBody extends HookWidget {
                 ),
               ),
               JrPrice(
-                size: JrPriceSize.s,
+                size: JrPriceSize.m,
                 price: meal.price,
               ),
             ],

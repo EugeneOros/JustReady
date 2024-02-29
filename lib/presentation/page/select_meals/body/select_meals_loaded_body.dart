@@ -57,7 +57,7 @@ class SelectMealsLoadedBody extends HookWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(height: Dimens.xxc),
+                    const SizedBox(height: Dimens.xxxc),
                   ],
                 ),
               ),

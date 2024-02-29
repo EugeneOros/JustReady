@@ -10,10 +10,12 @@ MealDto _$MealDtoFromJson(Map json) => MealDto(
       name: json['name'] as String,
       number: json['number'] as int,
       price: (json['price'] as num).toDouble(),
+      doublePrice: (json['doublePrice'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$MealDtoToJson(MealDto instance) => <String, dynamic>{
       'name': instance.name,
       'number': instance.number,
       'price': instance.price,
+      'doublePrice': instance.doublePrice,
     };

@@ -62,7 +62,7 @@ class MealCardBody extends HookWidget {
                   ),
                 const Spacer(),
                 JrPrice(
-                  size: JrPriceSize.s,
+                  size: JrPriceSize.m,
                   price: meal.price,
                 ),
               ],

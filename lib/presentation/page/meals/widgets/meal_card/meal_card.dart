@@ -51,6 +51,9 @@ class MealCard extends HookWidget {
           Validators.required,
         ],
       ),
+      MealFormControlName.doublePrice: FormControl<double>(
+        value: meal.doublePrice,
+      ),
       MealFormControlName.number: FormControl<int>(
         value: meal.number,
         validators: [
@@ -149,6 +152,7 @@ class MealCard extends HookWidget {
                                     name: form.controls[MealFormControlName.name]!.value.toString(),
                                     number: form.controls[MealFormControlName.number]!.value as int,
                                     price: form.controls[MealFormControlName.price]!.value as double,
+                                    doublePrice: form.controls[MealFormControlName.doublePrice]!.value as double?,
                                   ),
                                   meal.number,
                                 );

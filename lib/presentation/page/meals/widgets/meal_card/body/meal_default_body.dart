@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:just_ready/domain/meals/models/meal.dart';
 import 'package:just_ready/extensions/extension_mixin.dart';
+import 'package:just_ready/generated/l10n.dart';
 import 'package:just_ready/presentation/widgets/jr_divider.dart';
 import 'package:just_ready/presentation/widgets/jr_price.dart';
 import 'package:just_ready/presentation/widgets/jr_text.dart';
@@ -33,8 +34,32 @@ class MealDefaultBody extends StatelessWidget {
         const JrDivider(),
         SizedBox(
           width: Dimens.xxxc,
-          child: JrPrice(
-            price: meal.price,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              JrPrice(
+                price: meal.price,
+              ),
+              const SizedBox(height: Dimens.xs),
+              if (meal.doublePrice != null)
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    JrPrice(
+                      color: context.colors.grey,
+                      currencyColor: context.colors.grey,
+                      size: JrPriceSize.s,
+                      price: meal.doublePrice!,
+                    ),
+                    const SizedBox(width: Dimens.xs),
+                    JrText(
+                      Strings.of(context).forTwo,
+                      color: context.colors.grey,
+                      style: context.typography.body2,
+                    ),
+                  ],
+                ),
+            ],
           ),
         ),
       ],

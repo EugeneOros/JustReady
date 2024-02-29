@@ -27,7 +27,7 @@ class AddMealCard extends StatelessWidget {
     return JrAnimatedSwitcher(
       child: showAddMeals
           ? MealCard(
-              actionIcon: IconsSvg.createMeal24,
+              actionIcon: IconsSvg.createMeal104,
               setIsEditing: (_) => doNothing(),
               isEditing: showAddMeals,
               meals: meals,

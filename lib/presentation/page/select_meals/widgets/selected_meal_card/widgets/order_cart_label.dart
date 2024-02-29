@@ -18,10 +18,7 @@ class OrderCartLable extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(Dimens.xm),
-          child: JrSvgPicture(
-            IconsSvg.cart24,
-            color: context.colors.dark,
-          ),
+          child: JrSvgPicture(IconsSvg.cart24),
         ),
         Positioned(
           right: 0,

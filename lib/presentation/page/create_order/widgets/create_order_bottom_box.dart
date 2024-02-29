@@ -78,7 +78,7 @@ class CreateOrderBottomBox extends StatelessWidget {
             Row(
               children: [
                 JrText(
-                  Strings.of(context).orderSum(order.ordersCount),
+                  Strings.of(context).orderSum(order.mealsCount),
                   color: context.colors.dark,
                 ),
                 const Spacer(),

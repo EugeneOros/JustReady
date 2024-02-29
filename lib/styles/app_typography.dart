@@ -50,6 +50,10 @@ class AppTypography {
     fontSize: 10,
     height: 1,
   );
+  static const subtitle3 = TextStyle(
+    fontSize: 7.5,
+    height: 1,
+  );
 
   /// Button
   static const button = TextStyle(
@@ -85,6 +89,7 @@ class CustomTypography extends ThemeExtension<CustomTypography> {
   final TextStyle body3;
   final TextStyle subtitle1;
   final TextStyle subtitle2;
+  final TextStyle subtitle3;
   final TextStyle button;
   final TextStyle input;
   final TextStyle bodySemiBoldUnderline;
@@ -96,6 +101,7 @@ class CustomTypography extends ThemeExtension<CustomTypography> {
     required this.header4,
     required this.subtitle1,
     required this.subtitle2,
+    required this.subtitle3,
     required this.body1,
     required this.body2,
     required this.body3,
@@ -115,6 +121,7 @@ class CustomTypography extends ThemeExtension<CustomTypography> {
     TextStyle? body3,
     TextStyle? subtitle1,
     TextStyle? subtitle2,
+    TextStyle? subtitle3,
     TextStyle? button,
     TextStyle? input,
     TextStyle? bodySemiBoldUnderline,
@@ -129,6 +136,7 @@ class CustomTypography extends ThemeExtension<CustomTypography> {
         body3: body3 ?? this.body3,
         subtitle1: subtitle1 ?? this.subtitle1,
         subtitle2: subtitle2 ?? this.subtitle2,
+        subtitle3: subtitle3 ?? this.subtitle3,
         button: button ?? this.button,
         input: input ?? this.input,
         bodySemiBoldUnderline: bodySemiBoldUnderline ?? this.bodySemiBoldUnderline,
@@ -147,6 +155,7 @@ class CustomTypography extends ThemeExtension<CustomTypography> {
     body3: AppTypography.body3.copyWith(fontFamily: AppTypography.fontFamily),
     subtitle1: AppTypography.subtitle1.copyWith(fontFamily: AppTypography.fontFamily),
     subtitle2: AppTypography.subtitle2.copyWith(fontFamily: AppTypography.fontFamily),
+    subtitle3: AppTypography.subtitle3.copyWith(fontFamily: AppTypography.fontFamily),
     button: AppTypography.button.copyWith(fontFamily: AppTypography.fontFamily),
     input: AppTypography.input.copyWith(fontFamily: AppTypography.fontFamily),
     bodySemiBoldUnderline: AppTypography.bodySemiBoldUnderline.copyWith(fontFamily: AppTypography.fontFamily),

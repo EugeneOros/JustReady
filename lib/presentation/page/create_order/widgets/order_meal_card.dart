@@ -86,8 +86,8 @@ class OrderMealCard extends HookWidget {
                         ),
                         const Spacer(),
                         JrPrice(
-                          size: JrPriceSize.s,
-                          price: orderMeal.meal.price,
+                          size: JrPriceSize.m,
+                          price: orderMeal.price,
                         ),
                       ],
                     ),

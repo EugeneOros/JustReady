@@ -17,10 +17,7 @@ class OrdersLoadedEmptyBody extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            JrSvgPicture(
-              IconsSvg.emptyMeal24,
-              size: Dimens.xxxc,
-            ),
+            JrSvgPicture(IconsSvg.emptyMeal104),
             const SizedBox(height: Dimens.s),
             JrText(
               Strings.of(context).nothingHire,

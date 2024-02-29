@@ -10,5 +10,6 @@ class MealToMealDtoMapper {
         name: meal.name,
         number: meal.number,
         price: meal.price,
+        doublePrice: meal.doublePrice,
       );
 }

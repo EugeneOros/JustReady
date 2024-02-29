@@ -3,7 +3,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:just_ready/extensions/extension_mixin.dart';
 import 'package:just_ready/presentation/widgets/jr_svg_picture.dart';
 import 'package:just_ready/styles/dimens.dart';
-import 'package:just_ready/utils/ignore_else_state.dart';
 
 enum IconButtonType {
   primary,
@@ -47,7 +46,7 @@ class JrIconButton extends HookWidget {
         color: _getBackgroundColor(context),
         shape: const CircleBorder(),
         child: InkWell(
-          onTap: state == IconButtonState.disabled ? doNothing : onTap,
+          onTap: state == IconButtonState.disabled ? null : onTap,
           highlightColor: context.colors.transparent,
           splashColor: getSplashColor(context),
           hoverColor: context.colors.darkLight,
