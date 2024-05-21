@@ -1,6 +1,14 @@
 # Just Ready
 
-A new project for orders managment and displaying orders status dashnbord made with Flutter.
+A new project for orders managment and displaying orders status dashnbord made with Flutter. 
+<br><br>
+<img src="assets/gifs/create_order.gif" alt="Description of GIF" width="250">
+<br><br>
+<img src="assets/gifs/add_meal.gif" alt="Description of GIF" width="250">
+<br><br>
+<img src="assets/gifs/prepare_order.gif" alt="Description of GIF" width="700">
+<br><br>
+<img src="assets/gifs/dashboard.gif" alt="Description of GIF" width="700">
 
 ## Generating files
 
