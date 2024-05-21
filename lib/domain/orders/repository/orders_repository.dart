@@ -22,4 +22,8 @@ abstract class OrdersRepository {
   void clearCurrentOrder();
 
   Stream<List<Order>> ordersStream();
+
+
+
+  Stream<List<Order>> deletedOrdersStream();
 }

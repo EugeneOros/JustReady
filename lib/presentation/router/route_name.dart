@@ -4,7 +4,8 @@ enum JustReadyRoute {
   selectMeals('select_meals'),
   orders('/orders'),
   meals('/meals'),
-  dashboard('/dashboard');
+  dashboard('/dashboard'),
+  statistics('/statistics');
 
   final String path;
 

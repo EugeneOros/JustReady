@@ -8,14 +8,14 @@
   "@meals": {},
   "dashboard": "Panel",
   "@dashboard": {},
+  "statistics": "Statystyka",
+  "@statistics": {},
   "notes": "Uwagi",
   "@notes": {},
-
   "save": "Zapisz",
   "@save": {},
   "cancel": "Anuluj",
   "@cancel": {},
-
   "mealNumber": "Numer dania",
   "@mealNumber": {},
   "name": "Nazwa",
@@ -32,8 +32,6 @@
   "@enterPriceName": {},
   "newMeal": "Nowe danie",
   "@newMeal": {},
-
-
   "orderDetails": "Szczegóły zamówienia",
   "@orderDetails": {},
   "addToOrder": "Dodaj do zamówienia",
@@ -50,7 +48,6 @@
   "@scelectedMealAddedToOrder": {},
   "scelectedMealReturnToOrder": "Wróć do zamówienia",
   "@scelectedMealReturnToOrder": {},
-
   "yourOrder": "Twoje zamówienie",
   "@yourOrder": {},
   "addMealsToOrder": "Dodaj dania",
@@ -71,21 +68,18 @@
   "@additionalInstructions": {},
   "additionalInstructionsExample": "N.p.: Bez kurczaka",
   "@additionalInstructionsExample": {},
-
   "yourOrderNumber": "Twój numer",
   "@yourOrderNumber": {},
   "ok": "Ok",
   "@ok": {},
   "yourOrderWasCreated": "Gratulacje. Zamówienie zostało złożone",
   "@yourOrderWasCreated": {},
-  
   "orderNow": "Zamów",
   "@orderNow": {},
   "selectMeal": "Wybierz dania",
   "@selectMeal": {},
   "selectMealNumber": "Wybierz numer dania",
   "@selectMealNumber": {},
-  
   "ordered": "Do zrobienia",
   "@ordered": {},
   "inProgress": "W trakcie",
@@ -94,14 +88,12 @@
   "@ready": {},
   "delivered": "Dostarczone",
   "@delivered": {},
-
   "dashbordWaitingTitle": "W oczekiwaniu",
   "@dashbordWaitingTitle": {},
   "dashbordInProgresTitle": "Już się szykuje",
   "@dashbordInProgresTitle": {},
   "dashbordDoneTitle": "Do odbioru",
   "@dashbordDoneTitle": {},
-
   "somthingWentWrong": "Ups. Coś poszło nie tak",
   "@somthingWentWrong": {}
 }

@@ -8,6 +8,7 @@ enum NavTabs {
   orders,
   meals,
   dashboard,
+  statistics,
 }
 
 @injectable
@@ -42,6 +43,8 @@ class HomeCubit extends Cubit<HomeState> {
         return JustReadyRoute.meals.path;
       case 3:
         return JustReadyRoute.dashboard.path;
+      case 4:
+        return JustReadyRoute.statistics.path;
       default:
         return JustReadyRoute.createOrder.path;
     }

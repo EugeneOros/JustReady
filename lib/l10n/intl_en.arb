@@ -8,6 +8,8 @@
   "@meals": {},
   "dashboard": "Dashboard",
   "@dashboard": {},
+  "statistics": "Statistics",
+  "@statistics": {},
   "notes": "Notes",
   "@notes": {},
   "save": "Save",

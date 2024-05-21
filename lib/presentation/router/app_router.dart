@@ -7,6 +7,7 @@ import 'package:just_ready/presentation/page/select_meals/select_meals_page.dart
 import 'package:just_ready/presentation/page/home/home_page.dart';
 import 'package:just_ready/presentation/page/meals/meals_page.dart';
 import 'package:just_ready/presentation/page/orders/orders_page.dart';
+import 'package:just_ready/presentation/page/statistics/statistics_page.dart';
 import 'package:just_ready/presentation/router/route_name.dart';
 
 // @singleton
@@ -81,6 +82,14 @@ class AppRouter {
             pageBuilder: (context, state) => _defaultTransition(
               state: state,
               child: const DashboardPage(),
+            ),
+          ),
+          GoRoute(
+            path: JustReadyRoute.statistics.path,
+            name: JustReadyRoute.statistics.name,
+            pageBuilder: (context, state) => _defaultTransition(
+              state: state,
+              child: const StatisticsPage(),
             ),
           ),
         ],

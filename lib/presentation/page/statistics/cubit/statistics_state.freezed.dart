@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'dashboard_state.dart';
+part of 'statistics_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,11 +15,10 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$DashboardState {
+mixin _$StatisticsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Order> orders) loaded,
-    required TResult Function(Order readyOrder) announceReady,
+    required TResult Function(Map<Meal, Statistic> orderMealsMap) loaded,
     required TResult Function() loading,
     required TResult Function(Object error) error,
     required TResult Function() idle,
@@ -27,8 +26,7 @@ mixin _$DashboardState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Order> orders)? loaded,
-    TResult? Function(Order readyOrder)? announceReady,
+    TResult? Function(Map<Meal, Statistic> orderMealsMap)? loaded,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
@@ -36,8 +34,7 @@ mixin _$DashboardState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Order> orders)? loaded,
-    TResult Function(Order readyOrder)? announceReady,
+    TResult Function(Map<Meal, Statistic> orderMealsMap)? loaded,
     TResult Function()? loading,
     TResult Function(Object error)? error,
     TResult Function()? idle,
@@ -47,7 +44,6 @@ mixin _$DashboardState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Loaded value) loaded,
-    required TResult Function(AnnounceReady value) announceReady,
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
     required TResult Function(Idle value) idle,
@@ -56,7 +52,6 @@ mixin _$DashboardState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Loaded value)? loaded,
-    TResult? Function(AnnounceReady value)? announceReady,
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
     TResult? Function(Idle value)? idle,
@@ -65,7 +60,6 @@ mixin _$DashboardState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Loaded value)? loaded,
-    TResult Function(AnnounceReady value)? announceReady,
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
     TResult Function(Idle value)? idle,
@@ -75,16 +69,16 @@ mixin _$DashboardState {
 }
 
 /// @nodoc
-abstract class $DashboardStateCopyWith<$Res> {
-  factory $DashboardStateCopyWith(
-          DashboardState value, $Res Function(DashboardState) then) =
-      _$DashboardStateCopyWithImpl<$Res, DashboardState>;
+abstract class $StatisticsStateCopyWith<$Res> {
+  factory $StatisticsStateCopyWith(
+          StatisticsState value, $Res Function(StatisticsState) then) =
+      _$StatisticsStateCopyWithImpl<$Res, StatisticsState>;
 }
 
 /// @nodoc
-class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
-    implements $DashboardStateCopyWith<$Res> {
-  _$DashboardStateCopyWithImpl(this._value, this._then);
+class _$StatisticsStateCopyWithImpl<$Res, $Val extends StatisticsState>
+    implements $StatisticsStateCopyWith<$Res> {
+  _$StatisticsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -98,12 +92,12 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Order> orders});
+  $Res call({Map<Meal, Statistic> orderMealsMap});
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$StatisticsStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
@@ -112,13 +106,13 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? orders = null,
+    Object? orderMealsMap = null,
   }) {
     return _then(_$LoadedImpl(
-      null == orders
-          ? _value._orders
-          : orders // ignore: cast_nullable_to_non_nullable
-              as List<Order>,
+      null == orderMealsMap
+          ? _value._orderMealsMap
+          : orderMealsMap // ignore: cast_nullable_to_non_nullable
+              as Map<Meal, Statistic>,
     ));
   }
 }
@@ -126,19 +120,20 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements Loaded {
-  const _$LoadedImpl(final List<Order> orders) : _orders = orders;
+  const _$LoadedImpl(final Map<Meal, Statistic> orderMealsMap)
+      : _orderMealsMap = orderMealsMap;
 
-  final List<Order> _orders;
+  final Map<Meal, Statistic> _orderMealsMap;
   @override
-  List<Order> get orders {
-    if (_orders is EqualUnmodifiableListView) return _orders;
+  Map<Meal, Statistic> get orderMealsMap {
+    if (_orderMealsMap is EqualUnmodifiableMapView) return _orderMealsMap;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_orders);
+    return EqualUnmodifiableMapView(_orderMealsMap);
   }
 
   @override
   String toString() {
-    return 'DashboardState.loaded(orders: $orders)';
+    return 'StatisticsState.loaded(orderMealsMap: $orderMealsMap)';
   }
 
   @override
@@ -146,12 +141,13 @@ class _$LoadedImpl implements Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            const DeepCollectionEquality().equals(other._orders, _orders));
+            const DeepCollectionEquality()
+                .equals(other._orderMealsMap, _orderMealsMap));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_orders));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_orderMealsMap));
 
   @JsonKey(ignore: true)
   @override
@@ -162,39 +158,36 @@ class _$LoadedImpl implements Loaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Order> orders) loaded,
-    required TResult Function(Order readyOrder) announceReady,
+    required TResult Function(Map<Meal, Statistic> orderMealsMap) loaded,
     required TResult Function() loading,
     required TResult Function(Object error) error,
     required TResult Function() idle,
   }) {
-    return loaded(orders);
+    return loaded(orderMealsMap);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Order> orders)? loaded,
-    TResult? Function(Order readyOrder)? announceReady,
+    TResult? Function(Map<Meal, Statistic> orderMealsMap)? loaded,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
   }) {
-    return loaded?.call(orders);
+    return loaded?.call(orderMealsMap);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Order> orders)? loaded,
-    TResult Function(Order readyOrder)? announceReady,
+    TResult Function(Map<Meal, Statistic> orderMealsMap)? loaded,
     TResult Function()? loading,
     TResult Function(Object error)? error,
     TResult Function()? idle,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(orders);
+      return loaded(orderMealsMap);
     }
     return orElse();
   }
@@ -203,7 +196,6 @@ class _$LoadedImpl implements Loaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Loaded value) loaded,
-    required TResult Function(AnnounceReady value) announceReady,
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
     required TResult Function(Idle value) idle,
@@ -215,7 +207,6 @@ class _$LoadedImpl implements Loaded {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Loaded value)? loaded,
-    TResult? Function(AnnounceReady value)? announceReady,
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
     TResult? Function(Idle value)? idle,
@@ -227,7 +218,6 @@ class _$LoadedImpl implements Loaded {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Loaded value)? loaded,
-    TResult Function(AnnounceReady value)? announceReady,
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
     TResult Function(Idle value)? idle,
@@ -240,164 +230,12 @@ class _$LoadedImpl implements Loaded {
   }
 }
 
-abstract class Loaded implements DashboardState, DashboardStateBuilder {
-  const factory Loaded(final List<Order> orders) = _$LoadedImpl;
+abstract class Loaded implements StatisticsState, StatisticsStateBuilder {
+  const factory Loaded(final Map<Meal, Statistic> orderMealsMap) = _$LoadedImpl;
 
-  List<Order> get orders;
+  Map<Meal, Statistic> get orderMealsMap;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$AnnounceReadyImplCopyWith<$Res> {
-  factory _$$AnnounceReadyImplCopyWith(
-          _$AnnounceReadyImpl value, $Res Function(_$AnnounceReadyImpl) then) =
-      __$$AnnounceReadyImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Order readyOrder});
-}
-
-/// @nodoc
-class __$$AnnounceReadyImplCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$AnnounceReadyImpl>
-    implements _$$AnnounceReadyImplCopyWith<$Res> {
-  __$$AnnounceReadyImplCopyWithImpl(
-      _$AnnounceReadyImpl _value, $Res Function(_$AnnounceReadyImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? readyOrder = null,
-  }) {
-    return _then(_$AnnounceReadyImpl(
-      null == readyOrder
-          ? _value.readyOrder
-          : readyOrder // ignore: cast_nullable_to_non_nullable
-              as Order,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$AnnounceReadyImpl implements AnnounceReady {
-  const _$AnnounceReadyImpl(this.readyOrder);
-
-  @override
-  final Order readyOrder;
-
-  @override
-  String toString() {
-    return 'DashboardState.announceReady(readyOrder: $readyOrder)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AnnounceReadyImpl &&
-            (identical(other.readyOrder, readyOrder) ||
-                other.readyOrder == readyOrder));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, readyOrder);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AnnounceReadyImplCopyWith<_$AnnounceReadyImpl> get copyWith =>
-      __$$AnnounceReadyImplCopyWithImpl<_$AnnounceReadyImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<Order> orders) loaded,
-    required TResult Function(Order readyOrder) announceReady,
-    required TResult Function() loading,
-    required TResult Function(Object error) error,
-    required TResult Function() idle,
-  }) {
-    return announceReady(readyOrder);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Order> orders)? loaded,
-    TResult? Function(Order readyOrder)? announceReady,
-    TResult? Function()? loading,
-    TResult? Function(Object error)? error,
-    TResult? Function()? idle,
-  }) {
-    return announceReady?.call(readyOrder);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Order> orders)? loaded,
-    TResult Function(Order readyOrder)? announceReady,
-    TResult Function()? loading,
-    TResult Function(Object error)? error,
-    TResult Function()? idle,
-    required TResult orElse(),
-  }) {
-    if (announceReady != null) {
-      return announceReady(readyOrder);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Loaded value) loaded,
-    required TResult Function(AnnounceReady value) announceReady,
-    required TResult Function(Loading value) loading,
-    required TResult Function(Error value) error,
-    required TResult Function(Idle value) idle,
-  }) {
-    return announceReady(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Loaded value)? loaded,
-    TResult? Function(AnnounceReady value)? announceReady,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(Error value)? error,
-    TResult? Function(Idle value)? idle,
-  }) {
-    return announceReady?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Loaded value)? loaded,
-    TResult Function(AnnounceReady value)? announceReady,
-    TResult Function(Loading value)? loading,
-    TResult Function(Error value)? error,
-    TResult Function(Idle value)? idle,
-    required TResult orElse(),
-  }) {
-    if (announceReady != null) {
-      return announceReady(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class AnnounceReady implements DashboardState, DashboardStateListener {
-  const factory AnnounceReady(final Order readyOrder) = _$AnnounceReadyImpl;
-
-  Order get readyOrder;
-  @JsonKey(ignore: true)
-  _$$AnnounceReadyImplCopyWith<_$AnnounceReadyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -410,7 +248,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$StatisticsStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -424,7 +262,7 @@ class _$LoadingImpl implements Loading {
 
   @override
   String toString() {
-    return 'DashboardState.loading()';
+    return 'StatisticsState.loading()';
   }
 
   @override
@@ -439,8 +277,7 @@ class _$LoadingImpl implements Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Order> orders) loaded,
-    required TResult Function(Order readyOrder) announceReady,
+    required TResult Function(Map<Meal, Statistic> orderMealsMap) loaded,
     required TResult Function() loading,
     required TResult Function(Object error) error,
     required TResult Function() idle,
@@ -451,8 +288,7 @@ class _$LoadingImpl implements Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Order> orders)? loaded,
-    TResult? Function(Order readyOrder)? announceReady,
+    TResult? Function(Map<Meal, Statistic> orderMealsMap)? loaded,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
@@ -463,8 +299,7 @@ class _$LoadingImpl implements Loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Order> orders)? loaded,
-    TResult Function(Order readyOrder)? announceReady,
+    TResult Function(Map<Meal, Statistic> orderMealsMap)? loaded,
     TResult Function()? loading,
     TResult Function(Object error)? error,
     TResult Function()? idle,
@@ -480,7 +315,6 @@ class _$LoadingImpl implements Loading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Loaded value) loaded,
-    required TResult Function(AnnounceReady value) announceReady,
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
     required TResult Function(Idle value) idle,
@@ -492,7 +326,6 @@ class _$LoadingImpl implements Loading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Loaded value)? loaded,
-    TResult? Function(AnnounceReady value)? announceReady,
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
     TResult? Function(Idle value)? idle,
@@ -504,7 +337,6 @@ class _$LoadingImpl implements Loading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Loaded value)? loaded,
-    TResult Function(AnnounceReady value)? announceReady,
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
     TResult Function(Idle value)? idle,
@@ -517,7 +349,7 @@ class _$LoadingImpl implements Loading {
   }
 }
 
-abstract class Loading implements DashboardState, DashboardStateBuilder {
+abstract class Loading implements StatisticsState, StatisticsStateBuilder {
   const factory Loading() = _$LoadingImpl;
 }
 
@@ -532,7 +364,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$StatisticsStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -559,7 +391,7 @@ class _$ErrorImpl implements Error {
 
   @override
   String toString() {
-    return 'DashboardState.error(error: $error)';
+    return 'StatisticsState.error(error: $error)';
   }
 
   @override
@@ -583,8 +415,7 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Order> orders) loaded,
-    required TResult Function(Order readyOrder) announceReady,
+    required TResult Function(Map<Meal, Statistic> orderMealsMap) loaded,
     required TResult Function() loading,
     required TResult Function(Object error) error,
     required TResult Function() idle,
@@ -595,8 +426,7 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Order> orders)? loaded,
-    TResult? Function(Order readyOrder)? announceReady,
+    TResult? Function(Map<Meal, Statistic> orderMealsMap)? loaded,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
@@ -607,8 +437,7 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Order> orders)? loaded,
-    TResult Function(Order readyOrder)? announceReady,
+    TResult Function(Map<Meal, Statistic> orderMealsMap)? loaded,
     TResult Function()? loading,
     TResult Function(Object error)? error,
     TResult Function()? idle,
@@ -624,7 +453,6 @@ class _$ErrorImpl implements Error {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Loaded value) loaded,
-    required TResult Function(AnnounceReady value) announceReady,
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
     required TResult Function(Idle value) idle,
@@ -636,7 +464,6 @@ class _$ErrorImpl implements Error {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Loaded value)? loaded,
-    TResult? Function(AnnounceReady value)? announceReady,
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
     TResult? Function(Idle value)? idle,
@@ -648,7 +475,6 @@ class _$ErrorImpl implements Error {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Loaded value)? loaded,
-    TResult Function(AnnounceReady value)? announceReady,
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
     TResult Function(Idle value)? idle,
@@ -661,7 +487,7 @@ class _$ErrorImpl implements Error {
   }
 }
 
-abstract class Error implements DashboardState, DashboardStateBuilder {
+abstract class Error implements StatisticsState, StatisticsStateBuilder {
   const factory Error(final Object error) = _$ErrorImpl;
 
   Object get error;
@@ -679,7 +505,7 @@ abstract class _$$IdleImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$IdleImplCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$IdleImpl>
+    extends _$StatisticsStateCopyWithImpl<$Res, _$IdleImpl>
     implements _$$IdleImplCopyWith<$Res> {
   __$$IdleImplCopyWithImpl(_$IdleImpl _value, $Res Function(_$IdleImpl) _then)
       : super(_value, _then);
@@ -692,7 +518,7 @@ class _$IdleImpl implements Idle {
 
   @override
   String toString() {
-    return 'DashboardState.idle()';
+    return 'StatisticsState.idle()';
   }
 
   @override
@@ -707,8 +533,7 @@ class _$IdleImpl implements Idle {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Order> orders) loaded,
-    required TResult Function(Order readyOrder) announceReady,
+    required TResult Function(Map<Meal, Statistic> orderMealsMap) loaded,
     required TResult Function() loading,
     required TResult Function(Object error) error,
     required TResult Function() idle,
@@ -719,8 +544,7 @@ class _$IdleImpl implements Idle {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Order> orders)? loaded,
-    TResult? Function(Order readyOrder)? announceReady,
+    TResult? Function(Map<Meal, Statistic> orderMealsMap)? loaded,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
@@ -731,8 +555,7 @@ class _$IdleImpl implements Idle {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Order> orders)? loaded,
-    TResult Function(Order readyOrder)? announceReady,
+    TResult Function(Map<Meal, Statistic> orderMealsMap)? loaded,
     TResult Function()? loading,
     TResult Function(Object error)? error,
     TResult Function()? idle,
@@ -748,7 +571,6 @@ class _$IdleImpl implements Idle {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Loaded value) loaded,
-    required TResult Function(AnnounceReady value) announceReady,
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
     required TResult Function(Idle value) idle,
@@ -760,7 +582,6 @@ class _$IdleImpl implements Idle {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Loaded value)? loaded,
-    TResult? Function(AnnounceReady value)? announceReady,
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
     TResult? Function(Idle value)? idle,
@@ -772,7 +593,6 @@ class _$IdleImpl implements Idle {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Loaded value)? loaded,
-    TResult Function(AnnounceReady value)? announceReady,
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
     TResult Function(Idle value)? idle,
@@ -785,6 +605,6 @@ class _$IdleImpl implements Idle {
   }
 }
 
-abstract class Idle implements DashboardState {
+abstract class Idle implements StatisticsState {
   const factory Idle() = _$IdleImpl;
 }

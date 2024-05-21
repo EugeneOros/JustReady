@@ -116,6 +116,18 @@ class OrdersRepositoryImpl implements OrdersRepository {
 
   @override
   Future<void> editOrder(Order order, int oldNumber) async {
+    final deletedOrdersDto = (await _ordersDataSource.getDeletedOrders());
+    final List<Order> deletedOrders = deletedOrdersDto
+        .map(
+          (orderDto) => _orderDtoToOrderMapper(orderDto),
+        )
+        .toList(growable: false);
+    var priceSum = 0.0;
+    for (var deletedOrder in deletedOrders) {
+      priceSum += deletedOrder.getSumPrice();
+    }
+    print(priceSum);
+
     final dto = _orderToOrderDtoMapper(order);
 
     await _ordersDataSource.editOrder(dto, oldNumber);
@@ -124,11 +136,28 @@ class OrdersRepositoryImpl implements OrdersRepository {
   @override
   Future<void> deleteOrder(Order order) async {
     if (order.number != null) await _ordersDataSource.deleteOrder(order.number!);
+    final dto = _orderToOrderDtoMapper(order);
+    await _ordersDataSource.addToDeletedOrders(dto);
   }
 
   @override
   Stream<List<Order>> ordersStream() {
     final Stream<List<OrderDto>> orderDtoListStream = _ordersDataSource.orders();
+    return orderDtoListStream.asyncMap(
+      (orderDtos) async {
+        final orders = orderDtos
+            .map(
+              (orderDto) async => _orderDtoToOrderMapper(orderDto),
+            )
+            .toList(growable: false);
+        return await Future.wait(orders);
+      },
+    );
+  }
+
+  @override
+  Stream<List<Order>> deletedOrdersStream() {
+    final Stream<List<OrderDto>> orderDtoListStream = _ordersDataSource.deletedOrders();
     return orderDtoListStream.asyncMap(
       (orderDtos) async {
         final orders = orderDtos

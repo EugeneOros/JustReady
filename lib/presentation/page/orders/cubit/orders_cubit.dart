@@ -35,8 +35,9 @@ class OrdersCubit extends Cubit<OrdersState> {
     _emmitLoaded();
     final publicStream = _getOrdersStreamUseCase().asBroadcastStream();
     await for (final updatedOrders in publicStream) {
+      emit(const OrdersState.loading());
       ordersUpdated(updatedOrders);
-      if (!(await publicStream.isEmpty)) emit(const OrdersState.loading());
+      // if (!(await publicStream.isEmpty)) {}
     }
   }
 
@@ -92,6 +93,7 @@ class OrdersCubit extends Cubit<OrdersState> {
   }
 
   Future<void> ordersUpdated(List<Order> updatedOrders) async {
+    emit(const OrdersState.idle());
     _orders = updatedOrders;
     _orders.sort((a, b) => a.createdDate!.compareTo(b.createdDate!));
     _emmitLoaded();

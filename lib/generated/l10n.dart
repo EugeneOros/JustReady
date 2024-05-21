@@ -90,6 +90,16 @@ class Strings {
     );
   }
 
+  /// `Statistics`
+  String get statistics {
+    return Intl.message(
+      'Statistics',
+      name: 'statistics',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Notes`
   String get notes {
     return Intl.message(

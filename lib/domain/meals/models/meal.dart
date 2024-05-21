@@ -39,4 +39,17 @@ class Meal {
     ];
     return colors[number % colors.length];
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Meal &&
+          // runtimeType == other.runtimeType &&
+          name == other.name; // &&
+  // number == other.number &&
+  // price == other.price &&
+  // doublePrice == other.doublePrice;
+
+  @override
+  int get hashCode => name.hashCode; //^ number.hashCode ^ price.hashCode ^ doublePrice.hashCode;
 }

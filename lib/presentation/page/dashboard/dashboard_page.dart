@@ -66,8 +66,8 @@ class DashboardPage extends HookWidget {
                   Expanded(
                     child: DashboardOrdersColumn(
                       orders: orders
-                          .where(
-                              (order) => order.status == OrderStatus.ordered || order.status == OrderStatus.inProgress)
+                          .where((order) =>
+                              order.status == OrderStatus.ordered || order.status == OrderStatus.inProgress)
                           .toList(),
                     ),
                   ),
@@ -79,7 +79,7 @@ class DashboardPage extends HookWidget {
                 ],
               ),
             ),
-
+    
             //ToDo
             const Positioned.fill(child: FallingIconsWidget())
           ],

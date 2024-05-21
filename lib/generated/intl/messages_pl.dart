@@ -79,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Pokaż szczegóły zamówienia"),
         "somthingWentWrong":
             MessageLookupByLibrary.simpleMessage("Ups. Coś poszło nie tak"),
+        "statistics": MessageLookupByLibrary.simpleMessage("Statystyka"),
         "timeToAddSomethingTasty":
             MessageLookupByLibrary.simpleMessage("Czas dodać coś smacznego"),
         "yourOrder": MessageLookupByLibrary.simpleMessage("Twoje zamówienie"),
