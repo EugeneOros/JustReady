@@ -41,9 +41,6 @@ class JustReadyApp extends StatelessWidget implements ExtensionMixin {
                 Locale('pl'),
                 // Locale('en'),
               ],
-              // routeInformationProvider: AppRouter.router.routeInformationProvider,
-              // routeInformationParser: AppRouter.router.routeInformationParser,
-              // routerDelegate: AppRouter.router.routerDelegate,
               routerConfig: _router.router,
               theme: ThemeData(
                 textSelectionTheme: TextSelectionThemeData(
