@@ -1,10 +1,13 @@
 # Just Ready
 
 ## 📋 Overview
+
+**JustReady** is a dynamic solution, meticulously crafted to optimize the end-to-end workflow of meal orders, seamlessly accommodating both event-driven and traditional restaurant environments. Battle-tested at a 300-person conference, JustReady excels in streamlining the process of meal creation, order management, and delivery fulfillment. The application is intelligently divided into four distinct sections: Menu Creation, Order Placement, Kitchen Management, and Customer Dashboard, ensuring smooth operations and delightful experiences for both staff and customers.
+
 JustReady is a comprehensive application designed to streamline the process of creating, managing, and fulfilling meal orders in a restaurant setting. The application is divided into four main sections: Meal Creation, Order Creation, Kitchen Management, and Customer Dashboard.
 
 ### Features ⭐️ 
-#### 1. Creating menu 🍽️
+#### 1. Menu Creation 🍽️
 This section is designed for composing menu. Here, you can create meals and assign prices for both single and double portions.
 
 - **Add New Meal:** Create a meal with a name, description, single meal price, and double meal price.
