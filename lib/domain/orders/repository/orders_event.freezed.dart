@@ -34,8 +34,7 @@ mixin _$OrdersEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(MealsAddToCurrentOrder value)
-        mealsAddToCurrentOrder,
+    required TResult Function(MealsAddToCurrentOrder value) mealsAddToCurrentOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,14 +52,12 @@ mixin _$OrdersEvent {
 
 /// @nodoc
 abstract class $OrdersEventCopyWith<$Res> {
-  factory $OrdersEventCopyWith(
-          OrdersEvent value, $Res Function(OrdersEvent) then) =
+  factory $OrdersEventCopyWith(OrdersEvent value, $Res Function(OrdersEvent) then) =
       _$OrdersEventCopyWithImpl<$Res, OrdersEvent>;
 }
 
 /// @nodoc
-class _$OrdersEventCopyWithImpl<$Res, $Val extends OrdersEvent>
-    implements $OrdersEventCopyWith<$Res> {
+class _$OrdersEventCopyWithImpl<$Res, $Val extends OrdersEvent> implements $OrdersEventCopyWith<$Res> {
   _$OrdersEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -72,8 +69,7 @@ class _$OrdersEventCopyWithImpl<$Res, $Val extends OrdersEvent>
 /// @nodoc
 abstract class _$$MealsAddToCurrentOrderImplCopyWith<$Res> {
   factory _$$MealsAddToCurrentOrderImplCopyWith(
-          _$MealsAddToCurrentOrderImpl value,
-          $Res Function(_$MealsAddToCurrentOrderImpl) then) =
+          _$MealsAddToCurrentOrderImpl value, $Res Function(_$MealsAddToCurrentOrderImpl) then) =
       __$$MealsAddToCurrentOrderImplCopyWithImpl<$Res>;
 }
 
@@ -82,8 +78,7 @@ class __$$MealsAddToCurrentOrderImplCopyWithImpl<$Res>
     extends _$OrdersEventCopyWithImpl<$Res, _$MealsAddToCurrentOrderImpl>
     implements _$$MealsAddToCurrentOrderImplCopyWith<$Res> {
   __$$MealsAddToCurrentOrderImplCopyWithImpl(
-      _$MealsAddToCurrentOrderImpl _value,
-      $Res Function(_$MealsAddToCurrentOrderImpl) _then)
+      _$MealsAddToCurrentOrderImpl _value, $Res Function(_$MealsAddToCurrentOrderImpl) _then)
       : super(_value, _then);
 }
 
@@ -99,9 +94,7 @@ class _$MealsAddToCurrentOrderImpl implements MealsAddToCurrentOrder {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$MealsAddToCurrentOrderImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$MealsAddToCurrentOrderImpl);
   }
 
   @override
@@ -138,8 +131,7 @@ class _$MealsAddToCurrentOrderImpl implements MealsAddToCurrentOrder {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(MealsAddToCurrentOrder value)
-        mealsAddToCurrentOrder,
+    required TResult Function(MealsAddToCurrentOrder value) mealsAddToCurrentOrder,
   }) {
     return mealsAddToCurrentOrder(this);
   }

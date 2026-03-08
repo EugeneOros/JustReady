@@ -31,35 +31,37 @@ class SelectMealsLoadedBody extends HookWidget {
         builder: (context, child) {
           return Stack(
             children: [
-              SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const SizedBox(height: Dimens.xc),
-                    Padding(
-                      padding: const EdgeInsets.all(Dimens.s),
-                      child: Wrap(
-                        alignment: WrapAlignment.start,
-                        direction: Axis.horizontal,
-                        children: List.generate(
-                          meals.length,
-                          (index) => MealCard(
-                            meal: meals[index],
-                            orderCount: order?.orderMeals
-                                    .firstWhereOrNull((orderMeal) => orderMeal.meal.number == meals[index].number)
-                                    ?.count ??
-                                0,
-                            onAddToOrder: (number) {
-                              addMealToOrder(number, meals[index]);
-                            },
-                            onMealAddedToOrder: (meal) {},
-                          ),
-                        ),
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  final crossAxisCount = constraints.maxWidth > Dimens.lWidth ? 3 : 2;
+                  return Center(
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: Dimens.lWidth),
+                      child: GridView.builder(
+                      padding: const EdgeInsets.fromLTRB(Dimens.l, Dimens.xc, Dimens.l, Dimens.xxxc),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: crossAxisCount,
+                        crossAxisSpacing: Dimens.xl,
+                        mainAxisSpacing: Dimens.xl,
+                        mainAxisExtent: 230,
+                      ),
+                      itemCount: meals.length,
+                      itemBuilder: (context, index) => MealCard(
+                        meal: meals[index],
+                        index: index,
+                        orderCount: order?.orderMeals
+                                .firstWhereOrNull((orderMeal) => orderMeal.meal.number == meals[index].number)
+                                ?.count ??
+                            0,
+                        onAddToOrder: (number) {
+                          addMealToOrder(number, meals[index]);
+                        },
+                        onMealAddedToOrder: (meal) {},
                       ),
                     ),
-                    const SizedBox(height: Dimens.xxxc),
-                  ],
-                ),
+                    ),
+                  );
+                },
               ),
               const Positioned(
                 top: 0,

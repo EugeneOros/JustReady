@@ -70,14 +70,12 @@ mixin _$MealsState {
 
 /// @nodoc
 abstract class $MealsStateCopyWith<$Res> {
-  factory $MealsStateCopyWith(
-          MealsState value, $Res Function(MealsState) then) =
+  factory $MealsStateCopyWith(MealsState value, $Res Function(MealsState) then) =
       _$MealsStateCopyWithImpl<$Res, MealsState>;
 }
 
 /// @nodoc
-class _$MealsStateCopyWithImpl<$Res, $Val extends MealsState>
-    implements $MealsStateCopyWith<$Res> {
+class _$MealsStateCopyWithImpl<$Res, $Val extends MealsState> implements $MealsStateCopyWith<$Res> {
   _$MealsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -88,19 +86,16 @@ class _$MealsStateCopyWithImpl<$Res, $Val extends MealsState>
 
 /// @nodoc
 abstract class _$$MealsStateLoadedImplCopyWith<$Res> {
-  factory _$$MealsStateLoadedImplCopyWith(_$MealsStateLoadedImpl value,
-          $Res Function(_$MealsStateLoadedImpl) then) =
+  factory _$$MealsStateLoadedImplCopyWith(_$MealsStateLoadedImpl value, $Res Function(_$MealsStateLoadedImpl) then) =
       __$$MealsStateLoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Meal> meals});
 }
 
 /// @nodoc
-class __$$MealsStateLoadedImplCopyWithImpl<$Res>
-    extends _$MealsStateCopyWithImpl<$Res, _$MealsStateLoadedImpl>
+class __$$MealsStateLoadedImplCopyWithImpl<$Res> extends _$MealsStateCopyWithImpl<$Res, _$MealsStateLoadedImpl>
     implements _$$MealsStateLoadedImplCopyWith<$Res> {
-  __$$MealsStateLoadedImplCopyWithImpl(_$MealsStateLoadedImpl _value,
-      $Res Function(_$MealsStateLoadedImpl) _then)
+  __$$MealsStateLoadedImplCopyWithImpl(_$MealsStateLoadedImpl _value, $Res Function(_$MealsStateLoadedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -144,15 +139,13 @@ class _$MealsStateLoadedImpl implements MealsStateLoaded {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_meals));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_meals));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$MealsStateLoadedImplCopyWith<_$MealsStateLoadedImpl> get copyWith =>
-      __$$MealsStateLoadedImplCopyWithImpl<_$MealsStateLoadedImpl>(
-          this, _$identity);
+      __$$MealsStateLoadedImplCopyWithImpl<_$MealsStateLoadedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -230,28 +223,23 @@ class _$MealsStateLoadedImpl implements MealsStateLoaded {
 }
 
 abstract class MealsStateLoaded implements MealsState, MealsStateBuilder {
-  const factory MealsStateLoaded(final List<Meal> meals) =
-      _$MealsStateLoadedImpl;
+  const factory MealsStateLoaded(final List<Meal> meals) = _$MealsStateLoadedImpl;
 
   List<Meal> get meals;
   @JsonKey(ignore: true)
-  _$$MealsStateLoadedImplCopyWith<_$MealsStateLoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$MealsStateLoadedImplCopyWith<_$MealsStateLoadedImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$MealsStateLoadingImplCopyWith<$Res> {
-  factory _$$MealsStateLoadingImplCopyWith(_$MealsStateLoadingImpl value,
-          $Res Function(_$MealsStateLoadingImpl) then) =
+  factory _$$MealsStateLoadingImplCopyWith(_$MealsStateLoadingImpl value, $Res Function(_$MealsStateLoadingImpl) then) =
       __$$MealsStateLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$MealsStateLoadingImplCopyWithImpl<$Res>
-    extends _$MealsStateCopyWithImpl<$Res, _$MealsStateLoadingImpl>
+class __$$MealsStateLoadingImplCopyWithImpl<$Res> extends _$MealsStateCopyWithImpl<$Res, _$MealsStateLoadingImpl>
     implements _$$MealsStateLoadingImplCopyWith<$Res> {
-  __$$MealsStateLoadingImplCopyWithImpl(_$MealsStateLoadingImpl _value,
-      $Res Function(_$MealsStateLoadingImpl) _then)
+  __$$MealsStateLoadingImplCopyWithImpl(_$MealsStateLoadingImpl _value, $Res Function(_$MealsStateLoadingImpl) _then)
       : super(_value, _then);
 }
 
@@ -267,8 +255,7 @@ class _$MealsStateLoadingImpl implements MealsStateLoading {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$MealsStateLoadingImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$MealsStateLoadingImpl);
   }
 
   @override
@@ -355,19 +342,16 @@ abstract class MealsStateLoading implements MealsState, MealsStateBuilder {
 
 /// @nodoc
 abstract class _$$MealsStateErrorImplCopyWith<$Res> {
-  factory _$$MealsStateErrorImplCopyWith(_$MealsStateErrorImpl value,
-          $Res Function(_$MealsStateErrorImpl) then) =
+  factory _$$MealsStateErrorImplCopyWith(_$MealsStateErrorImpl value, $Res Function(_$MealsStateErrorImpl) then) =
       __$$MealsStateErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Object error});
 }
 
 /// @nodoc
-class __$$MealsStateErrorImplCopyWithImpl<$Res>
-    extends _$MealsStateCopyWithImpl<$Res, _$MealsStateErrorImpl>
+class __$$MealsStateErrorImplCopyWithImpl<$Res> extends _$MealsStateCopyWithImpl<$Res, _$MealsStateErrorImpl>
     implements _$$MealsStateErrorImplCopyWith<$Res> {
-  __$$MealsStateErrorImplCopyWithImpl(
-      _$MealsStateErrorImpl _value, $Res Function(_$MealsStateErrorImpl) _then)
+  __$$MealsStateErrorImplCopyWithImpl(_$MealsStateErrorImpl _value, $Res Function(_$MealsStateErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -403,15 +387,13 @@ class _$MealsStateErrorImpl implements MealsStateError {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$MealsStateErrorImplCopyWith<_$MealsStateErrorImpl> get copyWith =>
-      __$$MealsStateErrorImplCopyWithImpl<_$MealsStateErrorImpl>(
-          this, _$identity);
+      __$$MealsStateErrorImplCopyWithImpl<_$MealsStateErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -493,23 +475,19 @@ abstract class MealsStateError implements MealsState, MealsStateBuilder {
 
   Object get error;
   @JsonKey(ignore: true)
-  _$$MealsStateErrorImplCopyWith<_$MealsStateErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$MealsStateErrorImplCopyWith<_$MealsStateErrorImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$MealsStateIdleImplCopyWith<$Res> {
-  factory _$$MealsStateIdleImplCopyWith(_$MealsStateIdleImpl value,
-          $Res Function(_$MealsStateIdleImpl) then) =
+  factory _$$MealsStateIdleImplCopyWith(_$MealsStateIdleImpl value, $Res Function(_$MealsStateIdleImpl) then) =
       __$$MealsStateIdleImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$MealsStateIdleImplCopyWithImpl<$Res>
-    extends _$MealsStateCopyWithImpl<$Res, _$MealsStateIdleImpl>
+class __$$MealsStateIdleImplCopyWithImpl<$Res> extends _$MealsStateCopyWithImpl<$Res, _$MealsStateIdleImpl>
     implements _$$MealsStateIdleImplCopyWith<$Res> {
-  __$$MealsStateIdleImplCopyWithImpl(
-      _$MealsStateIdleImpl _value, $Res Function(_$MealsStateIdleImpl) _then)
+  __$$MealsStateIdleImplCopyWithImpl(_$MealsStateIdleImpl _value, $Res Function(_$MealsStateIdleImpl) _then)
       : super(_value, _then);
 }
 
@@ -525,8 +503,7 @@ class _$MealsStateIdleImpl implements MealsStateIdle {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$MealsStateIdleImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$MealsStateIdleImpl);
   }
 
   @override

@@ -21,7 +21,7 @@ class SelectMealsState with _$SelectMealsState {
   @Implements<SelectMealsStateBuilder>()
   const factory SelectMealsState.error(Object error) = Error;
 
-    const factory SelectMealsState.idle() = Idle;
+  const factory SelectMealsState.idle() = Idle;
 }
 
 abstract class SelectMealsStateListener {}

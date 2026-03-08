@@ -9,14 +9,13 @@ class JrTitleRow extends StatelessWidget {
   final TextStyle? style;
   final TextAlign titleAlign;
 
-  const JrTitleRow({
-    super.key,
-    required this.title,
-    required this.child,
-    this.expandedTitle = false,
-    this.style,
-    this.titleAlign =  TextAlign.start
-  });
+  const JrTitleRow(
+      {super.key,
+      required this.title,
+      required this.child,
+      this.expandedTitle = false,
+      this.style,
+      this.titleAlign = TextAlign.start});
 
   @override
   Widget build(BuildContext context) {

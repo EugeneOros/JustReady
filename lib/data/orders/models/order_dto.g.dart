@@ -10,8 +10,7 @@ OrderDto _$OrderDtoFromJson(Map json) => OrderDto(
       note: json['note'] as String,
       number: json['number'] as int?,
       orderMeals: (json['orderMeals'] as List<dynamic>)
-          .map(
-              (e) => OrderMealDto.fromJson(Map<String, dynamic>.from(e as Map)))
+          .map((e) => OrderMealDto.fromJson(Map<String, dynamic>.from(e as Map)))
           .toList(),
       createdDate: FirestoreTimestampMapper.fromJson(json['createdDate']),
       announcedReady: json['announcedReady'] as bool,

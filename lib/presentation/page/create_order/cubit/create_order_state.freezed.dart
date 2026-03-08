@@ -18,30 +18,34 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CreateOrderState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(List<Meal> meals, Order? currentOrder)
+        selectMeals,
     required TResult Function(Order order) loaded,
-    required TResult Function() loadedEmpty,
     required TResult Function() loading,
-    required TResult Function(int orderNumber) showOrderSuccesfullyAddedDialog,
+    required TResult Function(int orderNumber, double price)
+        showOrderSuccesfullyAddedDialog,
     required TResult Function(Object error) error,
     required TResult Function() idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<Meal> meals, Order? currentOrder)? selectMeals,
     TResult? Function(Order order)? loaded,
-    TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
-    TResult? Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
+    TResult? Function(int orderNumber, double price)?
+        showOrderSuccesfullyAddedDialog,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<Meal> meals, Order? currentOrder)? selectMeals,
     TResult Function(Order order)? loaded,
-    TResult Function()? loadedEmpty,
     TResult Function()? loading,
-    TResult Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
+    TResult Function(int orderNumber, double price)?
+        showOrderSuccesfullyAddedDialog,
     TResult Function(Object error)? error,
     TResult Function()? idle,
     required TResult orElse(),
@@ -49,8 +53,8 @@ mixin _$CreateOrderState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(SelectMeals value) selectMeals,
     required TResult Function(Loaded value) loaded,
-    required TResult Function(LoadedEmpty value) loadedEmpty,
     required TResult Function(Loading value) loading,
     required TResult Function(ShowOrderSuccesfullyAddedDialog value)
         showOrderSuccesfullyAddedDialog,
@@ -60,8 +64,8 @@ mixin _$CreateOrderState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SelectMeals value)? selectMeals,
     TResult? Function(Loaded value)? loaded,
-    TResult? Function(LoadedEmpty value)? loadedEmpty,
     TResult? Function(Loading value)? loading,
     TResult? Function(ShowOrderSuccesfullyAddedDialog value)?
         showOrderSuccesfullyAddedDialog,
@@ -71,8 +75,8 @@ mixin _$CreateOrderState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(SelectMeals value)? selectMeals,
     TResult Function(Loaded value)? loaded,
-    TResult Function(LoadedEmpty value)? loadedEmpty,
     TResult Function(Loading value)? loading,
     TResult Function(ShowOrderSuccesfullyAddedDialog value)?
         showOrderSuccesfullyAddedDialog,
@@ -99,6 +103,190 @@ class _$CreateOrderStateCopyWithImpl<$Res, $Val extends CreateOrderState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$SelectMealsImplCopyWith<$Res> {
+  factory _$$SelectMealsImplCopyWith(
+          _$SelectMealsImpl value, $Res Function(_$SelectMealsImpl) then) =
+      __$$SelectMealsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Meal> meals, Order? currentOrder});
+}
+
+/// @nodoc
+class __$$SelectMealsImplCopyWithImpl<$Res>
+    extends _$CreateOrderStateCopyWithImpl<$Res, _$SelectMealsImpl>
+    implements _$$SelectMealsImplCopyWith<$Res> {
+  __$$SelectMealsImplCopyWithImpl(
+      _$SelectMealsImpl _value, $Res Function(_$SelectMealsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? meals = null,
+    Object? currentOrder = freezed,
+  }) {
+    return _then(_$SelectMealsImpl(
+      null == meals
+          ? _value._meals
+          : meals // ignore: cast_nullable_to_non_nullable
+              as List<Meal>,
+      freezed == currentOrder
+          ? _value.currentOrder
+          : currentOrder // ignore: cast_nullable_to_non_nullable
+              as Order?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SelectMealsImpl implements SelectMeals {
+  const _$SelectMealsImpl(final List<Meal> meals, this.currentOrder)
+      : _meals = meals;
+
+  final List<Meal> _meals;
+  @override
+  List<Meal> get meals {
+    if (_meals is EqualUnmodifiableListView) return _meals;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_meals);
+  }
+
+  @override
+  final Order? currentOrder;
+
+  @override
+  String toString() {
+    return 'CreateOrderState.selectMeals(meals: $meals, currentOrder: $currentOrder)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SelectMealsImpl &&
+            const DeepCollectionEquality().equals(other._meals, _meals) &&
+            (identical(other.currentOrder, currentOrder) ||
+                other.currentOrder == currentOrder));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_meals), currentOrder);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SelectMealsImplCopyWith<_$SelectMealsImpl> get copyWith =>
+      __$$SelectMealsImplCopyWithImpl<_$SelectMealsImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<Meal> meals, Order? currentOrder)
+        selectMeals,
+    required TResult Function(Order order) loaded,
+    required TResult Function() loading,
+    required TResult Function(int orderNumber, double price)
+        showOrderSuccesfullyAddedDialog,
+    required TResult Function(Object error) error,
+    required TResult Function() idle,
+  }) {
+    return selectMeals(meals, currentOrder);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<Meal> meals, Order? currentOrder)? selectMeals,
+    TResult? Function(Order order)? loaded,
+    TResult? Function()? loading,
+    TResult? Function(int orderNumber, double price)?
+        showOrderSuccesfullyAddedDialog,
+    TResult? Function(Object error)? error,
+    TResult? Function()? idle,
+  }) {
+    return selectMeals?.call(meals, currentOrder);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<Meal> meals, Order? currentOrder)? selectMeals,
+    TResult Function(Order order)? loaded,
+    TResult Function()? loading,
+    TResult Function(int orderNumber, double price)?
+        showOrderSuccesfullyAddedDialog,
+    TResult Function(Object error)? error,
+    TResult Function()? idle,
+    required TResult orElse(),
+  }) {
+    if (selectMeals != null) {
+      return selectMeals(meals, currentOrder);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SelectMeals value) selectMeals,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(Loading value) loading,
+    required TResult Function(ShowOrderSuccesfullyAddedDialog value)
+        showOrderSuccesfullyAddedDialog,
+    required TResult Function(Error value) error,
+    required TResult Function(Idle value) idle,
+  }) {
+    return selectMeals(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SelectMeals value)? selectMeals,
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(ShowOrderSuccesfullyAddedDialog value)?
+        showOrderSuccesfullyAddedDialog,
+    TResult? Function(Error value)? error,
+    TResult? Function(Idle value)? idle,
+  }) {
+    return selectMeals?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SelectMeals value)? selectMeals,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(Loading value)? loading,
+    TResult Function(ShowOrderSuccesfullyAddedDialog value)?
+        showOrderSuccesfullyAddedDialog,
+    TResult Function(Error value)? error,
+    TResult Function(Idle value)? idle,
+    required TResult orElse(),
+  }) {
+    if (selectMeals != null) {
+      return selectMeals(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SelectMeals
+    implements CreateOrderState, CreateOrderStateBuilder {
+  const factory SelectMeals(final List<Meal> meals, final Order? currentOrder) =
+      _$SelectMealsImpl;
+
+  List<Meal> get meals;
+  Order? get currentOrder;
+  @JsonKey(ignore: true)
+  _$$SelectMealsImplCopyWith<_$SelectMealsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -165,10 +353,12 @@ class _$LoadedImpl implements Loaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(List<Meal> meals, Order? currentOrder)
+        selectMeals,
     required TResult Function(Order order) loaded,
-    required TResult Function() loadedEmpty,
     required TResult Function() loading,
-    required TResult Function(int orderNumber) showOrderSuccesfullyAddedDialog,
+    required TResult Function(int orderNumber, double price)
+        showOrderSuccesfullyAddedDialog,
     required TResult Function(Object error) error,
     required TResult Function() idle,
   }) {
@@ -178,10 +368,11 @@ class _$LoadedImpl implements Loaded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<Meal> meals, Order? currentOrder)? selectMeals,
     TResult? Function(Order order)? loaded,
-    TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
-    TResult? Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
+    TResult? Function(int orderNumber, double price)?
+        showOrderSuccesfullyAddedDialog,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
   }) {
@@ -191,10 +382,11 @@ class _$LoadedImpl implements Loaded {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<Meal> meals, Order? currentOrder)? selectMeals,
     TResult Function(Order order)? loaded,
-    TResult Function()? loadedEmpty,
     TResult Function()? loading,
-    TResult Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
+    TResult Function(int orderNumber, double price)?
+        showOrderSuccesfullyAddedDialog,
     TResult Function(Object error)? error,
     TResult Function()? idle,
     required TResult orElse(),
@@ -208,8 +400,8 @@ class _$LoadedImpl implements Loaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(SelectMeals value) selectMeals,
     required TResult Function(Loaded value) loaded,
-    required TResult Function(LoadedEmpty value) loadedEmpty,
     required TResult Function(Loading value) loading,
     required TResult Function(ShowOrderSuccesfullyAddedDialog value)
         showOrderSuccesfullyAddedDialog,
@@ -222,8 +414,8 @@ class _$LoadedImpl implements Loaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SelectMeals value)? selectMeals,
     TResult? Function(Loaded value)? loaded,
-    TResult? Function(LoadedEmpty value)? loadedEmpty,
     TResult? Function(Loading value)? loading,
     TResult? Function(ShowOrderSuccesfullyAddedDialog value)?
         showOrderSuccesfullyAddedDialog,
@@ -236,8 +428,8 @@ class _$LoadedImpl implements Loaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(SelectMeals value)? selectMeals,
     TResult Function(Loaded value)? loaded,
-    TResult Function(LoadedEmpty value)? loadedEmpty,
     TResult Function(Loading value)? loading,
     TResult Function(ShowOrderSuccesfullyAddedDialog value)?
         showOrderSuccesfullyAddedDialog,
@@ -259,136 +451,6 @@ abstract class Loaded implements CreateOrderState, CreateOrderStateBuilder {
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$LoadedEmptyImplCopyWith<$Res> {
-  factory _$$LoadedEmptyImplCopyWith(
-          _$LoadedEmptyImpl value, $Res Function(_$LoadedEmptyImpl) then) =
-      __$$LoadedEmptyImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadedEmptyImplCopyWithImpl<$Res>
-    extends _$CreateOrderStateCopyWithImpl<$Res, _$LoadedEmptyImpl>
-    implements _$$LoadedEmptyImplCopyWith<$Res> {
-  __$$LoadedEmptyImplCopyWithImpl(
-      _$LoadedEmptyImpl _value, $Res Function(_$LoadedEmptyImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$LoadedEmptyImpl implements LoadedEmpty {
-  const _$LoadedEmptyImpl();
-
-  @override
-  String toString() {
-    return 'CreateOrderState.loadedEmpty()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadedEmptyImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Order order) loaded,
-    required TResult Function() loadedEmpty,
-    required TResult Function() loading,
-    required TResult Function(int orderNumber) showOrderSuccesfullyAddedDialog,
-    required TResult Function(Object error) error,
-    required TResult Function() idle,
-  }) {
-    return loadedEmpty();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Order order)? loaded,
-    TResult? Function()? loadedEmpty,
-    TResult? Function()? loading,
-    TResult? Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
-    TResult? Function(Object error)? error,
-    TResult? Function()? idle,
-  }) {
-    return loadedEmpty?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Order order)? loaded,
-    TResult Function()? loadedEmpty,
-    TResult Function()? loading,
-    TResult Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
-    TResult Function(Object error)? error,
-    TResult Function()? idle,
-    required TResult orElse(),
-  }) {
-    if (loadedEmpty != null) {
-      return loadedEmpty();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Loaded value) loaded,
-    required TResult Function(LoadedEmpty value) loadedEmpty,
-    required TResult Function(Loading value) loading,
-    required TResult Function(ShowOrderSuccesfullyAddedDialog value)
-        showOrderSuccesfullyAddedDialog,
-    required TResult Function(Error value) error,
-    required TResult Function(Idle value) idle,
-  }) {
-    return loadedEmpty(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Loaded value)? loaded,
-    TResult? Function(LoadedEmpty value)? loadedEmpty,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(ShowOrderSuccesfullyAddedDialog value)?
-        showOrderSuccesfullyAddedDialog,
-    TResult? Function(Error value)? error,
-    TResult? Function(Idle value)? idle,
-  }) {
-    return loadedEmpty?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Loaded value)? loaded,
-    TResult Function(LoadedEmpty value)? loadedEmpty,
-    TResult Function(Loading value)? loading,
-    TResult Function(ShowOrderSuccesfullyAddedDialog value)?
-        showOrderSuccesfullyAddedDialog,
-    TResult Function(Error value)? error,
-    TResult Function(Idle value)? idle,
-    required TResult orElse(),
-  }) {
-    if (loadedEmpty != null) {
-      return loadedEmpty(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class LoadedEmpty
-    implements CreateOrderState, CreateOrderStateBuilder {
-  const factory LoadedEmpty() = _$LoadedEmptyImpl;
 }
 
 /// @nodoc
@@ -429,10 +491,12 @@ class _$LoadingImpl implements Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(List<Meal> meals, Order? currentOrder)
+        selectMeals,
     required TResult Function(Order order) loaded,
-    required TResult Function() loadedEmpty,
     required TResult Function() loading,
-    required TResult Function(int orderNumber) showOrderSuccesfullyAddedDialog,
+    required TResult Function(int orderNumber, double price)
+        showOrderSuccesfullyAddedDialog,
     required TResult Function(Object error) error,
     required TResult Function() idle,
   }) {
@@ -442,10 +506,11 @@ class _$LoadingImpl implements Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<Meal> meals, Order? currentOrder)? selectMeals,
     TResult? Function(Order order)? loaded,
-    TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
-    TResult? Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
+    TResult? Function(int orderNumber, double price)?
+        showOrderSuccesfullyAddedDialog,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
   }) {
@@ -455,10 +520,11 @@ class _$LoadingImpl implements Loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<Meal> meals, Order? currentOrder)? selectMeals,
     TResult Function(Order order)? loaded,
-    TResult Function()? loadedEmpty,
     TResult Function()? loading,
-    TResult Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
+    TResult Function(int orderNumber, double price)?
+        showOrderSuccesfullyAddedDialog,
     TResult Function(Object error)? error,
     TResult Function()? idle,
     required TResult orElse(),
@@ -472,8 +538,8 @@ class _$LoadingImpl implements Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(SelectMeals value) selectMeals,
     required TResult Function(Loaded value) loaded,
-    required TResult Function(LoadedEmpty value) loadedEmpty,
     required TResult Function(Loading value) loading,
     required TResult Function(ShowOrderSuccesfullyAddedDialog value)
         showOrderSuccesfullyAddedDialog,
@@ -486,8 +552,8 @@ class _$LoadingImpl implements Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SelectMeals value)? selectMeals,
     TResult? Function(Loaded value)? loaded,
-    TResult? Function(LoadedEmpty value)? loadedEmpty,
     TResult? Function(Loading value)? loading,
     TResult? Function(ShowOrderSuccesfullyAddedDialog value)?
         showOrderSuccesfullyAddedDialog,
@@ -500,8 +566,8 @@ class _$LoadingImpl implements Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(SelectMeals value)? selectMeals,
     TResult Function(Loaded value)? loaded,
-    TResult Function(LoadedEmpty value)? loadedEmpty,
     TResult Function(Loading value)? loading,
     TResult Function(ShowOrderSuccesfullyAddedDialog value)?
         showOrderSuccesfullyAddedDialog,
@@ -527,7 +593,7 @@ abstract class _$$ShowOrderSuccesfullyAddedDialogImplCopyWith<$Res> {
           $Res Function(_$ShowOrderSuccesfullyAddedDialogImpl) then) =
       __$$ShowOrderSuccesfullyAddedDialogImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int orderNumber});
+  $Res call({int orderNumber, double price});
 }
 
 /// @nodoc
@@ -544,12 +610,17 @@ class __$$ShowOrderSuccesfullyAddedDialogImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? orderNumber = null,
+    Object? price = null,
   }) {
     return _then(_$ShowOrderSuccesfullyAddedDialogImpl(
       null == orderNumber
           ? _value.orderNumber
           : orderNumber // ignore: cast_nullable_to_non_nullable
               as int,
+      null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -558,14 +629,16 @@ class __$$ShowOrderSuccesfullyAddedDialogImplCopyWithImpl<$Res>
 
 class _$ShowOrderSuccesfullyAddedDialogImpl
     implements ShowOrderSuccesfullyAddedDialog {
-  const _$ShowOrderSuccesfullyAddedDialogImpl(this.orderNumber);
+  const _$ShowOrderSuccesfullyAddedDialogImpl(this.orderNumber, this.price);
 
   @override
   final int orderNumber;
+  @override
+  final double price;
 
   @override
   String toString() {
-    return 'CreateOrderState.showOrderSuccesfullyAddedDialog(orderNumber: $orderNumber)';
+    return 'CreateOrderState.showOrderSuccesfullyAddedDialog(orderNumber: $orderNumber, price: $price)';
   }
 
   @override
@@ -574,11 +647,12 @@ class _$ShowOrderSuccesfullyAddedDialogImpl
         (other.runtimeType == runtimeType &&
             other is _$ShowOrderSuccesfullyAddedDialogImpl &&
             (identical(other.orderNumber, orderNumber) ||
-                other.orderNumber == orderNumber));
+                other.orderNumber == orderNumber) &&
+            (identical(other.price, price) || other.price == price));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, orderNumber);
+  int get hashCode => Object.hash(runtimeType, orderNumber, price);
 
   @JsonKey(ignore: true)
   @override
@@ -591,42 +665,46 @@ class _$ShowOrderSuccesfullyAddedDialogImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(List<Meal> meals, Order? currentOrder)
+        selectMeals,
     required TResult Function(Order order) loaded,
-    required TResult Function() loadedEmpty,
     required TResult Function() loading,
-    required TResult Function(int orderNumber) showOrderSuccesfullyAddedDialog,
+    required TResult Function(int orderNumber, double price)
+        showOrderSuccesfullyAddedDialog,
     required TResult Function(Object error) error,
     required TResult Function() idle,
   }) {
-    return showOrderSuccesfullyAddedDialog(orderNumber);
+    return showOrderSuccesfullyAddedDialog(orderNumber, price);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<Meal> meals, Order? currentOrder)? selectMeals,
     TResult? Function(Order order)? loaded,
-    TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
-    TResult? Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
+    TResult? Function(int orderNumber, double price)?
+        showOrderSuccesfullyAddedDialog,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
   }) {
-    return showOrderSuccesfullyAddedDialog?.call(orderNumber);
+    return showOrderSuccesfullyAddedDialog?.call(orderNumber, price);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<Meal> meals, Order? currentOrder)? selectMeals,
     TResult Function(Order order)? loaded,
-    TResult Function()? loadedEmpty,
     TResult Function()? loading,
-    TResult Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
+    TResult Function(int orderNumber, double price)?
+        showOrderSuccesfullyAddedDialog,
     TResult Function(Object error)? error,
     TResult Function()? idle,
     required TResult orElse(),
   }) {
     if (showOrderSuccesfullyAddedDialog != null) {
-      return showOrderSuccesfullyAddedDialog(orderNumber);
+      return showOrderSuccesfullyAddedDialog(orderNumber, price);
     }
     return orElse();
   }
@@ -634,8 +712,8 @@ class _$ShowOrderSuccesfullyAddedDialogImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(SelectMeals value) selectMeals,
     required TResult Function(Loaded value) loaded,
-    required TResult Function(LoadedEmpty value) loadedEmpty,
     required TResult Function(Loading value) loading,
     required TResult Function(ShowOrderSuccesfullyAddedDialog value)
         showOrderSuccesfullyAddedDialog,
@@ -648,8 +726,8 @@ class _$ShowOrderSuccesfullyAddedDialogImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SelectMeals value)? selectMeals,
     TResult? Function(Loaded value)? loaded,
-    TResult? Function(LoadedEmpty value)? loadedEmpty,
     TResult? Function(Loading value)? loading,
     TResult? Function(ShowOrderSuccesfullyAddedDialog value)?
         showOrderSuccesfullyAddedDialog,
@@ -662,8 +740,8 @@ class _$ShowOrderSuccesfullyAddedDialogImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(SelectMeals value)? selectMeals,
     TResult Function(Loaded value)? loaded,
-    TResult Function(LoadedEmpty value)? loadedEmpty,
     TResult Function(Loading value)? loading,
     TResult Function(ShowOrderSuccesfullyAddedDialog value)?
         showOrderSuccesfullyAddedDialog,
@@ -680,10 +758,12 @@ class _$ShowOrderSuccesfullyAddedDialogImpl
 
 abstract class ShowOrderSuccesfullyAddedDialog
     implements CreateOrderState, CreateOrderStateListener {
-  const factory ShowOrderSuccesfullyAddedDialog(final int orderNumber) =
+  const factory ShowOrderSuccesfullyAddedDialog(
+          final int orderNumber, final double price) =
       _$ShowOrderSuccesfullyAddedDialogImpl;
 
   int get orderNumber;
+  double get price;
   @JsonKey(ignore: true)
   _$$ShowOrderSuccesfullyAddedDialogImplCopyWith<
           _$ShowOrderSuccesfullyAddedDialogImpl>
@@ -752,10 +832,12 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(List<Meal> meals, Order? currentOrder)
+        selectMeals,
     required TResult Function(Order order) loaded,
-    required TResult Function() loadedEmpty,
     required TResult Function() loading,
-    required TResult Function(int orderNumber) showOrderSuccesfullyAddedDialog,
+    required TResult Function(int orderNumber, double price)
+        showOrderSuccesfullyAddedDialog,
     required TResult Function(Object error) error,
     required TResult Function() idle,
   }) {
@@ -765,10 +847,11 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<Meal> meals, Order? currentOrder)? selectMeals,
     TResult? Function(Order order)? loaded,
-    TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
-    TResult? Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
+    TResult? Function(int orderNumber, double price)?
+        showOrderSuccesfullyAddedDialog,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
   }) {
@@ -778,10 +861,11 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<Meal> meals, Order? currentOrder)? selectMeals,
     TResult Function(Order order)? loaded,
-    TResult Function()? loadedEmpty,
     TResult Function()? loading,
-    TResult Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
+    TResult Function(int orderNumber, double price)?
+        showOrderSuccesfullyAddedDialog,
     TResult Function(Object error)? error,
     TResult Function()? idle,
     required TResult orElse(),
@@ -795,8 +879,8 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(SelectMeals value) selectMeals,
     required TResult Function(Loaded value) loaded,
-    required TResult Function(LoadedEmpty value) loadedEmpty,
     required TResult Function(Loading value) loading,
     required TResult Function(ShowOrderSuccesfullyAddedDialog value)
         showOrderSuccesfullyAddedDialog,
@@ -809,8 +893,8 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SelectMeals value)? selectMeals,
     TResult? Function(Loaded value)? loaded,
-    TResult? Function(LoadedEmpty value)? loadedEmpty,
     TResult? Function(Loading value)? loading,
     TResult? Function(ShowOrderSuccesfullyAddedDialog value)?
         showOrderSuccesfullyAddedDialog,
@@ -823,8 +907,8 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(SelectMeals value)? selectMeals,
     TResult Function(Loaded value)? loaded,
-    TResult Function(LoadedEmpty value)? loadedEmpty,
     TResult Function(Loading value)? loading,
     TResult Function(ShowOrderSuccesfullyAddedDialog value)?
         showOrderSuccesfullyAddedDialog,
@@ -885,10 +969,12 @@ class _$IdleImpl implements Idle {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(List<Meal> meals, Order? currentOrder)
+        selectMeals,
     required TResult Function(Order order) loaded,
-    required TResult Function() loadedEmpty,
     required TResult Function() loading,
-    required TResult Function(int orderNumber) showOrderSuccesfullyAddedDialog,
+    required TResult Function(int orderNumber, double price)
+        showOrderSuccesfullyAddedDialog,
     required TResult Function(Object error) error,
     required TResult Function() idle,
   }) {
@@ -898,10 +984,11 @@ class _$IdleImpl implements Idle {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<Meal> meals, Order? currentOrder)? selectMeals,
     TResult? Function(Order order)? loaded,
-    TResult? Function()? loadedEmpty,
     TResult? Function()? loading,
-    TResult? Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
+    TResult? Function(int orderNumber, double price)?
+        showOrderSuccesfullyAddedDialog,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
   }) {
@@ -911,10 +998,11 @@ class _$IdleImpl implements Idle {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<Meal> meals, Order? currentOrder)? selectMeals,
     TResult Function(Order order)? loaded,
-    TResult Function()? loadedEmpty,
     TResult Function()? loading,
-    TResult Function(int orderNumber)? showOrderSuccesfullyAddedDialog,
+    TResult Function(int orderNumber, double price)?
+        showOrderSuccesfullyAddedDialog,
     TResult Function(Object error)? error,
     TResult Function()? idle,
     required TResult orElse(),
@@ -928,8 +1016,8 @@ class _$IdleImpl implements Idle {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(SelectMeals value) selectMeals,
     required TResult Function(Loaded value) loaded,
-    required TResult Function(LoadedEmpty value) loadedEmpty,
     required TResult Function(Loading value) loading,
     required TResult Function(ShowOrderSuccesfullyAddedDialog value)
         showOrderSuccesfullyAddedDialog,
@@ -942,8 +1030,8 @@ class _$IdleImpl implements Idle {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SelectMeals value)? selectMeals,
     TResult? Function(Loaded value)? loaded,
-    TResult? Function(LoadedEmpty value)? loadedEmpty,
     TResult? Function(Loading value)? loading,
     TResult? Function(ShowOrderSuccesfullyAddedDialog value)?
         showOrderSuccesfullyAddedDialog,
@@ -956,8 +1044,8 @@ class _$IdleImpl implements Idle {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(SelectMeals value)? selectMeals,
     TResult Function(Loaded value)? loaded,
-    TResult Function(LoadedEmpty value)? loadedEmpty,
     TResult Function(Loading value)? loading,
     TResult Function(ShowOrderSuccesfullyAddedDialog value)?
         showOrderSuccesfullyAddedDialog,

@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "add": MessageLookupByLibrary.simpleMessage("Dodaj"),
         "addMealsToOrder": MessageLookupByLibrary.simpleMessage("Dodaj dania"),
         "addOrders": MessageLookupByLibrary.simpleMessage("Zamów"),
         "addToOrder":
@@ -34,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Dodatkowe instrukcje"),
         "additionalInstructionsExample":
             MessageLookupByLibrary.simpleMessage("N.p.: Bez kurczaka"),
+        "back": MessageLookupByLibrary.simpleMessage("Wróć"),
         "cancel": MessageLookupByLibrary.simpleMessage("Anuluj"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Panel"),
         "dashbordDoneTitle": MessageLookupByLibrary.simpleMessage("Do odbioru"),
@@ -80,6 +82,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "somthingWentWrong":
             MessageLookupByLibrary.simpleMessage("Ups. Coś poszło nie tak"),
         "statistics": MessageLookupByLibrary.simpleMessage("Statystyka"),
+        "summary": MessageLookupByLibrary.simpleMessage("Podsumowanie"),
         "timeToAddSomethingTasty":
             MessageLookupByLibrary.simpleMessage("Czas dodać coś smacznego"),
         "yourOrder": MessageLookupByLibrary.simpleMessage("Twoje zamówienie"),

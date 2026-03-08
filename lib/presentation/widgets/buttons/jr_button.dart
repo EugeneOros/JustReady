@@ -104,8 +104,8 @@ class JrButton extends HookWidget {
   }
 
   Color _getTitleColor(BuildContext context) {
-    if(textColor != null) return textColor!;
     if (state == ButtonState.disabled) return context.colors.disabled;
+    if (textColor != null) return textColor!;
     switch (type) {
       case ButtonType.primary:
         return context.colors.dark;

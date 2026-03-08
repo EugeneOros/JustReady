@@ -95,5 +95,11 @@
   "dashbordDoneTitle": "Do odbioru",
   "@dashbordDoneTitle": {},
   "somthingWentWrong": "Ups. Coś poszło nie tak",
-  "@somthingWentWrong": {}
+  "@somthingWentWrong": {},
+  "back": "Wróć",
+  "@back": {},
+  "summary": "Podsumowanie",
+  "@summary": {},
+  "add": "Dodaj",
+  "@add": {}
 }

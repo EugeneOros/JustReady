@@ -5,12 +5,12 @@ import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:just_ready/extensions/extension_mixin.dart';
 import 'package:just_ready/generated/l10n.dart';
 import 'package:just_ready/presentation/page/create_order/body/create_order_loaded_body.dart';
-import 'package:just_ready/presentation/page/create_order/body/create_order_loaded_empty_body.dart';
 import 'package:just_ready/presentation/page/create_order/body/create_order_loading_body.dart';
+import 'package:just_ready/presentation/page/create_order/body/create_order_select_meals_body.dart';
 import 'package:just_ready/presentation/page/create_order/cubit/create_order_cubit.dart';
 import 'package:just_ready/presentation/page/create_order/cubit/create_order_state.dart';
+import 'package:just_ready/presentation/page/create_order/widgets/create_order_step_indicator.dart';
 import 'package:just_ready/presentation/page/home/home_page.dart';
-import 'package:just_ready/presentation/page/select_meals/select_meals_page.dart';
 import 'package:just_ready/presentation/widgets/dialogs/jr_number_dialog.dart';
 import 'package:just_ready/presentation/widgets/jr_app_bar.dart';
 import 'package:just_ready/presentation/widgets/jr_imaged_body.dart';
@@ -28,8 +28,9 @@ class CreateOrderPage extends HookWidget {
     useBlocListener(cubit, _listener, listenWhen: _listenWhen);
     useOnce(cubit.init);
 
+    final currentStep = state is SelectMeals ? 1 : state is Loaded ? 2 : 0;
+
     return Scaffold(
-      extendBodyBehindAppBar: state is Loaded,
       appBar: JrAppBar(
         skipStartIcon: false,
         startIcon: IconsSvg.menu24,
@@ -40,20 +41,35 @@ class CreateOrderPage extends HookWidget {
         title: Strings.of(context).yourOrder,
       ),
       body: JrImagedBody(
-        child: state.maybeWhen(
-          loadedEmpty: () => CreateOrderLoadedEmptyBody(
-            onAddMeals: () => context.showBottomSheet(body: const SelectMealsPage()),
-          ),
-          loaded: (order) => CreateOrderLoadedBody(
-            order: order,
-            onDeleteMeal: cubit.onDeleteOrderMeal,
-            onEditMealCount: cubit.onEditOrderMealCount,
-            onAditionalInstructionChanged: cubit.addNoteToOrder,
-            sendOrder: cubit.sendCurrentOrder,
-            onAddMoreMeals: () => context.showBottomSheet(body: const SelectMealsPage()),
-          ),
-          loading: () => const CreateOrderLoadingBody(),
-          orElse: SizedBox.shrink,
+        child: Column(
+          children: [
+            if (currentStep > 0) CreateOrderStepIndicator(currentStep: currentStep),
+            Expanded(
+              child: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 250),
+                child: state.maybeWhen(
+                  selectMeals: (meals, currentOrder) => CreateOrderSelectMealsBody(
+                    key: const ValueKey('selectMeals'),
+                    meals: meals,
+                    currentOrder: currentOrder,
+                    addMealToOrder: (count, meal) => cubit.addMealsToOrder(meal, count),
+                    onNext: cubit.goToSummary,
+                  ),
+                  loaded: (order) => CreateOrderLoadedBody(
+                    key: const ValueKey('loaded'),
+                    order: order,
+                    onDeleteMeal: cubit.onDeleteOrderMeal,
+                    onEditMealCount: cubit.onEditOrderMealCount,
+                    onAditionalInstructionChanged: cubit.addNoteToOrder,
+                    sendOrder: cubit.sendCurrentOrder,
+                    onAddMoreMeals: cubit.goBackToSelectMeals,
+                  ),
+                  loading: () => const CreateOrderLoadingBody(),
+                  orElse: SizedBox.shrink,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -63,7 +79,7 @@ class CreateOrderPage extends HookWidget {
   bool _listenWhen(CreateOrderState state) => state is CreateOrderStateListener;
 
   void _listener(CreateOrderCubit cubit, CreateOrderState state, BuildContext context) => state.maybeWhen(
-        showOrderSuccesfullyAddedDialog: (orderNumber) async {
+        showOrderSuccesfullyAddedDialog: (orderNumber, price) async {
           await showDialog(
             context: context,
             barrierDismissible: false,
@@ -72,8 +88,15 @@ class CreateOrderPage extends HookWidget {
                 title: Strings.of(context).yourOrderWasCreated,
                 titleTextStyle: context.typography.header3,
                 number: orderNumber,
+                price: price,
                 actionText: Strings.of(context).ok,
                 actionButtonOnTap: () => context.pop(),
+                secondaryActionText: Strings.of(context).delivered,
+                secondaryActionColor: context.colors.red,
+                secondaryActionButtonOnTap: () {
+                  cubit.deliverLastOrder();
+                  context.pop();
+                },
               );
             },
           );

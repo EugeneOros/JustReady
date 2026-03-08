@@ -101,7 +101,7 @@ class OrderMealCard extends HookWidget {
                   icon: IconsSvg.delete24,
                   type: IconButtonType.tertiary,
                   color: context.colors.red,
-                  size: Dimens.xl,
+                  size: Dimens.xxl,
                   onTap: onDelete,
                 ),
               ),

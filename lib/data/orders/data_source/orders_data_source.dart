@@ -43,16 +43,10 @@ class OrdersDataSource {
   }
 
   Stream<List<OrderDto>> orders() async* {
-    bool didYield = false;
     final collection = firestore.collection(DatabaseCollections.orders).snapshots();
     await for (final snapshots in collection) {
-      if (snapshots.size > 0) {
-        yield snapshots.docs.map((order) => OrderDto.fromJson(order.data())).toList(growable: false);
-        didYield = true;
-      }
+      yield snapshots.docs.map((order) => OrderDto.fromJson(order.data())).toList(growable: false);
     }
-
-    if (!didYield) yield [];
   }
 
   Future<List<OrderDto>> getDeletedOrders() async {
@@ -65,15 +59,9 @@ class OrdersDataSource {
   }
 
   Stream<List<OrderDto>> deletedOrders() async* {
-    bool didYield = false;
     final collection = firestore.collection(DatabaseCollections.deletedOrders).snapshots();
     await for (final snapshots in collection) {
-      if (snapshots.size > 0) {
-        yield snapshots.docs.map((order) => OrderDto.fromJson(order.data())).toList(growable: false);
-        didYield = true;
-      }
+      yield snapshots.docs.map((order) => OrderDto.fromJson(order.data())).toList(growable: false);
     }
-
-    if (!didYield) yield [];
   }
 }

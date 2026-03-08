@@ -20,7 +20,6 @@
 //     useBlocListener(cubit, _listener, listenWhen: _listenWhen);
 //     useOnce(cubit.init);
 
-
 //     return Scaffold(
 //       backgroundColor: context.colors.transparent,
 //       extendBodyBehindAppBar: true,

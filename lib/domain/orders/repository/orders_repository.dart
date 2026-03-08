@@ -23,7 +23,5 @@ abstract class OrdersRepository {
 
   Stream<List<Order>> ordersStream();
 
-
-
   Stream<List<Order>> deletedOrdersStream();
 }

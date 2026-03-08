@@ -17,6 +17,7 @@ class OrderDtoToOrderMapper {
         orderMeals: dto.orderMeals.map((mealDto) => _orderMealDtoToOrderMealMapper(mealDto)).toList(growable: false),
         status: OrderStatus.values.firstWhere(
           (status) => status.name == dto.status,
+          orElse: () => OrderStatus.ordered,
         ),
         announcedReady: dto.announcedReady,
       );

@@ -7,7 +7,12 @@ part 'statistics_state.freezed.dart';
 @freezed
 class StatisticsState with _$StatisticsState {
   @Implements<StatisticsStateBuilder>()
-  const factory StatisticsState.loaded(Map<Meal, Statistic> orderMealsMap) = Loaded;
+  const factory StatisticsState.loaded({
+    required Map<Meal, Statistic> orderMealsMap,
+    required double totalPrice,
+    required List<DateTime> availableDates,
+    DateTime? selectedDate,
+  }) = Loaded;
 
   @Implements<StatisticsStateBuilder>()
   const factory StatisticsState.loading() = Loading;

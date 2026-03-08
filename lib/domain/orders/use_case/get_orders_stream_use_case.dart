@@ -8,5 +8,5 @@ class GetOrdersStreamUseCase {
 
   const GetOrdersStreamUseCase(this._ordersRepository);
 
- Stream<List<Order>> call() => _ordersRepository.ordersStream();
+  Stream<List<Order>> call() => _ordersRepository.ordersStream();
 }

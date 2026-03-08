@@ -6,6 +6,6 @@ class OrdersLoadingBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => const Center(
-      child: JrLoader(),
-    );
+        child: JrLoader(),
+      );
 }

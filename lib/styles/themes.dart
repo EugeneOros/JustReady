@@ -33,13 +33,13 @@ class ThemeModel with ChangeNotifier {
   }
 }
 
- List<ThemeExtension<dynamic>> _lightThemeExtensions = [
+List<ThemeExtension<dynamic>> _lightThemeExtensions = [
   CustomColors.lightTheme,
   CustomIllustrations.standard,
   CustomTypography.standard,
 ];
 
- List<ThemeExtension<dynamic>> _darkThemeExtensions = [
+List<ThemeExtension<dynamic>> _darkThemeExtensions = [
   CustomColors.darkTheme,
   CustomIllustrations.standard,
   CustomTypography.standard,

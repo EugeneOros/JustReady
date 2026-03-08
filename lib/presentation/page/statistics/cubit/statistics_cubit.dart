@@ -14,6 +14,7 @@ class StatisticsCubit extends Cubit<StatisticsState> {
   List<Order> orders = [];
   List<Order> ordersToAnnounce = [];
   bool isAnnouncingOrder = false;
+  DateTime? selectedDate;
 
   StatisticsCubit(
     this._getDeletedOrdersStreamUseCase,
@@ -34,9 +35,28 @@ class StatisticsCubit extends Cubit<StatisticsState> {
     _emmitLoaded();
   }
 
+  void selectDate(DateTime? date) {
+    selectedDate = date;
+    _emmitLoaded();
+  }
+
   void _emmitLoaded() {
+    final availableDates = _extractAvailableDates();
+
+    final filteredOrders = selectedDate != null
+        ? orders
+            .where((order) =>
+                order.createdDate != null &&
+                order.createdDate!.year == selectedDate!.year &&
+                order.createdDate!.month == selectedDate!.month &&
+                order.createdDate!.day == selectedDate!.day)
+            .toList()
+        : orders;
+
     final Map<Meal, Statistic> map = {};
-    for (var order in orders) {
+    double totalPrice = 0;
+    for (var order in filteredOrders) {
+      totalPrice += order.getSumPrice();
       for (var orderMeal in order.orderMeals) {
         if (map[orderMeal.meal] == null) {
           map[orderMeal.meal] = Statistic(orderMeals: [orderMeal]);
@@ -45,8 +65,28 @@ class StatisticsCubit extends Cubit<StatisticsState> {
         }
       }
     }
-    emit(StatisticsState.loaded(map));
+    emit(StatisticsState.loaded(
+      orderMealsMap: map,
+      totalPrice: totalPrice,
+      availableDates: availableDates,
+      selectedDate: selectedDate,
+    ));
     ordersToAnnounce =
         orders.where((order) => order.status == OrderStatus.ready && !order.announcedReady).toList(growable: false);
+  }
+
+  List<DateTime> _extractAvailableDates() {
+    final Set<String> seen = {};
+    final List<DateTime> dates = [];
+    for (var order in orders) {
+      if (order.createdDate != null) {
+        final key = '${order.createdDate!.year}-${order.createdDate!.month}-${order.createdDate!.day}';
+        if (seen.add(key)) {
+          dates.add(DateTime(order.createdDate!.year, order.createdDate!.month, order.createdDate!.day));
+        }
+      }
+    }
+    dates.sort((a, b) => b.compareTo(a));
+    return dates;
   }
 }

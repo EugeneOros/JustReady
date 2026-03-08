@@ -175,6 +175,9 @@ _i1.GetIt $initGetIt(
         gh<_i25.EditCurrentOrderMealCountUseCase>(),
         gh<_i30.AddOrderUseCase>(),
         gh<_i28.ClearCurrentOrderUseCase>(),
+        gh<_i32.DeleteOrderUseCase>(),
+        gh<_i35.GetMealsUseCase>(),
+        gh<_i24.AddMealToCurrentOrderUseCase>(),
       ));
   gh.factory<_i43.MealsCubit>(() => _i43.MealsCubit(
         gh<_i38.AddMealUseCase>(),

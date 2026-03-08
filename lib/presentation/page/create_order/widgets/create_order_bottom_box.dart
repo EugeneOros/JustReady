@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:just_ready/domain/orders/models/order.dart';
 import 'package:just_ready/extensions/extension_mixin.dart';
 import 'package:just_ready/generated/l10n.dart';
@@ -12,7 +13,7 @@ import 'package:just_ready/presentation/widgets/text_fields/jr_text_field.dart';
 import 'package:just_ready/styles/dimens.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-class CreateOrderBottomBox extends StatelessWidget {
+class CreateOrderBottomBox extends HookWidget {
   final Order order;
   final Function(String) onAditionalInstructionChanged;
   final Function() sendOrder;
@@ -28,6 +29,8 @@ class CreateOrderBottomBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isBackLoading = useState(false);
+
     FormGroup form = FormGroup({
       CreateOrderFormControlName.additionalInstructions: FormControl<String>(),
     });
@@ -40,19 +43,23 @@ class CreateOrderBottomBox extends StatelessWidget {
             constraints: const BoxConstraints(
               maxWidth: Dimens.buttonMaxWidth,
             ),
-            type: ButtonType.primary,
-            color: context.colors.dark,
-            textColor: context.colors.bright,
-            title: Strings.of(context).orderNow,
-            onTap: sendOrder,
+            type: ButtonType.secondary,
+            state: isBackLoading.value ? ButtonState.disabled : ButtonState.active,
+            title: Strings.of(context).back,
+            onTap: () {
+              isBackLoading.value = true;
+              onAddMoreMeals();
+            },
           ),
           JrButton(
             constraints: const BoxConstraints(
               maxWidth: Dimens.buttonMaxWidth,
             ),
             type: ButtonType.primary,
-            title: Strings.of(context).addMealsToOrder,
-            onTap: onAddMoreMeals,
+            color: context.colors.dark,
+            textColor: context.colors.bright,
+            title: Strings.of(context).orderNow,
+            onTap: sendOrder,
           ),
         ],
         child: Column(
@@ -85,7 +92,6 @@ class CreateOrderBottomBox extends StatelessWidget {
                 JrPrice(
                   price: order.getSumPrice(),
                   colorType: JrPriceColorType.primary,
-                  // color: context.colors.dark,
                 ),
               ],
             ),

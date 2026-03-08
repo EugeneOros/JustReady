@@ -18,7 +18,7 @@ class JrCheckBox extends StatelessWidget {
     this.isChecked = false,
     this.onCheckedChanged,
     this.disabled = false,
-    this.color ,
+    this.color,
   });
 
   @override

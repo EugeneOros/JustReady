@@ -45,12 +45,7 @@ class OrdersCubit extends Cubit<OrdersState> {
     for (var orderMeal in order.orderMeals) {
       if (orderMeal.meal.number == orderMealNumber) {
         orderMeal.isDone = !orderMeal.isDone;
-        //if order status was ordered change it to inProgres
-        _editOrderUseCase(
-          order.status == OrderStatus.ordered && orderMeal.isDone
-              ? order.copyWith(status: OrderStatus.inProgress)
-              : order,
-        );
+        _editOrderUseCase(order);
         return;
       }
     }

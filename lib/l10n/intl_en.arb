@@ -95,5 +95,11 @@
   "dashbordDoneTitle": "Done",
   "@dashbordDoneTitle": {},
   "somthingWentWrong": "Ups. Somthing went wrong",
-  "@somthingWentWrong": {}
+  "@somthingWentWrong": {},
+  "back": "Back",
+  "@back": {},
+  "summary": "Summary",
+  "@summary": {},
+  "add": "Add",
+  "@add": {}
 }

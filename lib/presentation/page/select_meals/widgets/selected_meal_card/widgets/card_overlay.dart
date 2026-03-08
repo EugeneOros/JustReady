@@ -5,6 +5,10 @@ import 'package:just_ready/presentation/page/select_meals/widgets/selected_meal_
 import 'package:just_ready/styles/dimens.dart';
 import 'package:just_ready/utils/hooks/use_once.dart';
 
+const _progressDuration = Duration(milliseconds: 200);
+const _fadeDuration = Duration(milliseconds: 200);
+const _finishDelay = Duration(milliseconds: 150);
+
 class CardOverlay extends HookWidget {
   final Function()? onFinishAnimation;
   const CardOverlay({
@@ -14,17 +18,17 @@ class CardOverlay extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final progressController = useAnimationController(duration: const Duration(milliseconds: 300));
+    final progressController = useAnimationController(duration: const Duration(milliseconds: 200));
     late Animation<double> progressAnimation = CurvedAnimation(parent: progressController, curve: Curves.linear);
     final isProgressAnimationReady = useState(false);
 
-    final fadeController = useAnimationController(duration: const Duration(milliseconds: 300));
+    final fadeController = useAnimationController(duration: const Duration(milliseconds: 200));
     late Animation<double> fadeAnimation = Tween<double>(begin: 1.0, end: 0.0).animate(fadeController);
 
     useOnce(() {
       fadeController.addStatusListener((status) async {
         if (status == AnimationStatus.completed) {
-          await Future.delayed(const Duration(milliseconds: 400));
+          await Future.delayed(const Duration(milliseconds: 150));
           if (onFinishAnimation != null) onFinishAnimation!();
         }
       });
@@ -38,24 +42,21 @@ class CardOverlay extends HookWidget {
 
     return FadeTransition(
       opacity: fadeAnimation,
-      child: Container(
-        margin: const EdgeInsets.all(Dimens.xm),
+      child: SizedBox(
         width: double.infinity,
-        height: Dimens.sMaxCardHeight,
+        height: double.infinity,
         child: Stack(
           children: [
             SizeTransition(
               sizeFactor: progressAnimation,
               axis: Axis.horizontal,
               axisAlignment: -1,
-              child: Center(
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(Dimens.ms),
-                    color: context.colors.primary.withOpacity(0.2),
-                  ),
-                  height: Dimens.mMaxCardHeight,
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Dimens.m),
+                  color: context.colors.primary.withOpacity(0.2),
                 ),
               ),
             ),

@@ -58,13 +58,11 @@ mixin _$HomeState {
 
 /// @nodoc
 abstract class $HomeStateCopyWith<$Res> {
-  factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
-      _$HomeStateCopyWithImpl<$Res, HomeState>;
+  factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) = _$HomeStateCopyWithImpl<$Res, HomeState>;
 }
 
 /// @nodoc
-class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
-    implements $HomeStateCopyWith<$Res> {
+class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState> implements $HomeStateCopyWith<$Res> {
   _$HomeStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -75,19 +73,16 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
 
 /// @nodoc
 abstract class _$$SelectedPageStateImplCopyWith<$Res> {
-  factory _$$SelectedPageStateImplCopyWith(_$SelectedPageStateImpl value,
-          $Res Function(_$SelectedPageStateImpl) then) =
+  factory _$$SelectedPageStateImplCopyWith(_$SelectedPageStateImpl value, $Res Function(_$SelectedPageStateImpl) then) =
       __$$SelectedPageStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index, String path});
 }
 
 /// @nodoc
-class __$$SelectedPageStateImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$SelectedPageStateImpl>
+class __$$SelectedPageStateImplCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res, _$SelectedPageStateImpl>
     implements _$$SelectedPageStateImplCopyWith<$Res> {
-  __$$SelectedPageStateImplCopyWithImpl(_$SelectedPageStateImpl _value,
-      $Res Function(_$SelectedPageStateImpl) _then)
+  __$$SelectedPageStateImplCopyWithImpl(_$SelectedPageStateImpl _value, $Res Function(_$SelectedPageStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -140,8 +135,7 @@ class _$SelectedPageStateImpl implements SelectedPageState {
   @override
   @pragma('vm:prefer-inline')
   _$$SelectedPageStateImplCopyWith<_$SelectedPageStateImpl> get copyWith =>
-      __$$SelectedPageStateImplCopyWithImpl<_$SelectedPageStateImpl>(
-          this, _$identity);
+      __$$SelectedPageStateImplCopyWithImpl<_$SelectedPageStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -207,31 +201,24 @@ class _$SelectedPageStateImpl implements SelectedPageState {
 }
 
 abstract class SelectedPageState implements HomeState {
-  const factory SelectedPageState(
-      {required final int index,
-      required final String path}) = _$SelectedPageStateImpl;
+  const factory SelectedPageState({required final int index, required final String path}) = _$SelectedPageStateImpl;
 
   int get index;
   String get path;
   @JsonKey(ignore: true)
-  _$$SelectedPageStateImplCopyWith<_$SelectedPageStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SelectedPageStateImplCopyWith<_$SelectedPageStateImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$IdleStateImplCopyWith<$Res> {
-  factory _$$IdleStateImplCopyWith(
-          _$IdleStateImpl value, $Res Function(_$IdleStateImpl) then) =
+  factory _$$IdleStateImplCopyWith(_$IdleStateImpl value, $Res Function(_$IdleStateImpl) then) =
       __$$IdleStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$IdleStateImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$IdleStateImpl>
+class __$$IdleStateImplCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res, _$IdleStateImpl>
     implements _$$IdleStateImplCopyWith<$Res> {
-  __$$IdleStateImplCopyWithImpl(
-      _$IdleStateImpl _value, $Res Function(_$IdleStateImpl) _then)
-      : super(_value, _then);
+  __$$IdleStateImplCopyWithImpl(_$IdleStateImpl _value, $Res Function(_$IdleStateImpl) _then) : super(_value, _then);
 }
 
 /// @nodoc
@@ -246,8 +233,7 @@ class _$IdleStateImpl implements IdleState {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$IdleStateImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$IdleStateImpl);
   }
 
   @override

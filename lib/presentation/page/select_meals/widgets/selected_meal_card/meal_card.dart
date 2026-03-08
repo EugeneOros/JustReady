@@ -4,15 +4,19 @@ import 'package:just_ready/domain/meals/models/meal.dart';
 import 'package:just_ready/presentation/page/select_meals/utils/select_form_control_names.dart';
 import 'package:just_ready/presentation/page/select_meals/widgets/selected_meal_card/meal_card_body.dart';
 import 'package:just_ready/presentation/page/select_meals/widgets/selected_meal_card/widgets/card_overlay.dart';
-import 'package:just_ready/presentation/widgets/buttons/jr_icon_button.dart';
+import 'package:just_ready/presentation/page/select_meals/widgets/selected_meal_card/widgets/order_cart_label.dart';
+import 'package:just_ready/extensions/build_context_extension.dart';
+import 'package:just_ready/generated/l10n.dart';
+import 'package:just_ready/presentation/widgets/buttons/jr_button.dart';
+
 import 'package:just_ready/styles/dimens.dart';
-import 'package:just_ready/styles/images.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 const initMealCountValue = 1;
 
 class MealCard extends HookWidget {
   final Meal meal;
+  final int index;
   final int orderCount;
   final Function(int) onAddToOrder;
   final Function(Meal) onMealAddedToOrder;
@@ -20,6 +24,7 @@ class MealCard extends HookWidget {
   const MealCard({
     super.key,
     required this.meal,
+    required this.index,
     this.orderCount = 0,
     required this.onAddToOrder,
     required this.onMealAddedToOrder,
@@ -42,70 +47,67 @@ class MealCard extends HookWidget {
 
     return ReactiveForm(
       formGroup: form,
-      child: Align(
-        child: Container(
-          padding: const EdgeInsets.fromLTRB(Dimens.xm, Dimens.s, Dimens.xm, Dimens.s),
-          constraints: const BoxConstraints(
-            maxWidth: Dimens.lWidth,
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: Dimens.m),
+            child: MealCardBody(
+              meal: meal,
+              index: index,
+              orderCount: orderCount,
+              initMealCountValue: initMealCountValue,
+              form: form,
+              showMealAddingProgress: showMealAddingProgress.value,
+            ),
           ),
-          child: Stack(
-            children: [
-              MealCardBody(
-                meal: meal,
-                orderCount: orderCount,
-                initMealCountValue: initMealCountValue,
-                form: form,
-                showMealAddingProgress: showMealAddingProgress.value,
-              ),
-              if (showMealAddingProgress.value)
-                CardOverlay(
-                  onFinishAnimation: () {
-                    showMealAddingProgress.value = false;
-                  }, //onMealAddedToOrder(meal),
+          if (orderCount != 0)
+            Positioned(
+              right: -Dimens.s,
+              top: -Dimens.s,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: context.colors.bright,
+                  shape: BoxShape.circle,
+                  border: Border.all(color: context.colors.dark, width: Dimens.xxxs),
                 ),
-              Positioned(
-                right: 0,
-                top: 0,
-                child: JrIconButton(
-                  icon: IconsSvg.plus24,
-                  type: IconButtonType.primary,
-                  size: Dimens.xl,
-                  state: showMealAddingProgress.value ? IconButtonState.disabled : IconButtonState.active,
-                  onTap: () async {
-                    if (form.valid) {
-                      showMealAddingProgress.value = true;
-                      onAddToOrder(form.control(SelectMealFormControlName.count).value);
-                    } else {
-                      form.markAllAsTouched();
-                    }
-                  },
-                ),
+                child: OrderCartLable(number: orderCount),
               ),
-            ],
+            ),
+          Positioned(
+            left: Dimens.xm,
+            right: Dimens.xm,
+            bottom: 0,
+            child: Center(
+              child: JrButton(
+                title: Strings.of(context).add,
+                type: ButtonType.primary,
+                color: context.colors.dark,
+                textColor: context.colors.bright,
+                constraints: const BoxConstraints(maxWidth: Dimens.buttonMaxWidth),
+                width: double.infinity,
+                state: showMealAddingProgress.value ? ButtonState.disabled : ButtonState.active,
+                onTap: () async {
+                  if (form.valid) {
+                    showMealAddingProgress.value = true;
+                    onAddToOrder(form.control(SelectMealFormControlName.count).value);
+                  } else {
+                    form.markAllAsTouched();
+                  }
+                },
+              ),
+            ),
           ),
-        ),
+          if (showMealAddingProgress.value)
+            Positioned.fill(
+              child: CardOverlay(
+                onFinishAnimation: () {
+                  showMealAddingProgress.value = false;
+                },
+              ),
+            ),
+        ],
       ),
     );
   }
 }
-
-
-// Positioned(
-              //   right: 0,
-              //   left: 0,
-              //   bottom: 0,
-              //   child: Align(
-              //     child: JrButton(
-              //       title: Strings.of(context).addToOrder,
-              //       type: ButtonType.primary,
-              //       state: showMealAddingProgress ? ButtonState.disabled : ButtonState.active,
-              //       onTap: () async {
-              //         if (form.valid) {
-              //           onAddToOrder(form.control(SelectMealFormControlName.count).value);
-              //         } else {
-              //           form.markAllAsTouched();
-              //         }
-              //       },
-              //     ),
-              //   ),
-              // ),

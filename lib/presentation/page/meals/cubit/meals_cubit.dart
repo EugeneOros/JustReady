@@ -67,6 +67,32 @@ class MealsCubit extends Cubit<MealsState> {
     await _emmitLoaded();
   }
 
+  Future<void> reorderMeals(int oldIndex, int newIndex) async {
+    if (oldIndex < newIndex) newIndex--;
+    meals = List.of(meals);
+    final meal = meals.removeAt(oldIndex);
+    meals.insert(newIndex, meal);
+
+    final updates = <Future>[];
+    for (var i = 0; i < meals.length; i++) {
+      final m = meals[i];
+      final newNumber = i + 1;
+      if (m.number != newNumber) {
+        final oldNumber = m.number;
+        meals[i] = Meal(
+          name: m.name,
+          number: newNumber,
+          price: m.price,
+          doublePrice: m.doublePrice,
+        );
+        updates.add(_editMealUseCase(meals[i], oldNumber));
+      }
+    }
+    emit(MealsState.loaded(List.of(meals)));
+    await Future.wait(updates);
+    await _emmitLoaded();
+  }
+
   Future<void> _emmitLoaded() async {
     meals = await _getMealsUseCase();
     emit(MealsState.loaded(meals));

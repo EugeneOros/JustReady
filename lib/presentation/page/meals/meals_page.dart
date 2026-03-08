@@ -49,6 +49,7 @@ class MealsPage extends HookWidget {
             },
             showAddMeal: showAddMeal.value,
             hideAddMealCard: () => showAddMeal.value = false,
+            onReorder: cubit.reorderMeals,
           ),
           loading: () => const MealsLoadingBody(),
           orElse: SizedBox.shrink,

@@ -7,6 +7,7 @@ import 'package:just_ready/presentation/widgets/buttons/jr_button.dart';
 import 'package:just_ready/presentation/widgets/jr_container.dart';
 import 'package:just_ready/presentation/widgets/jr_scale_container.dart';
 import 'package:just_ready/presentation/widgets/jr_svg_picture.dart';
+import 'package:just_ready/presentation/widgets/jr_price.dart';
 import 'package:just_ready/presentation/widgets/jr_text.dart';
 import 'package:just_ready/presentation/widgets/poping_icons.dart';
 import 'package:just_ready/presentation/widgets/rotating_widget.dart';
@@ -21,6 +22,10 @@ class JrNumberDialog extends StatelessWidget {
 
   final String? actionText;
   final VoidCallback? actionButtonOnTap;
+  final String? secondaryActionText;
+  final VoidCallback? secondaryActionButtonOnTap;
+  final Color? secondaryActionColor;
+  final double? price;
 
   const JrNumberDialog({
     super.key,
@@ -29,6 +34,10 @@ class JrNumberDialog extends StatelessWidget {
     this.actionText,
     this.actionButtonOnTap,
     this.titleTextStyle,
+    this.secondaryActionText,
+    this.secondaryActionButtonOnTap,
+    this.secondaryActionColor,
+    this.price,
   });
 
   @override
@@ -49,7 +58,7 @@ class JrNumberDialog extends StatelessWidget {
                     children: [
                       JrContainer(
                         showShadow: false,
-                        height: Dimens.numberDialogHeight,
+                        height: price != null ? Dimens.sHeight : Dimens.numberDialogHeight,
                         width: Dimens.mWidth,
                         margin: const EdgeInsets.fromLTRB(Dimens.xm, Dimens.xxxc, Dimens.xm, Dimens.xm),
                         child: Column(
@@ -60,10 +69,33 @@ class JrNumberDialog extends StatelessWidget {
                               child: Container(
                                 alignment: Alignment.center,
                                 padding: const EdgeInsets.symmetric(horizontal: Dimens.xm, vertical: Dimens.m),
-                                child: Text(
-                                  title,
-                                  style: titleTextStyle ?? context.typography.header2,
-                                  textAlign: TextAlign.center,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      title,
+                                      style: titleTextStyle ?? context.typography.header2,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    if (price != null) ...[
+                                      const SizedBox(height: Dimens.s),
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: Dimens.m,
+                                          vertical: Dimens.s,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: context.colors.secondary.withValues(alpha: 0.1),
+                                          borderRadius: BorderRadius.circular(Dimens.xm),
+                                        ),
+                                        child: JrPrice(
+                                          price: price!,
+                                          size: JrPriceSize.l,
+                                          colorType: JrPriceColorType.primary,
+                                        ),
+                                      ),
+                                    ],
+                                  ],
                                 ),
                               ),
                             ),
@@ -72,15 +104,32 @@ class JrNumberDialog extends StatelessWidget {
                       ),
                       if (actionText != null && actionButtonOnTap != null)
                         Positioned(
-                          right: 0,
-                          left: 0,
+                          right: Dimens.l,
+                          left: Dimens.l,
                           bottom: 0,
-                          child: Center(
-                            child: JrButton(
-                              type: ButtonType.primary,
-                              title: actionText!,
-                              onTap: actionButtonOnTap!,
-                            ),
+                          child: Row(
+                            children: [
+                              if (secondaryActionText != null && secondaryActionButtonOnTap != null) ...[
+                                Expanded(
+                                  child: JrButton(
+                                    type: ButtonType.primary,
+                                    title: secondaryActionText!,
+                                    onTap: secondaryActionButtonOnTap!,
+                                    color: secondaryActionColor,
+                                    constraints: const BoxConstraints(minHeight: Dimens.xxl),
+                                  ),
+                                ),
+                                const SizedBox(width: Dimens.s),
+                              ],
+                              Expanded(
+                                child: JrButton(
+                                  type: ButtonType.primary,
+                                  title: actionText!,
+                                  onTap: actionButtonOnTap!,
+                                  constraints: const BoxConstraints(minHeight: Dimens.xxl),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       Positioned(

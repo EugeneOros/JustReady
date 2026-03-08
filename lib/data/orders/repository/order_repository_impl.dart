@@ -41,14 +41,15 @@ class OrdersRepositoryImpl implements OrdersRepository {
   Future<int> _getNewOrderNumber() async {
     int orderNumber = 1;
     final List<OrderDto> ordersDtos = await _ordersDataSource.getOrders();
-    for (OrderDto orderDto in ordersDtos) {
+    final List<OrderDto> deletedOrdersDtos = await _ordersDataSource.getDeletedOrders();
+    final allOrders = [...ordersDtos, ...deletedOrdersDtos];
+    for (OrderDto orderDto in allOrders) {
       if (orderDto.number == null) continue;
       if (orderDto.number! >= orderNumber) {
         orderNumber = orderDto.number! + 1;
       }
     }
-    // if more then maxOrderNumber chcek first closed order
-    if (orderNumber >= maxOrderNumber) {
+    if (orderNumber > maxOrderNumber) {
       for (int number = 1; number <= maxOrderNumber; number++) {
         if (!ordersDtos.any((orderDto) => orderDto.number == number)) return number;
       }

@@ -10,8 +10,6 @@ class PoppingIcons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
-
     final random = Random();
 
     return Stack(

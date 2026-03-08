@@ -28,14 +28,14 @@ class JrNumberEditField extends HookWidget {
     number.value = form.control(formControlName).value as int;
 
     return SizedBox(
-      height: Dimens.l,
+      height: Dimens.xxl,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           JrIconButton(
-            size: Dimens.l,
+            size: Dimens.xxl,
             icon: IconsSvg.minus24,
             onTap: () {
               if (number.value > min) {
@@ -68,7 +68,7 @@ class JrNumberEditField extends HookWidget {
           ),
           const SizedBox(width: Dimens.s),
           JrIconButton(
-            size: Dimens.l,
+            size: Dimens.xxl,
             icon: IconsSvg.plus24,
             onTap: () {
               number.value++;

@@ -17,8 +17,8 @@ class OrderCartLable extends StatelessWidget {
     return Stack(
       children: [
         Padding(
-          padding: const EdgeInsets.all(Dimens.xm),
-          child: JrSvgPicture(IconsSvg.cart24),
+          padding: const EdgeInsets.all(Dimens.s),
+          child: JrSvgPicture(IconsSvg.cart24, size: Dimens.ms),
         ),
         Positioned(
           right: 0,
@@ -28,19 +28,19 @@ class OrderCartLable extends StatelessWidget {
               shape: BoxShape.circle,
               color: context.colors.bright,
             ),
-            padding: const EdgeInsets.all(Dimens.xxs),
+            padding: const EdgeInsets.all(Dimens.xxxxs),
             child: Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: context.colors.secondary,
               ),
-              width: Dimens.ms,
-              height: Dimens.ms,
+              width: Dimens.m,
+              height: Dimens.m,
               child: Center(
                 child: JrText(
                   number.toString(),
                   color: context.colors.bright,
-                  style: context.typography.subtitle2,
+                  style: context.typography.subtitle3,
                 ),
               ),
             ),

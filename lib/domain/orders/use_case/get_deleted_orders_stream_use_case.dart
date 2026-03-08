@@ -8,5 +8,5 @@ class GetDeletedOrdersStreamUseCase {
 
   const GetDeletedOrdersStreamUseCase(this._ordersRepository);
 
- Stream<List<Order>> call() => _ordersRepository.deletedOrdersStream();
+  Stream<List<Order>> call() => _ordersRepository.deletedOrdersStream();
 }

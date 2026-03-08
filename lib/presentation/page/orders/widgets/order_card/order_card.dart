@@ -35,62 +35,72 @@ class OrderCard extends HookWidget {
 
   @override
   Widget build(BuildContext context) => Stack(
-      children: [
-        Positioned(
-          child: JrContainer(
-            showShadow: false,
-            isAnimated: true,
-            borderRadius: Dimens.ms,
-            borderColor: showDeleteionCountdown ? context.colors.red : context.colors.dark,
-            width: Dimens.orderCardWidth,
-            padding: const EdgeInsets.symmetric(vertical: Dimens.m),
-            margin: const EdgeInsets.all(Dimens.xm),
-            child: OrderCardBody(
-              order: order,
-              toggleOrderMealIsDone: toggleOrderMealIsDone,
+        children: [
+          Positioned(
+            child: JrContainer(
+              showShadow: false,
+              isAnimated: true,
+              borderRadius: Dimens.ms,
+              borderColor: showDeleteionCountdown ? context.colors.red : context.colors.dark,
+              width: Dimens.orderCardWidth,
+              padding: const EdgeInsets.symmetric(vertical: Dimens.m),
+              margin: const EdgeInsets.all(Dimens.xm),
+              child: OrderCardBody(
+                order: order,
+                toggleOrderMealIsDone: toggleOrderMealIsDone,
+              ),
             ),
           ),
-        ),
-        if (showDeleteionCountdown)
-          CardOverlay(
-            countdown: deletionCountdown,
-            onCancel: () {
-              cancelDeletionCountdown();
-              updateOrderStatus(order, OrderStatus.inProgress);
-              // cubit.cancelCountdown();
-            },
-            deletionContdownInitValue: deletionContdownInitValue,
-          ),
-        Positioned(
-          left: 0,
-          right: 0,
-          top: 0,
-          child: JrNumberCircle(
-            number: order.number!,
-            size: NumberCircleSize.m,
-          ),
-        ),
-        if (showDeleteionCountdown)
+          if (order.status == OrderStatus.ready && !showDeleteionCountdown)
+            Positioned.fill(
+              child: Container(
+                margin: const EdgeInsets.all(Dimens.xm),
+                decoration: BoxDecoration(
+                  color: context.colors.primary.withValues(alpha: 0.15),
+                  borderRadius: BorderRadius.circular(Dimens.ms),
+                ),
+              ),
+            ),
+          if (showDeleteionCountdown)
+            CardOverlay(
+              countdown: deletionCountdown,
+              onCancel: () {
+                cancelDeletionCountdown();
+                updateOrderStatus(order, OrderStatus.ready);
+                // cubit.cancelCountdown();
+              },
+              deletionContdownInitValue: deletionContdownInitValue,
+            ),
           Positioned(
             left: 0,
             right: 0,
             top: 0,
-            child: OrderNumberOverlay(
-              countdown: deletionCountdown,
-              deletionContdownInitValue: deletionContdownInitValue,
+            child: JrNumberCircle(
+              number: order.number!,
+              size: NumberCircleSize.m,
             ),
           ),
-        Positioned(
-          right: 0,
-          left: 0,
-          bottom: 0,
-          child: Center(
-            child: OrderStatusDropDown(
-              currentStatus: order.status,
-              onStatusChanged: (status) async => await updateOrderStatus(order, status),
+          if (showDeleteionCountdown)
+            Positioned(
+              left: 0,
+              right: 0,
+              top: 0,
+              child: OrderNumberOverlay(
+                countdown: deletionCountdown,
+                deletionContdownInitValue: deletionContdownInitValue,
+              ),
+            ),
+          Positioned(
+            right: 0,
+            left: 0,
+            bottom: 0,
+            child: Center(
+              child: OrderStatusDropDown(
+                currentStatus: order.status,
+                onStatusChanged: (status) async => await updateOrderStatus(order, status),
+              ),
             ),
           ),
-        ),
-      ],
-    );
+        ],
+      );
 }

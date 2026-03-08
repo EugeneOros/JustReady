@@ -60,12 +60,14 @@ class Dimens {
 
   static const xxsHeight = 70.0;
   static const xsHeight = 150.0;
+  static const smHeight = 170.0;
   static const sHeight = 200.0;
   static const mHeight = 400.0;
   static const lHeight = 600.0;
 
   static const xxsWidth = 100.0;
   static const xsWidth = 150.0;
+  static const smWidth = 170.0;
   static const sWidth = 200.0;
   static const xmWidth = 300.0;
   static const mWidth = 400.0;

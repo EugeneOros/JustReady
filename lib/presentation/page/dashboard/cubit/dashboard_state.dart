@@ -5,7 +5,6 @@ part 'dashboard_state.freezed.dart';
 
 @freezed
 class DashboardState with _$DashboardState {
-
   @Implements<DashboardStateBuilder>()
   const factory DashboardState.loaded(List<Order> orders) = Loaded;
 
@@ -21,7 +20,6 @@ class DashboardState with _$DashboardState {
   const factory DashboardState.idle() = Idle;
 }
 
-
 abstract class DashboardStateListener {}
 
-abstract class  DashboardStateBuilder {}
+abstract class DashboardStateBuilder {}

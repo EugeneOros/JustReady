@@ -4,7 +4,6 @@ import 'package:just_ready/generated/l10n.dart';
 
 enum OrderStatus {
   ordered('ordered'),
-  inProgress('inProgress'),
   ready('ready'),
   deliverd('delivered');
 
@@ -17,25 +16,19 @@ extension OrderStatusExtension on OrderStatus {
     switch (this) {
       case OrderStatus.ordered:
         return Strings.of(context).ordered;
-      case OrderStatus.inProgress:
-        return Strings.of(context).inProgress;
       case OrderStatus.ready:
         return Strings.of(context).ready;
       case OrderStatus.deliverd:
         return Strings.of(context).delivered;
-      default:
-        return '';
     }
   }
 
   Color getColor(BuildContext context) {
     switch (this) {
       case OrderStatus.ordered:
-        return context.colors.grey;
-      case OrderStatus.inProgress:
         return context.colors.secondary;
       case OrderStatus.ready:
-        return context.colors.dark;
+        return context.colors.primary;
       case OrderStatus.deliverd:
         return context.colors.red;
     }

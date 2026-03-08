@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:just_ready/extensions/extension_mixin.dart';
 import 'package:just_ready/styles/dimens.dart';
@@ -16,15 +14,11 @@ class JrBottomBox extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => ClipRRect(
-        child: Container(
-          // alignment: Alignment.center,
+  Widget build(BuildContext context) => Container(
           decoration: BoxDecoration(
-            color: context.colors.primaryLight.withOpacity(0.6),
+            color: context.colors.primaryLight.withOpacity(0.95),
           ),
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaY: 8, sigmaX: 8),
-            child: Container(
+          child: Container(
               width: double.infinity,
               padding: const EdgeInsets.fromLTRB(Dimens.xl, Dimens.s, Dimens.xl, Dimens.m),
               decoration: BoxDecoration(
@@ -83,7 +77,5 @@ class JrBottomBox extends StatelessWidget {
                       ],
                     ),
             ),
-          ),
-        ),
-      );
+          );
 }

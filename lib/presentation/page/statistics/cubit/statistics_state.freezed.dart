@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$StatisticsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Map<Meal, Statistic> orderMealsMap) loaded,
+    required TResult Function(Map<Meal, Statistic> orderMealsMap, double totalPrice, List<DateTime> availableDates,
+            DateTime? selectedDate)
+        loaded,
     required TResult Function() loading,
     required TResult Function(Object error) error,
     required TResult Function() idle,
@@ -26,7 +28,9 @@ mixin _$StatisticsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Map<Meal, Statistic> orderMealsMap)? loaded,
+    TResult? Function(Map<Meal, Statistic> orderMealsMap, double totalPrice, List<DateTime> availableDates,
+            DateTime? selectedDate)?
+        loaded,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
@@ -34,7 +38,9 @@ mixin _$StatisticsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Map<Meal, Statistic> orderMealsMap)? loaded,
+    TResult Function(Map<Meal, Statistic> orderMealsMap, double totalPrice, List<DateTime> availableDates,
+            DateTime? selectedDate)?
+        loaded,
     TResult Function()? loading,
     TResult Function(Object error)? error,
     TResult Function()? idle,
@@ -70,14 +76,12 @@ mixin _$StatisticsState {
 
 /// @nodoc
 abstract class $StatisticsStateCopyWith<$Res> {
-  factory $StatisticsStateCopyWith(
-          StatisticsState value, $Res Function(StatisticsState) then) =
+  factory $StatisticsStateCopyWith(StatisticsState value, $Res Function(StatisticsState) then) =
       _$StatisticsStateCopyWithImpl<$Res, StatisticsState>;
 }
 
 /// @nodoc
-class _$StatisticsStateCopyWithImpl<$Res, $Val extends StatisticsState>
-    implements $StatisticsStateCopyWith<$Res> {
+class _$StatisticsStateCopyWithImpl<$Res, $Val extends StatisticsState> implements $StatisticsStateCopyWith<$Res> {
   _$StatisticsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -88,31 +92,43 @@ class _$StatisticsStateCopyWithImpl<$Res, $Val extends StatisticsState>
 
 /// @nodoc
 abstract class _$$LoadedImplCopyWith<$Res> {
-  factory _$$LoadedImplCopyWith(
-          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+  factory _$$LoadedImplCopyWith(_$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Map<Meal, Statistic> orderMealsMap});
+  $Res call(
+      {Map<Meal, Statistic> orderMealsMap, double totalPrice, List<DateTime> availableDates, DateTime? selectedDate});
 }
 
 /// @nodoc
-class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$StatisticsStateCopyWithImpl<$Res, _$LoadedImpl>
+class __$$LoadedImplCopyWithImpl<$Res> extends _$StatisticsStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
-  __$$LoadedImplCopyWithImpl(
-      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
-      : super(_value, _then);
+  __$$LoadedImplCopyWithImpl(_$LoadedImpl _value, $Res Function(_$LoadedImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? orderMealsMap = null,
+    Object? totalPrice = null,
+    Object? availableDates = null,
+    Object? selectedDate = freezed,
   }) {
     return _then(_$LoadedImpl(
-      null == orderMealsMap
+      orderMealsMap: null == orderMealsMap
           ? _value._orderMealsMap
           : orderMealsMap // ignore: cast_nullable_to_non_nullable
               as Map<Meal, Statistic>,
+      totalPrice: null == totalPrice
+          ? _value.totalPrice
+          : totalPrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      availableDates: null == availableDates
+          ? _value._availableDates
+          : availableDates // ignore: cast_nullable_to_non_nullable
+              as List<DateTime>,
+      selectedDate: freezed == selectedDate
+          ? _value.selectedDate
+          : selectedDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -120,8 +136,13 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements Loaded {
-  const _$LoadedImpl(final Map<Meal, Statistic> orderMealsMap)
-      : _orderMealsMap = orderMealsMap;
+  const _$LoadedImpl(
+      {required final Map<Meal, Statistic> orderMealsMap,
+      required this.totalPrice,
+      required final List<DateTime> availableDates,
+      this.selectedDate})
+      : _orderMealsMap = orderMealsMap,
+        _availableDates = availableDates;
 
   final Map<Meal, Statistic> _orderMealsMap;
   @override
@@ -132,8 +153,21 @@ class _$LoadedImpl implements Loaded {
   }
 
   @override
+  final double totalPrice;
+  final List<DateTime> _availableDates;
+  @override
+  List<DateTime> get availableDates {
+    if (_availableDates is EqualUnmodifiableListView) return _availableDates;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_availableDates);
+  }
+
+  @override
+  final DateTime? selectedDate;
+
+  @override
   String toString() {
-    return 'StatisticsState.loaded(orderMealsMap: $orderMealsMap)';
+    return 'StatisticsState.loaded(orderMealsMap: $orderMealsMap, totalPrice: $totalPrice, availableDates: $availableDates, selectedDate: $selectedDate)';
   }
 
   @override
@@ -141,53 +175,60 @@ class _$LoadedImpl implements Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            const DeepCollectionEquality()
-                .equals(other._orderMealsMap, _orderMealsMap));
+            const DeepCollectionEquality().equals(other._orderMealsMap, _orderMealsMap) &&
+            (identical(other.totalPrice, totalPrice) || other.totalPrice == totalPrice) &&
+            const DeepCollectionEquality().equals(other._availableDates, _availableDates) &&
+            (identical(other.selectedDate, selectedDate) || other.selectedDate == selectedDate));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_orderMealsMap));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_orderMealsMap), totalPrice,
+      const DeepCollectionEquality().hash(_availableDates), selectedDate);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith => __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Map<Meal, Statistic> orderMealsMap) loaded,
+    required TResult Function(Map<Meal, Statistic> orderMealsMap, double totalPrice, List<DateTime> availableDates,
+            DateTime? selectedDate)
+        loaded,
     required TResult Function() loading,
     required TResult Function(Object error) error,
     required TResult Function() idle,
   }) {
-    return loaded(orderMealsMap);
+    return loaded(orderMealsMap, totalPrice, availableDates, selectedDate);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Map<Meal, Statistic> orderMealsMap)? loaded,
+    TResult? Function(Map<Meal, Statistic> orderMealsMap, double totalPrice, List<DateTime> availableDates,
+            DateTime? selectedDate)?
+        loaded,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
   }) {
-    return loaded?.call(orderMealsMap);
+    return loaded?.call(orderMealsMap, totalPrice, availableDates, selectedDate);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Map<Meal, Statistic> orderMealsMap)? loaded,
+    TResult Function(Map<Meal, Statistic> orderMealsMap, double totalPrice, List<DateTime> availableDates,
+            DateTime? selectedDate)?
+        loaded,
     TResult Function()? loading,
     TResult Function(Object error)? error,
     TResult Function()? idle,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(orderMealsMap);
+      return loaded(orderMealsMap, totalPrice, availableDates, selectedDate);
     }
     return orElse();
   }
@@ -231,28 +272,30 @@ class _$LoadedImpl implements Loaded {
 }
 
 abstract class Loaded implements StatisticsState, StatisticsStateBuilder {
-  const factory Loaded(final Map<Meal, Statistic> orderMealsMap) = _$LoadedImpl;
+  const factory Loaded(
+      {required final Map<Meal, Statistic> orderMealsMap,
+      required final double totalPrice,
+      required final List<DateTime> availableDates,
+      final DateTime? selectedDate}) = _$LoadedImpl;
 
   Map<Meal, Statistic> get orderMealsMap;
+  double get totalPrice;
+  List<DateTime> get availableDates;
+  DateTime? get selectedDate;
   @JsonKey(ignore: true)
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+  factory _$$LoadingImplCopyWith(_$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
       __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$StatisticsStateCopyWithImpl<$Res, _$LoadingImpl>
+class __$$LoadingImplCopyWithImpl<$Res> extends _$StatisticsStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
-      : super(_value, _then);
+  __$$LoadingImplCopyWithImpl(_$LoadingImpl _value, $Res Function(_$LoadingImpl) _then) : super(_value, _then);
 }
 
 /// @nodoc
@@ -267,8 +310,7 @@ class _$LoadingImpl implements Loading {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -277,7 +319,9 @@ class _$LoadingImpl implements Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Map<Meal, Statistic> orderMealsMap) loaded,
+    required TResult Function(Map<Meal, Statistic> orderMealsMap, double totalPrice, List<DateTime> availableDates,
+            DateTime? selectedDate)
+        loaded,
     required TResult Function() loading,
     required TResult Function(Object error) error,
     required TResult Function() idle,
@@ -288,7 +332,9 @@ class _$LoadingImpl implements Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Map<Meal, Statistic> orderMealsMap)? loaded,
+    TResult? Function(Map<Meal, Statistic> orderMealsMap, double totalPrice, List<DateTime> availableDates,
+            DateTime? selectedDate)?
+        loaded,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
@@ -299,7 +345,9 @@ class _$LoadingImpl implements Loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Map<Meal, Statistic> orderMealsMap)? loaded,
+    TResult Function(Map<Meal, Statistic> orderMealsMap, double totalPrice, List<DateTime> availableDates,
+            DateTime? selectedDate)?
+        loaded,
     TResult Function()? loading,
     TResult Function(Object error)? error,
     TResult Function()? idle,
@@ -355,20 +403,15 @@ abstract class Loading implements StatisticsState, StatisticsStateBuilder {
 
 /// @nodoc
 abstract class _$$ErrorImplCopyWith<$Res> {
-  factory _$$ErrorImplCopyWith(
-          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
-      __$$ErrorImplCopyWithImpl<$Res>;
+  factory _$$ErrorImplCopyWith(_$ErrorImpl value, $Res Function(_$ErrorImpl) then) = __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Object error});
 }
 
 /// @nodoc
-class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$StatisticsStateCopyWithImpl<$Res, _$ErrorImpl>
+class __$$ErrorImplCopyWithImpl<$Res> extends _$StatisticsStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
-  __$$ErrorImplCopyWithImpl(
-      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
-      : super(_value, _then);
+  __$$ErrorImplCopyWithImpl(_$ErrorImpl _value, $Res Function(_$ErrorImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -403,19 +446,19 @@ class _$ErrorImpl implements Error {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith => __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Map<Meal, Statistic> orderMealsMap) loaded,
+    required TResult Function(Map<Meal, Statistic> orderMealsMap, double totalPrice, List<DateTime> availableDates,
+            DateTime? selectedDate)
+        loaded,
     required TResult Function() loading,
     required TResult Function(Object error) error,
     required TResult Function() idle,
@@ -426,7 +469,9 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Map<Meal, Statistic> orderMealsMap)? loaded,
+    TResult? Function(Map<Meal, Statistic> orderMealsMap, double totalPrice, List<DateTime> availableDates,
+            DateTime? selectedDate)?
+        loaded,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
@@ -437,7 +482,9 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Map<Meal, Statistic> orderMealsMap)? loaded,
+    TResult Function(Map<Meal, Statistic> orderMealsMap, double totalPrice, List<DateTime> availableDates,
+            DateTime? selectedDate)?
+        loaded,
     TResult Function()? loading,
     TResult Function(Object error)? error,
     TResult Function()? idle,
@@ -492,23 +539,18 @@ abstract class Error implements StatisticsState, StatisticsStateBuilder {
 
   Object get error;
   @JsonKey(ignore: true)
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$IdleImplCopyWith<$Res> {
-  factory _$$IdleImplCopyWith(
-          _$IdleImpl value, $Res Function(_$IdleImpl) then) =
-      __$$IdleImplCopyWithImpl<$Res>;
+  factory _$$IdleImplCopyWith(_$IdleImpl value, $Res Function(_$IdleImpl) then) = __$$IdleImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$IdleImplCopyWithImpl<$Res>
-    extends _$StatisticsStateCopyWithImpl<$Res, _$IdleImpl>
+class __$$IdleImplCopyWithImpl<$Res> extends _$StatisticsStateCopyWithImpl<$Res, _$IdleImpl>
     implements _$$IdleImplCopyWith<$Res> {
-  __$$IdleImplCopyWithImpl(_$IdleImpl _value, $Res Function(_$IdleImpl) _then)
-      : super(_value, _then);
+  __$$IdleImplCopyWithImpl(_$IdleImpl _value, $Res Function(_$IdleImpl) _then) : super(_value, _then);
 }
 
 /// @nodoc
@@ -523,8 +565,7 @@ class _$IdleImpl implements Idle {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$IdleImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$IdleImpl);
   }
 
   @override
@@ -533,7 +574,9 @@ class _$IdleImpl implements Idle {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Map<Meal, Statistic> orderMealsMap) loaded,
+    required TResult Function(Map<Meal, Statistic> orderMealsMap, double totalPrice, List<DateTime> availableDates,
+            DateTime? selectedDate)
+        loaded,
     required TResult Function() loading,
     required TResult Function(Object error) error,
     required TResult Function() idle,
@@ -544,7 +587,9 @@ class _$IdleImpl implements Idle {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Map<Meal, Statistic> orderMealsMap)? loaded,
+    TResult? Function(Map<Meal, Statistic> orderMealsMap, double totalPrice, List<DateTime> availableDates,
+            DateTime? selectedDate)?
+        loaded,
     TResult? Function()? loading,
     TResult? Function(Object error)? error,
     TResult? Function()? idle,
@@ -555,7 +600,9 @@ class _$IdleImpl implements Idle {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Map<Meal, Statistic> orderMealsMap)? loaded,
+    TResult Function(Map<Meal, Statistic> orderMealsMap, double totalPrice, List<DateTime> availableDates,
+            DateTime? selectedDate)?
+        loaded,
     TResult Function()? loading,
     TResult Function(Object error)? error,
     TResult Function()? idle,
