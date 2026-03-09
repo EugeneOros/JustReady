@@ -41,8 +41,8 @@ class JrNumberDialog extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => BackdropFilter(
-        filter: ImageFilter.blur(sigmaY: 8, sigmaX: 8),
+  Widget build(BuildContext context) => Container(
+        color: context.colors.dark.withValues(alpha: 0.5),
         child: Stack(
           children: [
             const Center(child: PoppingIcons()),
@@ -58,7 +58,7 @@ class JrNumberDialog extends StatelessWidget {
                     children: [
                       JrContainer(
                         showShadow: false,
-                        height: price != null ? Dimens.sHeight : Dimens.numberDialogHeight,
+                        height: price != null ? Dimens.sHeight + Dimens.xxl : Dimens.numberDialogHeight,
                         width: Dimens.mWidth,
                         margin: const EdgeInsets.fromLTRB(Dimens.xm, Dimens.xxxc, Dimens.xm, Dimens.xm),
                         child: Column(
@@ -78,7 +78,7 @@ class JrNumberDialog extends StatelessWidget {
                                       textAlign: TextAlign.center,
                                     ),
                                     if (price != null) ...[
-                                      const SizedBox(height: Dimens.s),
+                                      const SizedBox(height: Dimens.l),
                                       Container(
                                         padding: const EdgeInsets.symmetric(
                                           horizontal: Dimens.m,

@@ -51,6 +51,7 @@ class SelectedMealCard extends HookWidget {
             children: [
               MealCardBody(
                 meal: meal,
+                index: 0,
                 initMealCountValue: initMealCountValue,
                 form: form,
                 showMealAddingProgress: showMealAddingProgress,

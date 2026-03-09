@@ -36,7 +36,7 @@ class OrderMealCard extends HookWidget {
         validators: [
           Validators.number,
           Validators.required,
-          Validators.min(1),
+          Validators.min(0),
           Validators.max(100),
         ],
       ),
@@ -79,9 +79,15 @@ class OrderMealCard extends HookWidget {
                         JrNumberEditField(
                           form: form,
                           formControlName: CreateOrderFormControlName.count,
+                          minValue: 0,
                           onChange: (count) {
-                            if (int.tryParse(count) == null) return;
-                            onEditCount(int.parse(count));
+                            final value = int.tryParse(count);
+                            if (value == null) return;
+                            if (value == 0) {
+                              onDelete();
+                            } else {
+                              onEditCount(value);
+                            }
                           },
                         ),
                         const Spacer(),

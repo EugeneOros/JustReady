@@ -33,17 +33,19 @@ class MealCard extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final showMealAddingProgress = useState(false);
-    FormGroup form = FormGroup({
-      SelectMealFormControlName.count: FormControl<int>(
-        value: initMealCountValue,
-        validators: [
-          Validators.number,
-          Validators.required,
-          Validators.min(1),
-          Validators.max(100),
-        ],
-      ),
-    });
+    final form = useMemoized(
+      () => FormGroup({
+        SelectMealFormControlName.count: FormControl<int>(
+          value: initMealCountValue,
+          validators: [
+            Validators.number,
+            Validators.required,
+            Validators.min(1),
+            Validators.max(100),
+          ],
+        ),
+      }),
+    );
 
     return ReactiveForm(
       formGroup: form,

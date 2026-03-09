@@ -41,6 +41,7 @@ class CreateOrderLoadedBody extends StatelessWidget {
                       curve: Curves.easeInOut,
                       animation: animation,
                       child: OrderMealCard(
+                        key: ValueKey(item.meal.number),
                         orderMeal: item,
                         onEditCount: (count) => onEditMealCount(order.orderMeals[index], count),
                         onDelete: () => onDeleteMeal(order.orderMeals[index]),

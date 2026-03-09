@@ -11,21 +11,22 @@ class JrNumberEditField extends HookWidget {
   final FormGroup form;
   final String formControlName;
   final Function(String)? onChange;
+  final int minValue;
 
   const JrNumberEditField({
     super.key,
     required this.form,
     required this.formControlName,
     this.onChange,
+    this.minValue = 1,
   });
 
   @override
   Widget build(BuildContext context) {
-    const min = 1;
-    final number = useState(form.control(formControlName).value as int);
-    final controller = useTextEditingController(text: form.control(formControlName).value.toString());
-    controller.text = form.control(formControlName).value.toString();
-    number.value = form.control(formControlName).value as int;
+    final min = minValue;
+    final initialValue = form.control(formControlName).value as int;
+    final number = useState(initialValue);
+    final controller = useTextEditingController(text: initialValue.toString());
 
     return SizedBox(
       height: Dimens.xxl,
