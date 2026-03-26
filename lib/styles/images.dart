@@ -53,6 +53,7 @@ class Illustrations {
   static final banner = _illustrations.banner.path;
   static final bannerHoly = _illustrations.bannerHoly.path;
   static final plate = _illustrations.plate.path;
+  static final plateNeon = _illustrations.plateNeon.path;
   static final dashboardBackground = _illustrations.dashboardBackground.path;
   static final dashboardRippedBackground = _illustrations.dashboardRippedBackground.path;
 

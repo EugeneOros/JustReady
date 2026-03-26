@@ -22,20 +22,21 @@ class JrCheckBox extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          InkWell(
-            splashColor: context.colors.transparent,
-            onTap: () => disabled ? doNothing : onCheckedChanged?.call(!isChecked),
-            child: JrSvgPicture(
+  Widget build(BuildContext context) => InkWell(
+        splashColor: context.colors.transparent,
+        borderRadius: BorderRadius.circular(Dimens.s),
+        onTap: () => disabled ? doNothing : onCheckedChanged?.call(!isChecked),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            JrSvgPicture(
               isChecked ? IconsSvg.tickSquare24 : IconsSvg.square24,
               color: color,
               inactive: disabled,
             ),
-          ),
-          const SizedBox(width: Dimens.s),
-          Expanded(child: child),
-        ],
+            const SizedBox(width: Dimens.s),
+            Expanded(child: child),
+          ],
+        ),
       );
 }

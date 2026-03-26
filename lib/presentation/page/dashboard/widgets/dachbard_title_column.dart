@@ -19,31 +19,35 @@ class DashboardTitleColumn extends StatelessWidget {
           width: double.infinity,
           decoration: BoxDecoration(
             color: context.colors.transparent,
+                  // decoration: BoxDecoration(border: Border.all(width: 5, color: const Color(0xff01FFD0),)),
+            
             border: Border(
-              right: BorderSide(
-                color: context.colors.primary,
-                width: Dimens.xxxxs,
+              top: BorderSide(
+                color: Color(0xff01FFD0),
+                width: 3,
               ),
             ),
           ),
           child: Stack(
             children: [
-              Positioned.fill(
-                child: Image.asset(
-                  Illustrations.banner,
-                  fit: BoxFit.cover,
-                ),
-              ),
+              // Positioned.fill(
+              //   child: Image.asset(
+              //     Illustrations.banner,
+              //     fit: BoxFit.cover,
+              //   ),
+              // ),
               Positioned.fill(
                 child: Container(
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.only(bottom: Dimens.xl),
+                  padding: const EdgeInsets.only(bottom: Dimens.xxxl),
                   child: Center(
                     child: JrText(
                       title,
                       textAlign: TextAlign.center,
-                      style: context.typography.header2,
-                      color: context.colors.primary,
+                      style: context.typography.header2.copyWith(
+                        fontFamily: 'Orbitron',
+                      ),
+                      color: const Color(0xffAC78FC),
                     ),
                   ),
                 ),

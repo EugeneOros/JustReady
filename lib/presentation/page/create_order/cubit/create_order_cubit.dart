@@ -88,6 +88,7 @@ class CreateOrderCubit extends Cubit<CreateOrderState> {
     order = null;
     emit(const CreateOrderState.idle());
     await Future.delayed(const Duration(microseconds: 200));
+    if (isClosed) return;
     order = _getCurrentOrderUseCase();
     emit(CreateOrderState.selectMeals(_meals, order));
   }
@@ -118,9 +119,16 @@ class CreateOrderCubit extends Cubit<CreateOrderState> {
     emit(CreateOrderState.loaded(order!));
   }
 
+  @override
+  Future<void> close() async {
+    await _streamSubscription?.cancel();
+    return super.close();
+  }
+
   Future<void> _listenToMainStream() async {
     await _streamSubscription?.cancel();
     _streamSubscription = _subscribeMainStreamUseCase().listen((event) async {
+      if (isClosed) return;
       if (event is MealsAddToCurrentOrder) {
         order = _getCurrentOrderUseCase();
         if (state is Loaded) {

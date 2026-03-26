@@ -18,6 +18,17 @@ class OrderNumberItem extends StatelessWidget {
     const size = Dimens.xxc;
     return Container(
       padding: const EdgeInsets.all(Dimens.s),
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+        boxShadow: [
+          BoxShadow(
+            color: Color(0xff01FFD0),
+            blurRadius: 30,
+            spreadRadius: -20
+            ,
+          ),
+        ],
+      ),
       child: Hero(
         tag: 'hero-dashboard-number:$number',
         child: Stack(
@@ -41,7 +52,9 @@ class OrderNumberItem extends StatelessWidget {
                 child: JrText(
                   number.toString(),
                   color: context.colors.dark,
-                  style: context.typography.header3,
+                  style: context.typography.header3.copyWith(
+                    fontFamily: 'Orbitron',
+                  ),
                 ),
               ),
             )

@@ -20,6 +20,7 @@ class OrdersCubit extends Cubit<OrdersState> {
 
   List<Order> _orders = [];
 
+  StreamSubscription? _ordersSubscription;
   Timer? _deletionTimer;
   Order? _orderToDelete;
   int _deletionCountdown = deletionContdownInitValue;
@@ -33,12 +34,19 @@ class OrdersCubit extends Cubit<OrdersState> {
   Future<void> loadOrders() async {
     emit(const OrdersState.loading());
     _emmitLoaded();
-    final publicStream = _getOrdersStreamUseCase().asBroadcastStream();
-    await for (final updatedOrders in publicStream) {
+    await _ordersSubscription?.cancel();
+    _ordersSubscription = _getOrdersStreamUseCase().listen((updatedOrders) {
+      if (isClosed) return;
       emit(const OrdersState.loading());
       ordersUpdated(updatedOrders);
-      // if (!(await publicStream.isEmpty)) {}
-    }
+    });
+  }
+
+  @override
+  Future<void> close() async {
+    _deletionTimer?.cancel();
+    await _ordersSubscription?.cancel();
+    return super.close();
   }
 
   Future<void> toggleOrderMealIsDone(Order order, int orderMealNumber) async {
@@ -68,6 +76,10 @@ class OrdersCubit extends Cubit<OrdersState> {
     _orderToDelete = order;
     _emmitLoaded();
     _deletionTimer = Timer.periodic(oneSec, (timer) async {
+      if (isClosed) {
+        timer.cancel();
+        return;
+      }
       if (_deletionCountdown < 1) {
         await deleteOrder(order);
         cancelDeletionCountdown();

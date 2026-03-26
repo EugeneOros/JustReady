@@ -39,22 +39,22 @@ class OrdersRepositoryImpl implements OrdersRepository {
   }
 
   Future<int> _getNewOrderNumber() async {
-    int orderNumber = 1;
-    final List<OrderDto> ordersDtos = await _ordersDataSource.getOrders();
-    final List<OrderDto> deletedOrdersDtos = await _ordersDataSource.getDeletedOrders();
-    final allOrders = [...ordersDtos, ...deletedOrdersDtos];
-    for (OrderDto orderDto in allOrders) {
-      if (orderDto.number == null) continue;
-      if (orderDto.number! >= orderNumber) {
-        orderNumber = orderDto.number! + 1;
-      }
+    int counter = await _ordersDataSource.getOrderCounter();
+    final List<OrderDto> activeOrders = await _ordersDataSource.getOrders();
+    final activeNumbers = activeOrders
+        .where((o) => o.number != null)
+        .map((o) => o.number!)
+        .toSet();
+
+    // Find next free number starting from counter
+    for (int i = 0; i < maxOrderNumber; i++) {
+      if (!activeNumbers.contains(counter)) break;
+      counter = counter >= maxOrderNumber ? 1 : counter + 1;
     }
-    if (orderNumber > maxOrderNumber) {
-      for (int number = 1; number <= maxOrderNumber; number++) {
-        if (!ordersDtos.any((orderDto) => orderDto.number == number)) return number;
-      }
-    }
-    return orderNumber;
+
+    final nextCounter = counter >= maxOrderNumber ? 1 : counter + 1;
+    await _ordersDataSource.setOrderCounter(nextCounter);
+    return counter;
   }
 
   @override

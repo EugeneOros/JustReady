@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:just_ready/domain/orders/models/order_status.dart';
+import 'package:just_ready/extensions/extension_mixin.dart';
 import 'package:just_ready/generated/l10n.dart';
 import 'package:just_ready/presentation/page/dashboard/cubit/dashboard_cubit.dart';
 import 'package:just_ready/presentation/page/dashboard/cubit/dashboard_state.dart';
@@ -29,6 +30,7 @@ class DashboardPage extends HookWidget {
     useOnce(cubit.loadOrders);
 
     return Scaffold(
+      backgroundColor: const Color(0xff202020),
       body: state.maybeWhen(
         loaded: (orders) => Stack(
           children: [
@@ -66,14 +68,15 @@ class DashboardPage extends HookWidget {
                   Expanded(
                     child: DashboardOrdersColumn(
                       orders: orders
-                          .where(
-                              (order) => order.status == OrderStatus.ordered)
+                          .where((order) => order.status == OrderStatus.ordered)
                           .toList(),
                     ),
                   ),
                   Expanded(
                     child: DashboardOrdersColumn(
-                      orders: orders.where((order) => order.status == OrderStatus.ready).toList(),
+                      orders: orders
+                          .where((order) => order.status == OrderStatus.ready)
+                          .toList(),
                     ),
                   ),
                 ],
@@ -90,7 +93,9 @@ class DashboardPage extends HookWidget {
     );
   }
 
-  void _listener(DashboardCubit cubit, DashboardState state, BuildContext context) => state.maybeWhen(
+  void _listener(
+          DashboardCubit cubit, DashboardState state, BuildContext context) =>
+      state.maybeWhen(
         announceReady: (order) async {
           final phrases = [
             "Come to me",
@@ -112,7 +117,27 @@ class DashboardPage extends HookWidget {
               Future.delayed(const Duration(seconds: 4), () => context.pop());
               return JrNumberDialog(
                 title: phrases[index],
+                borderRadius: 0,
+                contentTextStyle: const TextStyle(
+                  fontFamily: 'Orbitron',
+                  fontSize: 22,
+                ),
                 number: order.number!,
+                backgroundColor: Colors.white,
+                showFoodIcons: false,
+                dialogShadow: const [
+                  BoxShadow(
+                    color: Color(0xffAC78FC),
+                    blurRadius: 30,
+                    spreadRadius: 10,
+                  ),
+                ],
+                numberTextStyle: const TextStyle(
+                  fontFamily: 'Orbitron',
+                  fontSize: 60,
+                  height: 1.3,
+                  fontWeight: FontWeight.w700,
+                ),
               );
             },
           );

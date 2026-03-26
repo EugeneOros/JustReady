@@ -19,7 +19,7 @@ class OrderMealRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final Color color = orderMeal.isDone ? context.colors.disabled : orderMeal.meal.getColor();
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: Dimens.m),
+      padding: const EdgeInsets.symmetric(vertical: Dimens.m, horizontal: Dimens.s),
       child: JrCheckBox(
         onCheckedChanged: (_) => toggleOrderMealIsDone(),
         isChecked: orderMeal.isDone,
@@ -29,7 +29,7 @@ class OrderMealRow extends StatelessWidget {
             Expanded(
               child: JrText(
                 orderMeal.meal.name,
-                style: context.typography.body1,
+                style: context.typography.header4,
                 maxLines: 5,
                 color: color,
                 lineThrough: orderMeal.isDone,
@@ -54,7 +54,7 @@ class OrderMealRow extends StatelessWidget {
             // ),
             JrText(
               '${orderMeal.count}x',
-              style: context.typography.body1,
+              style: context.typography.header4,
               color: color,
             )
           ],

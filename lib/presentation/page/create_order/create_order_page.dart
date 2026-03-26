@@ -89,6 +89,7 @@ class CreateOrderPage extends HookWidget {
                 titleTextStyle: context.typography.header3,
                 number: orderNumber,
                 price: price,
+                showFoodIcons: false,
                 actionText: Strings.of(context).ok,
                 actionButtonOnTap: () => context.pop(),
                 secondaryActionText: Strings.of(context).delivered,

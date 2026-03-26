@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:just_ready/domain/meals/models/meal.dart';
@@ -11,6 +13,8 @@ import 'package:just_ready/presentation/page/statistics/models/statistic.dart';
 class StatisticsCubit extends Cubit<StatisticsState> {
   final GetDeletedOrdersStreamUseCase _getDeletedOrdersStreamUseCase;
 
+  StreamSubscription? _ordersSubscription;
+
   List<Order> orders = [];
   List<Order> ordersToAnnounce = [];
   bool isAnnouncingOrder = false;
@@ -22,11 +26,18 @@ class StatisticsCubit extends Cubit<StatisticsState> {
 
   Future<void> loadOrders() async {
     _emmitLoaded();
-    final publicStream = _getDeletedOrdersStreamUseCase().asBroadcastStream();
-    await for (final orders in publicStream) {
+    await _ordersSubscription?.cancel();
+    _ordersSubscription = _getDeletedOrdersStreamUseCase().listen((orders) {
+      if (isClosed) return;
       emit(const StatisticsState.loading());
       ordersUpdated(orders);
-    }
+    });
+  }
+
+  @override
+  Future<void> close() async {
+    await _ordersSubscription?.cancel();
+    return super.close();
   }
 
   Future<void> ordersUpdated(List<Order> updatedOrders) async {

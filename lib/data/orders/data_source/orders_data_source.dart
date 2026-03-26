@@ -64,4 +64,20 @@ class OrdersDataSource {
       yield snapshots.docs.map((order) => OrderDto.fromJson(order.data())).toList(growable: false);
     }
   }
+
+  Future<int> getOrderCounter() async {
+    final doc = await firestore
+        .collection(DatabaseCollections.config)
+        .doc(DatabaseDocuments.orderCounter)
+        .get();
+    if (!doc.exists || doc.data() == null) return 1;
+    return (doc.data()!['value'] as int?) ?? 1;
+  }
+
+  Future<void> setOrderCounter(int value) async {
+    await firestore
+        .collection(DatabaseCollections.config)
+        .doc(DatabaseDocuments.orderCounter)
+        .set({'value': value});
+  }
 }

@@ -18,6 +18,12 @@ import 'package:just_ready/utils/food_icons.dart';
 class JrNumberDialog extends StatelessWidget {
   final String title;
   final TextStyle? titleTextStyle;
+  final TextStyle? numberTextStyle;
+  final TextStyle? contentTextStyle;
+  final Color? backgroundColor;
+  final double borderRadius;
+  final bool showFoodIcons;
+  final List<BoxShadow>? dialogShadow;
   final int number;
 
   final String? actionText;
@@ -34,6 +40,12 @@ class JrNumberDialog extends StatelessWidget {
     this.actionText,
     this.actionButtonOnTap,
     this.titleTextStyle,
+    this.numberTextStyle,
+    this.contentTextStyle,
+    this.backgroundColor,
+    this.borderRadius = Dimens.m,
+    this.showFoodIcons = true,
+    this.dialogShadow,
     this.secondaryActionText,
     this.secondaryActionButtonOnTap,
     this.secondaryActionColor,
@@ -45,7 +57,7 @@ class JrNumberDialog extends StatelessWidget {
         color: context.colors.dark.withValues(alpha: 0.5),
         child: Stack(
           children: [
-            const Center(child: PoppingIcons()),
+            if (showFoodIcons) const Center(child: PoppingIcons()),
             Center(
               child: JrPoppingContainer(
                 child: AlertDialog(
@@ -56,50 +68,58 @@ class JrNumberDialog extends StatelessWidget {
                   content: Stack(
                     alignment: Alignment.center,
                     children: [
-                      JrContainer(
-                        showShadow: false,
-                        height: price != null ? Dimens.sHeight + Dimens.xxl : Dimens.numberDialogHeight,
-                        width: Dimens.mWidth,
+                      Container(
                         margin: const EdgeInsets.fromLTRB(Dimens.xm, Dimens.xxxc, Dimens.xm, Dimens.xm),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: <Widget>[
-                            const SizedBox(height: Dimens.m),
-                            Expanded(
-                              child: Container(
-                                alignment: Alignment.center,
-                                padding: const EdgeInsets.symmetric(horizontal: Dimens.xm, vertical: Dimens.m),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      title,
-                                      style: titleTextStyle ?? context.typography.header2,
-                                      textAlign: TextAlign.center,
-                                    ),
-                                    if (price != null) ...[
-                                      const SizedBox(height: Dimens.l),
-                                      Container(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: Dimens.m,
-                                          vertical: Dimens.s,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: context.colors.secondary.withValues(alpha: 0.1),
-                                          borderRadius: BorderRadius.circular(Dimens.xm),
-                                        ),
-                                        child: JrPrice(
-                                          price: price!,
-                                          size: JrPriceSize.l,
-                                          colorType: JrPriceColorType.primary,
-                                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(borderRadius),
+                          boxShadow: dialogShadow ?? [],
+                        ),
+                        child: JrContainer(
+                          showShadow: false,
+                          backgroundColor: backgroundColor,
+                          borderRadius: borderRadius,
+                          height: price != null ? Dimens.sHeight + Dimens.xxl : Dimens.numberDialogHeight,
+                          width: Dimens.mWidth,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: <Widget>[
+                              const SizedBox(height: Dimens.m),
+                              Expanded(
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  padding: const EdgeInsets.symmetric(horizontal: Dimens.xm, vertical: Dimens.m),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        title,
+                                        style: contentTextStyle ?? titleTextStyle ?? context.typography.header2,
+                                        textAlign: TextAlign.center,
                                       ),
+                                      if (price != null) ...[
+                                        const SizedBox(height: Dimens.l),
+                                        Container(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: Dimens.m,
+                                            vertical: Dimens.s,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: context.colors.secondary.withValues(alpha: 0.1),
+                                            borderRadius: BorderRadius.circular(Dimens.xm),
+                                          ),
+                                          child: JrPrice(
+                                            price: price!,
+                                            size: JrPriceSize.l,
+                                            colorType: JrPriceColorType.primary,
+                                          ),
+                                        ),
+                                      ],
                                     ],
-                                  ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                       if (actionText != null && actionButtonOnTap != null)
@@ -110,15 +130,13 @@ class JrNumberDialog extends StatelessWidget {
                           child: Row(
                             children: [
                               if (secondaryActionText != null && secondaryActionButtonOnTap != null) ...[
-                                Expanded(
-                                  child: JrButton(
+                               JrButton(
                                     type: ButtonType.primary,
                                     title: secondaryActionText!,
                                     onTap: secondaryActionButtonOnTap!,
                                     color: secondaryActionColor,
                                     constraints: const BoxConstraints(minHeight: Dimens.xxl),
                                   ),
-                                ),
                                 const SizedBox(width: Dimens.s),
                               ],
                               Expanded(
@@ -159,62 +177,64 @@ class JrNumberDialog extends StatelessWidget {
                           child: JrText(
                             number.toString(),
                             color: context.colors.dark,
-                            style: context.typography.header1,
+                            style: numberTextStyle ?? context.typography.header1,
                           ),
                         ),
                       ),
-                      Positioned(
-                        right: 0,
-                        left: 0,
-                        top: Dimens.xxc,
-                        child: Center(
-                          child: RotatingWidget(
-                            distanceFromCenter: Dimens.xsWidth,
-                            clockwise: true,
-                            child: JrSvgPicture(getRandomFoodIcon(), size: Dimens.xl),
+                      if (showFoodIcons) ...[
+                        Positioned(
+                          right: 0,
+                          left: 0,
+                          top: Dimens.xxc,
+                          child: Center(
+                            child: RotatingWidget(
+                              distanceFromCenter: Dimens.xsWidth,
+                              clockwise: true,
+                              child: JrSvgPicture(getRandomFoodIcon(), size: Dimens.xl),
+                            ),
                           ),
                         ),
-                      ),
-                      Positioned(
-                        right: 0,
-                        left: 0,
-                        top: Dimens.xxc,
-                        child: Center(
-                          child: RotatingWidget(
-                            distanceFromCenter: Dimens.sWidth,
-                            clockwise: false,
-                            child: JrSvgPicture(getRandomFoodIcon(), size: Dimens.xxl),
+                        Positioned(
+                          right: 0,
+                          left: 0,
+                          top: Dimens.xxc,
+                          child: Center(
+                            child: RotatingWidget(
+                              distanceFromCenter: Dimens.sWidth,
+                              clockwise: false,
+                              child: JrSvgPicture(getRandomFoodIcon(), size: Dimens.xxl),
+                            ),
                           ),
                         ),
-                      ),
-                      Positioned(
-                        right: 0,
-                        left: 0,
-                        top: Dimens.xxc,
-                        child: Center(
-                          child: RotatingWidget(
-                            distanceFromCenter: Dimens.xmWidth,
-                            clockwise: false,
-                            duration: const Duration(milliseconds: 10000),
-                            startAngle: pi,
-                            child: JrSvgPicture(getRandomFoodIcon(), size: Dimens.c),
+                        Positioned(
+                          right: 0,
+                          left: 0,
+                          top: Dimens.xxc,
+                          child: Center(
+                            child: RotatingWidget(
+                              distanceFromCenter: Dimens.xmWidth,
+                              clockwise: false,
+                              duration: const Duration(milliseconds: 10000),
+                              startAngle: pi,
+                              child: JrSvgPicture(getRandomFoodIcon(), size: Dimens.c),
+                            ),
                           ),
                         ),
-                      ),
-                      Positioned(
-                        right: 0,
-                        left: 0,
-                        top: Dimens.xxc,
-                        child: Center(
-                          child: RotatingWidget(
-                            distanceFromCenter: Dimens.mWidth,
-                            duration: const Duration(milliseconds: 15000),
-                            clockwise: true,
-                            startAngle: pi / 3,
-                            child: JrSvgPicture(getRandomFoodIcon(), size: Dimens.xc),
+                        Positioned(
+                          right: 0,
+                          left: 0,
+                          top: Dimens.xxc,
+                          child: Center(
+                            child: RotatingWidget(
+                              distanceFromCenter: Dimens.mWidth,
+                              duration: const Duration(milliseconds: 15000),
+                              clockwise: true,
+                              startAngle: pi / 3,
+                              child: JrSvgPicture(getRandomFoodIcon(), size: Dimens.xc),
+                            ),
                           ),
                         ),
-                      )
+                      ]
                     ],
                   ),
                 ),

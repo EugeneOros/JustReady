@@ -84,7 +84,8 @@ class CustomColors extends ThemeExtension<CustomColors> {
     );
   }
 
-  Color _getColorLerp(Color actual, Color other, double t) => Color.lerp(actual, other, t) ?? other;
+  Color _getColorLerp(Color actual, Color other, double t) =>
+      Color.lerp(actual, other, t) ?? other;
 
   static const lightTheme = CustomColors(
     dark: Color(0xff000000),
