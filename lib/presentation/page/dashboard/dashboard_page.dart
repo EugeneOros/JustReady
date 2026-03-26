@@ -124,7 +124,6 @@ class DashboardPage extends HookWidget {
                 ),
                 number: order.number!,
                 backgroundColor: Colors.white,
-                showFoodIcons: false,
                 dialogShadow: const [
                   BoxShadow(
                     color: Color(0xffAC78FC),
