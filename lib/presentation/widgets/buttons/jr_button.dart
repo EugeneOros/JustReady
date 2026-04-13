@@ -27,6 +27,7 @@ class JrButton extends HookWidget {
   final double? width;
   final BoxConstraints? constraints;
   final Color? textColor;
+  final EdgeInsetsGeometry? contentPadding;
 
   const JrButton({
     super.key,
@@ -40,6 +41,7 @@ class JrButton extends HookWidget {
     this.width,
     this.constraints,
     this.textColor,
+    this.contentPadding,
   });
 
   @override
@@ -76,7 +78,7 @@ class JrButton extends HookWidget {
                   color: _getTitleColor(context),
                 ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: Dimens.xs, horizontal: Dimens.xm),
+                padding: contentPadding ?? const EdgeInsets.symmetric(vertical: Dimens.xs, horizontal: Dimens.xm),
                 child: Text(
                   title,
                   overflow: TextOverflow.ellipsis,

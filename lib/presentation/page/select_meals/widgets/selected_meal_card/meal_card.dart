@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:just_ready/domain/meals/models/meal.dart';
+import 'package:just_ready/domain/meals/models/meal_addon.dart';
 import 'package:just_ready/presentation/page/select_meals/utils/select_form_control_names.dart';
 import 'package:just_ready/presentation/page/select_meals/widgets/selected_meal_card/meal_card_body.dart';
 import 'package:just_ready/presentation/page/select_meals/widgets/selected_meal_card/widgets/card_overlay.dart';
@@ -18,7 +19,7 @@ class MealCard extends HookWidget {
   final Meal meal;
   final int index;
   final int orderCount;
-  final Function(int) onAddToOrder;
+  final Function(int, List<MealAddon>) onAddToOrder;
   final Function(Meal) onMealAddedToOrder;
 
   const MealCard({
@@ -33,6 +34,7 @@ class MealCard extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final showMealAddingProgress = useState(false);
+    final selectedAddons = useState<List<MealAddon>>(const []);
     final form = useMemoized(
       () => FormGroup({
         SelectMealFormControlName.count: FormControl<int>(
@@ -61,6 +63,15 @@ class MealCard extends HookWidget {
               initMealCountValue: initMealCountValue,
               form: form,
               showMealAddingProgress: showMealAddingProgress.value,
+              selectedAddons: selectedAddons.value,
+              onToggleAddon: (addon) {
+                final current = selectedAddons.value;
+                if (current.any((a) => a.name == addon.name)) {
+                  selectedAddons.value = current.where((a) => a.name != addon.name).toList();
+                } else {
+                  selectedAddons.value = [...current, addon];
+                }
+              },
             ),
           ),
           if (orderCount != 0)
@@ -92,7 +103,9 @@ class MealCard extends HookWidget {
                 onTap: () async {
                   if (form.valid) {
                     showMealAddingProgress.value = true;
-                    onAddToOrder(form.control(SelectMealFormControlName.count).value);
+                    final addonsSnapshot = selectedAddons.value;
+                    selectedAddons.value = const [];
+                    onAddToOrder(form.control(SelectMealFormControlName.count).value, addonsSnapshot);
                   } else {
                     form.markAllAsTouched();
                   }

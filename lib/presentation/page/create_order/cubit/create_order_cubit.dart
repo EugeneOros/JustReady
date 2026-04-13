@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:just_ready/domain/meals/models/meal.dart';
+import 'package:just_ready/domain/meals/models/meal_addon.dart';
 import 'package:just_ready/domain/meals/use_case/get_meals_use_case.dart';
 import 'package:just_ready/domain/main_stream/usecase/subscribe_main_stream_use_case.dart';
 import 'package:just_ready/domain/orders/models/order.dart';
@@ -59,9 +60,9 @@ class CreateOrderCubit extends Cubit<CreateOrderState> {
     emit(CreateOrderState.selectMeals(_meals, order));
   }
 
-  Future<void> addMealsToOrder(Meal meal, int count) async {
+  Future<void> addMealsToOrder(Meal meal, int count, List<MealAddon> selectedAddons) async {
     emit(const CreateOrderState.idle());
-    await _addMealToCurrentOrderUseCase(meal, count);
+    await _addMealToCurrentOrderUseCase(meal, count, selectedAddons);
     order = _getCurrentOrderUseCase();
     emit(CreateOrderState.selectMeals(_meals, order));
   }

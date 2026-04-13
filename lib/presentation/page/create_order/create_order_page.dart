@@ -52,7 +52,7 @@ class CreateOrderPage extends HookWidget {
                     key: const ValueKey('selectMeals'),
                     meals: meals,
                     currentOrder: currentOrder,
-                    addMealToOrder: (count, meal) => cubit.addMealsToOrder(meal, count),
+                    addMealToOrder: (count, meal, selectedAddons) => cubit.addMealsToOrder(meal, count, selectedAddons),
                     onNext: cubit.goToSummary,
                   ),
                   loaded: (order) => CreateOrderLoadedBody(

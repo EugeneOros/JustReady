@@ -11,6 +11,9 @@ OrderMealDto _$OrderMealDtoFromJson(Map json) => OrderMealDto(
       mealDto:
           MealDto.fromJson(Map<String, dynamic>.from(json['mealDto'] as Map)),
       isDone: json['isDone'] as bool,
+      selectedAddons: (json['selectedAddons'] as List<dynamic>?)
+          ?.map((e) => MealAddonDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$OrderMealDtoToJson(OrderMealDto instance) =>
@@ -18,4 +21,5 @@ Map<String, dynamic> _$OrderMealDtoToJson(OrderMealDto instance) =>
       'count': instance.count,
       'mealDto': instance.mealDto.toJson(),
       'isDone': instance.isDone,
+      'selectedAddons': instance.selectedAddons?.map((e) => e.toJson()).toList(),
     };

@@ -57,7 +57,7 @@ class OrderMealCard extends HookWidget {
                 showShadow: false,
                 isAnimated: true,
                 borderRadius: Dimens.ms,
-                height: Dimens.sMaxCardHeight,
+                height: orderMeal.selectedAddons.isEmpty ? Dimens.sMaxCardHeight : 130.0,
                 margin: const EdgeInsets.all(Dimens.xm),
                 padding: const EdgeInsets.symmetric(horizontal: Dimens.xm, vertical: Dimens.s),
                 child: Column(
@@ -73,6 +73,28 @@ class OrderMealCard extends HookWidget {
                         maxLines: 2,
                       ),
                     ),
+                    if (orderMeal.selectedAddons.isNotEmpty) ...[
+                      const SizedBox(height: Dimens.xs),
+                      Wrap(
+                        spacing: Dimens.xs,
+                        runSpacing: Dimens.xs,
+                        children: orderMeal.selectedAddons
+                            .map(
+                              (addon) => Container(
+                                padding: const EdgeInsets.symmetric(horizontal: Dimens.s, vertical: 2),
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: context.colors.dark.withValues(alpha: 0.4)),
+                                  borderRadius: BorderRadius.circular(100),
+                                ),
+                                child: Text(
+                                  '+${addon.name}',
+                                  style: TextStyle(fontSize: 11, color: context.colors.dark.withValues(alpha: 0.7)),
+                                ),
+                              ),
+                            )
+                            .toList(),
+                      ),
+                    ],
                     const SizedBox(height: Dimens.s),
                     Row(
                       children: [

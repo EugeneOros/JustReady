@@ -34,14 +34,16 @@ class CreateOrderLoadedBody extends StatelessWidget {
                 ImplicitlyAnimatedList<OrderMeal>(
                   items: order.orderMeals,
                   physics: const NeverScrollableScrollPhysics(),
-                  areItemsTheSame: (a, b) => a.meal.number == b.meal.number,
+                  areItemsTheSame: (a, b) =>
+                      a.meal.number == b.meal.number &&
+                      a.selectedAddons.map((x) => x.name).join(',') == b.selectedAddons.map((x) => x.name).join(','),
                   shrinkWrap: true,
                   itemBuilder: (context, animation, item, index) {
                     return SizeFadeTransition(
                       curve: Curves.easeInOut,
                       animation: animation,
                       child: OrderMealCard(
-                        key: ValueKey(item.meal.number),
+                        key: ValueKey('${item.meal.number}_${item.selectedAddons.map((a) => a.name).join(',')}'),
                         orderMeal: item,
                         onEditCount: (count) => onEditMealCount(order.orderMeals[index], count),
                         onDelete: () => onDeleteMeal(order.orderMeals[index]),

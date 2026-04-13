@@ -5,6 +5,7 @@ import 'package:just_ready/data/orders/mapper/order_to_order_dto_mapper.dart';
 import 'package:just_ready/data/orders/models/order_dto.dart';
 import 'package:just_ready/domain/main_stream/service/main_stream_service.dart';
 import 'package:just_ready/domain/meals/models/meal.dart';
+import 'package:just_ready/domain/meals/models/meal_addon.dart';
 import 'package:just_ready/domain/orders/models/order.dart';
 import 'package:just_ready/domain/orders/models/order_meal.dart';
 import 'package:just_ready/domain/orders/models/order_status.dart';
@@ -63,7 +64,7 @@ class OrdersRepositoryImpl implements OrdersRepository {
   }
 
   @override
-  Future<void> addMealToCurrentOrder(Meal meal, int count) async {
+  Future<void> addMealToCurrentOrder(Meal meal, int count, List<MealAddon> selectedAddons) async {
     currentOrder ??= Order(
       number: null,
       orderMeals: [],
@@ -73,14 +74,21 @@ class OrdersRepositoryImpl implements OrdersRepository {
     );
 
     for (var orderMeal in currentOrder!.orderMeals) {
-      if (orderMeal.meal.number == meal.number) {
+      if (orderMeal.meal.number == meal.number && _addonsMatch(orderMeal.selectedAddons, selectedAddons)) {
         orderMeal.count += count;
         _mainStreamService.notifyRefreshStream(const OrdersEvent.mealsAddToCurrentOrder());
         return;
       }
     }
-    currentOrder!.orderMeals.add(OrderMeal(meal: meal, count: count, isDone: false));
+    currentOrder!.orderMeals.add(OrderMeal(meal: meal, count: count, isDone: false, selectedAddons: selectedAddons));
     _mainStreamService.notifyRefreshStream(const OrdersEvent.mealsAddToCurrentOrder());
+  }
+
+  bool _addonsMatch(List<MealAddon> a, List<MealAddon> b) {
+    if (a.length != b.length) return false;
+    final namesA = a.map((x) => x.name).toSet();
+    final namesB = b.map((x) => x.name).toSet();
+    return namesA.containsAll(namesB);
   }
 
   @override

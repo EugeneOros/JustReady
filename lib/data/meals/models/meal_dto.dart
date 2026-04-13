@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:just_ready/data/meals/models/meal_addon_dto.dart';
 
 part 'meal_dto.g.dart';
 
@@ -8,12 +9,14 @@ class MealDto {
   final int number;
   final double price;
   final double? doublePrice;
+  final List<MealAddonDto>? addons;
 
   const MealDto({
     required this.name,
     required this.number,
     required this.price,
     this.doublePrice,
+    this.addons,
   });
 
   Map<String, dynamic> toJson() => _$MealDtoToJson(this);

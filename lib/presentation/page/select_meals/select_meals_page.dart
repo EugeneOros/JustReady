@@ -25,7 +25,7 @@ class SelectMealsPage extends HookWidget {
       body: state.maybeWhen(
         loaded: (meals, currentOrder) => SelectMealsLoadedBody(
           meals: meals,
-          addMealToOrder: (mealCount, meal) => cubit.addMealsToOrder(meal, mealCount),
+          addMealToOrder: (mealCount, meal, selectedAddons) => cubit.addMealsToOrder(meal, mealCount, selectedAddons),
           order: currentOrder,
         ),
         loading: () => const SlectMealsLoadingBody(),

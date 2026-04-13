@@ -1,4 +1,5 @@
 import 'package:just_ready/domain/meals/models/meal.dart';
+import 'package:just_ready/domain/meals/models/meal_addon.dart';
 import 'package:just_ready/domain/orders/models/order.dart';
 import 'package:just_ready/domain/orders/models/order_meal.dart';
 
@@ -9,7 +10,7 @@ abstract class OrdersRepository {
 
   Future<void> deleteOrder(Order order);
 
-  Future<void> addMealToCurrentOrder(Meal meal, int count);
+  Future<void> addMealToCurrentOrder(Meal meal, int count, List<MealAddon> selectedAddons);
 
   void editCurrentOrderMealCount(OrderMeal meal, int count);
 

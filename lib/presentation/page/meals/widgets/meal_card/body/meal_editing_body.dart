@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:just_ready/domain/meals/models/meal.dart';
 import 'package:just_ready/generated/l10n.dart';
+import 'package:just_ready/presentation/page/meals/widgets/meal_card/body/meal_addons_section.dart';
 import 'package:just_ready/presentation/page/meals/widgets/meal_card/utils/meal_form_control_names.dart';
 import 'package:just_ready/presentation/widgets/jr_title_row.dart';
 import 'package:just_ready/presentation/widgets/jr_svg_picture.dart';
@@ -59,6 +60,13 @@ class MealEditingBody extends StatelessWidget {
                 selectAllOnTap: true,
                 formControlName: MealFormControlName.doublePrice,
                 labelText: Strings.of(context).enterPriceName,
+              ),
+            ),
+            const SizedBox(height: Dimens.m),
+            SizedBox(
+              width: double.infinity,
+              child: MealAddonsSection(
+                addonsArray: form.control(MealFormControlName.addons) as FormArray,
               ),
             ),
           ],

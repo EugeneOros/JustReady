@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:just_ready/domain/orders/models/order.dart';
+import 'package:just_ready/domain/orders/models/order_meal.dart';
 import 'package:just_ready/presentation/page/orders/widgets/order_meal_row.dart';
 import 'package:just_ready/presentation/widgets/jr_divider.dart';
 import 'package:just_ready/presentation/widgets/jr_fade_end_stack.dart';
@@ -8,7 +9,7 @@ import 'package:just_ready/styles/dimens.dart';
 
 class OrderCardBody extends StatelessWidget {
   final Order order;
-  final Function(Order, int) toggleOrderMealIsDone;
+  final Function(Order, OrderMeal) toggleOrderMealIsDone;
 
   const OrderCardBody({
     super.key,
@@ -25,7 +26,8 @@ class OrderCardBody extends StatelessWidget {
               topFadeHeight: Dimens.xxl,
               bottomFadeHeight: Dimens.xxxc,
               child: ListView(
-                shrinkWrap: true,
+                addAutomaticKeepAlives: false,
+                addRepaintBoundaries: false,
                 children: [
                   const SizedBox(height: Dimens.ms),
                   ...order.orderMeals.map(
@@ -33,7 +35,7 @@ class OrderCardBody extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: Dimens.m),
                       child: OrderMealRow(
                         orderMeal: orderMeal,
-                        toggleOrderMealIsDone: () => toggleOrderMealIsDone(order, orderMeal.meal.number),
+                        toggleOrderMealIsDone: () => toggleOrderMealIsDone(order, orderMeal),
                       ),
                     ),
                   ),

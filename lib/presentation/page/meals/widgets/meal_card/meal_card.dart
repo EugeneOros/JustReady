@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:just_ready/domain/meals/models/meal.dart';
+import 'package:just_ready/domain/meals/models/meal_addon.dart';
 import 'package:just_ready/extensions/build_context_extension.dart';
 import 'package:just_ready/generated/l10n.dart';
 import 'package:just_ready/presentation/page/meals/widgets/meal_card/body/meal_body.dart';
@@ -15,7 +15,7 @@ import 'package:just_ready/styles/images.dart';
 import 'package:just_ready/utils/is_meal_number_not_taken_validator.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-class MealCard extends HookWidget {
+class MealCard extends StatelessWidget {
   final List<Meal> meals;
   final Meal meal;
   final Function(Meal, int) onEdit;
@@ -62,6 +62,12 @@ class MealCard extends HookWidget {
           Validators.max(100),
           IsMealNumberNotTakenValidator(meal.number, meals),
         ],
+      ),
+      MealFormControlName.addons: FormArray(
+        meal.addons.map((addon) => FormGroup({
+          MealFormControlName.addonName: FormControl<String>(value: addon.name, validators: [Validators.required]),
+          MealFormControlName.addonPrice: FormControl<double>(value: addon.price, validators: [Validators.required]),
+        })).toList(),
       ),
     });
 
@@ -113,7 +119,6 @@ class MealCard extends HookWidget {
                     color: context.colors.primary,
                     type: IconButtonType.tertiary,
                     onTap: () => setIsEditing(true),
-                    // onPressed: () => isEditing.value = !isEditing.value,
                   ),
                 ),
               if (isEditing)
@@ -147,12 +152,21 @@ class MealCard extends HookWidget {
                             title: Strings.of(context).save,
                             onTap: () async {
                               if (form.valid) {
+                                final addonsArray = form.controls[MealFormControlName.addons] as FormArray;
+                                final addons = addonsArray.controls.map((control) {
+                                  final g = control as FormGroup;
+                                  return MealAddon(
+                                    name: (g.controls[MealFormControlName.addonName]!.value as String?) ?? '',
+                                    price: (g.controls[MealFormControlName.addonPrice]!.value as double?) ?? 0.0,
+                                  );
+                                }).toList();
                                 await onEdit(
                                   Meal(
                                     name: form.controls[MealFormControlName.name]!.value.toString(),
                                     number: form.controls[MealFormControlName.number]!.value as int,
                                     price: form.controls[MealFormControlName.price]!.value as double,
                                     doublePrice: form.controls[MealFormControlName.doublePrice]!.value as double?,
+                                    addons: addons,
                                   ),
                                   meal.number,
                                 );

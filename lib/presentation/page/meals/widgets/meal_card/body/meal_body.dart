@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:just_ready/domain/meals/models/meal.dart';
 import 'package:just_ready/presentation/page/meals/widgets/meal_card/body/meal_default_body.dart';
 import 'package:just_ready/presentation/page/meals/widgets/meal_card/body/meal_editing_body.dart';
 import 'package:just_ready/presentation/widgets/jr_animated_switcher.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-class MealCardBody extends HookWidget {
+class MealCardBody extends StatelessWidget {
   final bool isEditing;
   final Meal meal;
   final FormGroup form;

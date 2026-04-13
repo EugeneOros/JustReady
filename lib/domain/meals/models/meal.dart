@@ -1,16 +1,19 @@
 import 'dart:ui';
+import 'package:just_ready/domain/meals/models/meal_addon.dart';
 
 class Meal {
   final String name;
   final int number;
   final double price;
   final double? doublePrice;
+  final List<MealAddon> addons;
 
   Meal({
     required this.name,
     required this.number,
     required this.price,
     this.doublePrice,
+    this.addons = const [],
   });
 
   Color getColor() {

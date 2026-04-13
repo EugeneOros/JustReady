@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart' hide Order;
+import 'package:just_ready/data/meals/models/meal_addon_dto.dart';
 import 'package:just_ready/data/meals/models/meal_dto.dart';
 import 'package:just_ready/domain/meals/models/meal.dart';
 
@@ -11,5 +12,8 @@ class MealToMealDtoMapper {
         number: meal.number,
         price: meal.price,
         doublePrice: meal.doublePrice,
+        addons: meal.addons.isEmpty
+            ? null
+            : meal.addons.map((a) => MealAddonDto(name: a.name, price: a.price)).toList(),
       );
 }

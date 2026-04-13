@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:just_ready/domain/orders/models/order.dart';
+import 'package:just_ready/domain/orders/models/order_meal.dart';
 import 'package:just_ready/domain/orders/models/order_status.dart';
 import 'package:just_ready/domain/orders/use_case/delete_order_use_case.dart';
 import 'package:just_ready/domain/orders/use_case/edit_order_use_case.dart';
@@ -49,14 +50,22 @@ class OrdersCubit extends Cubit<OrdersState> {
     return super.close();
   }
 
-  Future<void> toggleOrderMealIsDone(Order order, int orderMealNumber) async {
+  Future<void> toggleOrderMealIsDone(Order order, OrderMeal targetMeal) async {
     for (var orderMeal in order.orderMeals) {
-      if (orderMeal.meal.number == orderMealNumber) {
+      if (orderMeal.meal.number == targetMeal.meal.number &&
+          _addonsMatch(orderMeal.selectedAddons, targetMeal.selectedAddons)) {
         orderMeal.isDone = !orderMeal.isDone;
         _editOrderUseCase(order);
         return;
       }
     }
+  }
+
+  bool _addonsMatch(List a, List b) {
+    if (a.length != b.length) return false;
+    final namesA = a.map((x) => x.name).toSet();
+    final namesB = b.map((x) => x.name).toSet();
+    return namesA.containsAll(namesB);
   }
 
   Future<void> updateOrderStatus(Order order, OrderStatus status) async {

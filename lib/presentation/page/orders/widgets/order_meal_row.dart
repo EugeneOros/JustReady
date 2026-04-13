@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:just_ready/domain/meals/models/meal_addon.dart';
 import 'package:just_ready/domain/orders/models/order_meal.dart';
 import 'package:just_ready/extensions/extension_mixin.dart';
 import 'package:just_ready/presentation/widgets/jr_chek_box.dart';
@@ -27,12 +28,39 @@ class OrderMealRow extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              child: JrText(
-                orderMeal.meal.name,
-                style: context.typography.header4,
-                maxLines: 5,
-                color: color,
-                lineThrough: orderMeal.isDone,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  JrText(
+                    orderMeal.meal.name,
+                    style: context.typography.header4,
+                    maxLines: 5,
+                    color: color,
+                    lineThrough: orderMeal.isDone,
+                  ),
+                  if (orderMeal.selectedAddons.isNotEmpty) ...[
+                    const SizedBox(height: Dimens.xs),
+                    Wrap(
+                      spacing: Dimens.xs,
+                      runSpacing: Dimens.xs,
+                      children: orderMeal.selectedAddons
+                          .map(
+                            (MealAddon addon) => Container(
+                              padding: const EdgeInsets.symmetric(horizontal: Dimens.s, vertical: 2),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: color.withValues(alpha: 0.5)),
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                              child: Text(
+                                '+${addon.name}',
+                                style: TextStyle(fontSize: 11, color: color.withValues(alpha: 0.8)),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  ],
+                ],
               ),
             ),
             const SizedBox(width: Dimens.s),

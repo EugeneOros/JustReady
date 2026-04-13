@@ -1,6 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:just_ready/domain/meals/models/meal.dart';
+import 'package:just_ready/domain/meals/models/meal_addon.dart';
 import 'package:just_ready/extensions/build_context_extension.dart';
 import 'package:just_ready/presentation/page/select_meals/utils/select_form_control_names.dart';
 import 'package:just_ready/presentation/widgets/jr_container.dart';
@@ -44,13 +45,15 @@ const _titleColors = [
   Color(0xFFFFF0C1), // butter
 ];
 
-class MealCardBody extends HookWidget {
+class MealCardBody extends StatelessWidget {
   final Meal meal;
   final int index;
   final int orderCount;
   final int initMealCountValue;
   final FormGroup form;
   final bool showMealAddingProgress;
+  final List<MealAddon> selectedAddons;
+  final Function(MealAddon) onToggleAddon;
 
   const MealCardBody({
     super.key,
@@ -60,6 +63,8 @@ class MealCardBody extends HookWidget {
     required this.initMealCountValue,
     required this.showMealAddingProgress,
     required this.form,
+    required this.selectedAddons,
+    required this.onToggleAddon,
   });
 
   @override
@@ -95,6 +100,52 @@ class MealCardBody extends HookWidget {
               size: JrPriceSize.l,
               price: meal.price,
             ),
+            if (meal.addons.isNotEmpty) ...[
+              const SizedBox(height: Dimens.s),
+              ScrollConfiguration(
+                behavior: ScrollConfiguration.of(context).copyWith(
+                  dragDevices: {
+                    PointerDeviceKind.touch,
+                    PointerDeviceKind.mouse,
+                    PointerDeviceKind.stylus,
+                    PointerDeviceKind.trackpad,
+                  },
+                ),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  physics: const ClampingScrollPhysics(),
+                  padding: const EdgeInsets.symmetric(horizontal: Dimens.xm),
+                  child: Row(
+                    children: meal.addons.map((addon) {
+                      final isSelected = selectedAddons.any((a) => a.name == addon.name);
+                      return Padding(
+                        padding: const EdgeInsets.only(right: Dimens.xs, bottom: Dimens.s, top: Dimens.s),
+                        child: GestureDetector(
+                          onTap: () => onToggleAddon(addon),
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 150),
+                            padding: const EdgeInsets.symmetric(horizontal: Dimens.xm, vertical: Dimens.xs),
+                            decoration: BoxDecoration(
+                              color: isSelected ? context.colors.dark : Colors.transparent,
+                              borderRadius: BorderRadius.circular(100),
+                              border: Border.all(color: context.colors.dark),
+                            ),
+                            child: Text(
+                              '+${addon.name} ${addon.price.toStringAsFixed(addon.price % 1 == 0 ? 0 : 2)}zł',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: isSelected ? context.colors.bright : context.colors.dark,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ),
+            ],
             const SizedBox(height: Dimens.s),
             JrNumberEditField(
               form: form,
